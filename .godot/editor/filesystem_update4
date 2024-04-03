@@ -1,1 +1,2 @@
-res://System/SettingsMenu.tscn
+res://addons/StateMachine/StateMachine.tscn
+res://addons/StateMachine/States/State.gd
