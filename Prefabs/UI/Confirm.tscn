@@ -1,0 +1,413 @@
+[gd_scene load_steps=13 format=3 uid="uid://7byxq7p5jm6m"]
+
+[ext_resource type="Texture2D" uid="uid://d3tx3lumu4maa" path="res://Sprites/UI/bar_02.png" id="1_rladw"]
+[ext_resource type="Script" path="res://Prefabs/UI/Confirm.gd" id="1_v2mgu"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="2_cdok3"]
+[ext_resource type="PackedScene" uid="uid://bksidm6s5obko" path="res://Prefabs/UI/UI_InputSwitch.tscn" id="4_n80e2"]
+[ext_resource type="PackedScene" uid="uid://c7qir2gplg7jc" path="res://Prefabs/UI/AnimatedButtons.tscn" id="5_ekyx4"]
+[ext_resource type="AudioStream" uid="uid://cc63wr3rpdwdx" path="res://Sounds/sfx_menu_open.wav" id="7_mn54p"]
+[ext_resource type="AudioStream" uid="uid://muihwmalkngk" path="res://Sounds/sfx_menu_confirm.wav" id="8_j4cts"]
+[ext_resource type="AudioStream" uid="uid://dk73lyf42h4wn" path="res://Sounds/sfx_menu_close.wav" id="9_26mbq"]
+
+[sub_resource type="Animation" id="Animation_axuh8"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bar02:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RichTextLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RichTextLabel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-93, -25), Vector2(-93, -103)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nwrqj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bar02:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.01, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bar02:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bar02:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RichTextLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RichTextLabel:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-93, -25)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Button:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ckp25"]
+resource_name = "default"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bar02:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.01, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bar02:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Container:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bar02:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RichTextLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RichTextLabel:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-93, -25)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Button:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_454nf"]
+_data = {
+"Close": SubResource("Animation_axuh8"),
+"RESET": SubResource("Animation_nwrqj"),
+"default": SubResource("Animation_ckp25")
+}
+
+[node name="Confirm" type="Node2D"]
+script = ExtResource("1_v2mgu")
+
+[node name="Bar02" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.01, 1)
+texture = ExtResource("1_rladw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -93.0
+offset_top = -25.0
+offset_right = 148.0
+offset_bottom = 99.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_cdok3")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave]CONFIRM?"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_454nf")
+}
+speed_scale = 3.0
+
+[node name="Container" type="Node2D" parent="."]
+visible = false
+
+[node name="Label2" type="Label" parent="Container"]
+offset_left = -135.0
+offset_top = 37.0
+offset_right = -63.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("2_cdok3")
+theme_override_font_sizes/font_size = 64
+text = "YES"
+
+[node name="Label3" type="Label" parent="Container"]
+offset_left = 54.0
+offset_top = 40.0
+offset_right = 126.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("2_cdok3")
+theme_override_font_sizes/font_size = 64
+text = "NO
+"
+
+[node name="UI_Input_Switch" parent="Container" instance=ExtResource("4_n80e2")]
+
+[node name="GamePad" parent="Container/UI_Input_Switch" index="0"]
+visible = false
+
+[node name="AnimatedButtons" parent="Container/UI_Input_Switch/GamePad" index="0" instance=ExtResource("5_ekyx4")]
+position = Vector2(-130, 110)
+scale = Vector2(3, 3)
+animation = &"gp_A"
+
+[node name="AnimatedButtons2" parent="Container/UI_Input_Switch/GamePad" index="1" instance=ExtResource("5_ekyx4")]
+position = Vector2(-70, 110)
+scale = Vector2(3, 3)
+animation = &"gp_Start"
+
+[node name="AnimatedButtons3" parent="Container/UI_Input_Switch/GamePad" index="2" instance=ExtResource("5_ekyx4")]
+position = Vector2(76, 110)
+scale = Vector2(3, 3)
+animation = &"gp_B"
+
+[node name="Label" type="Label" parent="Container/UI_Input_Switch/GamePad" index="3"]
+offset_left = -109.0
+offset_top = 73.0
+offset_right = -69.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 48
+text = "/"
+
+[node name="AnimatedButtons3" parent="Container/UI_Input_Switch/KB" index="0" instance=ExtResource("5_ekyx4")]
+position = Vector2(76, 110)
+scale = Vector2(3, 3)
+animation = &"Esc"
+
+[node name="AnimatedButtons4" parent="Container/UI_Input_Switch/KB" index="1" instance=ExtResource("5_ekyx4")]
+position = Vector2(-122, 99)
+scale = Vector2(2, 2)
+animation = &"Enter_L1"
+
+[node name="AnimatedButtons5" parent="Container/UI_Input_Switch/KB/AnimatedButtons4" instance=ExtResource("5_ekyx4")]
+position = Vector2(0, 16)
+animation = &"Enter_L2"
+
+[node name="AnimatedButtons6" parent="Container/UI_Input_Switch/KB/AnimatedButtons4" instance=ExtResource("5_ekyx4")]
+position = Vector2(16, 0)
+animation = &"Enter_R1"
+
+[node name="AnimatedButtons7" parent="Container/UI_Input_Switch/KB/AnimatedButtons4" instance=ExtResource("5_ekyx4")]
+position = Vector2(16, 16)
+animation = &"Enter_R2"
+
+[node name="sfx_open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_mn54p")
+volume_db = 5.0
+bus = &"SoundFX"
+
+[node name="sfx_confirm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_j4cts")
+pitch_scale = 0.8
+bus = &"SoundFX"
+
+[node name="sfx_cancel" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_26mbq")
+volume_db = 5.0
+bus = &"SoundFX"
+
+[node name="Button" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -209.0
+offset_top = -30.0
+offset_right = 210.0
+offset_bottom = 34.0
+mouse_default_cursor_shape = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Button" to="." method="confirm"]
+
+[editable path="Container/UI_Input_Switch"]

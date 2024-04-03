@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dauljwwbg43mn"]
+
+[ext_resource type="Texture2D" uid="uid://dtskuctfungcc" path="res://Sprites/UI/ModeCards/BallHog.png" id="1_dysfi"]
+[ext_resource type="Script" path="res://Prefabs/UI/HUDCardDisplay.gd" id="2_o3ped"]
+
+[node name="HUDCardDisplay" type="Sprite2D"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_dysfi")
+centered = false
+script = ExtResource("2_o3ped")

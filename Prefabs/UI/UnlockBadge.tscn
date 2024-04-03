@@ -1,0 +1,262 @@
+[gd_scene load_steps=16 format=3 uid="uid://cxepcg8kf77d"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/UnlockBadge.gd" id="1_5mcg0"]
+[ext_resource type="Texture2D" uid="uid://dp0os4qemgqwt" path="res://Sprites/UI/star.png" id="1_thjk5"]
+[ext_resource type="Texture2D" uid="uid://wy1nvf13qdvi" path="res://Sprites/UI/box2.png" id="2_dqm6f"]
+[ext_resource type="Texture2D" uid="uid://bcxhwx7v0cdan" path="res://Sprites/UI/Masks/Screenmask_black.png" id="2_qtoqo"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="3_7i2sh"]
+[ext_resource type="Texture2D" uid="uid://krc21tpe5p3p" path="res://Sprites/UI/bar_01.png" id="4_pb5x4"]
+[ext_resource type="Texture2D" uid="uid://d0te7sxory3qm" path="res://Sprites/UI/bar_03_on.png" id="5_d3es7"]
+[ext_resource type="AudioStream" uid="uid://vlemyrilphrx" path="res://Sounds/sfx_menu_startArcade.wav" id="6_3k12t"]
+[ext_resource type="AudioStream" uid="uid://muihwmalkngk" path="res://Sounds/sfx_menu_confirm.wav" id="7_5d1p8"]
+[ext_resource type="AudioStream" uid="uid://d6gxknv43qmn" path="res://Sounds/sfx_award.wav" id="8_rp3el"]
+
+[sub_resource type="Animation" id="Animation_pss0e"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Star:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ewj3h"]
+_data = {
+"default": SubResource("Animation_pss0e")
+}
+
+[sub_resource type="Animation" id="Animation_fi2po"]
+resource_name = "Out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box1:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.01, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.9)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box1:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.01, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.9)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Star:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Star:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Star:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(441, -0.25, 0, 0.25, 0, -866, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Star:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(415, -0.25, 0, 0.25, 0, 1677, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_mv5yj"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(892, 935), Vector2(663, 316)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.73944, 1.73944), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Star:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Star:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Star:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(441, 415)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldb8s"]
+_data = {
+"Out": SubResource("Animation_fi2po"),
+"default": SubResource("Animation_mv5yj")
+}
+
+[node name="UnlockBadge" type="CanvasLayer"]
+script = ExtResource("1_5mcg0")
+
+[node name="ScreenmaskBlack" type="Sprite2D" parent="."]
+texture = ExtResource("2_qtoqo")
+centered = false
+
+[node name="Star" type="Sprite2D" parent="."]
+position = Vector2(441, 415)
+rotation = 5.34491
+texture = ExtResource("1_thjk5")
+
+[node name="Box1" type="Sprite2D" parent="."]
+position = Vector2(663, 316)
+texture = ExtResource("2_dqm6f")
+
+[node name="Label" type="Label" parent="Box1"]
+process_mode = 3
+offset_left = -350.0
+offset_top = -27.0
+offset_right = 355.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_7i2sh")
+theme_override_font_sizes/font_size = 72
+text = "[reward texts]"
+autowrap_mode = 2
+
+[node name="Bar01" type="Sprite2D" parent="Box1"]
+show_behind_parent = true
+position = Vector2(-74.6666, -158.667)
+texture = ExtResource("4_pb5x4")
+
+[node name="Label" type="Label" parent="Box1/Bar01"]
+offset_left = -328.0
+offset_top = -29.3333
+offset_right = 104.0
+offset_bottom = 26.6667
+theme_override_fonts/font = ExtResource("3_7i2sh")
+theme_override_font_sizes/font_size = 64
+text = "YOU HAVE UNLOCKED:"
+
+[node name="Type" type="Sprite2D" parent="Box1"]
+position = Vector2(304, -88)
+scale = Vector2(1.33333, 1.33333)
+texture = ExtResource("5_d3es7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Box1/Type"]
+offset_left = -109.0
+offset_top = -29.0
+offset_right = 233.0
+offset_bottom = 27.0
+theme_override_fonts/normal_font = ExtResource("3_7i2sh")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[wave]NEW [Type]"
+scroll_active = false
+
+[node name="StarSpin" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ewj3h")
+}
+autoplay = "default"
+speed_scale = 0.1
+
+[node name="UIAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ldb8s")
+}
+autoplay = "default"
+speed_scale = 4.0
+
+[node name="sfx1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3k12t")
+volume_db = -2.0
+autoplay = true
+bus = &"SoundFX"
+
+[node name="sfx2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5d1p8")
+volume_db = -2.0
+autoplay = true
+bus = &"SoundFX"
+
+[node name="sfx3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rp3el")
+volume_db = 2.0
+pitch_scale = 1.3
+autoplay = true
+bus = &"SoundFX"
+
+[connection signal="animation_finished" from="UIAnimations" to="." method="_on_ui_animations_animation_finished"]

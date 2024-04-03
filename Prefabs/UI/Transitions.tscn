@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://crw4f0uu0ban6"]
+
+[ext_resource type="Shader" path="res://Shaders/DiamondTransition.gdshader" id="1_fewog"]
+[ext_resource type="Texture2D" uid="uid://bcxhwx7v0cdan" path="res://Sprites/UI/Masks/Screenmask_black.png" id="2_w6d8t"]
+[ext_resource type="Script" path="res://Prefabs/UI/Transitions.gd" id="3_t1shl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qvoe"]
+shader = ExtResource("1_fewog")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 16.0
+
+[sub_resource type="Animation" id="Animation_hevr4"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Center:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_4vh2r"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Center:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ns5b2"]
+resource_name = "set_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Center:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7lta"]
+_data = {
+"FadeIn": SubResource("Animation_hevr4"),
+"FadeOut": SubResource("Animation_4vh2r"),
+"set_in": SubResource("Animation_ns5b2")
+}
+
+[node name="Transitions" type="CanvasLayer" groups=["Transitions"]]
+process_mode = 3
+script = ExtResource("3_t1shl")
+
+[node name="Center" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0qvoe")
+position = Vector2(640, 360)
+rotation = 3.14159
+texture = ExtResource("2_w6d8t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Center"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_p7lta")
+}
+
+[connection signal="animation_finished" from="Center/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

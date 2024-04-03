@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbicglhynhvkx"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/UI_Option.gd" id="1_0bug8"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="2_6tdnd"]
+[ext_resource type="AudioStream" uid="uid://2w55xlobsn3h" path="res://Sounds/UI/sfx_beep_01.ogg" id="2_ipxu1"]
+[ext_resource type="AudioStream" uid="uid://dvvrkkr7jlvgx" path="res://Sounds/UI/sfx_beep_05.ogg" id="3_yubyt"]
+[ext_resource type="AudioStream" uid="uid://ec644lndomrx" path="res://Sounds/UI/sfx_beep_06.ogg" id="4_lqa66"]
+[ext_resource type="AudioStream" uid="uid://wndbrhqp33d2" path="res://Sounds/UI/sfx_beep_04.ogg" id="5_jivfj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkr5m"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0, 0, 0, 0.941176)
+
+[node name="UI_Option" type="CenterContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0bug8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fkr5m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_6tdnd")
+theme_override_font_sizes/font_size = 32
+text = "fhello world?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Cancel" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_6tdnd")
+theme_override_font_sizes/font_size = 28
+text = "CANCEL
+"
+
+[node name="Container" type="Container" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Confirm" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0, 1, 0.384314, 1)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_6tdnd")
+theme_override_font_sizes/font_size = 28
+text = "CONFIRM"
+
+[node name="sfx_init" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ipxu1")
+volume_db = -15.0
+
+[node name="sfx_selections" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yubyt")
+volume_db = -10.0
+
+[node name="sfx_confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lqa66")
+volume_db = -10.0
+
+[node name="sfx_cancel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jivfj")
+volume_db = -13.0
+
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Cancel" to="sfx_selections" method="play"]
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Cancel" to="sfx_selections" method="play"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Cancel" to="sfx_cancel" method="play"]
+[connection signal="focus_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="sfx_selections" method="play"]
+[connection signal="mouse_entered" from="PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="sfx_selections" method="play"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Confirm" to="sfx_confirm" method="play"]

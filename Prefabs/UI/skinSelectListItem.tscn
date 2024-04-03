@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://drxq3365qcreu"]
+
+[ext_resource type="Texture2D" uid="uid://d3tx3lumu4maa" path="res://Sprites/UI/bar_02.png" id="1_46pee"]
+[ext_resource type="Script" path="res://Prefabs/UI/SkinSelectListItem.gd" id="1_u6j4v"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="2_0m33e"]
+[ext_resource type="AudioStream" uid="uid://jmxg3ikmfuj3" path="res://Sounds/UI/sfx_UI_Select_D.ogg" id="4_ltfw0"]
+[ext_resource type="AudioStream" uid="uid://cmwpfo86ldg28" path="res://Sounds/UI/sfx_ui_confirm_4.wav" id="5_vrtm2"]
+
+[sub_resource type="Animation" id="Animation_andh2"]
+resource_name = "Select"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bar02:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 24, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bar02:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bar02:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.486275, -0.25, 0, 0.25, 0, 0.895372, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bar02:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.635294, -0.25, 0, 0.25, 0, 0.540688, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bar02:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.94902, -0.25, 0, 0.25, 0, 0.317178, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bar02:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ixhr"]
+_data = {
+"Select": SubResource("Animation_andh2")
+}
+
+[node name="SkinSelectListItem" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+clip_contents = true
+custom_minimum_size = Vector2(450, 66)
+anchors_preset = -1
+anchor_right = 0.347
+anchor_bottom = 0.087
+offset_right = -0.160004
+offset_bottom = 0.359997
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_u6j4v")
+
+[node name="Bar02" type="Sprite2D" parent="."]
+modulate = Color(0.486275, 0.635294, 0.94902, 1)
+texture = ExtResource("1_46pee")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 6.0
+offset_right = 205.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0m33e")
+theme_override_font_sizes/font_size = 64
+text = "Default"
+
+[node name="sfx_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ltfw0")
+bus = &"SoundFX"
+
+[node name="sfx_select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vrtm2")
+bus = &"SoundFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5ixhr")
+}
+speed_scale = 3.0
+
+[connection signal="focus_entered" from="." to="." method="hover"]
+[connection signal="focus_exited" from="." to="." method="unhover"]
+[connection signal="mouse_entered" from="." to="." method="grab_focus"]
+[connection signal="mouse_exited" from="." to="." method="unhover"]
+[connection signal="pressed" from="." to="." method="select"]

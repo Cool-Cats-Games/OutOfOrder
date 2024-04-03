@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbr76gybshxp1"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/GameEndSplash.gd" id="1_ihwm6"]
+[ext_resource type="Texture2D" uid="uid://brn7bv0fit1lw" path="res://Sprites/UI/PARTYSOVER.png" id="2_q2m84"]
+[ext_resource type="AudioStream" uid="uid://lug0o65erkxl" path="res://Sounds/sfx_card_land.wav" id="3_eai4j"]
+
+[sub_resource type="Animation" id="Animation_3ko70"]
+resource_name = "default"
+length = 7.0
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Partysover:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.35, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Partysover:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.35, 0.4)
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_eai4j")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1xdc"]
+_data = {
+"default": SubResource("Animation_3ko70")
+}
+
+[node name="GameEndSplash" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ihwm6")
+
+[node name="Partysover" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(5, 5)
+texture = ExtResource("2_q2m84")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m1xdc")
+}
+autoplay = "default"
+speed_scale = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SoundFX"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,170 @@
+[gd_scene load_steps=9 format=3 uid="uid://ojyo8d2mqtxw"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/HomeButton.gd" id="1_ckdyb"]
+[ext_resource type="Texture2D" uid="uid://dp6440po1bxpf" path="res://Sprites/boardgame_icons/Double (128px)/structure_house.png" id="1_pls6i"]
+[ext_resource type="Texture2D" uid="uid://dit6kl7edcrf4" path="res://Sprites/boardgame_icons/Double (128px)/arrow_right.png" id="2_naa7e"]
+[ext_resource type="AudioStream" uid="uid://dm84cdh0ejfvi" path="res://Sounds/sfx_ui_focus2.wav" id="4_x18k3"]
+[ext_resource type="AudioStream" uid="uid://yhqi6bbgynh5" path="res://Sounds/sfx_unfocus3.wav" id="5_01ya2"]
+
+[sub_resource type="Animation" id="Animation_kvbjh"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowRight:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.164706)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArrowRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(141, 291)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StructureHouse:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.52549, 0.52549, 0.52549, 0.321569)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StructureHouse:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(139, 124)]
+}
+
+[sub_resource type="Animation" id="Animation_ghyw4"]
+resource_name = "focused"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StructureHouse:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.521569)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StructureHouse:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(139, 109)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ArrowRight:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(387, -0.25, 0, 0.25, 0, 104, -0.25, 0, 0.25, 0, 387, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ArrowRight:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(114, -0.25, 0, 0.25, 0, 114, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ArrowRight:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dje80"]
+_data = {
+"default": SubResource("Animation_kvbjh"),
+"focused": SubResource("Animation_ghyw4")
+}
+
+[node name="HomeButton" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -963.0
+offset_bottom = -358.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_ckdyb")
+
+[node name="StructureHouse" type="Sprite2D" parent="."]
+modulate = Color(0.52549, 0.52549, 0.52549, 0.321569)
+position = Vector2(139, 124)
+scale = Vector2(2.26563, 2.26563)
+texture = ExtResource("1_pls6i")
+
+[node name="ArrowRight" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.164706)
+position = Vector2(141, 291)
+scale = Vector2(2.01563, 2.01563)
+texture = ExtResource("2_naa7e")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dje80")
+}
+speed_scale = 1.75
+
+[node name="sfx_focus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x18k3")
+bus = &"SoundFX"
+
+[node name="sfx_unfocus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_01ya2")
+bus = &"SoundFX"
+
+[connection signal="focus_entered" from="." to="." method="highlight"]
+[connection signal="focus_exited" from="." to="." method="unhighlight"]
+[connection signal="mouse_entered" from="." to="." method="highlight"]
+[connection signal="mouse_exited" from="." to="." method="unhighlight"]

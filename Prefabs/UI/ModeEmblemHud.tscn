@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://duslr2liqrhjn"]
+
+[ext_resource type="Texture2D" uid="uid://krc21tpe5p3p" path="res://Sprites/UI/bar_01.png" id="1_m4xwg"]
+[ext_resource type="Texture2D" uid="uid://t26yuwkx1s5t" path="res://Sprites/UI/ModeEmblems/BallHog.png" id="2_s152k"]
+[ext_resource type="Texture2D" uid="uid://cueunrpdi64c" path="res://Sprites/UI/ModeEmblems/CaptureTheFlag.png" id="3_tu8j4"]
+[ext_resource type="Texture2D" uid="uid://bjo721dpxus4" path="res://Sprites/UI/ModeEmblems/Elimination.png" id="4_41ppr"]
+[ext_resource type="Texture2D" uid="uid://l65trdhiiwsu" path="res://Sprites/UI/ModeEmblems/MoonGravity.png" id="5_av5jm"]
+
+[node name="ModeEmblemHUD" type="CanvasLayer"]
+
+[node name="Bar01" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1592, 56)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_m4xwg")
+centered = false
+offset = Vector2(-737.333, -60)
+
+[node name="Bar02" type="Sprite2D" parent="Bar01"]
+position = Vector2(-10.6667, -60)
+texture = ExtResource("1_m4xwg")
+centered = false
+flip_h = true
+
+[node name="EmblemPoint" type="Node2D" parent="Bar01"]
+position = Vector2(-682.667, -28)
+
+[node name="BallHog" type="Sprite2D" parent="Bar01/EmblemPoint"]
+texture = ExtResource("2_s152k")
+
+[node name="BallHog2" type="Sprite2D" parent="Bar01/EmblemPoint"]
+position = Vector2(64, 0)
+texture = ExtResource("3_tu8j4")
+
+[node name="BallHog3" type="Sprite2D" parent="Bar01/EmblemPoint"]
+position = Vector2(138.667, 0)
+texture = ExtResource("4_41ppr")
+
+[node name="BallHog4" type="Sprite2D" parent="Bar01/EmblemPoint"]
+position = Vector2(213.333, 0)
+texture = ExtResource("5_av5jm")

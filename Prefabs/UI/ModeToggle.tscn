@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7j2u30f180rs"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/ModeToggle.gd" id="1_32gl0"]
+[ext_resource type="Texture2D" uid="uid://d3tx3lumu4maa" path="res://Sprites/UI/bar_02.png" id="1_m6wl7"]
+[ext_resource type="Texture2D" uid="uid://cumfe6ag8cgt1" path="res://Sprites/boardgame_icons/Default (64px)/d2_outline.png" id="2_h6brs"]
+[ext_resource type="Texture2D" uid="uid://day5nqeqpemin" path="res://Sprites/boardgame_icons/Default (64px)/d2.png" id="3_20tf4"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="4_udh1j"]
+[ext_resource type="AudioStream" uid="uid://bopp7vx86r07" path="res://Sounds/UI/sfx_ui_confirm_5.ogg" id="6_d3xi1"]
+[ext_resource type="AudioStream" uid="uid://jmxg3ikmfuj3" path="res://Sounds/UI/sfx_UI_Select_D.ogg" id="7_4riev"]
+
+[node name="ModeToggle" type="Button"]
+custom_minimum_size = Vector2(420, 64)
+anchors_preset = -1
+anchor_right = 0.3
+anchor_bottom = 0.067
+offset_right = 128.0
+offset_bottom = 15.76
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+mouse_default_cursor_shape = 2
+script = ExtResource("1_32gl0")
+
+[node name="Bar02" type="Sprite2D" parent="."]
+modulate = Color(0.486275, 0.635294, 0.94902, 1)
+position = Vector2(92, 1.33333)
+scale = Vector2(0.90327, 0.90327)
+texture = ExtResource("1_m6wl7")
+centered = false
+
+[node name="unchecked" type="Sprite2D" parent="."]
+modulate = Color(0.596078, 0.596078, 0.596078, 1)
+position = Vector2(32, 32)
+texture = ExtResource("2_h6brs")
+
+[node name="checked" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 32)
+texture = ExtResource("3_20tf4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 110.667
+offset_top = 5.33333
+offset_right = 534.667
+offset_bottom = 61.3333
+scale = Vector2(0.859028, 0.859028)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_udh1j")
+theme_override_font_sizes/font_size = 64
+text = "CaptureTheFlag"
+horizontal_alignment = 1
+
+[node name="sfx_select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_d3xi1")
+bus = &"SoundFX"
+
+[node name="sfx_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_4riev")
+bus = &"SoundFX"
+
+[connection signal="focus_entered" from="." to="." method="hover"]
+[connection signal="focus_exited" from="." to="." method="unhover"]
+[connection signal="mouse_entered" from="." to="." method="hover"]
+[connection signal="mouse_exited" from="." to="." method="unhover"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

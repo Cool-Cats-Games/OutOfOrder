@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsoiw6vhffo66"]
+
+[ext_resource type="Script" path="res://System/SettingsMenu.gd" id="1_jatrx"]
+[ext_resource type="PackedScene" uid="uid://cbicglhynhvkx" path="res://Prefabs/UI/UI_Option.tscn" id="2_mabxq"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="2_nsgd6"]
+[ext_resource type="PackedScene" uid="uid://cywpyeed2ygtg" path="res://Prefabs/UI/MenuSliderControl.tscn" id="2_tvrvu"]
+[ext_resource type="AudioStream" uid="uid://ba3jmqwsdviaw" path="res://Sounds/UI/sfx_ui_confirm_3.wav" id="3_pvwgd"]
+[ext_resource type="AudioStream" uid="uid://qlubxafxsoii" path="res://Sounds/UI/sfx_UI_Select_C.wav" id="4_dw1no"]
+
+[node name="SettingsMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 9
+script = ExtResource("1_jatrx")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.94902)
+
+[node name="AspectRatio" type="AspectRatioContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -138.0
+offset_right = 1.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Column" type="VBoxContainer" parent="AspectRatio"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="Label" type="Label" parent="AspectRatio/Column"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_nsgd6")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ControlList" type="VBoxContainer" parent="AspectRatio/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="MusicControl" parent="AspectRatio/Column/ControlList" instance=ExtResource("2_tvrvu")]
+layout_mode = 2
+label = "Music"
+
+[node name="SFXControl" parent="AspectRatio/Column/ControlList" instance=ExtResource("2_tvrvu")]
+layout_mode = 2
+label = "Effects"
+
+[node name="FullscreenControl" type="HBoxContainer" parent="AspectRatio/Column/ControlList"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Label" type="Label" parent="AspectRatio/Column/ControlList/FullscreenControl"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_nsgd6")
+theme_override_font_sizes/font_size = 32
+text = "Fullscreen"
+
+[node name="FullscreenToggle" type="CheckButton" parent="AspectRatio/Column/ControlList/FullscreenControl"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Links" type="HBoxContainer" parent="AspectRatio/Column"]
+layout_mode = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="BackButton" type="Button" parent="AspectRatio/Column/Links"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_nsgd6")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="ControlsButton" type="Button" parent="AspectRatio/Column/Links"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_nsgd6")
+theme_override_font_sizes/font_size = 32
+text = "Controls"
+
+[node name="sfx_init" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pvwgd")
+autoplay = true
+
+[node name="sfx_changeSelection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dw1no")
+
+[node name="UI_Option" parent="." instance=ExtResource("2_mabxq")]
+visible = false
+
+[connection signal="value_changed" from="AspectRatio/Column/ControlList/MusicControl" to="." method="_on_music_control_value_changed"]
+[connection signal="value_changed" from="AspectRatio/Column/ControlList/SFXControl" to="." method="_on_sfx_control_value_changed"]
+[connection signal="focus_entered" from="AspectRatio/Column/ControlList/FullscreenControl/FullscreenToggle" to="sfx_changeSelection" method="play"]
+[connection signal="mouse_entered" from="AspectRatio/Column/ControlList/FullscreenControl/FullscreenToggle" to="sfx_changeSelection" method="play"]
+[connection signal="toggled" from="AspectRatio/Column/ControlList/FullscreenControl/FullscreenToggle" to="." method="_on_fullscreen_toggle_toggled"]
+[connection signal="focus_entered" from="AspectRatio/Column/Links/BackButton" to="sfx_changeSelection" method="play"]
+[connection signal="mouse_entered" from="AspectRatio/Column/Links/BackButton" to="sfx_changeSelection" method="play"]
+[connection signal="pressed" from="AspectRatio/Column/Links/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="focus_entered" from="AspectRatio/Column/Links/ControlsButton" to="sfx_changeSelection" method="play"]
+[connection signal="mouse_entered" from="AspectRatio/Column/Links/ControlsButton" to="sfx_changeSelection" method="play"]
+[connection signal="pressed" from="AspectRatio/Column/Links/ControlsButton" to="." method="open_controls"]
+[connection signal="cancel" from="UI_Option" to="." method="cancel_settings"]
+[connection signal="confirm" from="UI_Option" to="." method="exit_settings"]

@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://dewmpyfqae13o"]
+
+[ext_resource type="Texture2D" uid="uid://cum8hj08flt0" path="res://Sprites/Tilemap/tilemap.png" id="1_0fgeo"]
+[ext_resource type="Script" path="res://Prefabs/UI/ExitDoor.gd" id="1_jvk3m"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="2_mtnpt"]
+[ext_resource type="AudioStream" uid="uid://ba3ovrvjmkauw" path="res://Sounds/sfx_door_open.wav" id="4_7lciw"]
+[ext_resource type="AudioStream" uid="uid://x2b8yyqe07sh" path="res://Sounds/sfx_door_close.wav" id="5_4in6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hulex"]
+size = Vector2(20, 23)
+
+[node name="ExitDoor" type="Node2D"]
+script = ExtResource("1_jvk3m")
+
+[node name="DoorBG" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -9)
+texture = ExtResource("1_0fgeo")
+region_enabled = true
+region_rect = Rect2(190, 133, 18, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="DoorBG"]
+position = Vector2(0, -11)
+texture = ExtResource("1_0fgeo")
+region_enabled = true
+region_rect = Rect2(190, 108, 18, 5)
+
+[node name="DoorClosed" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("1_0fgeo")
+region_enabled = true
+region_rect = Rect2(190, 133, 18, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="DoorClosed"]
+position = Vector2(0, -11)
+texture = ExtResource("1_0fgeo")
+region_enabled = true
+region_rect = Rect2(190, 108, 18, 5)
+
+[node name="DoorOpen" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-9, -9)
+texture = ExtResource("1_0fgeo")
+region_enabled = true
+region_rect = Rect2(190, 133, 4, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="DoorOpen"]
+position = Vector2(0, -11)
+texture = ExtResource("1_0fgeo")
+region_enabled = true
+region_rect = Rect2(190, 108, 4, 5)
+
+[node name="DoorOpen2" type="Sprite2D" parent="DoorOpen"]
+position = Vector2(2, 2)
+texture = ExtResource("1_0fgeo")
+region_enabled = true
+region_rect = Rect2(206, 133, 2, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="DoorOpen/DoorOpen2"]
+position = Vector2(0, -11)
+texture = ExtResource("1_0fgeo")
+region_enabled = true
+region_rect = Rect2(206, 108, 2, 5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -11.5)
+shape = SubResource("RectangleShape2D_hulex")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -37.0
+offset_right = 32.0
+offset_bottom = -14.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("2_mtnpt")
+theme_override_font_sizes/font_size = 128
+text = "EXIT"
+
+[node name="sfx_open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7lciw")
+bus = &"SoundFX"
+
+[node name="sfx_close" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4in6y")
+bus = &"SoundFX"
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -9.0
+offset_top = -23.0
+offset_right = 11.0
+mouse_default_cursor_shape = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Delay" to="." method="_on_delay_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
