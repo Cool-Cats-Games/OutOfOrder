@@ -4,7 +4,7 @@ extends RigidBody3D
 @onready var uprightQuat = quaternion
 
 @export var acceleration = 1.0
-@export var jumpSpeed = -300
+@export var jumpSpeed = 700
 @export var rideHeight = 5.0
 @export var rideSpringDamper = 0.5
 @export var rideSpringStrength = 1.0
@@ -27,6 +27,8 @@ func _physics_process(delta):
 	var unitInput = inputDir.normalized()
 	var goalVel = unitInput * maxSpeed
 	var stepVel = linear_velocity.lerp(goalVel, acceleration * 0.5)
+	if Input.is_action_just_pressed("jump") and floorCast.is_colliding():
+		apply_force(Vector3.UP * jumpSpeed)
 	apply_force(stepVel * mass)
 	correct_upright_force()
 

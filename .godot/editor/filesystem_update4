@@ -1,6 +1,3 @@
-res://addons/StateMachine/StateMachine.tscn
-res://addons/StateMachine/States/State.gd
-res://addons/StateMachine/StateMachine.gd
 res://Scenes/test_3rd_person_cc.tscn
 res://Prefabs/Player.gd
-res://Data/Settings.gd
+res://addons/StateMachine/StateMachine.tscn
