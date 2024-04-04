@@ -18,7 +18,7 @@ func _ready() -> void:
 	for child in get_children():
 		child.state_machine = self
 		child.actor = get_parent()
-		child.animationController = get_parent().get_animation_controller()
+		#child.animationController = get_parent().get_animation_controller()
 	state.enter()
 
 # The state machine subscribes to node callbacks and delegates them to the state objects.

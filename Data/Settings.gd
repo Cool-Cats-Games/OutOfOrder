@@ -1,6 +1,6 @@
 extends Node
 
-var isFullscreen = true
+var isFullscreen = false
 var musicVolume = .5
 var sfxVolume = .6
 
