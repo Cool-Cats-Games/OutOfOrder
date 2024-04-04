@@ -1,21 +1,22 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1712182556
+::res://::1712189681
 icon.svg::CompressedTexture2D::7475505711562217273::1712179697::1712179927::1::::<><>::
 ::res://addons/::1712182472
-::res://addons/StateMachine/::1712186319
+::res://addons/StateMachine/::1712190547
 plugin.cfg::TextFile::-1::1675050721::0::1::::<><>::
 Plugin.gd::GDScript::-1::1701368140::0::1::::<>EditorPlugin<>::
 StateMachine.gd::GDScript::-1::1712186319::0::1::::StateMachine<>Node<>::
-StateMachine.tscn::PackedScene::1354922923285419891::1712182677::0::1::::<><>::res://addons/StateMachine/StateMachine.gd
+StateMachine.tscn::PackedScene::1354922923285419891::1712190547::0::1::::<><>::res://addons/StateMachine/StateMachine.gd
 ::res://addons/StateMachine/States/::1712182677
 State.gd::GDScript::-1::1712182677::0::1::::State<>Node<>::
-::res://Data/::1712180452
-Settings.gd::GDScript::-1::1702703931::0::1::::<>Node<>::
+::res://Data/::1712189062
+Settings.gd::GDScript::-1::1712189062::0::1::::<>Node<>::
 ::res://Fonts/::1712180189
 monkey.ttf::FontFile::2249298444872678728::1702021757::1712180189::1::::<><>::
 ::res://Materials/::1712179967
 ::res://Models/::1712179956
-::res://Prefabs/::1712180278
+::res://Prefabs/::1712190442
+Player.gd::GDScript::-1::1712190442::0::1::::<>RigidBody3D<>::
 ::res://Prefabs/UI/::1712180218
 AnimatedButtons.gd::GDScript::-1::1702672497::0::1::::<>AnimatedSprite2D<>::
 AnimatedButtons.tscn::PackedScene::7052431930402494324::1702755891::0::1::::<><>::uid://c85qqcha1ir0w::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0120.png<>uid://1ojk7g1ldxt::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0392.png<>uid://du4vhfd7epegu::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0122.png<>uid://c76pord3qel2c::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0394.png<>uid://gonqee81rgeq::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0100.png<>uid://d2uplvnnio5yd::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0017.png<>uid://cr08bjri0ij0i::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0289.png<>uid://cf136ruv2gu00::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0372.png<>uid://dsuh1fnmkft3::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0134.png<>uid://qk1fgj7pf36u::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0393.png<>uid://gsjqublly2ib::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0121.png<>uid://cm1pp5kt6qvry::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0406.png<>uid://jake3mtfh504::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0235.png<>uid://iu6uwugk7egq::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0358.png<>uid://dio037e3lrh5x::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0101.png<>uid://b1av8brkrst2p::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0507.png<>uid://b5u5d1wof5jup::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0373.png<>uid://04hythgd05ed::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0086.png<>uid://dwm2udoeg1uww::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0157.png<>uid://drpxm7hex050a::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0135.png<>uid://cj5iuff4fyqcs::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0236.png<>uid://cmmwf8elf7ist::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0508.png<>uid://g1teo8d1e78m::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0407.png<>uid://b8hijpm62g0ig::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0429.png<>uid://cxnr7prk06p4m::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0237.png<>uid://v2ww60tkfdhh::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0008.png<>uid://tv470h7wpkup::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0509.png<>uid://ctdjfi2tp8p7q::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0042.png<>uid://bgy4h8it002ci::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0043.png<>uid://b60tbalbsd1km::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0009.png<>uid://bj303hkhbq1ud::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0617.png<>uid://f1mky6vdn45::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0651.png<>uid://bg7plh5q18vix::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0031.png<>uid://1t8cka5eckub::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0679.png<>uid://b5yfhq52vk1s1::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0776.png<>uid://dgsg1apd7r2m8::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0777.png<>uid://c5qsbf1xphb2j::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0778.png<>uid://cifsss36bq5kb::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0779.png<>uid://dfsfohhrqrnmw::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0780.png<>uid://bqwiwanwu7fdg::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0781.png<>uid://bojjtdopvxxdv::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0589.png<>uid://du6tyb8ic6ots::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0551.png<>uid://bk6jodpefdlbh::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0556.png<>uid://g3gm8kb1duw3::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0590.png<>uid://3v2fem8j0cgn::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0010.png<>uid://cdologf1dqahf::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0044.png<>uid://d36qpxwson4ng::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0011.png<>uid://3mxa5idnio1n::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0045.png<>uid://dcha0jdl1dx62::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0110.png<>uid://dtlh2ppmqlwl4::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0111.png<>uid://cya5rwu376g6a::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0076.png<>uid://b17n4o0f82o6q::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0077.png<>uid://dfrxdkebtvxft::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0078.png<>uid://ceyu6o7n36gjq::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0112.png<>uid://fxn3wq3ovisi::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0428.png<>uid://u2vsfivnr3ya::::res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0156.png<>res://Prefabs/UI/AnimatedButtons.gd
@@ -56,8 +57,8 @@ UI_Option.gd::GDScript::-1::1702683722::0::1::::<>Control<>::
 UI_Option.tscn::PackedScene::4859677971484279815::1702755893::0::1::::<><>::res://Prefabs/UI/UI_Option.gd<>uid://7btu78ff8nvs::::res://Fonts/monkey.ttf<>uid://2w55xlobsn3h::::res://Sounds/UI/sfx_beep_01.ogg<>uid://dvvrkkr7jlvgx::::res://Sounds/UI/sfx_beep_05.ogg<>uid://ec644lndomrx::::res://Sounds/UI/sfx_beep_06.ogg<>uid://wndbrhqp33d2::::res://Sounds/UI/sfx_beep_04.ogg
 UnlockBadge.gd::GDScript::-1::1702754812::0::1::::<>CanvasLayer<>::
 UnlockBadge.tscn::PackedScene::188128146327572651::1702755899::0::1::::<><>::res://Prefabs/UI/UnlockBadge.gd<>uid://dp0os4qemgqwt::::res://Sprites/UI/star.png<>uid://wy1nvf13qdvi::::res://Sprites/UI/box2.png<>uid://bcxhwx7v0cdan::::res://Sprites/UI/Masks/Screenmask_black.png<>uid://7btu78ff8nvs::::res://Fonts/monkey.ttf<>uid://krc21tpe5p3p::::res://Sprites/UI/bar_01.png<>uid://d0te7sxory3qm::::res://Sprites/UI/bar_03_on.png<>uid://vlemyrilphrx::::res://Sounds/sfx_menu_startArcade.wav<>uid://muihwmalkngk::::res://Sounds/sfx_menu_confirm.wav<>uid://d6gxknv43qmn::::res://Sounds/sfx_award.wav
-::res://Scenes/::1712186319
-test_3rd_person_cc.tscn::PackedScene::5365067776081402058::1712186319::0::1::::<><>::
+::res://Scenes/::1712190547
+test_3rd_person_cc.tscn::PackedScene::5365067776081402058::1712190547::0::1::::<><>::uid://bvhecpv4m7hr6::::res://Textures/64x_textures_01/donjon/floor.bmp<>res://Prefabs/Player.gd
 ::res://Shaders/::1712179972
 ::res://Sounds/::1712180409
 sfx_award.wav::AudioStreamWAV::274968162816337525::1702617209::1712180409::1::::<><>::
@@ -161,7 +162,8 @@ sfx_UI_Select_C.wav::AudioStreamWAV::1146946987448099952::1688924771::1712180409
 sfx_UI_Select_D.ogg::AudioStreamOggVorbis::657880814870916422::1688924771::1712180409::1::::<><>::
 sfx_ui_setbauble.ogg::AudioStreamOggVorbis::4479072707586033697::1688924771::1712180409::1::::<><>::
 sfx_ui_unsetbauble.ogg::AudioStreamOggVorbis::2127884331922182932::1688924771::1712180409::1::::<><>::
-::res://Sprites/::1712182562
+::res://Sprites/::1712190665
+axis.png::CompressedTexture2D::1310325532754543529::1712190663::1712190703::1::::<><>::
 ::res://Sprites/UI/::1712182567
 ::res://Sprites/UI/ButtonsIcons/::1712182576
 button_a.png::CompressedTexture2D::2435863748390234372::1688924771::1712182576::1::::<><>::
@@ -1901,7 +1903,7 @@ SettingsMenu.gd::GDScript::-1::1702683140::0::1::::<>CanvasLayer<>::
 SettingsMenu.tscn::PackedScene::3679247842132250893::1712180473::0::1::::<><>::res://System/SettingsMenu.gd<>uid://cbicglhynhvkx::::res://Prefabs/UI/UI_Option.tscn<>uid://7btu78ff8nvs::::res://Fonts/monkey.ttf<>uid://cywpyeed2ygtg::::res://Prefabs/UI/MenuSliderControl.tscn<>uid://ba3jmqwsdviaw::::res://Sounds/UI/sfx_ui_confirm_3.wav<>uid://qlubxafxsoii::::res://Sounds/UI/sfx_UI_Select_C.wav
 ::res://Textures/::1712186403
 ::res://Textures/64x_textures_01/::1712186403
-::res://Textures/64x_textures_01/donjon/::1712186403
+::res://Textures/64x_textures_01/donjon/::1712186429
 altar2.png::CompressedTexture2D::5704581874696574167::1698903695::1712186405::1::::<><>::
 altar3.png::CompressedTexture2D::4239316521659766303::1698903695::1712186405::1::::<><>::
 altar.png::CompressedTexture2D::4132270881149499809::1698903695::1712186405::1::::<><>::
@@ -1915,7 +1917,7 @@ secret.png::CompressedTexture2D::3022009348850414006::1698903695::1712186405::1:
 wall1.bmp::CompressedTexture2D::2140660142786118193::1698903695::1712186405::1::::<><>::
 wall2.bmp::CompressedTexture2D::8205964371807924148::1698903695::1712186405::1::::<><>::
 wall3.bmp::CompressedTexture2D::1122342628504432670::1698903695::1712186405::1::::<><>::
-::res://Textures/64x_textures_01/hell/::1712186403
+::res://Textures/64x_textures_01/hell/::1712186405
 ceiling.bmp::CompressedTexture2D::5863021473725855593::1698903695::1712186405::1::::<><>::
 dead2.png::CompressedTexture2D::1456053506828920731::1698903695::1712186405::1::::<><>::
 dead3.png::CompressedTexture2D::7751696550109149178::1698903695::1712186405::1::::<><>::
@@ -1928,7 +1930,7 @@ satanhead.png::CompressedTexture2D::8634712497522263497::1698903695::1712186405:
 wall1.bmp::CompressedTexture2D::5143204619306561771::1698903696::1712186405::1::::<><>::
 wall2.bmp::CompressedTexture2D::3925025628482433417::1698903696::1712186405::1::::<><>::
 wall3.bmp::CompressedTexture2D::2166573004899236628::1698903696::1712186405::1::::<><>::
-::res://Textures/64x_textures_01/nuklear/::1712186403
+::res://Textures/64x_textures_01/nuklear/::1712186405
 barril1.png::CompressedTexture2D::7643254837931855704::1698903696::1712186405::1::::<><>::
 barril2.png::CompressedTexture2D::4891992381958789097::1698903696::1712186405::1::::<><>::
 barril3.png::CompressedTexture2D::5437808098512916279::1698903696::1712186405::1::::<><>::
@@ -1940,7 +1942,7 @@ floor.bmp::CompressedTexture2D::3018151046444584199::1698903696::1712186405::1::
 wall1.bmp::CompressedTexture2D::3742328979625795693::1698903696::1712186405::1::::<><>::
 wall2.bmp::CompressedTexture2D::8224269113049135022::1698903696::1712186405::1::::<><>::
 wall3.bmp::CompressedTexture2D::6116714083515101252::1698903696::1712186405::1::::<><>::
-::res://Textures/64x_textures_01/object/::1712186403
+::res://Textures/64x_textures_01/object/::1712186405
 ammo.bmp::CompressedTexture2D::8997235073382179670::1698903696::1712186405::1::::<><>::
 exit.bmp::CompressedTexture2D::8003224881595159507::1698903696::1712186405::1::::<><>::
 food.bmp::CompressedTexture2D::8923067422370491041::1698903696::1712186405::1::::<><>::
@@ -1948,7 +1950,7 @@ gun.bmp::CompressedTexture2D::8692059253633493529::1698903696::1712186405::1::::
 key.bmp::CompressedTexture2D::1485707422472776535::1698903696::1712186405::1::::<><>::
 masse.png::CompressedTexture2D::8158351958106705415::1698903696::1712186405::1::::<><>::
 skullgun.png::CompressedTexture2D::4878930672856218789::1698903696::1712186405::1::::<><>::
-::res://Textures/64x_textures_01/sewers/::1712186403
+::res://Textures/64x_textures_01/sewers/::1712186405
 camp2.png::CompressedTexture2D::2537094945860031964::1698903696::1712186405::1::::<><>::
 camp3.png::CompressedTexture2D::5925510370690821831::1698903696::1712186405::1::::<><>::
 camp.png::CompressedTexture2D::7008549112239181860::1698903696::1712186405::1::::<><>::
@@ -1964,7 +1966,7 @@ wall2.bmp::CompressedTexture2D::3876037470584954139::1698903696::1712186405::1::
 wall3.bmp::CompressedTexture2D::783920332656511562::1698903696::1712186405::1::::<><>::
 wall4.bmp::CompressedTexture2D::2698865178244646372::1698903696::1712186405::1::::<><>::
 wall5.bmp::CompressedTexture2D::1563444071377438489::1698903696::1712186405::1::::<><>::
-::res://Textures/64x_textures_02/::1712186403
+::res://Textures/64x_textures_02/::1712186405
 Bark.png::CompressedTexture2D::1532521885350630584::1698903718::1712186405::1::::<><>::
 bookshelf.png::CompressedTexture2D::5351521337962481777::1698903718::1712186405::1::::<><>::
 BrickOv.png::CompressedTexture2D::7045456360198815148::1698903718::1712186405::1::::<><>::
