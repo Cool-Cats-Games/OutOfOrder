@@ -20,6 +20,7 @@ var localInputVector = Vector3()
 var mainCamera = null
 var rotAng = 0.0
 var speed = 0.0
+var ticks = 0
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -40,24 +41,14 @@ func _physics_process(delta):
 	var unitInput = localInputVector.normalized()
 	var goalVel = unitInput * maxSpeed
 	var stepVel = linear_velocity.lerp(goalVel, acceleration)
+	ticks += 0.1 + 0.1 * abs(inputDir.length())
+	rideHeight = 1.2 + sin(ticks) * (0.05 + 0.1* abs(inputDir.length()))
 	if Input.is_action_just_pressed("jump") and floorCast.is_colliding():
 		apply_force(Vector3.UP * jumpSpeed)
 	apply_force(stepVel * mass)
 	if inputDir.length() > 0.5:
 		var ang = atan2(localInputVector.x, localInputVector.z)
 		rotation.y = ang
-	#correct_upright_force()
-	#print("player rot: ", rotation)
-
-
-
-func correct_upright_force():
-	var charCurrentRotation = quaternion
-	var goalQuaternion = charCurrentRotation - uprightQuat
-	var rotAngle = goalQuaternion.get_angle()
-	var rotAxis = goalQuaternion.get_axis()
-	print("upright:",uprightQuat.get_euler(), "goal:",goalQuaternion.get_euler(), "charQuat: ",charCurrentRotation.get_euler())
-	apply_torque((rotAxis * (-rotAngle * uprightSpringStrength)) - (angular_velocity * uprightSpringDampener))
 
 func get_desired_movement():
 	return localInputVector

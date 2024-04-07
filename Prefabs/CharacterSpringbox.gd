@@ -43,25 +43,6 @@ func correct_upright_force():
 func get_main_camera():
 	mainCamera = get_tree().get_first_node_in_group("MainCamera")
 
-func get_spring_force():
-	var vel = linear_velocity
-	var raydir = floorCast.target_position
-	var othervel = Vector3.ZERO
-	if floorCast.is_colliding():
-		var col = floorCast.get_collider()
-		if "constant_linear_velocity" in col:
-			othervel = col.constant_linear_velocity
-		elif "linear_velocity" in col:
-			othervel = col.linear_velocity
-		elif "velocity" in col:
-			othervel = col.velocity
-	var rayDirVel = raydir.dot(vel)
-	var otherDirVel = raydir.dot(othervel)
-	var relvel = rayDirVel - otherDirVel
-	var x = global_position.distance_to(floorCast.get_collision_point()) - rideHeight
-	var springforce = (x * rideSpringStrength) - (rayDirVel * rideSpringDamper)
-	return springforce
-
 func ShortestAngleDist(from : float, to : float) -> float:
 	var maxAngle = PI * 2.0
 	var difference =  fmod((to - from), maxAngle)
