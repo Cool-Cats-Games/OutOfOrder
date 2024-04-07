@@ -29,6 +29,33 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"material_blackplastic": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/material_blackplastic.tres"
+},
+"material_blackplastic.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/material_blackplastic.001.tres"
+},
+"material_greyplastic": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/material_greyplastic.tres"
+},
+"material_greyplastic.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/material_greyplastic.001.tres"
+},
+"material_metal": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/material_metal.tres"
+},
+"material_metal.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Models/material_metal.001.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
