@@ -1,6 +1,6 @@
-[gd_scene load_steps=54 format=3 uid="uid://cio45ac4ot76u"]
+[gd_scene load_steps=48 format=3 uid="uid://cio45ac4ot76u"]
 
-[ext_resource type="Texture2D" uid="uid://qh5o8obxoc8x" path="res://Textures/64x_textures_02/Mud.png" id="1_4fkgc"]
+[ext_resource type="Texture2D" uid="uid://bvhecpv4m7hr6" path="res://Textures/64x_textures_01/donjon/floor.bmp" id="1_bfbqn"]
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="2_ijg8u"]
 [ext_resource type="Script" path="res://Prefabs/CameraRig.gd" id="2_yf35t"]
 [ext_resource type="Texture2D" uid="uid://swy4t206iiwn" path="res://Sprites/axis.png" id="3_juodp"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerBoost.gd" id="12_vehd1"]
 [ext_resource type="Script" path="res://Prefabs/WheelAssem.gd" id="13_lc8ps"]
 [ext_resource type="Script" path="res://Prefabs/UI/Speedometer.gd" id="13_qm4qv"]
-[ext_resource type="Script" path="res://addons/StateMachine/States/PlayerHover.gd" id="13_tc0sp"]
 [ext_resource type="PackedScene" uid="uid://br7xpbxhtb7iy" path="res://Models/Wheel.glb" id="14_bwpd4"]
 [ext_resource type="Texture2D" uid="uid://fwnt0sfehtts" path="res://Sprites/UI/Misc/SpeedometerBG.png" id="14_x7f3m"]
 [ext_resource type="Texture2D" uid="uid://xaov5cx7vatw" path="res://Sprites/UI/Misc/SpeedometerNeedle.png" id="15_qbwtg"]
@@ -32,7 +31,7 @@
 [ext_resource type="Script" path="res://Scenes/CreamOMeter.gd" id="29_n47sk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3kqa"]
-albedo_texture = ExtResource("1_4fkgc")
+albedo_texture = ExtResource("1_bfbqn")
 uv1_scale = Vector3(10, 10, 10)
 uv1_offset = Vector3(1.135, 0, 0)
 
@@ -48,25 +47,6 @@ albedo_color = Color(1, 1, 1, 0.294118)
 [sub_resource type="SphereMesh" id="SphereMesh_e6wg8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hdh40"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqwf8"]
-
-[sub_resource type="Curve" id="Curve_n3jlo"]
-_data = [Vector2(0, 0.294632), 0.0, 0.0, 0, 0, Vector2(0.160237, 0.514586), 0.0, 0.0, 0, 0, Vector2(0.391691, 0.590432), 0.0, 0.0, 0, 0, Vector2(0.756677, 0.711785), 0.0, 0.0, 0, 0, Vector2(1, 0.400817), 0.0, 0.0, 0, 0]
-point_count = 5
-
-[sub_resource type="CurveTexture" id="CurveTexture_j6dum"]
-curve = SubResource("Curve_n3jlo")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6dvbs"]
-scale_min = 0.5
-scale_curve = SubResource("CurveTexture_j6dum")
-
-[sub_resource type="SphereMesh" id="SphereMesh_1kimv"]
-radius = 0.335
-height = 1.575
-radial_segments = 7
-rings = 7
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_uyihh"]
 height = 1.5
@@ -136,23 +116,22 @@ shader_parameter/bg_texture = ExtResource("17_gybrm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53g3m"]
 shader = ExtResource("27_p7fcl")
-shader_parameter/fV = 0.0
+shader_parameter/fV = 1.0
 
 [node name="Test3RdPersonCc" type="Node3D"]
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(44.1743, 0, 0, 0, 1.76697, 0, 0, 0, 44.1743, 0.654377, -0.529448, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 25, 0.654377, 0, 0)
 material_override = SubResource("StandardMaterial3D_i3kqa")
 mesh = SubResource("BoxMesh_q88p5")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8gytn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.802505, -0.140347, 0.579904, -0.596645, -0.188771, 0.779987, 0, -0.971941, -0.235227, 0, 11.9323, 0)
-light_color = Color(0.74902, 0.901961, 0.890196, 1)
 shadow_enabled = true
 
 [node name="CameraRig" type="Node3D" parent="." groups=["MainCamera"]]
@@ -199,30 +178,6 @@ transform = Transform3D(-2.25114e-08, 0, -0.515, 0, 0.515, 0, 0.515, 0, -2.25114
 
 [node name="FloorCast" type="RayCast3D" parent="CharacterSpringbox"]
 target_position = Vector3(0, -1.5, 0)
-
-[node name="IcecreamHover" type="GPUParticles3D" parent="CharacterSpringbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.256818, 0, 0.539236)
-material_override = SubResource("StandardMaterial3D_kqwf8")
-emitting = false
-amount = 12
-speed_scale = 1.5
-randomness = 0.5
-fixed_fps = 60
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_6dvbs")
-draw_pass_1 = SubResource("SphereMesh_1kimv")
-
-[node name="IcecreamHover2" type="GPUParticles3D" parent="CharacterSpringbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.234703, 0, 0.539236)
-material_override = SubResource("StandardMaterial3D_kqwf8")
-emitting = false
-amount = 10
-speed_scale = 1.5
-randomness = 0.6
-fixed_fps = 60
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_6dvbs")
-draw_pass_1 = SubResource("SphereMesh_1kimv")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.56085, 0)
@@ -278,9 +233,6 @@ script = ExtResource("11_jlhcl")
 
 [node name="Boost" type="Node" parent="Player/StateMachine"]
 script = ExtResource("12_vehd1")
-
-[node name="Hover" type="Node" parent="Player/StateMachine"]
-script = ExtResource("13_tc0sp")
 
 [node name="WheelAssem" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282962, 0)
