@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cio45ac4ot76u"]
+[gd_scene load_steps=33 format=3 uid="uid://cio45ac4ot76u"]
 
 [ext_resource type="Texture2D" uid="uid://bvhecpv4m7hr6" path="res://Textures/64x_textures_01/donjon/floor.bmp" id="1_bfbqn"]
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="2_ijg8u"]
@@ -12,6 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://du4vhfd7epegu" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0122.png" id="8_rfhq3"]
 [ext_resource type="Texture2D" uid="uid://04hythgd05ed" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0086.png" id="9_i4vw1"]
 [ext_resource type="Texture2D" uid="uid://c85qqcha1ir0w" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0120.png" id="10_fcsh3"]
+[ext_resource type="Script" path="res://Prefabs/UI/Speedometer.gd" id="13_qm4qv"]
+[ext_resource type="Texture2D" uid="uid://fwnt0sfehtts" path="res://Sprites/UI/Misc/SpeedometerBG.png" id="14_x7f3m"]
+[ext_resource type="Texture2D" uid="uid://xaov5cx7vatw" path="res://Sprites/UI/Misc/SpeedometerNeedle.png" id="15_qbwtg"]
+[ext_resource type="Script" path="res://Prefabs/UI/Boostmeter.gd" id="16_kfep4"]
+[ext_resource type="Texture2D" uid="uid://d2xxs2sd2o6n" path="res://Sprites/UI/Misc/Boostmeter.png" id="17_gybrm"]
+[ext_resource type="Shader" path="res://Shaders/radialReveal.gdshader" id="18_rwqm5"]
+[ext_resource type="Texture2D" uid="uid://dbhyds4axbjyu" path="res://Sprites/10x10TransparentMask.png" id="19_1uxht"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3kqa"]
 albedo_texture = ExtResource("1_bfbqn")
@@ -22,6 +29,10 @@ uv1_offset = Vector3(1.135, 0, 0)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8gytn"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lg62"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.294118)
 
 [sub_resource type="SphereMesh" id="SphereMesh_e6wg8"]
 
@@ -45,6 +56,18 @@ albedo_texture = ExtResource("3_juodp")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_i1k5b"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0g4j"]
+shader = ExtResource("18_rwqm5")
+shader_parameter/fill_ratio = 0.5
+shader_parameter/start_angle = 0.0
+shader_parameter/max_angle = 360.0
+shader_parameter/invert_fill = false
+shader_parameter/reflect_x = true
+shader_parameter/reflect_y = true
+shader_parameter/offset = Vector2(-0.995, -0.84)
+shader_parameter/fill_texture_overlay = ExtResource("19_1uxht")
+shader_parameter/bg_texture = ExtResource("17_gybrm")
 
 [node name="Test3RdPersonCc" type="Node3D"]
 
@@ -79,6 +102,7 @@ current = true
 
 [node name="inputVisual" type="MeshInstance3D" parent="CameraRig"]
 transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6lg62")
 mesh = SubResource("SphereMesh_e6wg8")
 
 [node name="CharacterSpringbox" type="RigidBody3D" parent="."]
@@ -178,31 +202,64 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairs/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_i1k5b")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Inputs" type="Node2D" parent="CanvasLayer"]
+[node name="Inputs" type="Node2D" parent="HUD"]
 position = Vector2(95, 505)
 scale = Vector2(3, 3)
 
-[node name="InputIndicator" type="Sprite2D" parent="CanvasLayer/Inputs"]
+[node name="InputIndicator" type="Sprite2D" parent="HUD/Inputs"]
 texture = ExtResource("6_a8lut")
 script = ExtResource("7_a1bsk")
 action = "move_back"
 
-[node name="D" type="Sprite2D" parent="CanvasLayer/Inputs"]
+[node name="D" type="Sprite2D" parent="HUD/Inputs"]
 position = Vector2(16, 0)
 texture = ExtResource("8_rfhq3")
 script = ExtResource("7_a1bsk")
 action = "move_right"
 
-[node name="W" type="Sprite2D" parent="CanvasLayer/Inputs"]
+[node name="W" type="Sprite2D" parent="HUD/Inputs"]
 position = Vector2(0, -16)
 texture = ExtResource("9_i4vw1")
 script = ExtResource("7_a1bsk")
 action = "move_forward"
 
-[node name="A" type="Sprite2D" parent="CanvasLayer/Inputs"]
+[node name="A" type="Sprite2D" parent="HUD/Inputs"]
 position = Vector2(-17, 0)
 texture = ExtResource("10_fcsh3")
 script = ExtResource("7_a1bsk")
 action = "move_left"
+
+[node name="Speedometer" type="Node2D" parent="HUD"]
+position = Vector2(903, 504)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("13_qm4qv")
+
+[node name="SpeedometerBg" type="Sprite2D" parent="HUD/Speedometer"]
+texture = ExtResource("14_x7f3m")
+
+[node name="SpeedometerNeedle" type="Sprite2D" parent="HUD/Speedometer"]
+rotation = -1.5708
+texture = ExtResource("15_qbwtg")
+
+[node name="Label" type="Label" parent="HUD/Speedometer"]
+offset_left = -20.0
+offset_top = 36.0
+offset_right = 20.0
+offset_bottom = 59.0
+text = "0.0"
+horizontal_alignment = 1
+
+[node name="Boostmeter" type="Node2D" parent="HUD"]
+position = Vector2(880, 465)
+scale = Vector2(0.685, 0.685)
+script = ExtResource("16_kfep4")
+
+[node name="BG" type="Sprite2D" parent="HUD/Boostmeter"]
+modulate = Color(0.231373, 0.231373, 0.231373, 1)
+texture = ExtResource("17_gybrm")
+
+[node name="Meter" type="Sprite2D" parent="HUD/Boostmeter"]
+material = SubResource("ShaderMaterial_t0g4j")
+texture = ExtResource("17_gybrm")
