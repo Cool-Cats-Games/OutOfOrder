@@ -55,6 +55,9 @@ func _integrate_forces(state):
 	apply_force(stepVel * mass)
 	speed = abs(Vector3(linear_velocity.x, 0.0, linear_velocity.z).length())
 
+func get_cream_damage():
+	return 1.0
+
 func get_ice_cream_fv():
 	return cream / creamMax
 
@@ -88,5 +91,10 @@ func toggle_hover(s = true):
 	$"../CharacterSpringbox/IcecreamHover".emitting = s
 	$"../CharacterSpringbox/IcecreamHover2".emitting = s
 
+func toggle_ice_stream(s = true):
+	$"../CharacterSpringbox".toggle_ice_stream(s)
+
 func is_on_ground():
 	return floorCast.is_colliding()
+
+

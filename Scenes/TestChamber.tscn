@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://djb5d0t85d6yn"]
+[gd_scene load_steps=24 format=3 uid="uid://djb5d0t85d6yn"]
 
 [ext_resource type="Texture2D" uid="uid://r0inwympbwt6" path="res://Textures/misc/checkerboard_8x8_128p_withBorder.png" id="1_8nepr"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_wmcyt"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dsiyvte174xqs" path="res://Textures/misc/unit64x.png" id="5_wckn4"]
 [ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="6_j8r7y"]
 [ext_resource type="PackedScene" uid="uid://b0qbak3kyhqyn" path="res://Prefabs/Entity.tscn" id="7_ru5cl"]
+[ext_resource type="Script" path="res://Prefabs/Entity.gd" id="8_m236c"]
+[ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="9_d3ac0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecpx0"]
 albedo_color = Color(0.705882, 0.760784, 0.866667, 1)
@@ -72,6 +74,17 @@ distance_fade_max_distance = 20.0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q2n7o"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbtdl"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7dlf"]
+albedo_texture = ExtResource("5_wckn4")
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(1, 2, 2)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vaxon"]
+
 [node name="TestChamber" type="Node3D"]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
@@ -120,3 +133,51 @@ shape = SubResource("ConcavePolygonShape3D_q2n7o")
 
 [node name="Entity" parent="." instance=ExtResource("7_ru5cl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02106, 1.31307, 7.61808)
+
+[node name="Entity2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81149, 1.31307, 7.61808)
+collision_layer = 5
+script = ExtResource("8_m236c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entity2"]
+shape = SubResource("BoxShape3D_nbtdl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entity2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_w7dlf")
+mesh = SubResource("BoxMesh_vaxon")
+
+[node name="EntityHPBar" parent="Entity2" instance=ExtResource("9_d3ac0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977433, 0)
+
+[node name="Entity3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81149, 1.31307, -6.12269)
+collision_layer = 5
+script = ExtResource("8_m236c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entity3"]
+shape = SubResource("BoxShape3D_nbtdl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entity3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_w7dlf")
+mesh = SubResource("BoxMesh_vaxon")
+
+[node name="EntityHPBar" parent="Entity3" instance=ExtResource("9_d3ac0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977433, 0)
+
+[node name="Entity4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.73305, 1.31307, -6.12269)
+collision_layer = 5
+script = ExtResource("8_m236c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entity4"]
+shape = SubResource("BoxShape3D_nbtdl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entity4"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_w7dlf")
+mesh = SubResource("BoxMesh_vaxon")
+
+[node name="EntityHPBar" parent="Entity4" instance=ExtResource("9_d3ac0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977433, 0)

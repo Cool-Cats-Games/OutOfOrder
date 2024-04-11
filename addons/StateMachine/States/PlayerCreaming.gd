@@ -5,15 +5,19 @@ var ipVis = null
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
 	ipVis = actor.mainCamera.get_node("inputVisual")
+	actor.maxSpeed *= 0.5
+	actor.toggle_ice_stream(true)
 	pass
 
+func exit():
+	super.exit()
+	actor.toggle_ice_stream(false)
+	actor.maxSpeed *= 2.0
+
 func update(_delta: float) -> void:
-	if Input.is_action_just_pressed("jump") and actor.is_on_ground():
-		state_machine.transition_to("Jump")
-	if Input.is_action_just_pressed("boost") and actor.canBoost:
-		state_machine.transition_to("Boost")
-	if Input.is_action_just_pressed("shoot") and actor.cream > 0.0:
-		state_machine.transition_to("Creaming")
+	actor.cream -= 1.5
+	if Input.is_action_just_released("shoot") or actor.cream <= 0.0:
+		state_machine.transition_to("Idle")
 	pass
 
 func physics_update(_delta: float) -> void:
@@ -25,6 +29,5 @@ func physics_update(_delta: float) -> void:
 	if inputDir.length() > 0.2:
 		var ang = atan2(actor.localInputVector.x, actor.localInputVector.z)
 		actor.rotation.y = ang
-	else:
-		state_machine.transition_to("Idle")
+	actor.apply_force(actor.global_transform.basis.z * actor.mass * -15.0)
 	pass

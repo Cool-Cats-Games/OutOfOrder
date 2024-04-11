@@ -24,7 +24,7 @@ func _process(delta):
 	global_position.z = lerp(global_position.z, target.global_position.z, damp)
 	global_position.y = lerp(global_position.y, target.global_position.y, damp * 0.2)
 	var joyRot = Input.get_axis("camera_left", "camera_right")
-	rotation.y = lerp(rotation.y, rotation.y + joyRot, 0.05)
+	rotation.y = lerp(rotation.y, rotation.y - joyRot, 0.05)
 	update_camera_angle()
 	update_camera_zoom()
 	$A/B/Camera.fov = lerp($A/B/Camera.fov, fov, 0.1)
