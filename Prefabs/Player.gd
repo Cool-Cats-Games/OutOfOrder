@@ -17,10 +17,15 @@ extends RigidBody3D
 var boost = 50.0
 var boostMax = 50.0
 var boostRegen = 0.5
+var boostSpeed = 60.0
 var canBoost = true
+var cream = 100.0
+var creamMax = 100.0
+var creamRegen = 0.5
 var facingPoint = Vector3.ZERO
 var localInputVector = Vector3()
 var mainCamera = null
+var rideSpringScaler = 1.0
 var rotAng = 0.0
 var speed = 0.0
 var ticks = 0
@@ -33,37 +38,25 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	get_main_camera()
 
-func _integrate_forces(state):
-	floorCast.rotation = rotation * -1
-	apply_force(floorCast.target_position * get_spring_force())
-	var inputDir = Vector3.ZERO
-	inputDir.x = Input.get_axis("move_right", "move_left")
-	inputDir.z = Input.get_axis("move_back", "move_forward")
-	localInputVector = inputDir.rotated(Vector3.UP, mainCamera.rotation.y)
-	var ipVis = mainCamera.get_node("inputVisual")
-	ipVis.position = ipVis.position.lerp(inputDir * 2, 1.0)
-	var unitInput = localInputVector.normalized()
-	var goalVel = unitInput * maxSpeed
-	var stepVel = linear_velocity.lerp(goalVel, acceleration)
-	ticks += 0.1 + 0.1 * abs(inputDir.length())
-	rideHeight = 1.2 + sin(ticks) * (0.05 + 0.1* abs(inputDir.length()))
-	if Input.is_action_just_pressed("jump") and floorCast.is_colliding():
-		apply_force(Vector3.UP * jumpSpeed)
-	apply_force(stepVel * mass)
-	if inputDir.length() > 0.5:
-		var ang = atan2(localInputVector.x, localInputVector.z)
-		rotation.y = ang
-	if Input.is_action_pressed("boost"):
-		if boost > 1.0 and canBoost:
-			apply_force(transform.basis.z * 50.0)
-			boost -= 2.0
-		else:
-			canBoost = false
-	if not canBoost or not Input.is_action_pressed("boost"):
+func _process(_delta):
+	if (canBoost and not Input.is_action_pressed("boost")) or not canBoost:
 		boost = clamp(boost + boostRegen, 0.0, boostMax)
 		if boost == boostMax:
 			canBoost = true
+	cream = clamp(cream + creamRegen, 0.0, creamMax)
+	pass
+
+func _integrate_forces(state):
+	floorCast.rotation = rotation * -1
+	apply_force(floorCast.target_position * get_spring_force())
+	var unitInput = localInputVector.normalized()
+	var goalVel = unitInput * maxSpeed
+	var stepVel = linear_velocity.lerp(goalVel, acceleration)
+	apply_force(stepVel * mass)
 	speed = abs(Vector3(linear_velocity.x, 0.0, linear_velocity.z).length())
+
+func get_ice_cream_fv():
+	return cream / creamMax
 
 func get_desired_movement():
 	return localInputVector
@@ -89,5 +82,11 @@ func get_spring_force():
 	var relvel = rayDirVel - otherDirVel
 	var x = global_position.distance_to(floorCast.get_collision_point()) - rideHeight
 	var springforce = (x * rideSpringStrength) - (rayDirVel * rideSpringDamper)
-	return springforce
+	return springforce * rideSpringScaler
 
+func toggle_hover(s = true):
+	$"../CharacterSpringbox/IcecreamHover".emitting = s
+	$"../CharacterSpringbox/IcecreamHover2".emitting = s
+
+func is_on_ground():
+	return floorCast.is_colliding()

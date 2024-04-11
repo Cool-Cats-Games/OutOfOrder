@@ -34,7 +34,6 @@ func _integrate_forces(state):
 
 func correct_upright_force():
 	var charCurrentRotation = quaternion
-	#var goalQuaternion = charCurrentRotation * player.quaternion.inverse()
 	var goalQuaternion = ShortestRotation(player.quaternion, charCurrentRotation)
 	var rotAngle = goalQuaternion.get_angle()
 	var rotAxis = goalQuaternion.get_axis().normalized()

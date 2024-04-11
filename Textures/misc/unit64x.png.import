@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjaarh3ndegd0"
-path.s3tc="res://.godot/imported/floor.bmp-30b63ed0972bc04c53d18c172a9bdd9a.s3tc.ctex"
+uid="uid://dsiyvte174xqs"
+path.s3tc="res://.godot/imported/unit64x.png-676ff5c51bb111138823ac6ef800f5c9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/64x_textures_01/nuklear/floor.bmp"
-dest_files=["res://.godot/imported/floor.bmp-30b63ed0972bc04c53d18c172a9bdd9a.s3tc.ctex"]
+source_file="res://Textures/misc/unit64x.png"
+dest_files=["res://.godot/imported/unit64x.png-676ff5c51bb111138823ac6ef800f5c9.s3tc.ctex"]
 
 [params]
 

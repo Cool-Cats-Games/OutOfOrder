@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfqw6me51ohlw"]
+
+[ext_resource type="Script" path="res://Prefabs/CameraRig.gd" id="1_mr6l6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lg62"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.294118)
+
+[sub_resource type="SphereMesh" id="SphereMesh_e6wg8"]
+
+[node name="CameraRig" type="Node3D" groups=["MainCamera"]]
+script = ExtResource("1_mr6l6")
+targetPath = NodePath("../Player")
+
+[node name="A" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.575)
+
+[node name="B" type="Node3D" parent="A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11105, 0)
+
+[node name="Camera" type="Camera3D" parent="A/B"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+current = true
+
+[node name="inputVisual" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_6lg62")
+mesh = SubResource("SphereMesh_e6wg8")

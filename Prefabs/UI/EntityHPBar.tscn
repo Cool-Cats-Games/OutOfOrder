@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdtjqyr2ka37j"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/EntityHPBar.gd" id="1_rhoyp"]
+[ext_resource type="Texture2D" uid="uid://c8s2ond46x00q" path="res://Sprites/UI/HPBars/hpbar_bg.png" id="2_um38c"]
+[ext_resource type="Texture2D" uid="uid://bj0l8xi8otfv4" path="res://Sprites/UI/HPBars/hpbar_fill.png" id="3_ddpxh"]
+[ext_resource type="Texture2D" uid="uid://dsa3l43cel8gk" path="res://Sprites/UI/HPBars/hpbar_border.png" id="4_fi5bb"]
+
+[sub_resource type="Curve" id="Curve_ycmqp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.485861, 1), 0.0, 0.0, 0, 0, Vector2(0.845758, 0), -2.30405, 0.0, 0, 0]
+point_count = 3
+
+[node name="EntityHPBar" type="Sprite3D"]
+script = ExtResource("1_rhoyp")
+fadeCurve = SubResource("Curve_ycmqp")
+
+[node name="BG" type="Sprite3D" parent="."]
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("2_um38c")
+
+[node name="Fill" type="Sprite3D" parent="."]
+offset = Vector2(-30, 0)
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("3_ddpxh")
+region_enabled = true
+region_rect = Rect2(0, 0, 2, 25.573)
+
+[node name="Border" type="Sprite3D" parent="."]
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+render_priority = 2
+texture = ExtResource("4_fi5bb")

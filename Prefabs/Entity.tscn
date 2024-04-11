@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0qbak3kyhqyn"]
+
+[ext_resource type="Script" path="res://Prefabs/Entity.gd" id="1_0c5ed"]
+[ext_resource type="Texture2D" uid="uid://dsiyvte174xqs" path="res://Textures/misc/unit64x.png" id="1_q61nb"]
+[ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="3_3ye4m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_faae5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1grv"]
+albedo_texture = ExtResource("1_q61nb")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vaxon"]
+
+[node name="Entity" type="RigidBody3D"]
+collision_layer = 5
+script = ExtResource("1_0c5ed")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_faae5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_l1grv")
+mesh = SubResource("BoxMesh_vaxon")
+
+[node name="EntityHPBar" parent="." instance=ExtResource("3_3ye4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977433, 0)
