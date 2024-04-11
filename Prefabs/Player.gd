@@ -25,6 +25,7 @@ var creamRegen = 0.5
 var facingPoint = Vector3.ZERO
 var localInputVector = Vector3()
 var mainCamera = null
+var rideSpringScaler = 1.0
 var rotAng = 0.0
 var speed = 0.0
 var ticks = 0
@@ -81,7 +82,7 @@ func get_spring_force():
 	var relvel = rayDirVel - otherDirVel
 	var x = global_position.distance_to(floorCast.get_collision_point()) - rideHeight
 	var springforce = (x * rideSpringStrength) - (rayDirVel * rideSpringDamper)
-	return springforce
+	return springforce * rideSpringScaler
 
 func toggle_hover(s = true):
 	$"../CharacterSpringbox/IcecreamHover".emitting = s

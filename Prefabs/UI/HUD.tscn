@@ -1,0 +1,102 @@
+[gd_scene load_steps=18 format=3 uid="uid://bjxelnsgamg04"]
+
+[ext_resource type="Texture2D" uid="uid://gsjqublly2ib" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0121.png" id="1_1hl55"]
+[ext_resource type="Script" path="res://Prefabs/UI/InputIndicator.gd" id="2_sqlqw"]
+[ext_resource type="Texture2D" uid="uid://du4vhfd7epegu" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0122.png" id="3_puo2f"]
+[ext_resource type="Texture2D" uid="uid://04hythgd05ed" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0086.png" id="4_qhdmg"]
+[ext_resource type="Texture2D" uid="uid://c85qqcha1ir0w" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0120.png" id="5_hljws"]
+[ext_resource type="Script" path="res://Prefabs/UI/Speedometer.gd" id="6_rf8ys"]
+[ext_resource type="Texture2D" uid="uid://fwnt0sfehtts" path="res://Sprites/UI/Misc/SpeedometerBG.png" id="7_qnfwg"]
+[ext_resource type="Texture2D" uid="uid://xaov5cx7vatw" path="res://Sprites/UI/Misc/SpeedometerNeedle.png" id="8_lsc26"]
+[ext_resource type="Script" path="res://Prefabs/UI/Boostmeter.gd" id="9_43apj"]
+[ext_resource type="Texture2D" uid="uid://d2xxs2sd2o6n" path="res://Sprites/UI/Misc/Boostmeter.png" id="10_thfp3"]
+[ext_resource type="Shader" path="res://Shaders/radialReveal.gdshader" id="11_4p14g"]
+[ext_resource type="Texture2D" uid="uid://dbhyds4axbjyu" path="res://Sprites/10x10TransparentMask.png" id="12_axstx"]
+[ext_resource type="Shader" path="res://Shaders/liquidfill.gdshader" id="13_g8hk6"]
+[ext_resource type="Texture2D" uid="uid://dergqs3rec8u4" path="res://icon.svg" id="14_tj3gj"]
+[ext_resource type="Script" path="res://Scenes/CreamOMeter.gd" id="15_bfg4m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0g4j"]
+shader = ExtResource("11_4p14g")
+shader_parameter/fill_ratio = 0.5
+shader_parameter/start_angle = 0.0
+shader_parameter/max_angle = 360.0
+shader_parameter/invert_fill = false
+shader_parameter/reflect_x = true
+shader_parameter/reflect_y = true
+shader_parameter/offset = Vector2(-0.995, -0.84)
+shader_parameter/fill_texture_overlay = ExtResource("12_axstx")
+shader_parameter/bg_texture = ExtResource("10_thfp3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_53g3m"]
+shader = ExtResource("13_g8hk6")
+shader_parameter/fV = 0.0
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Inputs" type="Node2D" parent="."]
+position = Vector2(95, 505)
+scale = Vector2(3, 3)
+
+[node name="InputIndicator" type="Sprite2D" parent="Inputs"]
+texture = ExtResource("1_1hl55")
+script = ExtResource("2_sqlqw")
+action = "move_back"
+
+[node name="D" type="Sprite2D" parent="Inputs"]
+position = Vector2(16, 0)
+texture = ExtResource("3_puo2f")
+script = ExtResource("2_sqlqw")
+action = "move_right"
+
+[node name="W" type="Sprite2D" parent="Inputs"]
+position = Vector2(0, -16)
+texture = ExtResource("4_qhdmg")
+script = ExtResource("2_sqlqw")
+action = "move_forward"
+
+[node name="A" type="Sprite2D" parent="Inputs"]
+position = Vector2(-17, 0)
+texture = ExtResource("5_hljws")
+script = ExtResource("2_sqlqw")
+action = "move_left"
+
+[node name="Speedometer" type="Node2D" parent="."]
+position = Vector2(903, 504)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("6_rf8ys")
+
+[node name="SpeedometerBg" type="Sprite2D" parent="Speedometer"]
+texture = ExtResource("7_qnfwg")
+
+[node name="SpeedometerNeedle" type="Sprite2D" parent="Speedometer"]
+rotation = -1.5708
+texture = ExtResource("8_lsc26")
+
+[node name="Label" type="Label" parent="Speedometer"]
+offset_left = -20.0
+offset_top = 36.0
+offset_right = 20.0
+offset_bottom = 59.0
+text = "0.0"
+horizontal_alignment = 1
+
+[node name="Boostmeter" type="Node2D" parent="."]
+position = Vector2(880, 465)
+scale = Vector2(0.685, 0.685)
+script = ExtResource("9_43apj")
+
+[node name="BG" type="Sprite2D" parent="Boostmeter"]
+modulate = Color(0.231373, 0.231373, 0.231373, 1)
+texture = ExtResource("10_thfp3")
+
+[node name="Meter" type="Sprite2D" parent="Boostmeter"]
+material = SubResource("ShaderMaterial_t0g4j")
+texture = ExtResource("10_thfp3")
+
+[node name="CreamOMeter" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_53g3m")
+position = Vector2(164, 158)
+scale = Vector2(2.26563, 2.26563)
+texture = ExtResource("14_tj3gj")
+script = ExtResource("15_bfg4m")

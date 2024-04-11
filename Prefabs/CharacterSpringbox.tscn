@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkatl43sgnc2w"]
+
+[ext_resource type="Script" path="res://Prefabs/CharacterSpringbox.gd" id="1_hv03o"]
+[ext_resource type="PackedScene" uid="uid://lux86r16x0g5" path="res://Models/IceboxPrime.glb" id="2_e1ho6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hdh40"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqwf8"]
+
+[sub_resource type="Curve" id="Curve_n3jlo"]
+_data = [Vector2(0, 0.294632), 0.0, 0.0, 0, 0, Vector2(0.160237, 0.514586), 0.0, 0.0, 0, 0, Vector2(0.391691, 0.590432), 0.0, 0.0, 0, 0, Vector2(0.756677, 0.711785), 0.0, 0.0, 0, 0, Vector2(1, 0.400817), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_j6dum"]
+curve = SubResource("Curve_n3jlo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6dvbs"]
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_j6dum")
+
+[sub_resource type="SphereMesh" id="SphereMesh_1kimv"]
+radius = 0.335
+height = 1.575
+radial_segments = 7
+rings = 7
+
+[node name="CharacterSpringbox" type="RigidBody3D"]
+collision_layer = 2
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+script = ExtResource("1_hv03o")
+acceleration = 5.0
+rideHeight = 1.3
+rideSpringDamper = 0.6
+rideSpringStrength = 30.0
+maxSpeed = 6.0
+uprightSpringStrength = 5.0
+uprightSpringDampener = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hdh40")
+
+[node name="IceboxPrime" parent="." instance=ExtResource("2_e1ho6")]
+transform = Transform3D(-2.25114e-08, 0, -0.515, 0, 0.515, 0, 0.515, 0, -2.25114e-08, 0, -0.382, 0)
+
+[node name="FloorCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.5, 0)
+
+[node name="IcecreamHover" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.256818, 0, 0.539236)
+material_override = SubResource("StandardMaterial3D_kqwf8")
+emitting = false
+amount = 12
+speed_scale = 1.5
+randomness = 0.5
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_6dvbs")
+draw_pass_1 = SubResource("SphereMesh_1kimv")
+
+[node name="IcecreamHover2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.234703, 0, 0.539236)
+material_override = SubResource("StandardMaterial3D_kqwf8")
+emitting = false
+amount = 10
+speed_scale = 1.5
+randomness = 0.6
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_6dvbs")
+draw_pass_1 = SubResource("SphereMesh_1kimv")
