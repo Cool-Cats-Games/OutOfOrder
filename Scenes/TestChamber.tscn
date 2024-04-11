@@ -21,8 +21,7 @@ distance_fade_max_distance = 20.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_fnrto"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c3xg4"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xje42"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sa04w"]
 sky_top_color = Color(0.545098, 0.345098, 0.686275, 1)
@@ -58,8 +57,7 @@ distance_fade_max_distance = 20.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_0drap"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lvu0f"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2d8e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_opevy"]
 albedo_texture = ExtResource("5_wckn4")
@@ -71,8 +69,7 @@ distance_fade_mode = 2
 distance_fade_min_distance = 40.0
 distance_fade_max_distance = 20.0
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q2n7o"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ryug1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nbtdl"]
 size = Vector3(2, 2, 2)
@@ -93,9 +90,10 @@ material_override = SubResource("StandardMaterial3D_ecpx0")
 mesh = SubResource("BoxMesh_fnrto")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_c3xg4")
+shape = SubResource("BoxShape3D_xje42")
 
 [node name="Player" parent="." instance=ExtResource("2_wmcyt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12236, 0)
@@ -117,7 +115,7 @@ mesh = SubResource("BoxMesh_0drap")
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_lvu0f")
+shape = SubResource("BoxShape3D_m2d8e")
 
 [node name="Cube2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.37587, 1.05522, 0.563193)
@@ -125,9 +123,10 @@ material_override = SubResource("StandardMaterial3D_opevy")
 mesh = SubResource("BoxMesh_0drap")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube2"]
+collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_q2n7o")
+shape = SubResource("BoxShape3D_ryug1")
 
 [node name="HUD" parent="." instance=ExtResource("6_j8r7y")]
 

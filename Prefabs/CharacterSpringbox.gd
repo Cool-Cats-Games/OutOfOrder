@@ -57,3 +57,4 @@ func toggle_ice_stream(enabled = true):
 	$IceStream.emitting = enabled
 	$IceStream2.emitting = enabled
 	$CreamHitbox.monitoring = enabled
+	$CreamHitbox/CreamSplatters.toggle(enabled)
