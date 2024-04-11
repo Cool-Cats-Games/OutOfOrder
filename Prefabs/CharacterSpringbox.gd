@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-#@onready var floorCast = $"../FloorCast"
+
 @onready var floorCast = $FloorCast
 @onready var uprightQuat = quaternion
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -52,3 +52,9 @@ func ShortestRotation(to : Quaternion, from : Quaternion) -> Quaternion:
 		return to * (from * -1).inverse()
 	else:
 		return to * from.inverse()
+
+func toggle_ice_stream(enabled = true):
+	$IceStream.emitting = enabled
+	$IceStream2.emitting = enabled
+	$CreamHitbox.monitoring = enabled
+	$CreamHitbox/CreamSplatters.toggle(enabled)

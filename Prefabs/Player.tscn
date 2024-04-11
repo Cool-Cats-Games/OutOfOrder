@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ddbpdjor6vt4"]
+[gd_scene load_steps=22 format=3 uid="uid://ddbpdjor6vt4"]
 
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="1_il8ik"]
 [ext_resource type="Texture2D" uid="uid://swy4t206iiwn" path="res://Sprites/axis.png" id="2_5e81f"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerIdle.gd" id="4_1g4a4"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerMove.gd" id="5_3ufue"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerJump.gd" id="6_3r524"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/PlayerCreaming.gd" id="6_wwqe3"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerBoost.gd" id="7_bdueu"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerHover.gd" id="8_fmeui"]
 [ext_resource type="Script" path="res://Prefabs/WheelAssem.gd" id="9_ufuem"]
@@ -106,6 +107,9 @@ script = ExtResource("4_1g4a4")
 
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource("5_3ufue")
+
+[node name="Creaming" type="Node" parent="StateMachine"]
+script = ExtResource("6_wwqe3")
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_3r524")

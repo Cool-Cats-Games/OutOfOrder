@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://d00jpht75m7di"]
+
+[ext_resource type="Script" path="res://Prefabs/Effects/CreamSplatters.gd" id="1_0qhjo"]
+[ext_resource type="Material" uid="uid://blnnk2lbpfsn6" path="res://Materials/IceCreamMaterial.tres" id="2_0mbt4"]
+
+[sub_resource type="Curve" id="Curve_xkgey"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20178, 0.651109), 0.0, 0.0, 0, 0, Vector2(0.525223, 0.605601), 0.0, 0.0, 0, 0, Vector2(0.848665, 0.666278), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_xhjbr"]
+curve = SubResource("Curve_xkgey")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wm5ty"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, -5, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_xhjbr")
+
+[sub_resource type="SphereMesh" id="SphereMesh_6pk1p"]
+radius = 0.47
+height = 1.125
+radial_segments = 13
+rings = 7
+
+[node name="CreamSplatters" type="Node3D"]
+script = ExtResource("1_0qhjo")
+
+[node name="particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("2_0mbt4")
+emitting = false
+amount = 30
+speed_scale = 1.6
+explosiveness = 0.26
+randomness = 0.38
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_wm5ty")
+draw_pass_1 = SubResource("SphereMesh_6pk1p")
