@@ -4,4 +4,4 @@ extends Sprite2D
 
 
 func _process(_delta):
-	material.set_shader_parameter("fV", player.get_ice_cream_fv())
+	material.set_shader_parameter("fV", lerp(0.1,0.9,player.get_ice_cream_fv()))

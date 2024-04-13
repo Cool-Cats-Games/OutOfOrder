@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ddbpdjor6vt4"]
+[gd_scene load_steps=46 format=3 uid="uid://ddbpdjor6vt4"]
 
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="1_il8ik"]
 [ext_resource type="Texture2D" uid="uid://swy4t206iiwn" path="res://Sprites/axis.png" id="2_5e81f"]
@@ -9,9 +9,35 @@
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerCreaming.gd" id="6_wwqe3"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerBoost.gd" id="7_bdueu"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerHover.gd" id="8_fmeui"]
+[ext_resource type="AudioStream" uid="uid://b8t682pmf7q3d" path="res://Sounds/playersfx/sfx_player_dash.wav" id="9_rnv0b"]
 [ext_resource type="Script" path="res://Prefabs/WheelAssem.gd" id="9_ufuem"]
 [ext_resource type="PackedScene" uid="uid://br7xpbxhtb7iy" path="res://Models/Wheel.glb" id="10_wk4b8"]
 [ext_resource type="Script" path="res://Prefabs/ActiveHitbox.gd" id="11_x3o7n"]
+[ext_resource type="AudioStream" uid="uid://bn6todtab3jhs" path="res://Sounds/playersfx/sfx_player_move.wav" id="13_5a6o6"]
+[ext_resource type="AudioStream" uid="uid://c5thmdagiocc7" path="res://Sounds/playersfx/sfx_player_squirt.wav" id="14_1qple"]
+[ext_resource type="AudioStream" uid="uid://cmr51uksnbx8x" path="res://Sounds/playersfx/sfx_player_jump.wav" id="14_02cv3"]
+[ext_resource type="AudioStream" uid="uid://dm7whqywcx5c8" path="res://Sounds/playersfx/sfx_player_start_moving.wav" id="14_6uaxm"]
+[ext_resource type="Script" path="res://Prefabs/RandomAudioPlayer3d.gd" id="15_kwguw"]
+[ext_resource type="AudioStream" uid="uid://dp62l4j8oofbh" path="res://Sounds/playersfx/sfx_player_stop_moving.wav" id="15_moos0"]
+[ext_resource type="AudioStream" uid="uid://bjjsmf4ori4qs" path="res://Sounds/playersfx/sfx_player_outofcream.wav" id="15_wp570"]
+[ext_resource type="AudioStream" uid="uid://b24ue6oupysok" path="res://Sounds/playersfx/sfx_player_creamReady.wav" id="16_mawe8"]
+[ext_resource type="AudioStream" uid="uid://dtgv53x8vjnuh" path="res://Sounds/playersfx/sfx_player_land.wav" id="16_ro864"]
+[ext_resource type="AudioStream" uid="uid://bk2coofq5ooyl" path="res://Sounds/playersfx/sfx_player_land2.wav" id="17_3sl3u"]
+[ext_resource type="AudioStream" uid="uid://c5auqgun0rcur" path="res://Sounds/playersfx/sfx_player_startdispense.wav" id="18_mxfgm"]
+[ext_resource type="AudioStream" uid="uid://b1n48sa5kruho" path="res://Sounds/playersfx/sfx_player_land_3.wav" id="18_yv2uk"]
+[ext_resource type="AudioStream" uid="uid://dbjdiymeyhsj" path="res://Sounds/playersfx/sfx_player_start_squirt.wav" id="21_4bo8b"]
+[ext_resource type="AudioStream" uid="uid://bxrg2uxujsubi" path="res://Sounds/playersfx/sfx_player_start_squirt_2.wav" id="22_v3lgf"]
+[ext_resource type="AudioStream" uid="uid://e5mlxud4ae05" path="res://Sounds/playersfx/sfx_player_chargehit_01.wav" id="26_f6ou5"]
+[ext_resource type="AudioStream" uid="uid://nsd1smhsg230" path="res://Sounds/playersfx/sfx_player_chargehit_02.wav" id="27_gpn6c"]
+[ext_resource type="AudioStream" uid="uid://bjdna7xdxrfph" path="res://Sounds/playersfx/sfx_player_chargehit_03.wav" id="28_3uqam"]
+[ext_resource type="AudioStream" uid="uid://cdphykp7jtsdv" path="res://Sounds/playersfx/sfx_player_chargehit_04.wav" id="29_rdoil"]
+[ext_resource type="AudioStream" uid="uid://s07ifjy08jja" path="res://Sounds/playersfx/sfx_player_bonk1.wav" id="30_e3miw"]
+[ext_resource type="AudioStream" uid="uid://ble5dkjijygco" path="res://Sounds/playersfx/sfx_player_bonk2.wav" id="31_qkmj0"]
+[ext_resource type="AudioStream" uid="uid://b0ukp6onnm5qi" path="res://Sounds/playersfx/sfx_player_bonk3.wav" id="32_0q3wm"]
+[ext_resource type="AudioStream" uid="uid://8ya4xq1cbt2m" path="res://Sounds/playersfx/sfx_player_bonk4.wav" id="33_2y5ug"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yvyf2"]
+bounce = 1.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_uyihh"]
 height = 1.5
@@ -69,6 +95,10 @@ collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+mass = 1.1
+physics_material_override = SubResource("PhysicsMaterial_yvyf2")
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_il8ik")
 acceleration = 5.0
 rideHeight = 1.3
@@ -96,7 +126,11 @@ material_override = SubResource("StandardMaterial3D_f6ufk")
 mesh = SubResource("QuadMesh_1x0ib")
 
 [node name="FloorCast" type="RayCast3D" parent="."]
+visible = false
 target_position = Vector3(0, -1.5, 0)
+
+[node name="Landed" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.3, 0)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_d387y")
@@ -154,4 +188,89 @@ script = ExtResource("11_x3o7n")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActiveHitbox"]
 shape = SubResource("SphereShape3D_v5pse")
 
+[node name="sfx_player_generic" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+
+[node name="sfx_boost" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_rnv0b")
+volume_db = -4.0
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="sfx_movement" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_5a6o6")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="sfx_squirting" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_1qple")
+volume_db = -7.0
+bus = &"SFX"
+
+[node name="sfx_outOfCream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_wp570")
+volume_db = -14.0
+bus = &"SFX"
+
+[node name="sfx_creamReady" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("16_mawe8")
+volume_db = -16.0
+bus = &"SFX"
+
+[node name="sfx_start_move" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_6uaxm")
+volume_db = -11.0
+bus = &"SFX"
+
+[node name="sfx_stop_move" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_moos0")
+volume_db = -11.0
+bus = &"SFX"
+
+[node name="sfx_jump" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_02cv3")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="sfx_dispense" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("18_mxfgm")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="sfx_land" type="AudioStreamPlayer3D" parent="."]
+volume_db = -7.0
+bus = &"SFX"
+script = ExtResource("15_kwguw")
+sfx = Array[AudioStream]([ExtResource("16_ro864"), ExtResource("17_3sl3u"), ExtResource("18_yv2uk")])
+
+[node name="sfx_hit_ram" type="AudioStreamPlayer3D" parent="."]
+volume_db = -3.0
+bus = &"SFX"
+script = ExtResource("15_kwguw")
+sfx = Array[AudioStream]([ExtResource("26_f6ou5"), ExtResource("27_gpn6c"), ExtResource("28_3uqam"), ExtResource("29_rdoil")])
+
+[node name="sfx_bump" type="AudioStreamPlayer3D" parent="."]
+volume_db = -7.0
+bus = &"SFX"
+script = ExtResource("15_kwguw")
+sfx = Array[AudioStream]([ExtResource("30_e3miw"), ExtResource("31_qkmj0"), ExtResource("32_0q3wm"), ExtResource("33_2y5ug")])
+
+[node name="sfx_squirt" type="AudioStreamPlayer3D" parent="."]
+volume_db = -2.0
+bus = &"SFX"
+script = ExtResource("15_kwguw")
+sfx = Array[AudioStream]([ExtResource("21_4bo8b"), ExtResource("22_v3lgf")])
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="state_entered" from="StateMachine/Move" to="sfx_movement" method="play"]
+[connection signal="state_entered" from="StateMachine/Move" to="sfx_start_move" method="play"]
+[connection signal="state_exited" from="StateMachine/Move" to="sfx_movement" method="stop"]
+[connection signal="state_exited" from="StateMachine/Move" to="sfx_stop_move" method="play"]
+[connection signal="state_entered" from="StateMachine/Creaming" to="sfx_dispense" method="play"]
+[connection signal="state_entered" from="StateMachine/Creaming" to="sfx_squirt" method="play_random"]
+[connection signal="state_entered" from="StateMachine/Jump" to="sfx_jump" method="play"]
+[connection signal="state_entered" from="StateMachine/Boost" to="sfx_boost" method="play"]
+[connection signal="state_entered" from="StateMachine/Hover" to="sfx_squirting" method="play"]
+[connection signal="state_entered" from="StateMachine/Hover" to="sfx_squirt" method="play_random"]
+[connection signal="state_exited" from="StateMachine/Hover" to="sfx_squirting" method="stop"]
 [connection signal="body_entered" from="ActiveHitbox" to="ActiveHitbox" method="_on_body_entered"]

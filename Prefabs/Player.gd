@@ -30,6 +30,7 @@ var rotAng = 0.0
 var speed = 0.0
 var ticks = 0
 
+var isOffGround = false
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -43,7 +44,13 @@ func _process(_delta):
 		boost = clamp(boost + boostRegen, 0.0, boostMax)
 		if boost == boostMax:
 			canBoost = true
+	var is_at_cream = cream == creamMax
 	cream = clamp(cream + creamRegen, 0.0, creamMax)
+	if not is_at_cream and cream == creamMax:
+		$sfx_creamReady.play()
+	if isOffGround and $Landed.is_colliding() and $StateMachine.get_state_name() != "Hover":
+		isOffGround = false
+		$sfx_land.play_random()
 	pass
 
 func _integrate_forces(state):
@@ -87,6 +94,10 @@ func get_spring_force():
 	var springforce = (x * rideSpringStrength) - (rayDirVel * rideSpringDamper)
 	return springforce * rideSpringScaler
 
+func play_sound(stream):
+	$sfx_player_generic.stream = stream
+	$sfx_player_generic.play()
+
 func toggle_hover(s = true):
 	$"../CharacterSpringbox/IcecreamHover".emitting = s
 	$"../CharacterSpringbox/IcecreamHover2".emitting = s
@@ -98,3 +109,8 @@ func is_on_ground():
 	return floorCast.is_colliding()
 
 
+
+
+func _on_body_entered(body):
+	$sfx_bump.play_random()
+	pass # Replace with function body.
