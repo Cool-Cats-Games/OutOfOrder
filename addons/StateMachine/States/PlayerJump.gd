@@ -22,6 +22,8 @@ func update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	if not actor.is_on_ground() and not hasLeftGround:
 		hasLeftGround = true
+		actor.isOffGround = true
 	if actor.is_on_ground() and hasLeftGround:
-		state_machine.transition_to("Move")
+		state_machine.transition_to("Idle")
+		#$"../../sfx_land".play_random()
 	pass

@@ -1,10 +1,13 @@
 extends State
 
 var inputDir : Vector3
+var startedInAir = false
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
 	actor.localInputVector = Vector3.ZERO
+	if _msg.has("startingInAir"):
+		startedInAir = _msg.startingInAir
 	pass
 
 func update(_delta: float) -> void:

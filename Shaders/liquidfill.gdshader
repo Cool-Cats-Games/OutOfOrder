@@ -42,5 +42,4 @@ void fragment() {
 		(fF+(clamp(bF-fF,0.,1.)*.8))+
 		clamp(pow((sdf+.01)*
 		((1.-(fF+bF))*c),5.),0.,1.));
-		
 }

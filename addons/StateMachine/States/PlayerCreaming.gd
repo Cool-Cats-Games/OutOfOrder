@@ -16,7 +16,10 @@ func exit():
 
 func update(_delta: float) -> void:
 	actor.cream -= 1.5
-	if Input.is_action_just_released("shoot") or actor.cream <= 0.0:
+	if Input.is_action_just_released("shoot"):
+		state_machine.transition_to("Idle")
+	if actor.cream <= 0.0:
+		$"../../sfx_outOfCream".play()
 		state_machine.transition_to("Idle")
 	pass
 
