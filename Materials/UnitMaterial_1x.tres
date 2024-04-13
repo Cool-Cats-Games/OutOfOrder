@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cj2gw37rtkjm3"]
+
+[ext_resource type="Texture2D" uid="uid://dsiyvte174xqs" path="res://Textures/misc/unit64x.png" id="1_7l5jg"]
+
+[resource]
+albedo_texture = ExtResource("1_7l5jg")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+distance_fade_mode = 2
+distance_fade_min_distance = 40.0
+distance_fade_max_distance = 20.0

@@ -109,3 +109,8 @@ func is_on_ground():
 	return floorCast.is_colliding()
 
 
+
+
+func _on_body_entered(body):
+	$sfx_bump.play_random()
+	pass # Replace with function body.

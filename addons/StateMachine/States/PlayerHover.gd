@@ -20,7 +20,7 @@ func enter(_msg := {}) -> void:
 	actor.rideHeight *= 2.0
 	print("(hovering) RH: ", actor.rideHeight, " - floor: ", actor.get_node("FloorCast").get_collision_point().y)
 	#actor.rideSpringScaler = 0.0
-	actor.gravity_scale = -0.15
+	actor.gravity_scale = -0.18
 	pass
 	
 func exit():

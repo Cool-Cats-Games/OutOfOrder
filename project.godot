@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Settings="*res://Data/Settings.gd"
+Utils="*res://System/Utils.gd"
 
 [display]
 
@@ -108,6 +109,7 @@ shoot={
 3d_physics/layer_3="Entities"
 3d_physics/layer_4="Masks"
 3d_physics/layer_5="Interactables"
+3d_physics/layer_6="NonSolid"
 
 [rendering]
 
