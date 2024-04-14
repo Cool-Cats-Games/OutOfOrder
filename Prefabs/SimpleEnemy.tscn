@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://cslms2v84q4ki"]
+
+[ext_resource type="Script" path="res://Prefabs/SimpleEnemy.gd" id="1_e5r30"]
+[ext_resource type="Texture2D" uid="uid://dsiyvte174xqs" path="res://Textures/misc/unit64x.png" id="2_eluxh"]
+[ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="3_68i8a"]
+[ext_resource type="Script" path="res://addons/StateMachine/StateMachine.gd" id="4_lfy1y"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/EnemyIdle.gd" id="5_cvlyq"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/EnemyChase.gd" id="6_bqa42"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
+bounce = 0.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h4ajl"]
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dovlr"]
+albedo_texture = ExtResource("2_eluxh")
+uv1_scale = Vector3(2.5, 2, 2.5)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_86j0m"]
+height = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nhbyk"]
+radius = 10.0
+
+[node name="SimpleEnemy" type="RigidBody3D"]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_f0alc")
+script = ExtResource("1_e5r30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_h4ajl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_dovlr")
+mesh = SubResource("CapsuleMesh_86j0m")
+
+[node name="EntityHPBar" parent="." instance=ExtResource("3_68i8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977433, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.5, 0)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_lfy1y")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_cvlyq")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("6_bqa42")
+
+[node name="AggroRange" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AggroRange"]
+shape = SubResource("SphereShape3D_nhbyk")
+
+[connection signal="body_entered" from="AggroRange" to="." method="aggro"]
+[connection signal="body_exited" from="AggroRange" to="." method="aggro_exit"]

@@ -34,7 +34,7 @@ func _integrate_forces(state):
 
 func correct_upright_force():
 	var charCurrentRotation = quaternion
-	var goalQuaternion = ShortestRotation(player.quaternion, charCurrentRotation)
+	var goalQuaternion = Utils.ShortestRotation(player.quaternion, charCurrentRotation)
 	var rotAngle = goalQuaternion.get_angle()
 	var rotAxis = goalQuaternion.get_axis().normalized()
 	apply_torque((rotAxis * (rotAngle * uprightSpringStrength)) - (angular_velocity * uprightSpringDampener))
@@ -47,11 +47,7 @@ func ShortestAngleDist(from : float, to : float) -> float:
 	var difference =  fmod((to - from), maxAngle)
 	return fmod((2 * difference), maxAngle) - difference
 
-func ShortestRotation(to : Quaternion, from : Quaternion) -> Quaternion:
-	if to.dot(from) < 0:
-		return to * (from * -1).inverse()
-	else:
-		return to * from.inverse()
+
 
 func toggle_ice_stream(enabled = true):
 	$IceStream.emitting = enabled

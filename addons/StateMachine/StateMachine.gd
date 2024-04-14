@@ -44,7 +44,7 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	if not has_node(target_state_name):
 		return
 	var targetState = get_node(target_state_name)
-	if targetState.test() and state.test_exit():
+	if targetState.test(target_state_name) and state.test_exit(target_state_name):
 		state.exit()
 		prevState = state
 		state = targetState

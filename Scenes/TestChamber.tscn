@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://djb5d0t85d6yn"]
+[gd_scene load_steps=31 format=3 uid="uid://djb5d0t85d6yn"]
 
 [ext_resource type="Texture2D" uid="uid://r0inwympbwt6" path="res://Textures/misc/checkerboard_8x8_128p_withBorder.png" id="1_8nepr"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_wmcyt"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://5nd62g1nar2g" path="res://Prefabs/Breakables/MachineC.tscn" id="12_eeuf8"]
 [ext_resource type="PackedScene" uid="uid://dlkxhrs566gpm" path="res://Prefabs/Breakables/MachineB.tscn" id="13_fx18k"]
 [ext_resource type="PackedScene" uid="uid://bowoxrm5kopcf" path="res://Prefabs/Breakables/Breakable.tscn" id="14_wgw3m"]
+[ext_resource type="PackedScene" uid="uid://cslms2v84q4ki" path="res://Prefabs/SimpleEnemy.tscn" id="15_b1e8c"]
+[ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="16_xipuv"]
+[ext_resource type="PackedScene" uid="uid://cgvm3b0wsb1vx" path="res://Prefabs/Breakables/Grill.tscn" id="17_k0iob"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecpx0"]
 albedo_color = Color(0.705882, 0.760784, 0.866667, 1)
@@ -237,3 +240,12 @@ transform = Transform3D(-0.129713, 0, 0.991552, 0, 1, 0, -0.991552, 0, -0.129713
 
 [node name="Breakable" parent="." instance=ExtResource("14_wgw3m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 2)
+
+[node name="SimpleEnemy" parent="." instance=ExtResource("15_b1e8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.78553, 2.15716, 15.9153)
+
+[node name="TommyTwoTraps" parent="." instance=ExtResource("16_xipuv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89986, 2.4617, 2.81948)
+
+[node name="Grill" parent="." instance=ExtResource("17_k0iob")]
+transform = Transform3D(0.346199, 0, 0.938161, 0, 1, 0, -0.938161, 0, 0.346199, 6.04472, 1.29506, -2.43047)
