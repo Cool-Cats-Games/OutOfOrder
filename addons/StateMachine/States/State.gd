@@ -37,8 +37,10 @@ func exit() -> void:
 	pass
 
 #Virtual function to add unique, per state behavior for testing if its possible to enter the state
-func test() -> bool:
+func test(target_state_name) -> bool:
 	return true
 
-func test_exit() -> bool:
+func test_exit(target_state_name) -> bool:
 	return true
+
+

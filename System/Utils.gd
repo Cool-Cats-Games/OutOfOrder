@@ -9,3 +9,9 @@ static func play_sound_at(sfx, tree, pos = Vector3.ZERO, vol = 0.0, pitch = 1.0,
 	get_world(tree).add_child(dsfx)
 	dsfx.configure(sfx, pos, vol, pitch, freeAfterPlay)
 	dsfx.play_random()
+
+static func ShortestRotation(to : Quaternion, from : Quaternion) -> Quaternion:
+	if to.dot(from) < 0:
+		return to * (from * -1).inverse()
+	else:
+		return to * from.inverse()

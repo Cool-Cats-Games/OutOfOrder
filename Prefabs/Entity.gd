@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-var hp = 100.0
+@export var hp = 25.0
 
 func take_damage(dmg, dir):
 	hp -= dmg
@@ -8,3 +8,5 @@ func take_damage(dmg, dir):
 	if hp <= 0.0:
 		queue_free()
 	apply_force(dir * mass * dmg * 50 )
+
+

@@ -92,6 +92,10 @@ func get_spring_force():
 	var relvel = rayDirVel - otherDirVel
 	var x = global_position.distance_to(floorCast.get_collision_point()) - rideHeight
 	var springforce = (x * rideSpringStrength) - (rayDirVel * rideSpringDamper)
+	if floorCast.is_colliding():
+		var body = floorCast.get_collider()
+		if body.has_method("apply_force"):
+			body.apply_force(-1.0 * floorCast.target_position * springforce)
 	return springforce * rideSpringScaler
 
 func play_sound(stream):
