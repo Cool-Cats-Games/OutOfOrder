@@ -18,6 +18,7 @@ var boost = 50.0
 var boostMax = 50.0
 var boostRegen = 0.5
 var boostSpeed = 60.0
+var damage = 10.0
 var canBoost = true
 var characterModel = null
 var cream = 100.0
@@ -75,6 +76,9 @@ func get_cream_damage():
 
 func get_ice_cream_fv():
 	return cream / creamMax
+
+func get_damage():
+	return damage
 
 func get_desired_movement():
 	return localInputVector
