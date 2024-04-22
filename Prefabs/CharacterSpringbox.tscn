@@ -495,34 +495,6 @@ tracks/7/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_itor5"]
-resource_name = "damage"
-step = 0.03
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:albedo_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.1, 0.21, 0.3, 0.45, 0.6, 0.69, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.254902), Color(1, 1, 1, 1), Color(1, 1, 1, 0.337255), Color(1, 1, 1, 1), Color(1, 1, 1, 0.52549), Color(1, 1, 1, 1), Color(1, 1, 1, 0.407843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:transparency")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.96, 0.99),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1, 1, 0]
-}
-
 [sub_resource type="Animation" id="Animation_xhea6"]
 resource_name = "SlamBounce"
 step = 0.05
@@ -591,6 +563,34 @@ tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0.515, -0.25, 0, 0.25, 0, 0.615983, -0.25, 0, 0.25, 0, 0.515, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.15, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_itor5"]
+resource_name = "damage"
+step = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.1, 0.21, 0.3, 0.45, 0.6, 0.69, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.254902), Color(1, 1, 1, 1), Color(1, 1, 1, 0.337255), Color(1, 1, 1, 1), Color(1, 1, 1, 0.52549), Color(1, 1, 1, 1), Color(1, 1, 1, 0.407843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rxwjg"]

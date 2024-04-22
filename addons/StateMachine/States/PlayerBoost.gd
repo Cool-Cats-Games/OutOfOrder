@@ -5,6 +5,7 @@ func enter(_msg = {}):
 	print("boosting")
 	$"../../ActiveHitbox".damage_calculation = $"../../ActiveHitbox".velocity_damage
 	$"../../ActiveHitbox".monitoring = true
+	actor.linear_velocity.y = 0.0
 	get_tree().get_first_node_in_group("MainCamera").set_fov(90.0)
 
 func exit():

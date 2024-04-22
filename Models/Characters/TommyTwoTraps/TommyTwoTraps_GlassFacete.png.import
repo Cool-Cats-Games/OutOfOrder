@@ -2,13 +2,15 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cong4r3w6p0iy"
+uid="uid://c0oqtpfm345lm"
 path.s3tc="res://.godot/imported/TommyTwoTraps_GlassFacete.png-764c204c1940caaba0326fcdecaadd87.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
+generator_parameters={
+"md5": "092a7a0ab5b671bd05bfdc15fc4f836a"
+}
 
 [deps]
 

@@ -112,7 +112,9 @@ func get_spring_force():
 	var springforce = (x * rideSpringStrength) - (rayDirVel * rideSpringDamper)
 	if floorCast.is_colliding():
 		var body = floorCast.get_collider()
-		if body.has_method("apply_force"):
+		if body == null:
+			pass
+		elif body.has_method("apply_force"):
 			body.apply_force(-1.0 * floorCast.target_position * springforce)
 	return springforce * rideSpringScaler
 

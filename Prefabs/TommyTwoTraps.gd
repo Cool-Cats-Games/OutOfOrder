@@ -9,3 +9,5 @@ func launch(isR = true):
 	var launchDir = global_position.direction_to(get_tree().get_first_node_in_group("Player").global_position)
 	gp.launch(launchDir + Vector3.UP * 2, $greasePoint.global_position)
 	
+func get_animation_controller():
+	return $TommyTwoTraps/AnimationPlayer

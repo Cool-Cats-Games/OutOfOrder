@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://djb5d0t85d6yn"]
+[gd_scene load_steps=32 format=3 uid="uid://djb5d0t85d6yn"]
 
 [ext_resource type="Shader" path="res://Shaders/gridShader.gdshader" id="1_coq6j"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_wmcyt"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cslms2v84q4ki" path="res://Prefabs/SimpleEnemy.tscn" id="15_b1e8c"]
 [ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="16_xipuv"]
 [ext_resource type="PackedScene" uid="uid://cgvm3b0wsb1vx" path="res://Prefabs/Breakables/Grill.tscn" id="17_k0iob"]
+[ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="18_g3qg0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6fk7"]
 render_priority = 0
@@ -264,3 +265,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89986, 2.4617, 2.81948)
 
 [node name="Grill" parent="." instance=ExtResource("17_k0iob")]
 transform = Transform3D(0.346199, 0, 0.938161, 0, 1, 0, -0.938161, 0, 0.346199, 6.04472, 1.29506, -2.43047)
+
+[node name="EntitySpawner" parent="." instance=ExtResource("18_g3qg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1893, 3.04259, 0.938191)
+radius = 20.0
+entityPath = "res://Prefabs/TommyTwoTraps.tscn"
+spawnLoop = true
+spawnTimer = 5.0
+timerOnReady = true

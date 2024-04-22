@@ -18,7 +18,6 @@ func enter(_msg := {}) -> void:
 	actor.localInputVector = Vector3.ZERO
 	timer.one_shot = oneShot
 	timer.start(waitTime)
-	print($"../../TommyTwoTraps/AnimationPlayer".get_animation_list())
 	pass
 
 func physics_update(_delta: float) -> void:

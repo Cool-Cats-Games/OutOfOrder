@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://csuw7m3xaa8tu"]
+
+[ext_resource type="Script" path="res://Prefabs/EntitySpawner.gd" id="1_svpyv"]
+
+[node name="EntitySpawner" type="Node3D"]
+script = ExtResource("1_svpyv")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="spawn"]

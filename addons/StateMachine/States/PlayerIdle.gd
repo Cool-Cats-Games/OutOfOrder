@@ -15,8 +15,11 @@ func update(_delta: float) -> void:
 	inputDir.z = Input.get_axis("move_back", "move_forward")
 	if inputDir.length() > 0.1:
 		state_machine.transition_to("Move")
-	if Input.is_action_just_pressed("jump") and actor.is_on_ground():
-		state_machine.transition_to("Jump")
+	if Input.is_action_just_pressed("jump"):
+		if actor.is_on_ground():
+			state_machine.transition_to("Jump")
+		else:
+			state_machine.transition_to("Hover")
 	if Input.is_action_just_pressed("shoot") and actor.cream > 0.0:
 		state_machine.transition_to("Creaming")
 	if Input.is_action_just_pressed("light_attack"):

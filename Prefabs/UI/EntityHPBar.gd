@@ -17,8 +17,8 @@ func _process(delta):
 	modulate.a = fadeCurve.sample(fadeOffset)
 	fadeOffset = lerp(fadeOffset, 1.0, 0.01)
 
-func update_percent(hp):
-	percent = hp / 100.0
+func update_percent(hp, maxHP):
+	percent = hp / maxHP
 	fadeOffset = 0.0
 	#modulate = Color(1,1,1,1)
 	
