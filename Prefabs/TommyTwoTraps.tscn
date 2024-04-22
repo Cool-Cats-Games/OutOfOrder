@@ -416,7 +416,7 @@ bones/12/rotation = Quaternion(0.701029, -8.5012e-08, 8.35692e-08, 0.713132)
 bones/12/scale = Vector3(0.289017, 0.289017, 0.289017)
 
 [node name="Eyeball_L" type="BoneAttachment3D" parent="TommyTwoTraps/Armature/Skeleton3D"]
-transform = Transform3D(0.15799, 0, 0.0358893, 0.0382151, -9.94131e-09, -0.168228, 0, 0.0783184, -1.93137e-08, -0.137798, 3.56576, -0.862885)
+transform = Transform3D(0.15799, 0, 0.0358893, 0.038215, -9.9413e-09, -0.168228, 0, 0.0783184, -1.93137e-08, -0.137798, 3.56575, -0.862885)
 bone_name = "Eyeball.L"
 bone_idx = 6
 
@@ -425,7 +425,7 @@ mesh = SubResource("ArrayMesh_ie2uv")
 skeleton = NodePath("")
 
 [node name="Eyeball_R" type="BoneAttachment3D" parent="TommyTwoTraps/Armature/Skeleton3D"]
-transform = Transform3D(0.157412, 0, -0.0383455, -0.0408305, 0, -0.167613, 0, 0.0783183, 0, 0.137214, 3.56993, -0.853638)
+transform = Transform3D(0.157412, 0, -0.0383455, -0.0408304, 0, -0.167612, 0, 0.0783184, 0, 0.137214, 3.56992, -0.853638)
 bone_name = "Eyeball.R"
 bone_idx = 7
 
@@ -434,7 +434,7 @@ mesh = SubResource("ArrayMesh_3u3so")
 skeleton = NodePath("")
 
 [node name="TrapR" type="BoneAttachment3D" parent="TommyTwoTraps/Armature/Skeleton3D"]
-transform = Transform3D(0.272386, -2.13163e-14, 1.9984e-15, 2.13163e-14, 0.290038, -1.72295e-08, -7.10543e-15, 1.62981e-08, 0.272386, 0.302053, 2.47788, 5.96046e-08)
+transform = Transform3D(0.272386, 7.10543e-15, -1.44329e-15, 0, 0.290037, -4.65661e-10, -1.44329e-15, 0, 0.272386, 0.302053, 2.47787, -1.78814e-07)
 bone_name = "TrapR"
 bone_idx = 10
 
@@ -443,7 +443,7 @@ mesh = SubResource("ArrayMesh_wwyng")
 skeleton = NodePath("")
 
 [node name="TrapL" type="BoneAttachment3D" parent="TommyTwoTraps/Armature/Skeleton3D"]
-transform = Transform3D(0.272386, -2.13163e-14, 1.9984e-15, 2.13163e-14, 0.290038, -1.72295e-08, -7.10543e-15, 1.62981e-08, 0.272386, -0.292522, 2.47788, 5.96046e-08)
+transform = Transform3D(0.272386, 7.10543e-15, -1.44329e-15, 0, 0.290037, -4.65661e-10, -1.44329e-15, 0, 0.272386, -0.292522, 2.47787, -1.78814e-07)
 bone_name = "TrapL"
 bone_idx = 12
 
