@@ -56,6 +56,9 @@ func _process(_delta):
 		$sfx_creamReady.play()
 	if isOffGround and $Landed.is_colliding() and $StateMachine.get_state_name() != "Hover":
 		isOffGround = false
+		var lefx = load("res://Prefabs/Effects/landing_smoke.tscn").instantiate()
+		Utils.get_world(get_tree()).add_child(lefx)
+		lefx.position = $Landed.get_collision_point() + Vector3(0,0.1,0)
 		$sfx_land.play_random()
 	pass
 

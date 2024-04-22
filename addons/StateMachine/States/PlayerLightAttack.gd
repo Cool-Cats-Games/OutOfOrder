@@ -9,7 +9,7 @@ func enter(_msg := {}) -> void:
 	$"../../ActiveHitbox".damage_calculation = $"../../ActiveHitbox".set_damage
 	$"../../AnimationPlayer".play("LightAttack" + s)
 	$"../../AnimationPlayer".animation_finished.connect(attack_finished)
-	actor.get_character_model().apply_torque(Vector3(0,-50 if attackState == 0 else 50,00))
+	actor.get_character_model().apply_torque(Vector3(0,-100 if attackState == 0 else 100,00))
 	attackState = 1 if attackState == 0 else 0
 	
 

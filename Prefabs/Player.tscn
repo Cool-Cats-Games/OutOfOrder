@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://ddbpdjor6vt4"]
+[gd_scene load_steps=58 format=3 uid="uid://ddbpdjor6vt4"]
 
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="1_il8ik"]
 [ext_resource type="Texture2D" uid="uid://swy4t206iiwn" path="res://Sprites/axis.png" id="2_5e81f"]
@@ -13,7 +13,9 @@
 [ext_resource type="Script" path="res://Prefabs/WheelAssem.gd" id="9_ufuem"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerLightAttack.gd" id="10_thcwe"]
 [ext_resource type="PackedScene" uid="uid://br7xpbxhtb7iy" path="res://Models/Wheel.glb" id="10_wk4b8"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/PlayerSlamAttack.gd" id="11_3uolt"]
 [ext_resource type="Script" path="res://Prefabs/ActiveHitbox.gd" id="11_x3o7n"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/PlayerSlamLag.gd" id="12_p64vh"]
 [ext_resource type="AudioStream" uid="uid://bn6todtab3jhs" path="res://Sounds/playersfx/sfx_player_move.wav" id="13_5a6o6"]
 [ext_resource type="AudioStream" uid="uid://c5thmdagiocc7" path="res://Sounds/playersfx/sfx_player_squirt.wav" id="14_1qple"]
 [ext_resource type="AudioStream" uid="uid://cmr51uksnbx8x" path="res://Sounds/playersfx/sfx_player_jump.wav" id="14_02cv3"]
@@ -96,6 +98,9 @@ shadow_mesh = SubResource("ArrayMesh_yen11")
 [sub_resource type="SphereShape3D" id="SphereShape3D_v5pse"]
 radius = 0.75
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3bdt3"]
+radius = 1.1
+
 [sub_resource type="Animation" id="Animation_uqx48"]
 resource_name = "LightAttack1"
 length = 0.3
@@ -161,69 +166,6 @@ tracks/4/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_0riq4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FistRig:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FistRig/Fist:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ActiveHitbox:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0.919909)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ActiveHitbox:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FistRig/Fist:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_8rxd8"]
 resource_name = "LightAttack2"
 length = 0.3
@@ -275,6 +217,69 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [true, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FistRig/Fist:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0riq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FistRig:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FistRig/Fist:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActiveHitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.919909)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ActiveHitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -363,6 +368,16 @@ script = ExtResource("8_fmeui")
 [node name="LightAttack" type="Node" parent="StateMachine"]
 script = ExtResource("10_thcwe")
 
+[node name="SlamAttack" type="Node" parent="StateMachine"]
+script = ExtResource("11_3uolt")
+
+[node name="SlamLag" type="Node" parent="StateMachine"]
+script = ExtResource("12_p64vh")
+
+[node name="Timer" type="Timer" parent="StateMachine/SlamLag"]
+wait_time = 0.6
+one_shot = true
+
 [node name="WheelAssem" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282962, 0)
 script = ExtResource("9_ufuem")
@@ -391,10 +406,20 @@ transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.919909)
 collision_layer = 8
 collision_mask = 4
+monitoring = false
 script = ExtResource("11_x3o7n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActiveHitbox"]
 shape = SubResource("SphereShape3D_v5pse")
+
+[node name="SlamHitbox" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+script = ExtResource("11_x3o7n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlamHitbox"]
+shape = SubResource("SphereShape3D_3bdt3")
 
 [node name="sfx_player_generic" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"
@@ -502,4 +527,6 @@ texture = ExtResource("37_qigc7")
 [connection signal="state_entered" from="StateMachine/Hover" to="sfx_squirt" method="play_random"]
 [connection signal="state_exited" from="StateMachine/Hover" to="sfx_squirting" method="stop"]
 [connection signal="state_entered" from="StateMachine/LightAttack" to="sfx_attack_swish" method="play_random"]
+[connection signal="timeout" from="StateMachine/SlamLag/Timer" to="StateMachine" method="transition_to" binds= ["Idle"]]
 [connection signal="body_entered" from="ActiveHitbox" to="ActiveHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="SlamHitbox" to="SlamHitbox" method="_on_body_entered"]

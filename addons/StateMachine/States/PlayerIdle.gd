@@ -20,5 +20,8 @@ func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot") and actor.cream > 0.0:
 		state_machine.transition_to("Creaming")
 	if Input.is_action_just_pressed("light_attack"):
-		state_machine.transition_to("LightAttack")
+		if $"../../Landed".is_colliding():
+			state_machine.transition_to("LightAttack")
+		else:
+			state_machine.transition_to("SlamAttack")
 	pass

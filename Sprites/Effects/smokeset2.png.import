@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlm231osynyw5"
-path.s3tc="res://.godot/imported/smoke_10.png-60406bdf8e7942516e344702e36db3ea.s3tc.ctex"
+uid="uid://2c8n87mpxwwy"
+path.s3tc="res://.godot/imported/smokeset2.png-257606b6e532a3a0ad1028714e46a25f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Sprites/particles_64x/smoke_10.png"
-dest_files=["res://.godot/imported/smoke_10.png-60406bdf8e7942516e344702e36db3ea.s3tc.ctex"]
+source_file="res://Sprites/Effects/smokeset2.png"
+dest_files=["res://.godot/imported/smokeset2.png-257606b6e532a3a0ad1028714e46a25f.s3tc.ctex"]
 
 [params]
 
