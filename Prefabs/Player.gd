@@ -19,10 +19,13 @@ var boostMax = 50.0
 var boostRegen = 0.5
 var boostSpeed = 60.0
 var canBoost = true
+var characterModel = null
 var cream = 100.0
 var creamMax = 100.0
 var creamRegen = 0.5
 var facingPoint = Vector3.ZERO
+var hp = 4
+var hpMax = 4
 var localInputVector = Vector3()
 var mainCamera = null
 var rideSpringScaler = 1.0
@@ -38,6 +41,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	get_main_camera()
+	get_tree().call_group("HUD", "update_max_health", hpMax)
+	get_tree().call_group("HUD", "update_health", hp)
 
 func _process(_delta):
 	if (canBoost and not Input.is_action_pressed("boost")) or not canBoost:
@@ -62,6 +67,9 @@ func _integrate_forces(state):
 	apply_force(stepVel * mass)
 	speed = abs(Vector3(linear_velocity.x, 0.0, linear_velocity.z).length())
 
+func get_character_model():
+	return characterModel
+
 func get_cream_damage():
 	return 1.0
 
@@ -70,6 +78,9 @@ func get_ice_cream_fv():
 
 func get_desired_movement():
 	return localInputVector
+
+func get_HUD():
+	return get_tree().get_first_node_in_group("HUD")
 
 func get_main_camera():
 	mainCamera = get_tree().get_first_node_in_group("MainCamera")
@@ -102,6 +113,15 @@ func play_sound(stream):
 	$sfx_player_generic.stream = stream
 	$sfx_player_generic.play()
 
+func take_damage(dir):
+	apply_force(Vector3.UP * 400 + dir * 200)
+	hp -= 1
+	get_character_model().play_animation("damage")
+	get_tree().call_group("HUD", "update_health", hp)
+	if hp <= 0:
+		print("Game Over")
+	
+
 func toggle_hover(s = true):
 	$"../CharacterSpringbox/IcecreamHover".emitting = s
 	$"../CharacterSpringbox/IcecreamHover2".emitting = s
@@ -111,7 +131,6 @@ func toggle_ice_stream(s = true):
 
 func is_on_ground():
 	return floorCast.is_colliding()
-
 
 
 

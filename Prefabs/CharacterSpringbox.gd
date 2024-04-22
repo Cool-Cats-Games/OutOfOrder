@@ -26,6 +26,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	get_main_camera()
+	player.characterModel = self
 
 func _integrate_forces(state):
 	floorCast.rotation = rotation * -1
@@ -47,7 +48,8 @@ func ShortestAngleDist(from : float, to : float) -> float:
 	var difference =  fmod((to - from), maxAngle)
 	return fmod((2 * difference), maxAngle) - difference
 
-
+func play_animation(animName):
+	$AnimationPlayer.play(animName)
 
 func toggle_ice_stream(enabled = true):
 	$IceStream.emitting = enabled

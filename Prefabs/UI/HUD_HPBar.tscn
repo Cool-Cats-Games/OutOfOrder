@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6iuqm7457n0i"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/HPbar.gd" id="1_7s405"]
+[ext_resource type="Texture2D" uid="uid://bo4emer3dl7cf" path="res://Sprites/UI/iceCream.png" id="2_odakk"]
+
+[sub_resource type="Animation" id="Animation_snh1t"]
+resource_name = "Active"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IceCream:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.0872665, -0.25, 0, 0.25, 0, 0.0872665, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_4a526"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IceCream:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ktpo"]
+_data = {
+"Active": SubResource("Animation_snh1t"),
+"RESET": SubResource("Animation_4a526")
+}
+
+[node name="HPbar" type="Node2D"]
+script = ExtResource("1_7s405")
+
+[node name="IceCream" type="Sprite2D" parent="."]
+texture = ExtResource("2_odakk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5ktpo")
+}
