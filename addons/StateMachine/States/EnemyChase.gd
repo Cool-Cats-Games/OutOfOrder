@@ -25,7 +25,7 @@ func on_chase_threshold_reached():
 # is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
-	$"../../AggroRange/CollisionShape3D".shape.radius = 10.0
+	$"../../AggroRange/CollisionShape3D".shape.radius = 15.0
 	pass
 
 func exit():

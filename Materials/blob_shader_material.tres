@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://p2kqakxwmb22"]
+
+[ext_resource type="Shader" path="res://Shaders/lowpoly_fresnel.gdshader" id="1_jrdl6"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jrdl6")
+shader_parameter/inner_alpha = 0.5
+shader_parameter/albedo_f = Color(0.627451, 0.52549, 0.223529, 1)
+shader_parameter/Strength = 2.2

@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjxelnsgamg04"]
+[gd_scene load_steps=19 format=3 uid="uid://bjxelnsgamg04"]
 
 [ext_resource type="Texture2D" uid="uid://gsjqublly2ib" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0121.png" id="1_1hl55"]
+[ext_resource type="Script" path="res://Prefabs/UI/HUD.gd" id="1_hg23k"]
 [ext_resource type="Script" path="res://Prefabs/UI/InputIndicator.gd" id="2_sqlqw"]
 [ext_resource type="Texture2D" uid="uid://du4vhfd7epegu" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0122.png" id="3_puo2f"]
 [ext_resource type="Texture2D" uid="uid://04hythgd05ed" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0086.png" id="4_qhdmg"]
@@ -32,7 +33,8 @@ shader_parameter/bg_texture = ExtResource("10_thfp3")
 shader = ExtResource("13_g8hk6")
 shader_parameter/fV = 0.0
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" groups=["HUD"]]
+script = ExtResource("1_hg23k")
 
 [node name="Inputs" type="Node2D" parent="."]
 position = Vector2(95, 505)
@@ -63,7 +65,7 @@ action = "move_left"
 
 [node name="Speedometer" type="Node2D" parent="."]
 position = Vector2(903, 504)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("6_rf8ys")
 
 [node name="SpeedometerBg" type="Sprite2D" parent="Speedometer"]
@@ -96,7 +98,11 @@ texture = ExtResource("10_thfp3")
 
 [node name="CreamOMeter" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_53g3m")
-position = Vector2(164, 158)
+position = Vector2(233, 161)
 scale = Vector2(2.26563, 2.26563)
 texture = ExtResource("14_tj3gj")
 script = ExtResource("15_bfg4m")
+
+[node name="HealthGauge" type="Node2D" parent="."]
+position = Vector2(34, 15)
+scale = Vector2(0.85, 0.85)

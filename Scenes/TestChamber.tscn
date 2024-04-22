@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://djb5d0t85d6yn"]
 
-[ext_resource type="Texture2D" uid="uid://r0inwympbwt6" path="res://Textures/misc/checkerboard_8x8_128p_withBorder.png" id="1_8nepr"]
+[ext_resource type="Shader" path="res://Shaders/gridShader.gdshader" id="1_coq6j"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_wmcyt"]
 [ext_resource type="PackedScene" uid="uid://bkatl43sgnc2w" path="res://Prefabs/CharacterSpringbox.tscn" id="3_8ykxg"]
 [ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="4_54imy"]
@@ -18,14 +18,29 @@
 [ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="16_xipuv"]
 [ext_resource type="PackedScene" uid="uid://cgvm3b0wsb1vx" path="res://Prefabs/Breakables/Grill.tscn" id="17_k0iob"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecpx0"]
-albedo_color = Color(0.705882, 0.760784, 0.866667, 1)
-albedo_texture = ExtResource("1_8nepr")
-uv1_scale = Vector3(11, 11, 11)
-uv1_triplanar = true
-distance_fade_mode = 2
-distance_fade_min_distance = 40.0
-distance_fade_max_distance = 20.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6fk7"]
+render_priority = 0
+shader = ExtResource("1_coq6j")
+shader_parameter/subdivisions = 32.0
+shader_parameter/grid_width = 0.02
+shader_parameter/background_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/background_color_two = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/grid_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/dashed_scale_x = 0.02
+shader_parameter/dashed_scale_y = 0.02
+shader_parameter/dashed_count_x = 1.0
+shader_parameter/dashed_count_y = 1.0
+shader_parameter/point_width = 0.021
+shader_parameter/point_color = Color(0, 0, 0, 1)
+shader_parameter/point_scale_x = 0.05
+shader_parameter/point_scale_y = 0.05
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_subdivisions = 6.0
+shader_parameter/inside_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/in_dashed_scale_x = 0.3
+shader_parameter/in_dashed_scale_y = 0.3
+shader_parameter/in_dashed_count_x = 6.0
+shader_parameter/in_dashed_count_y = 6.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_fnrto"]
 
@@ -85,8 +100,8 @@ uv1_triplanar = true
 [node name="TestChamber" type="Node3D" groups=["World"]]
 
 [node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ecpx0")
+transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 150, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_k6fk7")
 mesh = SubResource("BoxMesh_fnrto")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]

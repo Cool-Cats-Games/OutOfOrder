@@ -1,6 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://x3sghtfkky3t"]
+[gd_scene load_steps=30 format=3 uid="uid://x3sghtfkky3t"]
 
-[ext_resource type="Script" path="res://Prefabs/SimpleEnemy.gd" id="1_dsype"]
+[ext_resource type="Script" path="res://Prefabs/TommyTwoTraps.gd" id="1_afmv6"]
 [ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="3_yv36c"]
 [ext_resource type="Script" path="res://addons/StateMachine/StateMachine.gd" id="4_62s1p"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/EnemyIdle.gd" id="5_20djr"]
@@ -10,10 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d2xf41nhgffjt" path="res://Models/Characters/TommyTwoTraps/TommyTwoTraps_GemOv1.png" id="7_2kjju"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/TommyTwoTraps_Launch.gd" id="7_6byya"]
 [ext_resource type="Texture2D" uid="uid://cong4r3w6p0iy" path="res://Models/Characters/TommyTwoTraps/TommyTwoTraps_GlassFacete.png" id="8_lv7le"]
-[ext_resource type="Animation" uid="uid://bxu1317hv1j8d" path="res://Models/Characters/TommyTwoTraps/Idle.res" id="9_83kml"]
-[ext_resource type="Animation" uid="uid://bhrj2pmwsxvmb" path="res://Models/Characters/TommyTwoTraps/Run.res" id="10_pyuwm"]
-[ext_resource type="Animation" uid="uid://cb0ouxa3r136" path="res://Models/Characters/TommyTwoTraps/Launch.res" id="11_oeixa"]
-[ext_resource type="Animation" uid="uid://bjnxn3ex0gu4k" path="res://Models/Characters/TommyTwoTraps/Charge.res" id="12_oc38m"]
+[ext_resource type="AnimationLibrary" uid="uid://d0tljq7lnjuea" path="res://Models/Characters/TommyTwoTraps/TTT_animlibrary.res" id="11_1bucg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
 bounce = 0.7
@@ -280,18 +277,10 @@ bind/8/name = &"Bone.006"
 bind/8/bone = -1
 bind/8/pose = Transform3D(1, -2.38384e-07, -4.08073e-09, -1.55431e-14, 0.0171158, -0.999854, 2.38419e-07, 0.999854, 0.0171158, 0.299222, 0.975891, -1.15571)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_160g6"]
-_data = {
-"Charge": ExtResource("12_oc38m"),
-"Idle": ExtResource("9_83kml"),
-"Launch": ExtResource("11_oeixa"),
-"Run": ExtResource("10_pyuwm")
-}
-
 [node name="TommyTwoTraps" type="RigidBody3D"]
 collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_f0alc")
-script = ExtResource("1_dsype")
+script = ExtResource("1_afmv6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0673828, 0.209473, 0.0301514)
@@ -312,6 +301,7 @@ script = ExtResource("5_20djr")
 
 [node name="Chase" type="Node" parent="StateMachine"]
 script = ExtResource("6_n67hn")
+chaseThreshold = 6.0
 
 [node name="Charge" type="Node" parent="StateMachine"]
 script = ExtResource("6_ivt6e")
@@ -394,7 +384,7 @@ bones/8/parent = 0
 bones/8/rest = Transform3D(0.999314, 0.0370429, -0.000453913, -0.0370429, 0.999013, -0.0245018, -0.000454154, 0.0245018, 0.9997, 0, 1, 0)
 bones/8/enabled = true
 bones/8/position = Vector3(0, 1, 0)
-bones/8/rotation = Quaternion(0.0122539, 6.03134e-08, -0.018526, 0.999753)
+bones/8/rotation = Quaternion(0.0122539, 6.03038e-08, -0.018526, 0.999753)
 bones/8/scale = Vector3(1.03429, 1.03429, 1.03429)
 bones/9/name = "Bone"
 bones/9/parent = 0
@@ -426,7 +416,7 @@ bones/12/rotation = Quaternion(0.701029, -8.5012e-08, 8.35692e-08, 0.713132)
 bones/12/scale = Vector3(0.289017, 0.289017, 0.289017)
 
 [node name="Eyeball_L" type="BoneAttachment3D" parent="TommyTwoTraps/Armature/Skeleton3D"]
-transform = Transform3D(0.15799, -4.08462e-09, 0.0358893, 0.0382151, 9.94132e-09, -0.168228, 4.82842e-09, 0.0783184, 1.93137e-08, -0.137798, 3.56576, -0.862885)
+transform = Transform3D(0.15799, 0, 0.0358893, 0.0382151, -9.94131e-09, -0.168228, 0, 0.0783184, -1.93137e-08, -0.137798, 3.56576, -0.862885)
 bone_name = "Eyeball.L"
 bone_idx = 6
 
@@ -435,7 +425,7 @@ mesh = SubResource("ArrayMesh_ie2uv")
 skeleton = NodePath("")
 
 [node name="Eyeball_R" type="BoneAttachment3D" parent="TommyTwoTraps/Armature/Skeleton3D"]
-transform = Transform3D(0.157412, 3.5011e-09, -0.0383455, -0.0408305, 0, -0.167613, -7.24263e-09, 0.0783184, 0, 0.137214, 3.56993, -0.853638)
+transform = Transform3D(0.157412, 0, -0.0383455, -0.0408305, 0, -0.167613, 0, 0.0783183, 0, 0.137214, 3.56993, -0.853638)
 bone_name = "Eyeball.R"
 bone_idx = 7
 
@@ -444,7 +434,7 @@ mesh = SubResource("ArrayMesh_3u3so")
 skeleton = NodePath("")
 
 [node name="TrapR" type="BoneAttachment3D" parent="TommyTwoTraps/Armature/Skeleton3D"]
-transform = Transform3D(0.272386, 7.10543e-15, -1.88738e-15, -7.10543e-15, 0.290038, 0, -1.77636e-15, 0, 0.272386, 0.302053, 2.47788, -5.96046e-08)
+transform = Transform3D(0.272386, -2.13163e-14, 1.9984e-15, 2.13163e-14, 0.290038, -1.72295e-08, -7.10543e-15, 1.62981e-08, 0.272386, 0.302053, 2.47788, 5.96046e-08)
 bone_name = "TrapR"
 bone_idx = 10
 
@@ -453,7 +443,7 @@ mesh = SubResource("ArrayMesh_wwyng")
 skeleton = NodePath("")
 
 [node name="TrapL" type="BoneAttachment3D" parent="TommyTwoTraps/Armature/Skeleton3D"]
-transform = Transform3D(0.272386, 7.10543e-15, -1.88738e-15, -7.10543e-15, 0.290038, 0, -1.77636e-15, 0, 0.272386, -0.292522, 2.47788, -5.96046e-08)
+transform = Transform3D(0.272386, -2.13163e-14, 1.9984e-15, 2.13163e-14, 0.290038, -1.72295e-08, -7.10543e-15, 1.62981e-08, 0.272386, -0.292522, 2.47788, 5.96046e-08)
 bone_name = "TrapL"
 bone_idx = 12
 
@@ -467,8 +457,18 @@ skin = SubResource("Skin_2u1qw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TommyTwoTraps"]
 libraries = {
-"": SubResource("AnimationLibrary_160g6")
+"": ExtResource("11_1bucg")
 }
+autoplay = "Idle"
+
+[node name="TrapRPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.246325, 1.19057, -1.09478)
+
+[node name="TrapLPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.273695, 1.19057, -1.09478)
+
+[node name="greasePoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43833, -1.84076)
 
 [connection signal="state_entered" from="StateMachine/Idle" to="TommyTwoTraps/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="state_entered" from="StateMachine/Chase" to="TommyTwoTraps/AnimationPlayer" method="play" binds= ["Run"]]
