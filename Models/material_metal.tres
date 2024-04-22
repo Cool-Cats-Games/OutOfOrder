@@ -4,7 +4,6 @@
 
 [resource]
 resource_name = "material_metal"
-transparency = 1
 albedo_texture = ExtResource("1_s4oxt")
 metallic = 0.81582
 roughness = 0.277058

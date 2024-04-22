@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ddbpdjor6vt4"]
+[gd_scene load_steps=58 format=3 uid="uid://ddbpdjor6vt4"]
 
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="1_il8ik"]
 [ext_resource type="Texture2D" uid="uid://swy4t206iiwn" path="res://Sprites/axis.png" id="2_5e81f"]
@@ -11,8 +11,11 @@
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerHover.gd" id="8_fmeui"]
 [ext_resource type="AudioStream" uid="uid://b8t682pmf7q3d" path="res://Sounds/playersfx/sfx_player_dash.wav" id="9_rnv0b"]
 [ext_resource type="Script" path="res://Prefabs/WheelAssem.gd" id="9_ufuem"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/PlayerLightAttack.gd" id="10_thcwe"]
 [ext_resource type="PackedScene" uid="uid://br7xpbxhtb7iy" path="res://Models/Wheel.glb" id="10_wk4b8"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/PlayerSlamAttack.gd" id="11_3uolt"]
 [ext_resource type="Script" path="res://Prefabs/ActiveHitbox.gd" id="11_x3o7n"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/PlayerSlamLag.gd" id="12_p64vh"]
 [ext_resource type="AudioStream" uid="uid://bn6todtab3jhs" path="res://Sounds/playersfx/sfx_player_move.wav" id="13_5a6o6"]
 [ext_resource type="AudioStream" uid="uid://c5thmdagiocc7" path="res://Sounds/playersfx/sfx_player_squirt.wav" id="14_1qple"]
 [ext_resource type="AudioStream" uid="uid://cmr51uksnbx8x" path="res://Sounds/playersfx/sfx_player_jump.wav" id="14_02cv3"]
@@ -32,9 +35,13 @@
 [ext_resource type="AudioStream" uid="uid://bjdna7xdxrfph" path="res://Sounds/playersfx/sfx_player_chargehit_03.wav" id="28_3uqam"]
 [ext_resource type="AudioStream" uid="uid://cdphykp7jtsdv" path="res://Sounds/playersfx/sfx_player_chargehit_04.wav" id="29_rdoil"]
 [ext_resource type="AudioStream" uid="uid://s07ifjy08jja" path="res://Sounds/playersfx/sfx_player_bonk1.wav" id="30_e3miw"]
+[ext_resource type="AudioStream" uid="uid://hls2cugl6yu3" path="res://Sounds/playersfx/sfx_attack_swish_1.wav" id="31_cdg0x"]
 [ext_resource type="AudioStream" uid="uid://ble5dkjijygco" path="res://Sounds/playersfx/sfx_player_bonk2.wav" id="31_qkmj0"]
 [ext_resource type="AudioStream" uid="uid://b0ukp6onnm5qi" path="res://Sounds/playersfx/sfx_player_bonk3.wav" id="32_0q3wm"]
+[ext_resource type="AudioStream" uid="uid://b22irl0hq3squ" path="res://Sounds/playersfx/sfx_attack_swish_2.wav" id="32_1typg"]
 [ext_resource type="AudioStream" uid="uid://8ya4xq1cbt2m" path="res://Sounds/playersfx/sfx_player_bonk4.wav" id="33_2y5ug"]
+[ext_resource type="AudioStream" uid="uid://dv5wnayfna60b" path="res://Sounds/playersfx/sfx_attack_swish_3.wav" id="33_755jb"]
+[ext_resource type="Texture2D" uid="uid://67icdevfav01" path="res://Sprites/Fist_x64.png" id="37_qigc7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yvyf2"]
 bounce = 1.0
@@ -89,6 +96,210 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yen11")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v5pse"]
+radius = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3bdt3"]
+radius = 1.1
+
+[sub_resource type="Animation" id="Animation_uqx48"]
+resource_name = "LightAttack1"
+length = 0.3
+step = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FistRig:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033, 0.099),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.36781, 0), Vector3(0, 0, 0), Vector3(0, -0.405615, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FistRig/Fist:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033, 0.264),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActiveHitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.960257, 0, 0.285902), Vector3(0, 0, 0.919909)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ActiveHitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033, 0.066, 0.099),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FistRig/Fist:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8rxd8"]
+resource_name = "LightAttack2"
+length = 0.3
+step = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FistRig:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033, 0.099),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.36834, 0), Vector3(0, 0, 0), Vector3(0, 0.404916, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FistRig/Fist:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033, 0.264),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActiveHitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.033),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.96, 0, 0.286), Vector3(0, 0, 0.919909)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ActiveHitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033, 0.066, 0.099),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FistRig/Fist:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0riq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FistRig:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FistRig/Fist:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActiveHitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.919909)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ActiveHitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FistRig/Fist:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swc7v"]
+_data = {
+"LightAttack1": SubResource("Animation_uqx48"),
+"LightAttack2": SubResource("Animation_8rxd8"),
+"RESET": SubResource("Animation_0riq4")
+}
 
 [node name="Player" type="RigidBody3D" groups=["Player"]]
 collision_layer = 2
@@ -154,6 +365,19 @@ script = ExtResource("7_bdueu")
 [node name="Hover" type="Node" parent="StateMachine"]
 script = ExtResource("8_fmeui")
 
+[node name="LightAttack" type="Node" parent="StateMachine"]
+script = ExtResource("10_thcwe")
+
+[node name="SlamAttack" type="Node" parent="StateMachine"]
+script = ExtResource("11_3uolt")
+
+[node name="SlamLag" type="Node" parent="StateMachine"]
+script = ExtResource("12_p64vh")
+
+[node name="Timer" type="Timer" parent="StateMachine/SlamLag"]
+wait_time = 0.6
+one_shot = true
+
 [node name="WheelAssem" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282962, 0)
 script = ExtResource("9_ufuem")
@@ -187,6 +411,15 @@ script = ExtResource("11_x3o7n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActiveHitbox"]
 shape = SubResource("SphereShape3D_v5pse")
+
+[node name="SlamHitbox" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+script = ExtResource("11_x3o7n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlamHitbox"]
+shape = SubResource("SphereShape3D_3bdt3")
 
 [node name="sfx_player_generic" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"
@@ -249,6 +482,12 @@ bus = &"SFX"
 script = ExtResource("15_kwguw")
 sfx = Array[AudioStream]([ExtResource("26_f6ou5"), ExtResource("27_gpn6c"), ExtResource("28_3uqam"), ExtResource("29_rdoil")])
 
+[node name="sfx_attack_swish" type="AudioStreamPlayer3D" parent="."]
+volume_db = -3.0
+bus = &"SFX"
+script = ExtResource("15_kwguw")
+sfx = Array[AudioStream]([ExtResource("31_cdg0x"), ExtResource("32_1typg"), ExtResource("33_755jb")])
+
 [node name="sfx_bump" type="AudioStreamPlayer3D" parent="."]
 volume_db = -7.0
 bus = &"SFX"
@@ -260,6 +499,20 @@ volume_db = -2.0
 bus = &"SFX"
 script = ExtResource("15_kwguw")
 sfx = Array[AudioStream]([ExtResource("21_4bo8b"), ExtResource("22_v3lgf")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_swc7v")
+}
+speed_scale = 1.2
+
+[node name="FistRig" type="Node3D" parent="."]
+
+[node name="Fist" type="Sprite3D" parent="FistRig"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 1.10692)
+flip_h = true
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("37_qigc7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="state_entered" from="StateMachine/Move" to="sfx_movement" method="play"]
@@ -273,4 +526,7 @@ sfx = Array[AudioStream]([ExtResource("21_4bo8b"), ExtResource("22_v3lgf")])
 [connection signal="state_entered" from="StateMachine/Hover" to="sfx_squirting" method="play"]
 [connection signal="state_entered" from="StateMachine/Hover" to="sfx_squirt" method="play_random"]
 [connection signal="state_exited" from="StateMachine/Hover" to="sfx_squirting" method="stop"]
+[connection signal="state_entered" from="StateMachine/LightAttack" to="sfx_attack_swish" method="play_random"]
+[connection signal="timeout" from="StateMachine/SlamLag/Timer" to="StateMachine" method="transition_to" binds= ["Idle"]]
 [connection signal="body_entered" from="ActiveHitbox" to="ActiveHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="SlamHitbox" to="SlamHitbox" method="_on_body_entered"]

@@ -53,6 +53,7 @@ shadow_mesh = SubResource("ArrayMesh_jplph")
 size = Vector3(1.15527, 1.93335, 1.19617)
 
 [node name="MachineB" type="RigidBody3D"]
+collision_layer = 5
 script = ExtResource("1_pwt0p")
 squibs = Array[Resource]([ExtResource("2_1nxhf"), ExtResource("3_4wo11"), ExtResource("4_26byu")])
 breaksfx = Array[AudioStream]([ExtResource("5_0gr7k"), ExtResource("6_7lv5v"), ExtResource("7_p2eyp")])

@@ -18,6 +18,7 @@ var boost = 50.0
 var boostMax = 50.0
 var boostRegen = 0.5
 var boostSpeed = 60.0
+var damage = 10.0
 var canBoost = true
 var characterModel = null
 var cream = 100.0
@@ -55,6 +56,9 @@ func _process(_delta):
 		$sfx_creamReady.play()
 	if isOffGround and $Landed.is_colliding() and $StateMachine.get_state_name() != "Hover":
 		isOffGround = false
+		var lefx = load("res://Prefabs/Effects/landing_smoke.tscn").instantiate()
+		Utils.get_world(get_tree()).add_child(lefx)
+		lefx.position = $Landed.get_collision_point() + Vector3(0,0.1,0)
 		$sfx_land.play_random()
 	pass
 
@@ -75,6 +79,9 @@ func get_cream_damage():
 
 func get_ice_cream_fv():
 	return cream / creamMax
+
+func get_damage():
+	return damage
 
 func get_desired_movement():
 	return localInputVector

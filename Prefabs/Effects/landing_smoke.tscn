@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpxy5apmh2jvw"]
+
+[ext_resource type="Texture2D" uid="uid://2c8n87mpxwwy" path="res://Sprites/Effects/smokeset2.png" id="1_750tq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nia0v"]
+atlas = ExtResource("1_750tq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11ldd"]
+atlas = ExtResource("1_750tq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mevms"]
+atlas = ExtResource("1_750tq")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12pan"]
+atlas = ExtResource("1_750tq")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhk8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nia0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nia0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ldd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ldd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ldd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mevms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mevms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mevms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mevms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12pan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12pan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12pan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12pan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12pan")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 33.0
+}]
+
+[sub_resource type="Animation" id="Animation_m32fb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cutqh"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 2, 2), Vector3(4, 4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqa6f"]
+_data = {
+"RESET": SubResource("Animation_m32fb"),
+"default": SubResource("Animation_cutqh")
+}
+
+[node name="LandingSmoke" type="Node3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_jhk8t")
+autoplay = "default"
+frame = 14
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dqa6f")
+}
+autoplay = "default"

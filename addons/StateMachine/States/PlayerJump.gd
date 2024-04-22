@@ -17,6 +17,8 @@ func update(_delta: float) -> void:
 		jumpReleased = true
 	if Input.is_action_just_pressed("jump") and actor.cream > 0.0:
 		state_machine.transition_to("Hover")
+	if Input.is_action_just_pressed("light_attack"):
+		state_machine.transition_to("SlamAttack")
 	pass
 
 func physics_update(_delta: float) -> void:

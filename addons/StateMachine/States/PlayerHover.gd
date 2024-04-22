@@ -39,6 +39,8 @@ func update(_delta: float) -> void:
 	if actor.cream <= 0.0:
 		$"../../sfx_outOfCream".play()
 		state_machine.transition_to("Idle", {"startingInAir": true})
+	if Input.is_action_just_pressed("light_attack"):
+		state_machine.transition_to("SlamAttack")
 	pass
 
 func physics_update(_delta: float) -> void:
