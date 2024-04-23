@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://n6cq8oyhj06t"]
+
+[ext_resource type="Texture2D" uid="uid://bkohqp4w68sev" path="res://Models/Objects/Wood.png" id="1_ghawj"]
+
+[resource]
+resource_name = "material_wood"
+cull_mode = 2
+albedo_texture = ExtResource("1_ghawj")
+roughness = 0.59
+texture_filter = 0

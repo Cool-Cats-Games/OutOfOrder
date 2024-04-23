@@ -9,7 +9,7 @@
 
 [node name="SettingsMenu" type="CanvasLayer"]
 process_mode = 3
-layer = 9
+layer = 3
 script = ExtResource("1_jatrx")
 
 [node name="BG" type="ColorRect" parent="."]

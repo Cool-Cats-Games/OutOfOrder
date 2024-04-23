@@ -512,7 +512,11 @@ speed_scale = 1.2
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 1.10692)
 flip_h = true
 modulate = Color(1, 1, 1, 0)
+texture_filter = 0
 texture = ExtResource("37_qigc7")
+
+[node name="DamageTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="state_entered" from="StateMachine/Move" to="sfx_movement" method="play"]
@@ -530,3 +534,4 @@ texture = ExtResource("37_qigc7")
 [connection signal="timeout" from="StateMachine/SlamLag/Timer" to="StateMachine" method="transition_to" binds= ["Idle"]]
 [connection signal="body_entered" from="ActiveHitbox" to="ActiveHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="SlamHitbox" to="SlamHitbox" method="_on_body_entered"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

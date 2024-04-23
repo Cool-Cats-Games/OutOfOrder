@@ -126,6 +126,7 @@ func take_damage(dir):
 	apply_force(Vector3.UP * 400 + dir * 200)
 	hp -= 1
 	get_character_model().play_animation("damage")
+	$DamageTimer.start()
 	get_tree().call_group("HUD", "update_health", hp)
 	if hp <= 0:
 		print("Game Over")
@@ -145,4 +146,9 @@ func is_on_ground():
 
 func _on_body_entered(body):
 	$sfx_bump.play_random()
+	pass # Replace with function body.
+
+
+func _on_damage_timer_timeout():
+	get_character_model().play_animation("damage_exit")
 	pass # Replace with function body.

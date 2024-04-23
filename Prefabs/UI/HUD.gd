@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+func _process(delta):
+	if Input.is_action_just_pressed("pause"):
+		Utils.get_world(get_tree()).add_child(load("res://Prefabs/UI/PauseMenu.tscn").instantiate())
 
 func update_health(hp):
 	var idx = 1

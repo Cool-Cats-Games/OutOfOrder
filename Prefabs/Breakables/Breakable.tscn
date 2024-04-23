@@ -13,6 +13,7 @@
 [node name="Breakable" type="RigidBody3D"]
 collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_hsj2v")
+sleeping = true
 script = ExtResource("1_d5lxs")
 squibs = Array[Resource]([ExtResource("2_1hcdy")])
 

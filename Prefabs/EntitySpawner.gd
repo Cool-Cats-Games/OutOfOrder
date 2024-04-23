@@ -2,6 +2,7 @@ extends Node3D
 
 signal on_entity_spawned
 
+@export var enabled = true
 @export var radius = 0.0
 @export var entityPath : String
 @export var spawnLoop = false
@@ -23,10 +24,11 @@ func start_spawn_timer():
 	$Timer.start(spawnTimer)
 
 func spawn():
-	var eobj = res.instantiate()
-	Utils.get_world(get_tree()).add_child(eobj)
-	eobj.position = global_position + (Vector3(randf_range(-radius, radius),0.0,randf_range(-radius, radius)))
-	if eobj is RigidBody3D:
-		eobj.linear_velocity *= 0.0
+	if enabled:
+		var eobj = res.instantiate()
+		Utils.get_world(get_tree()).add_child(eobj)
+		eobj.position = global_position + (Vector3(randf_range(-radius, radius),0.0,randf_range(-radius, radius)))
+		if eobj is RigidBody3D:
+			eobj.linear_velocity *= 0.0
 	if spawnLoop and spawnTimer > 0.0:
 		start_spawn_timer()
