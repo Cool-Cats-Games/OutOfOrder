@@ -25,8 +25,8 @@ var cream = 100.0
 var creamMax = 100.0
 var creamRegen = 0.5
 var facingPoint = Vector3.ZERO
-var hp = 4
-var hpMax = 4
+var hp = 1
+var hpMax = 1
 var localInputVector = Vector3()
 var mainCamera = null
 var rideSpringScaler = 1.0
@@ -42,6 +42,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	get_main_camera()
+	get_tree().call_group("HUD", "show")
 	get_tree().call_group("HUD", "update_max_health", hpMax)
 	get_tree().call_group("HUD", "update_health", hp)
 
@@ -108,11 +109,13 @@ func get_spring_force():
 	var rayDirVel = raydir.dot(vel)
 	var otherDirVel = raydir.dot(othervel)
 	var relvel = rayDirVel - otherDirVel
-	var x = global_position.distance_to(floorCast.get_collision_point()) - rideHeight
+	var x = global_position.distance_to(floorCast.get_collision_point() if floorCast.is_colliding() else get_node("LongCast").get_collision_point()) - rideHeight
 	var springforce = (x * rideSpringStrength) - (rayDirVel * rideSpringDamper)
 	if floorCast.is_colliding():
 		var body = floorCast.get_collider()
-		if body.has_method("apply_force"):
+		if body == null:
+			pass
+		elif body.has_method("apply_force"):
 			body.apply_force(-1.0 * floorCast.target_position * springforce)
 	return springforce * rideSpringScaler
 
@@ -124,8 +127,15 @@ func take_damage(dir):
 	apply_force(Vector3.UP * 400 + dir * 200)
 	hp -= 1
 	get_character_model().play_animation("damage")
+	$DamageTimer.start()
 	get_tree().call_group("HUD", "update_health", hp)
 	if hp <= 0:
+		var dfx = load("res://Prefabs/Effects/DeathParticles.tscn").instantiate()
+		Utils.get_world(get_tree()).add_child(dfx)
+		dfx.position = position
+		queue_free()
+		get_character_model().queue_free()
+		get_tree().call_group("HUD", "hide")
 		print("Game Over")
 	
 
@@ -143,4 +153,9 @@ func is_on_ground():
 
 func _on_body_entered(body):
 	$sfx_bump.play_random()
+	pass # Replace with function body.
+
+
+func _on_damage_timer_timeout():
+	get_character_model().play_animation("damage_exit")
 	pass # Replace with function body.

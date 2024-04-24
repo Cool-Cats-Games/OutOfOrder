@@ -38,6 +38,10 @@ func correct_upright_force():
 	var rotAxis = goalQuaternion.get_axis().normalized()
 	apply_torque((rotAxis * (rotAngle * uprightSpringStrength)) - (angular_velocity * uprightSpringDampener))
 
+func get_animation_controller():
+	#override with specific
+	pass
+
 func get_spring_force():
 	var vel = linear_velocity
 	var raydir = floorCast.target_position
@@ -78,3 +82,7 @@ func aggro_exit(body):
 
 func set_state(stateName, _msg = {}):
 	get_state_machine().transition_to(stateName, _msg)
+
+func take_damage(dmg, dir, hitbox):
+	super.take_damage(dmg, dir, hitbox)
+	set_state("Hurt")

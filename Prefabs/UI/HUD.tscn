@@ -34,6 +34,7 @@ shader = ExtResource("13_g8hk6")
 shader_parameter/fV = 0.0
 
 [node name="HUD" type="CanvasLayer" groups=["HUD"]]
+visible = false
 script = ExtResource("1_hg23k")
 
 [node name="Inputs" type="Node2D" parent="."]

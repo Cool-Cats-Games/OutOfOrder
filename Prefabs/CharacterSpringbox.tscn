@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bkatl43sgnc2w"]
+[gd_scene load_steps=46 format=3 uid="uid://bkatl43sgnc2w"]
 
 [ext_resource type="Script" path="res://Prefabs/CharacterSpringbox.gd" id="1_hv03o"]
 [ext_resource type="Material" uid="uid://dph5y4if0mhur" path="res://Models/material_metal.tres" id="2_ybwj6"]
@@ -495,34 +495,6 @@ tracks/7/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_itor5"]
-resource_name = "damage"
-step = 0.03
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:albedo_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.1, 0.21, 0.3, 0.45, 0.6, 0.69, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.254902), Color(1, 1, 1, 1), Color(1, 1, 1, 0.337255), Color(1, 1, 1, 1), Color(1, 1, 1, 0.52549), Color(1, 1, 1, 1), Color(1, 1, 1, 0.407843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:transparency")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.96, 0.99),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1, 1, 0]
-}
-
 [sub_resource type="Animation" id="Animation_xhea6"]
 resource_name = "SlamBounce"
 step = 0.05
@@ -593,15 +565,73 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.6)
 }
 
+[sub_resource type="Animation" id="Animation_itor5"]
+resource_name = "damage"
+step = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.1, 0.21, 0.3, 0.45, 0.6, 0.69, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.254902), Color(1, 1, 1, 1), Color(1, 1, 1, 0.337255), Color(1, 1, 1, 1), Color(1, 1, 1, 0.52549), Color(1, 1, 1, 1), Color(1, 1, 1, 0.407843), Color(1, 1, 1, 1), Color(1, 1, 1, 0.615686), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_4plmt"]
+resource_name = "damage_exit"
+step = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IceboxPrime/Cube:mesh:surface_0/material:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rxwjg"]
 _data = {
 "RESET": SubResource("Animation_8b2g7"),
 "SlamBounce": SubResource("Animation_xhea6"),
-"damage": SubResource("Animation_itor5")
+"damage": SubResource("Animation_itor5"),
+"damage_exit": SubResource("Animation_4plmt")
 }
 
 [node name="CharacterSpringbox" type="RigidBody3D"]
 collision_layer = 2
+collision_mask = 65
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -711,9 +741,10 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_3thgn")
 draw_pass_1 = SubResource("ArrayMesh_h4vk2")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="CreamCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1312, 0)
 target_position = Vector3(0, 0, 8.535)
+collision_mask = 5
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.83163e-08, 1, 0, 0, 0, -1.13702, -2.02044, -4.37114e-08, 0, -0.0803946, 1.19209e-07, 4.30299)

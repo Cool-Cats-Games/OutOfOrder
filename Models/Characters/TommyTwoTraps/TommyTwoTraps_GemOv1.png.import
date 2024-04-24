@@ -2,13 +2,15 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2xf41nhgffjt"
+uid="uid://dt6jcaf5xgann"
 path.s3tc="res://.godot/imported/TommyTwoTraps_GemOv1.png-e5da619d7e299945c826d7b6f8efc139.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
+generator_parameters={
+"md5": "5cbb7fa8cf400381ed90c4ceaee72855"
+}
 
 [deps]
 

@@ -29,6 +29,8 @@ func _ready():
 	player.characterModel = self
 
 func _integrate_forces(state):
+	if not is_instance_valid(player):
+		return
 	floorCast.rotation = rotation * -1
 	position = player.position
 	correct_upright_force()

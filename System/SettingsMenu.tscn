@@ -9,7 +9,7 @@
 
 [node name="SettingsMenu" type="CanvasLayer"]
 process_mode = 3
-layer = 9
+layer = 3
 script = ExtResource("1_jatrx")
 
 [node name="BG" type="ColorRect" parent="."]
@@ -100,9 +100,11 @@ text = "Controls"
 [node name="sfx_init" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_pvwgd")
 autoplay = true
+bus = &"SFX"
 
 [node name="sfx_changeSelection" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_dw1no")
+bus = &"SFX"
 
 [node name="UI_Option" parent="." instance=ExtResource("2_mabxq")]
 visible = false
