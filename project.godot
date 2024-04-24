@@ -30,7 +30,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/StateMachine/plugin.cfg")
+enabled=PackedStringArray("res://addons/CustomEvents/plugin.cfg", "res://addons/StateMachine/plugin.cfg")
 
 [input]
 
@@ -138,6 +138,7 @@ pause={
 3d_physics/layer_4="Masks"
 3d_physics/layer_5="Interactables"
 3d_physics/layer_6="NonSolid"
+3d_physics/layer_7="SolidToPlayer"
 
 [rendering]
 

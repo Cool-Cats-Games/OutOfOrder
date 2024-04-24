@@ -3,7 +3,7 @@ extends "res://Prefabs/SimpleEnemy.gd"
 @export var squibs : Array[Resource]
 @export var breaksfx : Array[AudioStream]
 
-func take_damage(dmg, dir):
+func take_damage(dmg, dir, hitbox):
 	hp -= dmg
 	apply_force(dir * mass * dmg)
 	if hp <= 0.0:

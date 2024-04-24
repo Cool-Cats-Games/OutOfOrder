@@ -631,6 +631,7 @@ _data = {
 
 [node name="CharacterSpringbox" type="RigidBody3D"]
 collision_layer = 2
+collision_mask = 65
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_linear_z = true
@@ -740,9 +741,10 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_3thgn")
 draw_pass_1 = SubResource("ArrayMesh_h4vk2")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="CreamCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1312, 0)
 target_position = Vector3(0, 0, 8.535)
+collision_mask = 5
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.83163e-08, 1, 0, 0, 0, -1.13702, -2.02044, -4.37114e-08, 0, -0.0803946, 1.19209e-07, 4.30299)

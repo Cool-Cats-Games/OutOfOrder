@@ -1,6 +1,6 @@
 extends Node3D
 
-signal on_entity_spawned
+signal on_entity_spawned(entity)
 
 @export var enabled = true
 @export var radius = 0.0
@@ -30,5 +30,6 @@ func spawn():
 		eobj.position = global_position + (Vector3(randf_range(-radius, radius),0.0,randf_range(-radius, radius)))
 		if eobj is RigidBody3D:
 			eobj.linear_velocity *= 0.0
+		on_entity_spawned.emit(eobj)
 	if spawnLoop and spawnTimer > 0.0:
 		start_spawn_timer()

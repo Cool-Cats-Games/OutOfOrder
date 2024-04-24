@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://4evwgxwvdk07"]
+
+[ext_resource type="Script" path="res://Prefabs/Effects/DeathParticles.gd" id="1_78tdq"]
+[ext_resource type="Texture2D" uid="uid://pwya7yqm7t24" path="res://Sprites/Effects/hitset1.png" id="2_5yvqo"]
+[ext_resource type="Texture2D" uid="uid://bn158bxpowb6f" path="res://Sprites/particles_64x/star_08.png" id="3_hiqc3"]
+[ext_resource type="AudioStream" uid="uid://c7hrh8uvgdh0e" path="res://Sounds/sfx_deathsound.wav" id="4_kr722"]
+
+[sub_resource type="Curve" id="Curve_4rbut"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2nr5h"]
+curve = SubResource("Curve_4rbut")
+
+[sub_resource type="Curve" id="Curve_rfuwc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7u77t"]
+curve = SubResource("Curve_rfuwc")
+
+[sub_resource type="Curve" id="Curve_ev6iq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.429825, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.675439, 0.307692), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_0vqi7"]
+curve = SubResource("Curve_ev6iq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lrieh"]
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_0vqi7")
+alpha_curve = SubResource("CurveTexture_2nr5h")
+anim_offset_curve = SubResource("CurveTexture_7u77t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2epn"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_5yvqo")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_fe4xd"]
+material = SubResource("StandardMaterial3D_g2epn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vyke1"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmcbv"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_hiqc3")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_j005b"]
+material = SubResource("StandardMaterial3D_dmcbv")
+
+[sub_resource type="Animation" id="Animation_534x8"]
+resource_name = "default"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:speed_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.8)
+}
+
+[sub_resource type="Animation" id="Animation_63y3q"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:speed_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swxpy"]
+_data = {
+"RESET": SubResource("Animation_63y3q"),
+"default": SubResource("Animation_534x8")
+}
+
+[node name="DeathParticles" type="Node3D"]
+script = ExtResource("1_78tdq")
+
+[node name="Hit" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 3
+one_shot = true
+speed_scale = 4.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_lrieh")
+draw_pass_1 = SubResource("QuadMesh_fe4xd")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 32
+lifetime = 1.5
+speed_scale = 0.0
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_vyke1")
+draw_pass_1 = SubResource("QuadMesh_j005b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kr722")
+volume_db = -2.0
+autoplay = true
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_swxpy")
+}
+autoplay = "default"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

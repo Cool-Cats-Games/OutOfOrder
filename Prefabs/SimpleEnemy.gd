@@ -83,6 +83,6 @@ func aggro_exit(body):
 func set_state(stateName, _msg = {}):
 	get_state_machine().transition_to(stateName, _msg)
 
-func take_damage(dmg, dir):
-	super.take_damage(dmg, dir)
+func take_damage(dmg, dir, hitbox):
+	super.take_damage(dmg, dir, hitbox)
 	set_state("Hurt")

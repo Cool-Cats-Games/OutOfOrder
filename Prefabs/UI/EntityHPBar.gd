@@ -7,8 +7,11 @@ var fadeOffset = 1.0
 
 @export var fadeCurve : Curve
 
+func _ready():
+	$Fill.modulate = Color(1,1,1,0.0)
 
 func _process(delta):
+	$Fill.modulate = Color(1,1,1,1)
 	#$Fill.scale.x = lerp($Fill.scale.x, percent, 0.1)
 	global_position = get_parent().global_position + initialPos
 	var pxI = int(64 * percent)

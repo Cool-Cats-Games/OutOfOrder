@@ -5,8 +5,9 @@ var maxHP
 
 func _ready():
 	maxHP = hp
+	$EntityHPBar.fadeOffset = 1.0
 
-func take_damage(dmg, dir):
+func take_damage(dmg, dir, hitbox):
 	hp -= dmg
 	$EntityHPBar.update_percent(hp, maxHP)
 	if hp <= 0.0:

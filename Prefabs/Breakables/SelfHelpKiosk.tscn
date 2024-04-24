@@ -1,14 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://oun6s5kkpcrf"]
+[gd_scene load_steps=26 format=3 uid="uid://oun6s5kkpcrf"]
 
 [ext_resource type="Script" path="res://Prefabs/Breakables/SelfHelpKiosk.gd" id="1_576lr"]
-[ext_resource type="PackedScene" uid="uid://f7y14t4nkyxf" path="res://Prefabs/Breakables/Squibs/SquibBase.tscn" id="2_e4sgp"]
 [ext_resource type="Texture2D" uid="uid://dcpnn6pklrphi" path="res://Textures/posters/poster_02.png" id="3_033iy"]
 [ext_resource type="Texture2D" uid="uid://c2ex4jb1k6m24" path="res://Textures/posters/poster_01.png" id="3_qkh6y"]
 [ext_resource type="Texture2D" uid="uid://cibl58nickhnk" path="res://Textures/posters/poster_03.png" id="4_cb8xo"]
 [ext_resource type="Texture2D" uid="uid://bmh3xjemim3b1" path="res://Textures/posters/poster_05.png" id="5_4m78k"]
 [ext_resource type="Texture2D" uid="uid://d11yr7rsgyulv" path="res://Textures/posters/poster_06.png" id="6_tfhdp"]
-[ext_resource type="Texture2D" uid="uid://ga1nxsx6l1js" path="res://Textures/posters/poster_11.png" id="7_0ey17"]
+[ext_resource type="Texture2D" uid="uid://d0qeoogv82cex" path="res://Textures/posters/poster_07.png" id="8_ov3h1"]
 [ext_resource type="Texture2D" uid="uid://chu5co66bo7nn" path="res://Textures/posters/poster_12.png" id="8_u7sfj"]
+[ext_resource type="PackedScene" uid="uid://cdugpcebfoa4r" path="res://Prefabs/Breakables/Squibs/Squib_Lever.tscn" id="9_khten"]
+[ext_resource type="PackedScene" uid="uid://c2cotx4xboard" path="res://Prefabs/Breakables/Squibs/Squib_Tubing.tscn" id="10_keork"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
 
@@ -194,9 +195,9 @@ sleeping = true
 lock_rotation = true
 freeze = true
 script = ExtResource("1_576lr")
-screens = Array[Texture]([ExtResource("3_qkh6y"), ExtResource("3_033iy"), ExtResource("4_cb8xo"), ExtResource("5_4m78k"), ExtResource("6_tfhdp"), ExtResource("7_0ey17"), ExtResource("8_u7sfj")])
+screens = Array[Texture]([ExtResource("3_qkh6y"), ExtResource("3_033iy"), ExtResource("4_cb8xo"), ExtResource("5_4m78k"), ExtResource("6_tfhdp"), ExtResource("8_u7sfj"), ExtResource("8_ov3h1")])
 destroyedRes = "res://Prefabs/Breakables/Destroyed/SelfHelpKiosk_Destroyed.tscn"
-squibs = Array[Resource]([ExtResource("2_e4sgp")])
+squibs = Array[Resource]([ExtResource("9_khten"), ExtResource("10_keork")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0314941, 1.0896, -0.0038147)
