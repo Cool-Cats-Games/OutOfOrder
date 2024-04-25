@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg67q0o2hxur5"]
+
+[ext_resource type="PackedScene" uid="uid://hyvkmbg1utgr" path="res://Models/Squibs/FrenchFry.dae" id="1_6vkoe"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5kdb"]
+bounce = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ujpx5"]
+size = Vector3(0.35376, 1.20752, 0.275269)
+
+[node name="SquibFrenchFry" type="RigidBody3D"]
+collision_layer = 32
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_u5kdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.550116, 0, 0, 0, 0.550116, 0, 0, 0, 0.550116, 0.0454625, 0.0570799, 0.0282378)
+shape = SubResource("BoxShape3D_ujpx5")
+
+[node name="TTL" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="FrenchFry" parent="." instance=ExtResource("1_6vkoe")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[connection signal="timeout" from="TTL" to="." method="queue_free"]

@@ -1,5 +1,7 @@
 extends State
 
+signal on_chase_reached
+
 @export var chaseThreshold = 3.0
 
 func update(_delta: float) -> void:
@@ -19,7 +21,8 @@ func physics_update(_delta: float) -> void:
 	pass
 
 func on_chase_threshold_reached():
-	state_machine.transition_to("Charge")
+	on_chase_reached.emit()
+	#state_machine.transition_to("Charge")
 
 # Virtual function. Called by the state machine upon changing the active state. The `msg` parameter
 # is a dictionary with arbitrary data the state can use to initialize itself.

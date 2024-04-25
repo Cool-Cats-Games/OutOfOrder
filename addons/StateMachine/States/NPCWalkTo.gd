@@ -1,5 +1,7 @@
 extends State
 
+signal on_walk_to_reached
+
 @export var threshold = 1.0
 
 var points = []
@@ -22,7 +24,6 @@ func physics_update(_delta: float) -> void:
 		points.pop_front()
 		if points.size() == 0:
 			state_machine.transition_to("Idle")
+			if not actor.isPatrolling:
+				on_walk_to_reached.emit()
 	pass
-
-func on_chase_threshold_reached():
-	state_machine.transition_to("Charge")

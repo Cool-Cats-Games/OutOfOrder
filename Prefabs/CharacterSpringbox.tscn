@@ -630,7 +630,7 @@ _data = {
 }
 
 [node name="CharacterSpringbox" type="RigidBody3D"]
-collision_layer = 2
+collision_layer = 32
 collision_mask = 65
 axis_lock_linear_x = true
 axis_lock_linear_y = true
@@ -755,7 +755,7 @@ skeleton = NodePath("")
 [node name="CreamHitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.998081, -0.0619196, 0, 0.0619196, 0.998081, 0, -0.210531, 4.2138)
 collision_layer = 8
-collision_mask = 5
+collision_mask = 133
 monitoring = false
 script = ExtResource("4_jc4rr")
 

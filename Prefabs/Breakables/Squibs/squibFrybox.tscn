@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://buqxq2c1tjsra"]
+
+[ext_resource type="PackedScene" uid="uid://dkntlv54qlco" path="res://Models/Squibs/Frybox.dae" id="1_q4c2s"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5kdb"]
+bounce = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8muy4"]
+radius = 0.311192
+
+[node name="SquibFrybox" type="RigidBody3D"]
+collision_layer = 32
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_u5kdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8muy4")
+
+[node name="TTL" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Frybox" parent="." instance=ExtResource("1_q4c2s")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[connection signal="timeout" from="TTL" to="." method="queue_free"]

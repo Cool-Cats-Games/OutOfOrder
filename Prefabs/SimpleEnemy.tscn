@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cslms2v84q4ki"]
+[gd_scene load_steps=15 format=3 uid="uid://cslms2v84q4ki"]
 
 [ext_resource type="Script" path="res://Prefabs/SimpleEnemy.gd" id="1_e5r30"]
 [ext_resource type="Texture2D" uid="uid://dsiyvte174xqs" path="res://Textures/misc/unit64x.png" id="2_eluxh"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://addons/StateMachine/StateMachine.gd" id="4_lfy1y"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/EnemyIdle.gd" id="5_cvlyq"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/EnemyChase.gd" id="6_bqa42"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/NPCWalkTo.gd" id="7_q4nrh"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/FindPatrolPath.gd" id="8_1l1vs"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/Wander.gd" id="9_hqlxi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
 bounce = 0.7
@@ -21,6 +24,7 @@ uv1_scale = Vector3(2.5, 2, 2.5)
 height = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nhbyk"]
+resource_local_to_scene = true
 radius = 10.0
 
 [node name="SimpleEnemy" type="RigidBody3D"]
@@ -50,6 +54,15 @@ script = ExtResource("5_cvlyq")
 
 [node name="Chase" type="Node" parent="StateMachine"]
 script = ExtResource("6_bqa42")
+
+[node name="WalkTo" type="Node" parent="StateMachine"]
+script = ExtResource("7_q4nrh")
+
+[node name="FindPatrolPath" type="Node" parent="StateMachine"]
+script = ExtResource("8_1l1vs")
+
+[node name="Wander" type="Node" parent="StateMachine"]
+script = ExtResource("9_hqlxi")
 
 [node name="AggroRange" type="Area3D" parent="."]
 collision_layer = 8

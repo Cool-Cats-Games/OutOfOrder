@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://nuqiwofmdvbx"]
+[gd_scene load_steps=63 format=3 uid="uid://nuqiwofmdvbx"]
 
 [ext_resource type="Texture2D" uid="uid://bk5atc85jf5dn" path="res://Textures/woodfloor_tiledoutline_x64.png" id="1_c1q8e"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_1cv8f"]
@@ -27,8 +27,13 @@
 [ext_resource type="PackedScene" uid="uid://dmak7dswwyyde" path="res://Prefabs/Objects/CounterSection.tscn" id="24_gfn8i"]
 [ext_resource type="PackedScene" uid="uid://duxfa8i2oc5i5" path="res://Prefabs/Breakables/BoosterSeat.tscn" id="26_5ngun"]
 [ext_resource type="PackedScene" uid="uid://dhqlkumo1v6rs" path="res://Prefabs/Breakables/TrashCan.tscn" id="26_mpqsf"]
+[ext_resource type="PackedScene" uid="uid://h6dnfbps3mx0" path="res://Prefabs/Breakables/FireExtinguisher.tscn" id="27_f8845"]
 [ext_resource type="Script" path="res://addons/CustomEvents/GenericEvent.gd" id="29_rpyo3"]
+[ext_resource type="PackedScene" uid="uid://c5ilns3bue7ni" path="res://Prefabs/PotatoShredz.tscn" id="30_0ao8i"]
 [ext_resource type="Script" path="res://Prefabs/Misc/GivePathToNpc.gd" id="30_uvpq0"]
+[ext_resource type="Script" path="res://addons/CustomEvents/ABSwitchEvent.gd" id="31_ekggs"]
+[ext_resource type="Script" path="res://addons/CustomEvents/TimerEvent.gd" id="32_5h7dx"]
+[ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="33_ts2fa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqfgk"]
 resource_name = "Material"
@@ -140,6 +145,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w4wml")
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k0b2x"]
+data = PackedVector3Array(1, 1, 1, 1, -1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 0, 1, -1, 1, -1, -1, 1, 1, -1, 1, 1, -1, 1, -1, 1, 1, 1, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmqc1"]
 albedo_texture = ExtResource("8_x80n2")
 uv1_scale = Vector3(5, 5, 1)
@@ -166,6 +174,9 @@ emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 2.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_du4ue"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Curve3D" id="Curve3D_rx7x0"]
 bake_interval = 512.0
 _data = {
@@ -173,6 +184,27 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_8qr5x"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 11.0386, 1.05827, -2.98778, 0, 0, 0, 0, 0, 0, 6.19887, 1.09087, -3.95858, 0, 0, 0, 0, 0, 0, 4.12906, 0.973574, -3.48589),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Curve3D" id="Curve3D_33m4d"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3.49103, 0.77375, 4.34672, 0, 0, 0, 0, 0, 0, -1.04735, 1.13859, 7.83216, 0, 0, 0, 0, 0, 0, -5.28853, 1.57785, 6.40175, 0, 0, 0, 0, 0, 0, -7.89378, 2.27488, 5.68981, 0, 0, 0, 0, 0, 0, -7.98469, 1.80308, -2.61958, 0, 0, 0, 0, 0, 0, -7.6007, 2.0986, -5.95323, 0, 0, 0, 0, 0, 0, -5.94498, 2.44301, -6.88829, 0, 0, 0, 0, 0, 0, -0.679185, 1.67758, -7.78091, 0, 0, 0, 0, 0, 0, 3.88835, 1.31267, -4.16578, 0, 0, 0, 0, 0, 0, 3.49103, 0.77375, 4.34672),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_847f5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10.8634, 0.995629, -2.93742, 0, 0, 0, 0, 0, 0, 10.6322, 0.719472, 3.36461),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Lobby" type="Node3D" groups=["World"]]
 
@@ -193,6 +225,14 @@ entityPath = "res://Prefabs/SimpleNPC.tscn"
 spawnLoop = true
 spawnTimer = 5.0
 timerOnReady = true
+
+[node name="GreaseTrapSpawner" parent="." instance=ExtResource("13_qwgik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3803, 1.86503, -2.84643)
+entityPath = "res://Prefabs/TommyTwoTraps.tscn"
+
+[node name="FryboySpawner" parent="." instance=ExtResource("13_qwgik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3803, 1.86503, -2.84643)
+entityPath = "res://Prefabs/PotatoShredz.tscn"
 
 [node name="TommyTwoTraps" parent="." instance=ExtResource("14_mgwle")]
 transform = Transform3D(-0.0843211, 0, -0.996439, 0, 1, 0, 0.996439, 0, -0.0843211, 2.19527, 1.04349, 6.01026)
@@ -363,6 +403,22 @@ material_override = SubResource("StandardMaterial3D_quunm")
 mesh = SubResource("ArrayMesh_gqs5q")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/WallCutout"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/WallCutout/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k0b2x")
+
+[node name="WallCutout2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-1, 0, -3.14984e-07, 0, 2.481, 0, 8.74228e-08, 0, -3.603, 12.5605, 2.535, -3.90858)
+material_override = SubResource("StandardMaterial3D_quunm")
+mesh = SubResource("ArrayMesh_gqs5q")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/WallCutout2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/WallCutout2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_k0b2x")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(25, 0, 0, 0, -1.09278e-06, -1, 0, 25, -4.37114e-08, 0, 4.92452, 0)
 material_override = SubResource("StandardMaterial3D_hmqc1")
@@ -420,6 +476,11 @@ mesh = SubResource("QuadMesh_hp0gy")
 [node name="Frame6" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(4.53429, 0, 0, 0, 4.348, 0, 0, 0, 1, 4.36018, 2.20452, -11.4095)
 material_override = SubResource("StandardMaterial3D_0vk53")
+mesh = SubResource("QuadMesh_hp0gy")
+
+[node name="Frame8" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-1.21911e-07, 0, -1, 0, 4.348, 0, 2.789, 0, -4.37114e-08, 11.554, 2.205, -2.896)
+material_override = SubResource("StandardMaterial3D_du4ue")
 mesh = SubResource("QuadMesh_hp0gy")
 
 [node name="Frame2" type="MeshInstance3D" parent="SetPieces"]
@@ -527,6 +588,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.2267
 [node name="TrashCan2" parent="Destructables" instance=ExtResource("26_mpqsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6177, 0.514431, -4.6416)
 
+[node name="FireExtinguisher" parent="Destructables" instance=ExtResource("27_f8845")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.099, 1.98419, 0.47722)
+
 [node name="BoosterSeat" parent="." instance=ExtResource("26_5ngun")]
 transform = Transform3D(-0.0419453, 0, -0.99912, 0, 1, 0, 0.99912, 0, -0.0419453, 6.47146, 0.181336, -8.81328)
 
@@ -534,8 +598,46 @@ transform = Transform3D(-0.0419453, 0, -0.99912, 0, 1, 0, 0.99912, 0, -0.0419453
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.60573, 0.440888, 0)
 script = ExtResource("29_rpyo3")
 
-[node name="Path3D" type="Path3D" parent="."]
+[node name="DoorToCounter" type="Path3D" parent="."]
 curve = SubResource("Curve3D_rx7x0")
 script = ExtResource("30_uvpq0")
 
-[connection signal="on_entity_spawned" from="EntitySpawner" to="Path3D" method="give_path_to"]
+[node name="WalkOut" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00577068, -0.0137181, -0.0148382)
+curve = SubResource("Curve3D_8qr5x")
+script = ExtResource("30_uvpq0")
+
+[node name="PatrolPath" type="Path3D" parent="." groups=["PatrolPath"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00577068, -0.0137181, -0.0148382)
+curve = SubResource("Curve3D_33m4d")
+script = ExtResource("30_uvpq0")
+
+[node name="WalkOut2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00577068, -0.0137181, -0.0148382)
+curve = SubResource("Curve3D_847f5")
+script = ExtResource("30_uvpq0")
+
+[node name="PotatoShredz" parent="." instance=ExtResource("30_0ao8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83173, 1.56292, 6.96867)
+
+[node name="Events" type="Node3D" parent="."]
+
+[node name="ABSwitchEvent" type="Node3D" parent="Events"]
+script = ExtResource("31_ekggs")
+alternate = true
+
+[node name="TimerEvent" type="Node3D" parent="Events"]
+script = ExtResource("32_5h7dx")
+time = 4.5
+autoStart = true
+nextEvents = Array[NodePath]([NodePath("../ABSwitchEvent")])
+
+[node name="KillCounter" type="Node3D" parent="Events" groups=["EnemyDeathSubscribers"]]
+script = ExtResource("33_ts2fa")
+
+[connection signal="on_entity_spawned" from="EntitySpawner" to="DoorToCounter" method="give_path_to"]
+[connection signal="on_entity_spawned" from="GreaseTrapSpawner" to="WalkOut2" method="give_path_to"]
+[connection signal="on_entity_spawned" from="FryboySpawner" to="WalkOut" method="give_path_to"]
+[connection signal="A_event_triggered" from="Events/ABSwitchEvent" to="GreaseTrapSpawner" method="spawn"]
+[connection signal="B_event_triggered" from="Events/ABSwitchEvent" to="FryboySpawner" method="spawn"]
+[connection signal="on_event_triggered" from="Events/KillCounter" to="Events/TimerEvent" method="stop"]
