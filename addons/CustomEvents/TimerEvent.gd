@@ -22,7 +22,7 @@ func start(_time = time):
 	timer.start(_time)
 
 func stop():
-	timer.stop
+	timer.stop()
 
 func trigger(by = null):
 	if hasTriggered and isDelay:
