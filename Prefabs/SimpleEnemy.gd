@@ -15,6 +15,7 @@ extends "res://Prefabs/Entity.gd"
 
 
 var facingPoint = Vector3.ZERO
+var isPatrolling = false
 var localInputVector = Vector3()
 var rideSpringScaler = 1.0
 var rotAng = 0.0
@@ -85,4 +86,13 @@ func set_state(stateName, _msg = {}):
 
 func take_damage(dmg, dir, hitbox):
 	super.take_damage(dmg, dir, hitbox)
+	if hp <= 0:
+		get_tree().call_group("EnemyDeathSubscribers", "on_enemy_death", self)
 	set_state("Hurt")
+
+func walk_to(point):
+	set_state("WalkTo", {"points": [point]})
+
+func follow_path(points):
+	print(points)
+	set_state("WalkTo", {"points": points})

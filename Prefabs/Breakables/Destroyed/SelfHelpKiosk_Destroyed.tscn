@@ -1,8 +1,12 @@
-[gd_scene load_steps=38 format=3 uid="uid://v4fmdxbjr07j"]
+[gd_scene load_steps=42 format=3 uid="uid://v4fmdxbjr07j"]
 
 [ext_resource type="Texture2D" uid="uid://doijamir1wuca" path="res://Textures/misc/screen_glitch.png" id="1_on0dr"]
 [ext_resource type="Texture2D" uid="uid://8871pnvl13g5" path="res://Textures/misc/broken screen.png" id="2_nbygv"]
 [ext_resource type="Texture2D" uid="uid://bdj3ht2h7glex" path="res://Textures/misc/screen_glitch2.png" id="3_lpady"]
+[ext_resource type="PackedScene" uid="uid://71mlfoi6ud08" path="res://Prefabs/3dSoundPlayer.tscn" id="4_j4mqy"]
+[ext_resource type="AudioStream" uid="uid://cdf3yun8bdvo5" path="res://Sounds/sfx_break_metal_01.wav" id="5_51nj7"]
+[ext_resource type="AudioStream" uid="uid://t3ek75qen3vj" path="res://Sounds/sfx_break_metal_02.WAV" id="6_i36oy"]
+[ext_resource type="AudioStream" uid="uid://hgfqavjip6wq" path="res://Sounds/sfx_break_metal_03.WAV" id="7_nmnh5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
 
@@ -462,3 +466,7 @@ draw_pass_1 = SubResource("QuadMesh_khjo2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33939, 0)
 process_material = SubResource("ParticleProcessMaterial_g4oca")
 draw_pass_1 = SubResource("SphereMesh_u2vyd")
+
+[node name="3DSoundPlayer" parent="." instance=ExtResource("4_j4mqy")]
+autoplay = true
+sfx = Array[AudioStream]([ExtResource("5_51nj7"), ExtResource("6_i36oy"), ExtResource("7_nmnh5")])

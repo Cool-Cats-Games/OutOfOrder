@@ -17,10 +17,20 @@ func _physics_process(delta):
 				$CreamSplatters.global_position = $"../CreamCast".get_collision_point()
 			else:
 				for c in get_overlapping_bodies():
+					if c.get_collision_layer_value(8):
+						if c.has_method("take_damage"):
+							c.take_damage(player.get_cream_damage(), player.global_transform.basis.z * 0.7, self)
+						continue
 					var dt = get_parent().global_position.distance_to(c.global_position)
 					if dt < dist:
 						dist = dt
 						closest_body = c
+				if not is_instance_valid(closest_body):
+					closest_body = null
+					$CreamSplatters.toggle(false)
+					$"../IceStream".lifetime = lifetimeMax
+					$"../IceStream2".lifetime = lifetimeMax
+					return
 				if closest_body.has_method("take_damage"):
 					closest_body.take_damage(player.get_cream_damage(), player.global_transform.basis.z * 0.7, self)
 				$CreamSplatters.global_position = closest_body.global_position
