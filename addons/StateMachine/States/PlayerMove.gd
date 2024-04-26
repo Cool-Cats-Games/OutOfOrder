@@ -1,11 +1,23 @@
 extends State
 
 var ipVis = null
+var firstFrame = false
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
 	ipVis = actor.mainCamera.get_node("inputVisual")
+	$"../../sfx_movement".pitch_scale = randf_range(0.9,1.1)
+	$"../../sfx_start_move".pitch_scale = randf_range(0.9,1.0)
+	$"../../sfx_stop_move".pitch_scale = randf_range(0.9,1.0)
+	#if not $"../../sfx_start_move".playing and randf() < 0.5:
+		#$"../../sfx_start_move".play()
+	firstFrame = true
 	pass
+
+func exit():
+	super.exit()
+	if not $"../../sfx_stop_move".playing and randf() < 0.5:
+		$"../../sfx_stop_move".play()
 
 func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and actor.is_on_ground():
@@ -26,6 +38,11 @@ func physics_update(_delta: float) -> void:
 	inputDir.x = Input.get_axis("move_right", "move_left")
 	inputDir.z = Input.get_axis("move_back", "move_forward")
 	actor.localInputVector = inputDir.rotated(Vector3.UP, actor.mainCamera.rotation.y)
+	if firstFrame:
+		if actor.linear_velocity.dot(actor.localInputVector) < 0.5:
+			if not $"../../sfx_start_move".playing:
+				$"../../sfx_start_move".play()
+		firstFrame = false
 	ipVis.position = ipVis.position.lerp(inputDir * 2, 1.0)
 	if inputDir.length() > 0.2:
 		var ang = atan2(actor.localInputVector.x, actor.localInputVector.z)

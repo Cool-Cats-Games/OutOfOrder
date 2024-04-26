@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmshh5t8uodbl"]
+
+[ext_resource type="Script" path="res://Prefabs/GoldenCat.gd" id="1_0lxcx"]
+[ext_resource type="ArrayMesh" uid="uid://cjl2smg75t7ht" path="res://Models/Objects/cat.obj" id="1_hlvye"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pecg"]
+albedo_color = Color(0.795595, 0.600273, 0.0251839, 1)
+metallic = 1.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.843866, 0.667571, 0, 1)
+emission_energy_multiplier = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ct42v"]
+size = Vector3(0.268677, 0.592041, 0.294617)
+
+[node name="GoldenCat" type="Area3D" groups=["Roomstate"]]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_0lxcx")
+
+[node name="Cat" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1pecg")
+mesh = ExtResource("1_hlvye")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00823975, 0.285522, -0.056366)
+shape = SubResource("BoxShape3D_ct42v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

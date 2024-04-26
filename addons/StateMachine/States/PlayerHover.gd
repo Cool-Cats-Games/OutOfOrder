@@ -33,7 +33,7 @@ func exit():
 	actor.rideSpringScaler = 1.0
 
 func update(_delta: float) -> void:
-	#actor.cream -= 1.5
+	actor.cream -= 1.5
 	if Input.is_action_just_released("jump"):
 		state_machine.transition_to("Idle", {"startingInAir": true})
 	if actor.cream <= 0.0:
@@ -53,6 +53,9 @@ func physics_update(_delta: float) -> void:
 	if inputDir.length() > 0.2:
 		var ang = atan2(actor.localInputVector.x, actor.localInputVector.z)
 		actor.rotation.y = ang
-	
+	if $"../../IceCreamHoverCast".is_colliding():
+		var e = $"../../IceCreamHoverCast".get_collider()
+		if e.has_method("take_damage"):
+			e.take_damage(2, actor.global_position.direction_to(e.global_position), actor)
 	pass
 

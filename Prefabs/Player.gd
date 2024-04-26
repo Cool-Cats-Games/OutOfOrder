@@ -25,8 +25,8 @@ var cream = 100.0
 var creamMax = 100.0
 var creamRegen = 0.5
 var facingPoint = Vector3.ZERO
-var hp = 1
-var hpMax = 1
+var hp = 4
+var hpMax = 4
 var localInputVector = Vector3()
 var mainCamera = null
 var rideSpringScaler = 1.0
@@ -45,6 +45,7 @@ func _ready():
 	get_tree().call_group("HUD", "show")
 	get_tree().call_group("HUD", "update_max_health", hpMax)
 	get_tree().call_group("HUD", "update_health", hp)
+	initialize_location.call_deferred()
 
 func _process(_delta):
 	if (canBoost and not Input.is_action_pressed("boost")) or not canBoost:
@@ -118,6 +119,20 @@ func get_spring_force():
 		elif body.has_method("apply_force"):
 			body.apply_force(-1.0 * floorCast.target_position * springforce)
 	return springforce * rideSpringScaler
+
+func initialize_location():
+	var targetPointName = GameDataManager.gameData.doorName
+	var d = Utils.get_world(get_tree()).get_node(NodePath(targetPointName))
+	if is_instance_valid(d):
+		position = d.global_position
+		if d.has_method("get_facing_dir"):
+			var p = global_position - d.get_facing_dir() * 30
+			p.y = global_position.y
+			look_at(p)
+			var mt = mainCamera.transform
+			mainCamera.quaternion = Quaternion(Transform3D.IDENTITY.looking_at(global_position + d.get_facing_dir(), Vector3.UP).basis)
+			mainCamera.rotation.x = 0
+			mainCamera.rotation.z = 0
 
 func play_sound(stream):
 	$sfx_player_generic.stream = stream

@@ -15,6 +15,8 @@ func _on_body_entered(body):
 	pass # Replace with function body.
 
 func velocity_damage(body):
+	if not "linear_velocity" in body:
+		return get_parent().linear_velocity
 	return (get_parent().linear_velocity - body.linear_velocity).length()
 
 func set_damage(body):

@@ -29,6 +29,7 @@ resource_name = "BaseManMaterial"
 cull_mode = 2
 albedo_texture = ExtResource("6_0dy6s")
 roughness = 0.5
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1gq50"]
 _surfaces = [{
@@ -300,8 +301,13 @@ script = ExtResource("14_jy07k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FleeRange"]
 shape = SubResource("SphereShape3D_rjim7")
 
+[node name="flee_panic_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="state_entered" from="StateMachine/Idle" to="MeshContainer/AnimationPlayer" method="play" binds= ["TPose"]]
 [connection signal="state_entered" from="StateMachine/WalkTo" to="MeshContainer/AnimationPlayer" method="play" binds= ["Walk"]]
 [connection signal="state_entered" from="StateMachine/Flee" to="MeshContainer/AnimationPlayer" method="play" binds= ["Flee"]]
 [connection signal="body_entered" from="AggroRange" to="." method="aggro"]
 [connection signal="body_exited" from="AggroRange" to="." method="aggro_exit"]
+[connection signal="timeout" from="flee_panic_timer" to="." method="_on_flee_panic_timer_timeout"]

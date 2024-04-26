@@ -7,6 +7,7 @@ resource_name = "material_wood"
 cull_mode = 2
 albedo_texture = ExtResource("1_py16m")
 roughness = 0.0764706
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xokch"]
 _surfaces = [{

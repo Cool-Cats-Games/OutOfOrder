@@ -1,12 +1,14 @@
 extends State
 
 var ipVis = null
+var creamframes = 0
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
 	ipVis = actor.mainCamera.get_node("inputVisual")
 	actor.maxSpeed *= 0.5
 	actor.toggle_ice_stream(true)
+	creamframes = 0
 	pass
 
 func exit():
@@ -16,6 +18,9 @@ func exit():
 
 func update(_delta: float) -> void:
 	actor.cream -= 1.5
+	if creamframes % 3 == 0:
+		actor.get_character_model().launch(actor.basis.z, creamframes % 2 == 0)
+	creamframes += 1
 	if Input.is_action_just_released("shoot"):
 		state_machine.transition_to("Idle")
 	if actor.cream <= 0.0:

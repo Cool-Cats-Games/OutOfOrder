@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1yv2g7l7d5sn"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/KillChallenge.gd" id="1_i837n"]
+[ext_resource type="PackedScene" uid="uid://jklrxnagyqwu" path="res://Prefabs/Challenges/ChallengeEmblems/KillChallengeEmblem.tscn" id="2_1cy7v"]
+[ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="3_qlbks"]
+
+[node name="KillChallenge" type="Node"]
+script = ExtResource("1_i837n")
+autostart = true
+emblemRes = ExtResource("2_1cy7v")
+
+[node name="KillCounter" type="Node3D" parent="." groups=["EnemyDeathSubscribers"]]
+script = ExtResource("3_qlbks")
+deleteAfterTrigger = true
+
+[connection signal="on_count_changed" from="KillCounter" to="." method="_on_kill_counter_on_count_changed"]
+[connection signal="on_event_triggered" from="KillCounter" to="." method="complete"]

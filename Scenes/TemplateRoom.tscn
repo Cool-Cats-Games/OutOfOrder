@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkd2q8bgw4e8"]
+
+[ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_b0j5b"]
+[ext_resource type="PackedScene" uid="uid://bkatl43sgnc2w" path="res://Prefabs/CharacterSpringbox.tscn" id="2_oomcu"]
+[ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="3_f6yya"]
+[ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="4_a8rbs"]
+[ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="5_4cco2"]
+[ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="6_6p7c7"]
+
+[node name="TemplateRoom" type="Node3D" groups=["World"]]
+
+[node name="Player" parent="." instance=ExtResource("1_b0j5b")]
+
+[node name="CharacterSpringbox" parent="." instance=ExtResource("2_oomcu")]
+
+[node name="CameraRig" parent="." instance=ExtResource("3_f6yya")]
+
+[node name="HUD" parent="." instance=ExtResource("4_a8rbs")]
+
+[node name="GlobalEffectContainer" parent="." instance=ExtResource("5_4cco2")]
+
+[node name="SetPieces" type="Node3D" parent="."]
+
+[node name="Destructables" type="Node3D" parent="."]
+
+[node name="Events" type="Node3D" parent="."]
+
+[node name="Challenges" type="Node3D" parent="."]
+
+[node name="BlankEnv" parent="." instance=ExtResource("6_6p7c7")]
