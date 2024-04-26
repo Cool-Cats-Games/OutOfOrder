@@ -29,11 +29,17 @@ func set_state(s = State.open):
 func get_facing_dir():
 	return $MeshInstance3D.global_position.direction_to(global_position)
 
+func report_state(room):
+	room.update_door(self)
+
 func _on_body_entered(body):
 	$Status.show()
 	#test state for moving to next area
 	if state == State.open:
 		GameDataManager.gameData.doorName = name
+		var room = get_tree().get_first_node_in_group("World")
+		room.update_state()
+		room.save_room_data()
 		get_tree().change_scene_to_file(targetRoom)
 	pass # Replace with function body.
 

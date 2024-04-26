@@ -11,16 +11,27 @@ var hasStarted = false
 var isCompleted = false
 
 func _ready():
-	if autostart:
-		start_challenge.call_deferred()
+	add_to_group("Challenges")
+	add_to_group("Roomstate")
+	#if autostart:
+		#start_challenge.call_deferred()
 
 func complete():
-	isCompleted = true
-	on_challenge_complete.emit()
-	get_tree().call_group("ChallengeEmblems", "complete_challenge", self)
+	if hasStarted:
+		isCompleted = true
+		on_challenge_complete.emit()
+		get_tree().call_group("ChallengeEmblems", "complete_challenge", self)
 
 func get_emblem():
 	return emblemRes
+
+func on_room_loaded(room):
+	isCompleted = room.roomData.challenges[name]
+	if autostart and not isCompleted:
+		start_challenge.call_deferred()
+
+func report_state(room):
+	room.update_challenge(self)
 
 func start_challenge():
 	hasStarted = true

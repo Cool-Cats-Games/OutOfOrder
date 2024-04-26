@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://biqx11jkdycul"]
+[gd_scene load_steps=21 format=3 uid="uid://biqx11jkdycul"]
 
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_d2k81"]
+[ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_ptipc"]
 [ext_resource type="PackedScene" uid="uid://bkatl43sgnc2w" path="res://Prefabs/CharacterSpringbox.tscn" id="2_oyig2"]
 [ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="3_bicq3"]
 [ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="4_lvtrr"]
@@ -69,6 +70,7 @@ data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 
 [sub_resource type="QuadMesh" id="QuadMesh_a1c6s"]
 
 [node name="Restroom" type="Node3D" groups=["World"]]
+script = ExtResource("1_ptipc")
 
 [node name="Player" parent="." instance=ExtResource("1_d2k81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83384, 0)

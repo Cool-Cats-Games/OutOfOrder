@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://nuqiwofmdvbx"]
+[gd_scene load_steps=72 format=3 uid="uid://nuqiwofmdvbx"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_angve"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_1cv8f"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://d1yv2g7l7d5sn" path="res://Prefabs/Challenges/KillChallenge.tscn" id="37_a22wy"]
 [ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="38_eu6g5"]
 [ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="39_e16fd"]
+[ext_resource type="PackedScene" uid="uid://bmshh5t8uodbl" path="res://Prefabs/GoldenCat.tscn" id="40_18e5i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqfgk"]
 resource_name = "Material"
@@ -693,12 +694,16 @@ nextEvents = Array[NodePath]([NodePath("../ABSwitchEvent")])
 [node name="GlobalEffectContainer" parent="." instance=ExtResource("36_ge5cc")]
 
 [node name="KillChallenge" parent="." instance=ExtResource("37_a22wy")]
+autostart = false
 
 [node name="Door" parent="." instance=ExtResource("38_eu6g5")]
 transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.89239, 0.712493, 9.83495)
 targetRoom = "res://Scenes/Restroom.tscn"
 
 [node name="HUD" parent="." instance=ExtResource("39_e16fd")]
+
+[node name="GoldenCat" parent="." instance=ExtResource("40_18e5i")]
+transform = Transform3D(0.263789, 0, 0.96458, 0, 1, 0, -0.96458, 0, 0.263789, 7.4838, 1.74904, -6.78323)
 
 [connection signal="on_entity_spawned" from="NPCSpawner" to="DoorToCounter" method="give_path_to"]
 [connection signal="on_entity_spawned" from="GreaseTrapSpawner" to="WalkOut2" method="give_path_to" flags=3]
