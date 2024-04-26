@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bchvx4m23vve5"]
+
+[ext_resource type="Texture2D" uid="uid://4m8pgol3xi0j" path="res://Textures/tile_whiteR.png" id="1_e3qer"]
+
+[resource]
+albedo_texture = ExtResource("1_e3qer")
+roughness = 0.3
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

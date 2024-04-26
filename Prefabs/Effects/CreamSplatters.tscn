@@ -22,8 +22,8 @@ scale_curve = SubResource("CurveTexture_xhjbr")
 [sub_resource type="SphereMesh" id="SphereMesh_6pk1p"]
 radius = 0.47
 height = 1.125
-radial_segments = 13
-rings = 7
+radial_segments = 7
+rings = 3
 
 [node name="CreamSplatters" type="Node3D"]
 script = ExtResource("1_0qhjo")
@@ -31,11 +31,16 @@ script = ExtResource("1_0qhjo")
 [node name="particles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("2_0mbt4")
-emitting = false
-amount = 30
+amount = 16
+lifetime = 0.5
 speed_scale = 1.6
-explosiveness = 0.26
 randomness = 0.38
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_wm5ty")
 draw_pass_1 = SubResource("SphereMesh_6pk1p")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

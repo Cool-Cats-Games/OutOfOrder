@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c5ilns3bue7ni"]
+[gd_scene load_steps=35 format=3 uid="uid://c5ilns3bue7ni"]
 
 [ext_resource type="Script" path="res://Prefabs/PotatoShredz.gd" id="1_fuam1"]
 [ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="3_kl80b"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://addons/StateMachine/States/Wander.gd" id="9_b10sg"]
 [ext_resource type="Animation" uid="uid://2hg3mh1dbkmh" path="res://Models/Characters/PotatoShredz/Run.res" id="9_sp7md"]
 [ext_resource type="Script" path="res://addons/CustomEvents/SquibReleaseEvent.gd" id="11_smr6k"]
+[ext_resource type="PackedScene" uid="uid://71mlfoi6ud08" path="res://Prefabs/3dSoundPlayer.tscn" id="16_0e74h"]
+[ext_resource type="AudioStream" uid="uid://3wua72layxge" path="res://Sounds/sfx_topiary_break.wav" id="17_1dvoh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
 bounce = 0.7
@@ -470,7 +472,12 @@ squibs = {
 "res://Prefabs/Breakables/Squibs/squibFrybox.tscn": 1
 }
 
+[node name="3DSoundPlayer" parent="." instance=ExtResource("16_0e74h")]
+sfx = Array[AudioStream]([ExtResource("17_1dvoh")])
+playGlobal = true
+
 [connection signal="on_death" from="." to="SquibReleaseEvent" method="trigger"]
+[connection signal="on_death" from="." to="3DSoundPlayer" method="play_random"]
 [connection signal="state_entered" from="StateMachine/Idle" to="PotatoShreds/AnimationPlayer" method="play" binds= ["Idle"]]
 [connection signal="on_chase_reached" from="StateMachine/Chase" to="StateMachine" method="transition_to" binds= ["Attack"]]
 [connection signal="state_entered" from="StateMachine/Chase" to="PotatoShreds/AnimationPlayer" method="play" binds= ["Run"]]

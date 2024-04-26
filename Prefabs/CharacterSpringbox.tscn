@@ -723,6 +723,7 @@ draw_pass_1 = SubResource("SphereMesh_1kimv")
 
 [node name="IceStream" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.238889, 0.104143, 0.393988)
+visible = false
 material_override = ExtResource("3_jgk5p")
 emitting = false
 amount = 16
@@ -733,6 +734,7 @@ draw_pass_1 = SubResource("ArrayMesh_h4vk2")
 
 [node name="IceStream2" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.999096, 0, 0.0425034, 0, 1, 0, -0.0425034, 0, 0.999096, 0.255431, 0.104143, 0.393988)
+visible = false
 material_override = ExtResource("3_jgk5p")
 emitting = false
 amount = 16
@@ -743,8 +745,9 @@ draw_pass_1 = SubResource("ArrayMesh_h4vk2")
 
 [node name="CreamCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1312, 0)
+enabled = false
 target_position = Vector3(0, 0, 8.535)
-collision_mask = 5
+collision_mask = 0
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.83163e-08, 1, 0, 0, 0, -1.13702, -2.02044, -4.37114e-08, 0, -0.0803946, 1.19209e-07, 4.30299)
@@ -754,8 +757,8 @@ skeleton = NodePath("")
 
 [node name="CreamHitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.998081, -0.0619196, 0, 0.0619196, 0.998081, 0, -0.210531, 4.2138)
-collision_layer = 8
-collision_mask = 133
+collision_layer = 0
+collision_mask = 0
 monitoring = false
 script = ExtResource("4_jc4rr")
 
@@ -765,8 +768,15 @@ shape = SubResource("CylinderShape3D_4iigv")
 
 [node name="CreamSplatters" parent="CreamHitbox" instance=ExtResource("5_p4ayo")]
 transform = Transform3D(1, 0, 0, 0, 0.998081, 0.0619196, 0, -0.0619196, 0.998081, 0, -0.0507893, -4.21875)
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rxwjg")
 }
+
+[node name="NozzlePointR" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233792, 0.133744, 0.709029)
+
+[node name="NozzlePointL" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.211874, 0.133744, 0.709029)

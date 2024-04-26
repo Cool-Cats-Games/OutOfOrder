@@ -126,6 +126,7 @@ shadow_mesh = SubResource("ArrayMesh_qx4mf")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvjfd"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_qkh6y")
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tid13"]
 _surfaces = [{

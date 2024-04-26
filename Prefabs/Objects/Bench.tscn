@@ -9,6 +9,7 @@ cull_mode = 2
 albedo_color = Color(0.8, 0.8, 0.8, 1)
 albedo_texture = ExtResource("1_macdg")
 uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fpxxv"]
 _surfaces = [{
@@ -47,6 +48,7 @@ shadow_mesh = SubResource("ArrayMesh_fpxxv")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31rth"]
 albedo_texture = ExtResource("2_0ieg0")
 uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6y4mh"]
 resource_name = "material_wood"

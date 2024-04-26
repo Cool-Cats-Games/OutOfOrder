@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqwh8588q3hlk"]
+
+[ext_resource type="Material" uid="uid://d2xtdbylq4fmt" path="res://Materials/debug_1.tres" id="1_78tsl"]
+[ext_resource type="Script" path="res://Prefabs/Door.gd" id="1_f5aaf"]
+[ext_resource type="Texture2D" uid="uid://c3gmop4smroat" path="res://Sprites/UI/BoardGameIcons(x64)/arrow_up.png" id="3_kkfr0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0w6dv"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1l57i"]
+size = Vector3(1, 2, 1)
+
+[node name="Door" type="Area3D" groups=["Doors"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_f5aaf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.01316)
+material_override = ExtResource("1_78tsl")
+mesh = SubResource("BoxMesh_0w6dv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.01316)
+shape = SubResource("BoxShape3D_1l57i")
+
+[node name="Status" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.00223, -1.46087)
+billboard = 1
+texture = ExtResource("3_kkfr0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

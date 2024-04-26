@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 Settings="*res://Data/Settings.gd"
 Utils="*res://System/Utils.gd"
 WildBackground="*res://System/WildBackground.tscn"
-Hud="*res://Prefabs/UI/HUD.tscn"
+GameDataManager="*res://Data/GameDataManager.gd"
 
 [display]
 
