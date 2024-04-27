@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://cca3m6hskaxjl"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7he4fme52vvb" path="res://Models/Objects/toiletDestroyed.obj" id="1_wwc4a"]
+[ext_resource type="Shader" path="res://Shaders/lowpoly_fresnel.gdshader" id="2_0n0y3"]
+[ext_resource type="PackedScene" uid="uid://71mlfoi6ud08" path="res://Prefabs/3dSoundPlayer.tscn" id="3_t2nn0"]
+[ext_resource type="AudioStream" uid="uid://c3ijnj8c665d7" path="res://Sounds/sfx_water_spray.wav" id="4_2w5e0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcqyn"]
+cull_mode = 1
+
+[sub_resource type="Curve" id="Curve_ljm08"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.34202, 0.542373), 0.0, 0.0, 0, 0, Vector2(0.732899, 0.737288), 0.0, 0.0, 0, 0, Vector2(0.996743, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_scaio"]
+curve = SubResource("Curve_ljm08")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t1p3n"]
+resource_local_to_scene = true
+direction = Vector3(0, 0.5, 1)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_min = 0.05
+scale_curve = SubResource("CurveTexture_scaio")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_si0w6"]
+render_priority = 0
+shader = ExtResource("2_0n0y3")
+shader_parameter/inner_alpha = 0.175
+shader_parameter/albedo_f = Color(0.843126, 0.904777, 0.999999, 1)
+shader_parameter/Strength = 4.96
+
+[sub_resource type="SphereMesh" id="SphereMesh_w822c"]
+material = SubResource("ShaderMaterial_si0w6")
+radius = 0.2
+height = 0.2
+radial_segments = 6
+rings = 6
+
+[node name="ToiletDestroyed" type="Node3D"]
+
+[node name="Toilet2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, -0.00957859, 0.220625, -0.017202)
+material_override = SubResource("StandardMaterial3D_bcqyn")
+mesh = ExtResource("1_wwc4a")
+skeleton = NodePath("")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1.88048, 0.681022, 0, -0.681022, 1.88048, 0, 0.304274, -0.133828)
+amount = 64
+lifetime = 0.3
+randomness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_t1p3n")
+draw_pass_1 = SubResource("SphereMesh_w822c")
+
+[node name="3DSoundPlayer" parent="." instance=ExtResource("3_t2nn0")]
+stream = ExtResource("4_2w5e0")
+unit_size = 12.0
+autoplay = true
+max_distance = 10.0

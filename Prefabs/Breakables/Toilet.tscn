@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dujpydliwospp"]
+
+[ext_resource type="Script" path="res://Prefabs/Breakables/Destroyable.gd" id="1_0tf38"]
+[ext_resource type="ArrayMesh" uid="uid://dr4usjt3nvvot" path="res://Models/Objects/toilet.obj" id="3_s3noi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_blvpm"]
+size = Vector3(1.20996, 1.24582, 1.82526)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcqyn"]
+cull_mode = 1
+
+[node name="Toilet" type="RigidBody3D"]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_hsj2v")
+sleeping = true
+script = ExtResource("1_0tf38")
+destroyedRes = "res://Prefabs/Breakables/Destroyed/ToiletDestroyed.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.0162497, 0.191414, 0.0630798)
+shape = SubResource("BoxShape3D_blvpm")
+
+[node name="Toilet" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, -0.00957859, 0.220625, -0.017202)
+material_override = SubResource("StandardMaterial3D_bcqyn")
+mesh = ExtResource("3_s3noi")

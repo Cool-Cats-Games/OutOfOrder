@@ -5,6 +5,7 @@ signal on_death
 var maxHP
 
 func _ready():
+	print("Entity ready")
 	maxHP = hp
 	$EntityHPBar.fadeOffset = 1.0
 

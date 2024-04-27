@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+signal on_smashed()
+
 @export var hp = 1.0
 @export var squibs : Array[Resource]
 @export var breaksfx : Array[AudioStream]
@@ -7,6 +9,7 @@ extends RigidBody3D
 func smash():
 	queue_free()
 	Utils.play_sound_at(breaksfx, get_tree(), global_position, -3.0)
+	on_smashed.emit()
 	if squibs.size() > 0:
 		for s in range(randi_range(2,6)):
 			spawn_random_squib()

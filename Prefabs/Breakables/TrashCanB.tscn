@@ -1,0 +1,44 @@
+[gd_scene load_steps=13 format=3 uid="uid://decx1c5q41aos"]
+
+[ext_resource type="Script" path="res://Prefabs/Breakables/Breakable.gd" id="1_xf7f2"]
+[ext_resource type="PackedScene" uid="uid://pscij2tpd1ad" path="res://Prefabs/Breakables/Squibs/SquibJoja.tscn" id="2_fu4jr"]
+[ext_resource type="PackedScene" uid="uid://dui3p62khabu4" path="res://Prefabs/Breakables/Squibs/SquibGarbageWad.tscn" id="3_8fs5h"]
+[ext_resource type="PackedScene" uid="uid://dlrooeyos2i6f" path="res://Prefabs/Breakables/Squibs/SquibPaperWad.tscn" id="4_g3m5e"]
+[ext_resource type="AudioStream" uid="uid://cdf3yun8bdvo5" path="res://Sounds/sfx_break_metal_01.wav" id="5_pcw57"]
+[ext_resource type="AudioStream" uid="uid://t3ek75qen3vj" path="res://Sounds/sfx_break_metal_02.WAV" id="6_rxrhh"]
+[ext_resource type="Material" uid="uid://i5qlx14oouhm" path="res://Materials/material_pitchBlack.tres" id="7_oy8i5"]
+[ext_resource type="AudioStream" uid="uid://hgfqavjip6wq" path="res://Sounds/sfx_break_metal_03.WAV" id="7_tnfhg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41ug7"]
+size = Vector3(0.79834, 1.3308, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyhct"]
+metallic = 1.0
+roughness = 0.33
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ovqd2"]
+radial_segments = 6
+
+[node name="TrashCanB" type="RigidBody3D"]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_hsj2v")
+sleeping = true
+script = ExtResource("1_xf7f2")
+squibs = Array[Resource]([ExtResource("2_fu4jr"), ExtResource("3_8fs5h"), ExtResource("4_g3m5e")])
+breaksfx = Array[AudioStream]([ExtResource("5_pcw57"), ExtResource("6_rxrhh"), ExtResource("7_tnfhg")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00317383, 0.399253, 0)
+shape = SubResource("BoxShape3D_41ug7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.835052, 0, 0, 0, 0.653898, 0, 0, 0, 1, 0, 0.406686, 0)
+material_override = SubResource("StandardMaterial3D_yyhct")
+mesh = SubResource("CylinderMesh_ovqd2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.861993, 0, 0, 0, 0.0801387, 0, 0, 0, 1.03127, 0, 0.98539, 0)
+material_override = ExtResource("7_oy8i5")
+mesh = SubResource("CylinderMesh_ovqd2")

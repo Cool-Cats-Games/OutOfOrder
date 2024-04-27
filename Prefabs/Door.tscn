@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqwh8588q3hlk"]
+[gd_scene load_steps=12 format=3 uid="uid://dqwh8588q3hlk"]
 
 [ext_resource type="Material" uid="uid://d2xtdbylq4fmt" path="res://Materials/debug_1.tres" id="1_78tsl"]
 [ext_resource type="Script" path="res://Prefabs/Door.gd" id="1_f5aaf"]
-[ext_resource type="Texture2D" uid="uid://c3gmop4smroat" path="res://Sprites/UI/BoardGameIcons(x64)/arrow_up.png" id="3_kkfr0"]
+[ext_resource type="Texture2D" uid="uid://drnqmhooq4jih" path="res://Sprites/UI/BoardGameIcons(x64)/lock_closed.png" id="3_dj3jr"]
+[ext_resource type="Texture2D" uid="uid://cbj38knxmwwso" path="res://Sprites/UI/BoardGameIcons(x64)/lock_open.png" id="4_2go65"]
+[ext_resource type="AudioStream" uid="uid://kp56dse6d36n" path="res://Sounds/sfx_door_unlocked.wav" id="5_v3dan"]
+[ext_resource type="AudioStream" uid="uid://dwtwmy3keb2s6" path="res://Sounds/sfx_door_locked.wav" id="6_8o4mf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0w6dv"]
 size = Vector3(1, 2, 1)
@@ -10,7 +13,155 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1l57i"]
 size = Vector3(1, 2, 1)
 
-[node name="Door" type="Area3D" groups=["Doors"]]
+[sub_resource type="Animation" id="Animation_dl7tf"]
+resource_name = "unlock"
+length = 1.5
+step = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Status:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Status/Status2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.297, 0.33),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_dj3jr"), ExtResource("3_dj3jr"), ExtResource("4_2go65")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Status:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.297, 0.33),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_dj3jr"), ExtResource("3_dj3jr"), ExtResource("4_2go65")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Status:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.297, 0.33),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.00223, -1.46087), Vector3(0, 0.838766, -1.46087), Vector3(0, 1.00223, -1.46087)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Status:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.693, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx_unlock")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.297),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wlmha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Status:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Status/Status2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_dj3jr")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Status:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_dj3jr")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Status:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.00223, -1.46087)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Status:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k386q"]
+_data = {
+"RESET": SubResource("Animation_wlmha"),
+"unlock": SubResource("Animation_dl7tf")
+}
+
+[node name="Door" type="Area3D" groups=["Doors", "Roomstate"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_f5aaf")
@@ -27,7 +178,33 @@ shape = SubResource("BoxShape3D_1l57i")
 [node name="Status" type="Sprite3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.00223, -1.46087)
 billboard = 1
-texture = ExtResource("3_kkfr0")
+no_depth_test = true
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("3_dj3jr")
+
+[node name="Status2" type="Sprite3D" parent="Status"]
+transform = Transform3D(1.13333, 0, 0, 0, 1.06667, 0, 0, 0, 1.06667, 0, 0, 0)
+modulate = Color(0, 0, 0, 1)
+billboard = 1
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("3_dj3jr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k386q")
+}
+speed_scale = 1.5
+
+[node name="sfx_unlock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_v3dan")
+bus = &"SFX"
+
+[node name="sfx_locked" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8o4mf")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

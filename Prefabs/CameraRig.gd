@@ -2,14 +2,15 @@ extends Node3D
 
 
 @export var targetPath : NodePath
+@export var zoomFactor = -6.5
 
 var target
 var cameraDragging = false
 var damp = 0.2
 var fov = 75.0
-var zoomFactor = -7.0
+
 var zoomMax = -15.0
-var zoomMin = -5.0
+var zoomMin = -2.0
 
 func _ready():
 	target = get_node(targetPath)
@@ -48,5 +49,7 @@ func update_camera_angle():
 
 func update_camera_zoom():
 	var deltaZoom = 1.0 if Input.is_action_just_pressed("zoomIn") else (-1.0 if Input.is_action_just_pressed("zoomOut") else 0.0)
-	zoomFactor = clamp(zoomFactor + (deltaZoom * 2.5), zoomMax, zoomMin)
-	$A.position.z = lerp($A.position.z, zoomFactor, 0.1)
+	zoomFactor = clamp(zoomFactor + (deltaZoom * 3.0), zoomMax, zoomMin)
+	$A.position.z = lerp($A.position.z, zoomFactor, 0.09)
+	var targetH = lerp(1.3, 3.11, zoomFactor / zoomMax)
+	$A/B.position.y = lerp($A/B.position.y, targetH, 0.09)

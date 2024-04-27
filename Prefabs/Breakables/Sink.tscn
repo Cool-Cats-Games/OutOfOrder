@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfmfqydkl007c"]
+
+[ext_resource type="Script" path="res://Prefabs/Breakables/Destroyable.gd" id="1_v76sc"]
+[ext_resource type="PackedScene" uid="uid://dr0570nonww3p" path="res://Models/Objects/Sink.glb" id="3_a4066"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_enpl2"]
+
+[node name="Sink" type="RigidBody3D"]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_hsj2v")
+sleeping = true
+lock_rotation = true
+freeze = true
+script = ExtResource("1_v76sc")
+destroyedRes = "res://Prefabs/Breakables/Destroyed/SinkDestroyed.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_enpl2")
+
+[node name="Sink" parent="." instance=ExtResource("3_a4066")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

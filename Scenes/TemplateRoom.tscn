@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkd2q8bgw4e8"]
+[gd_scene load_steps=8 format=3 uid="uid://bkd2q8bgw4e8"]
 
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_b0j5b"]
+[ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_lxibi"]
 [ext_resource type="PackedScene" uid="uid://bkatl43sgnc2w" path="res://Prefabs/CharacterSpringbox.tscn" id="2_oomcu"]
 [ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="3_f6yya"]
 [ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="4_a8rbs"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="6_6p7c7"]
 
 [node name="TemplateRoom" type="Node3D" groups=["World"]]
+script = ExtResource("1_lxibi")
 
 [node name="Player" parent="." instance=ExtResource("1_b0j5b")]
 

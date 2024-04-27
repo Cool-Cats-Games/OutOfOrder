@@ -23,3 +23,4 @@ func spawn_squib(sres):
 	sobj.apply_force(Vector3(randf_range(-1.0,1.0) * 50, randf_range(10,50) * 5, randf_range(-1.0,1.0) * 50))
 	sobj.apply_torque(Vector3(randf_range(-1.0,1.0) * 5, randf_range(-1.0,1.0), randf_range(-1.0,1.0) * 5))
 	sobj.get_node("TTL").start(randf_range(0.5,5.0))
+

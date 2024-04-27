@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dp813bemnqj7s"]
+
+[ext_resource type="Texture2D" uid="uid://cgnbqqugscts7" path="res://Textures/stone_tile_x64.png" id="1_7s5u6"]
+
+[resource]
+albedo_texture = ExtResource("1_7s5u6")
+roughness = 0.36
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

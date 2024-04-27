@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsvpilie184ma"]
+
+[ext_resource type="Script" path="res://Prefabs/Items/KeyItem.gd" id="1_iovvc"]
+[ext_resource type="AudioStream" uid="uid://dm84cdh0ejfvi" path="res://Sounds/sfx_ui_focus2.wav" id="2_82ds1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3e6go"]
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_67equ"]
+size = Vector3(0.493896, 1.73047, 0.593994)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x7t2x"]
+
+[sub_resource type="Animation" id="Animation_ksvu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gypo5"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndukx"]
+_data = {
+"RESET": SubResource("Animation_ksvu3"),
+"default": SubResource("Animation_gypo5")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a743v"]
+radius = 0.656433
+
+[node name="KeyItem" type="RigidBody3D"]
+collision_layer = 32
+physics_material_override = SubResource("PhysicsMaterial_3e6go")
+lock_rotation = true
+script = ExtResource("1_iovvc")
+pickupSound = ExtResource("2_82ds1")
+delayGrabable = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_67equ")
+
+[node name="MeshContainer" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshContainer"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = SubResource("BoxMesh_x7t2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ndukx")
+}
+autoplay = "default"
+speed_scale = 0.5
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_a743v")
+
+[node name="delay" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="delay" to="." method="_on_delay_timeout"]
