@@ -4,8 +4,10 @@
 
 [resource]
 albedo_texture = ExtResource("1_e3qer")
-roughness = 0.3
+roughness = 0.08
 uv1_scale = Vector3(0.25, 0.25, 0.25)
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

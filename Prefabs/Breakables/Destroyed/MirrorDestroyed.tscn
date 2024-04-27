@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce2h3qudh1ion"]
+
+[ext_resource type="Material" uid="uid://ce780xief6hng" path="res://Materials/material_mirror.tres" id="1_0axbf"]
+[ext_resource type="Texture2D" uid="uid://8871pnvl13g5" path="res://Textures/misc/broken screen.png" id="2_cehaa"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_g2pkk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqbpg"]
+transparency = 1
+blend_mode = 2
+albedo_texture = ExtResource("2_cehaa")
+texture_filter = 0
+
+[node name="DestroyedMirror" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.75, 0, 0, 0, 1.6, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("1_0axbf")
+mesh = SubResource("QuadMesh_g2pkk")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.75, 0, 0, 0, 1.6, 0, 0, 0, 1, 0, 0, 0.001)
+material_override = SubResource("StandardMaterial3D_fqbpg")
+mesh = SubResource("QuadMesh_g2pkk")
+skeleton = NodePath("")

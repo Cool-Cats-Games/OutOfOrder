@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://nuqiwofmdvbx"]
+[gd_scene load_steps=71 format=3 uid="uid://nuqiwofmdvbx"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_angve"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_1cv8f"]
@@ -154,7 +154,10 @@ data = PackedVector3Array(1, 1, 1, 1, -1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 1, -
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmqc1"]
 albedo_texture = ExtResource("8_x80n2")
-uv1_scale = Vector3(5, 5, 1)
+uv1_scale = Vector3(0.4, 0.4, 0.4)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_etmx1"]
 
@@ -211,9 +214,6 @@ emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_du4ue"]
-albedo_color = Color(0, 0, 0, 1)
-
 [sub_resource type="Curve3D" id="Curve3D_rx7x0"]
 bake_interval = 512.0
 _data = {
@@ -265,11 +265,11 @@ spawnTimer = 10.0
 timerOnReady = true
 
 [node name="GreaseTrapSpawner" parent="." instance=ExtResource("13_qwgik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3803, 1.86503, -2.84643)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2931, 1.81484, -2.84643)
 entityPath = "res://Prefabs/TommyTwoTraps.tscn"
 
 [node name="FryboySpawner" parent="." instance=ExtResource("13_qwgik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3803, 1.86503, -2.84643)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2445, 1.81484, -2.84643)
 entityPath = "res://Prefabs/PotatoShredz.tscn"
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
@@ -455,23 +455,11 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/WallCutout/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_k0b2x")
 
-[node name="WallCutout2" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-1.005, 0, -5.44038e-07, 0, 2.481, 0, 1.51751e-07, 0, -3.603, 12.571, 2.535, -3.596)
-material_override = ExtResource("19_nwno1")
-mesh = SubResource("ArrayMesh_gqs5q")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/WallCutout2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/WallCutout2/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_k0b2x")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(25, 0, 0, 0, -1.09278e-06, -1, 0, 25, -4.37114e-08, 0, 4.92452, 0)
 material_override = SubResource("StandardMaterial3D_hmqc1")
 mesh = SubResource("QuadMesh_etmx1")
 skeleton = NodePath("../..")
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="WallPiece" parent="SetPieces" instance=ExtResource("5_jjrd4")]
@@ -515,6 +503,17 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/DorrwayCutout/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_472gq")
 
+[node name="DorrwayCutout2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-2.807, 0, -3.78546e-07, 0, 2.542, 0, 4.23845e-07, 0, -2.507, 12.082, 2.467, -2.87451)
+material_override = ExtResource("19_nwno1")
+mesh = SubResource("ArrayMesh_xrxlc")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/DorrwayCutout2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/DorrwayCutout2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_472gq")
+
 [node name="Floor" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(25, 0, 0, 0, 0.5, 0, 0, 0, 25, 0, -0.242, 0)
 material_override = ExtResource("23_ermn0")
@@ -536,13 +535,13 @@ transform = Transform3D(4.53429, 0, 0, 0, 4.348, 0, 0, 0, 1, 4.36018, 2.20452, -
 material_override = SubResource("StandardMaterial3D_0vk53")
 mesh = SubResource("QuadMesh_hp0gy")
 
-[node name="Frame8" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-1.21911e-07, 0, -1, 0, 4.348, 0, 2.789, 0, -4.37114e-08, 11.554, 2.205, -2.896)
-material_override = SubResource("StandardMaterial3D_du4ue")
-mesh = SubResource("QuadMesh_hp0gy")
-
 [node name="Frame9" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(-1.21911e-07, 0, -1, 0, 4.348, 0, 2.789, 0, -4.37114e-08, 11.2548, 2.205, 9.99307)
+material_override = ExtResource("24_454id")
+mesh = SubResource("QuadMesh_hp0gy")
+
+[node name="Frame10" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-1.21911e-07, 0, -1, 0, 4.348, 0, 2.789, 0, -4.37114e-08, 11.2547, 2.205, -2.994)
 material_override = ExtResource("24_454id")
 mesh = SubResource("QuadMesh_hp0gy")
 
@@ -698,6 +697,15 @@ autostart = false
 
 [node name="Door" parent="." instance=ExtResource("38_eu6g5")]
 transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.89239, 0.712493, 9.83495)
+targetRoom = "res://Scenes/Restroom.tscn"
+
+[node name="C" parent="." instance=ExtResource("38_eu6g5")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.89239, 0.712493, -2.91648)
+targetRoom = "res://Scenes/Kitchen.tscn"
+
+[node name="B" parent="." instance=ExtResource("38_eu6g5")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.42799, 0.712493, -8.72496)
+requires = "DoorKey"
 targetRoom = "res://Scenes/Restroom.tscn"
 
 [node name="HUD" parent="." instance=ExtResource("39_e16fd")]

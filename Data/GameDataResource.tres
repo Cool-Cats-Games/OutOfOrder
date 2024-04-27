@@ -4,3 +4,8 @@
 
 [resource]
 script = ExtResource("1_ypdw4")
+currentRoom = "res://Scenes/Lobby.tscn"
+doorName = "X"
+inventory = {}
+goldenCats = 0
+rooms = {}

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://doryu2ikjrxso"]
+
+[ext_resource type="Script" path="res://Prefabs/Breakables/Destroyable.gd" id="1_68qqd"]
+[ext_resource type="Material" uid="uid://ce780xief6hng" path="res://Materials/material_mirror.tres" id="3_aid8g"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_g2pkk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31u04"]
+size = Vector3(2.77113, 1.60873, 0.147034)
+
+[node name="Mirror" type="RigidBody3D"]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_hsj2v")
+sleeping = true
+lock_rotation = true
+freeze = true
+script = ExtResource("1_68qqd")
+destroyedRes = "res://Prefabs/Breakables/Destroyed/MirrorDestroyed.tscn"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.75, 0, 0, 0, 1.6, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("3_aid8g")
+mesh = SubResource("QuadMesh_g2pkk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28882e-05, 1.52588e-05, -0.00308228)
+shape = SubResource("BoxShape3D_31u04")

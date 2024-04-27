@@ -7,6 +7,7 @@ var maxHP
 signal entity_died
 
 func _ready():
+	print("Entity ready")
 	maxHP = hp
 	$EntityHPBar.fadeOffset = 1.0
 	if has_node("/root/ComboManager") != null:

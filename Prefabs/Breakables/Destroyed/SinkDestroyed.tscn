@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://c60e1xolvdbu0"]
+
+[ext_resource type="PackedScene" uid="uid://d1grpwbxuyt3k" path="res://Models/Objects/SinkDestroyed.glb" id="1_e26vs"]
+[ext_resource type="Shader" path="res://Shaders/lowpoly_fresnel.gdshader" id="4_kfvxk"]
+[ext_resource type="PackedScene" uid="uid://71mlfoi6ud08" path="res://Prefabs/3dSoundPlayer.tscn" id="5_a00l0"]
+[ext_resource type="AudioStream" uid="uid://c3ijnj8c665d7" path="res://Sounds/sfx_water_spray.wav" id="6_8devy"]
+
+[sub_resource type="Curve" id="Curve_ljm08"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.34202, 0.542373), 0.0, 0.0, 0, 0, Vector2(0.732899, 0.737288), 0.0, 0.0, 0, 0, Vector2(0.996743, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_scaio"]
+curve = SubResource("Curve_ljm08")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82imm"]
+scale_min = 0.01
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_scaio")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rx4yy"]
+render_priority = 0
+shader = ExtResource("4_kfvxk")
+shader_parameter/inner_alpha = 0.175
+shader_parameter/albedo_f = Color(0.843126, 0.904777, 0.999999, 1)
+shader_parameter/Strength = 4.96
+
+[sub_resource type="SphereMesh" id="SphereMesh_gho4t"]
+material = SubResource("ShaderMaterial_rx4yy")
+radius = 0.2
+height = 0.2
+radial_segments = 6
+rings = 6
+
+[sub_resource type="Curve" id="Curve_32mvf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.34202, 0.542373), 0.0, 0.0, 0, 0, Vector2(0.732899, 0.737288), 0.0, 0.0, 0, 0, Vector2(0.996743, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_bcq04"]
+curve = SubResource("Curve_32mvf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6wei7"]
+direction = Vector3(0, 0.5, 1)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_min = 0.01
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_bcq04")
+
+[node name="Sink" type="Node3D"]
+
+[node name="SinkDestroyed" parent="." instance=ExtResource("1_e26vs")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.332136, 0.093617)
+randomness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_82imm")
+draw_pass_1 = SubResource("SphereMesh_gho4t")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614455, -0.375039)
+amount = 64
+lifetime = 0.3
+randomness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_6wei7")
+draw_pass_1 = SubResource("SphereMesh_gho4t")
+
+[node name="3DSoundPlayer" parent="." instance=ExtResource("5_a00l0")]
+stream = ExtResource("6_8devy")
+unit_size = 12.0
+autoplay = true
+max_distance = 10.0

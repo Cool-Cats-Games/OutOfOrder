@@ -94,5 +94,4 @@ func walk_to(point):
 	set_state("WalkTo", {"points": [point]})
 
 func follow_path(points):
-	print(points)
 	set_state("WalkTo", {"points": points})

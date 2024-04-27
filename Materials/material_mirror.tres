@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ce780xief6hng"]
+
+[resource]
+transparency = 1
+metallic = 1.0
+roughness = 0.0
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.1

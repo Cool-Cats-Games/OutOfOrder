@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://biqx11jkdycul"]
+[gd_scene load_steps=35 format=3 uid="uid://biqx11jkdycul"]
 
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_d2k81"]
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_ptipc"]
@@ -8,12 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="5_lkbqd"]
 [ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="6_klplo"]
 [ext_resource type="Texture2D" uid="uid://b3wjc7cdg4p6n" path="res://Textures/tile_reige2_textured_x64.png" id="7_dmset"]
+[ext_resource type="Texture2D" uid="uid://cuxoqcpe5vdkm" path="res://Textures/stone_tile_02_x64.png" id="8_6fo4p"]
 [ext_resource type="Material" uid="uid://bchvx4m23vve5" path="res://Materials/material_restroomWall.tres" id="8_cot5w"]
 [ext_resource type="Material" uid="uid://i5qlx14oouhm" path="res://Materials/material_pitchBlack.tres" id="8_hjins"]
 [ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="9_24lut"]
+[ext_resource type="Material" uid="uid://dp813bemnqj7s" path="res://Materials/material_stoneTile_01.tres" id="11_5qs1c"]
+[ext_resource type="ArrayMesh" uid="uid://12bgtgjosvpa" path="res://Models/MeshInstances/WallPiece_mesh.tres" id="11_oixcq"]
+[ext_resource type="PackedScene" uid="uid://dfmfqydkl007c" path="res://Prefabs/Breakables/Sink.tscn" id="12_wirwd"]
+[ext_resource type="PackedScene" uid="uid://ctsy3ms3sxotw" path="res://Prefabs/Breakables/StallDoor.tscn" id="15_ddcb6"]
+[ext_resource type="PackedScene" uid="uid://doryu2ikjrxso" path="res://Prefabs/Breakables/Mirror.tscn" id="15_j6iji"]
+[ext_resource type="PackedScene" uid="uid://decx1c5q41aos" path="res://Prefabs/Breakables/TrashCanB.tscn" id="17_637jl"]
+[ext_resource type="PackedScene" uid="uid://dnlddpqxw01vu" path="res://Prefabs/Objects/FlourescentLight.tscn" id="17_knv8l"]
+[ext_resource type="PackedScene" uid="uid://dujpydliwospp" path="res://Prefabs/Breakables/Toilet.tscn" id="19_pfe7r"]
+[ext_resource type="PackedScene" uid="uid://h6dnfbps3mx0" path="res://Prefabs/Breakables/FireExtinguisher.tscn" id="20_ismi3"]
+[ext_resource type="PackedScene" uid="uid://bmshh5t8uodbl" path="res://Prefabs/GoldenCat.tscn" id="21_2h4b3"]
+[ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="24_wjttw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jpau"]
 albedo_texture = ExtResource("7_dmset")
+roughness = 0.85
 uv1_scale = Vector3(0.25, 0.5, 0.25)
 uv1_triplanar = true
 uv1_world_triplanar = true
@@ -23,6 +36,14 @@ texture_filter = 0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gbwdx"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1lpp"]
+albedo_texture = ExtResource("8_6fo4p")
+roughness = 0.44
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oaepy"]
 resource_name = "Material"
@@ -69,17 +90,21 @@ data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 
 
 [sub_resource type="QuadMesh" id="QuadMesh_a1c6s"]
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n2117"]
+data = PackedVector3Array(1, 1, 1, 1, -1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 0, 1, -1, 1, -1, -1, 1, 1, -1, 1, 1, -1, 1, -1, 1, 1, 1, 1)
+
 [node name="Restroom" type="Node3D" groups=["World"]]
 script = ExtResource("1_ptipc")
 
 [node name="Player" parent="." instance=ExtResource("1_d2k81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66697, 1.83384, 5.76235)
 
 [node name="CharacterSpringbox" parent="." instance=ExtResource("2_oyig2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66697, 1.83384, 5.76235)
 
 [node name="CameraRig" parent="." instance=ExtResource("3_bicq3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83384, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66697, 1.83384, 5.76235)
+zoomFactor = -4.5
 
 [node name="HUD" parent="." instance=ExtResource("4_lvtrr")]
 
@@ -88,7 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83384, 0)
 [node name="SetPieces" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(7.496, 0, 0, 0, 0.999, 0, 0, 0, 11.925, 0, 0, 0)
+transform = Transform3D(4.92083, 0, 0, 0, 0.999, 0, 0, 0, 10.246, 2.76691, 0, 1.75392)
 material_override = SubResource("StandardMaterial3D_0jpau")
 mesh = SubResource("PlaneMesh_8sjv4")
 skeleton = NodePath("../..")
@@ -98,51 +123,192 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gbwdx")
 
+[node name="Cieling" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(4.92083, 0, 0, 0, -0.999, 8.9573e-07, 0, -8.73354e-08, -10.246, 2.767, 4.037, 1.754)
+material_override = SubResource("StandardMaterial3D_r1lpp")
+mesh = SubResource("PlaneMesh_8sjv4")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
 [node name="DorrwayCutout" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-9.20125e-08, 0, 1.975, 0, 1.975, 0, -2.105, 0, -8.633e-08, 3.028, 1.937, 11.633)
+transform = Transform3D(-9.20125e-08, 0, 1.975, 0, 2.125, 0, -2.105, 0, -8.633e-08, 5.51313, 1.937, 11.633)
 material_override = ExtResource("8_cot5w")
 mesh = SubResource("ArrayMesh_xrxlc")
 skeleton = NodePath("")
 
 [node name="Wall" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-14.994, 0, -1.50996e-07, 0, 3.899, 0, 2.26403e-06, 0, -1, 0, 1.94, 11.919)
+transform = Transform3D(-9.41293, 0, -1.50996e-07, 0, 4.105, 0, 1.42131e-06, 0, -1, 2.75701, 2, 11.919)
 material_override = ExtResource("8_cot5w")
 mesh = SubResource("QuadMesh_lvy8n")
 skeleton = NodePath("../..")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Wall"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Wall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vhfws")
 
-[node name="Wall2" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-1.03919e-06, 0, 1, 0, 3.894, 0, -23.774, 0, -4.37114e-08, -7.461, 1.94, 0.047)
+[node name="Wall4" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(9.473, 0, 0, 0, 4.131, 0, 0, 0, 1.006, 2.792, 2, -8.458)
 material_override = ExtResource("8_cot5w")
 mesh = SubResource("QuadMesh_lvy8n")
 skeleton = NodePath("../..")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Wall4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Wall4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vhfws")
+
+[node name="Wall2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-8.97701e-07, 0, 1, 0, 4.105, 0, -20.537, 0, -4.37114e-08, -1.95372, 2, 1.78122)
+material_override = ExtResource("8_cot5w")
+mesh = SubResource("QuadMesh_lvy8n")
+skeleton = NodePath("../..")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Wall2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Wall2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.13687e-13, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_vhfws")
 
 [node name="Wall3" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-1.03919e-06, 0, -1, 0, 3.894, 0, 23.774, 0, -4.37114e-08, 7.486, 1.975, 0.047)
+transform = Transform3D(-8.97701e-07, 0, -1, 0, 4.105, 0, 20.537, 0, -4.37114e-08, 7.486, 2, 1.781)
 material_override = ExtResource("8_cot5w")
 mesh = SubResource("QuadMesh_lvy8n")
 skeleton = NodePath("../..")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Wall3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Wall3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.13687e-13, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_vhfws")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-2.34, 0, -1.50996e-07, 0, 3.12, 0, 3.5333e-07, 0, -1, 3.093, 1.576, 11.005)
+transform = Transform3D(-2.34, 0, -1.50996e-07, 0, 3.12, 0, 3.5333e-07, 0, -1, 5.55385, 1.576, 11.005)
 material_override = ExtResource("8_hjins")
 mesh = SubResource("QuadMesh_a1c6s")
 
+[node name="Cube" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-4.20941e-08, 0, 0.51, 0, 2.042, 0, -0.963, 0, -2.22928e-08, 2.516, 1.987, 11.941)
+material_override = ExtResource("11_5qs1c")
+mesh = ExtResource("11_oixcq")
+skeleton = NodePath("")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Cube"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Cube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n2117")
+
+[node name="Cube2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-4.20941e-08, 0, 0.51, 0, 2.042, 0, -0.963, 0, -2.22928e-08, -1.46334, 1.987, 11.941)
+material_override = ExtResource("11_5qs1c")
+mesh = ExtResource("11_oixcq")
+skeleton = NodePath("")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Cube2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Cube2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n2117")
+
+[node name="Cube6" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(0.963, 0, 0, 0, 2.042, 0, 0, 0, 0.51, -1.92675, 1.987, 3.49723)
+material_override = ExtResource("11_5qs1c")
+mesh = ExtResource("11_oixcq")
+skeleton = NodePath("")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Cube6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Cube6/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n2117")
+
+[node name="Cube3" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(3.976, 0, 0, 0, 2.077, 0, 0, 0, 0.517, -1.94342, 1.962, 2.48611)
+material_override = ExtResource("11_5qs1c")
+mesh = ExtResource("11_oixcq")
+skeleton = NodePath("")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Cube3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Cube3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n2117")
+
+[node name="Cube4" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(3.976, 0, 0, 0, 2.077, 0, 0, 0, 0.517, -1.94342, 1.962, -1.50726)
+material_override = ExtResource("11_5qs1c")
+mesh = ExtResource("11_oixcq")
+skeleton = NodePath("")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Cube4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Cube4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n2117")
+
+[node name="Cube5" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(3.976, 0, 0, 0, 2.077, 0, 0, 0, 0.517, -1.94342, 1.962, -5.50726)
+material_override = ExtResource("11_5qs1c")
+mesh = ExtResource("11_oixcq")
+skeleton = NodePath("")
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Cube5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Cube5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n2117")
+
+[node name="flourescentLight" parent="SetPieces" instance=ExtResource("17_knv8l")]
+transform = Transform3D(0.444387, 0, 0, 0, 0.6, 0, 0, 0, 0.188458, 0.525721, 3.89954, 11.0086)
+
+[node name="flourescentLight2" parent="SetPieces" instance=ExtResource("17_knv8l")]
+transform = Transform3D(0.444387, 0, 0, 0, 0.6, 0, 0, 0, 0.188458, 0.525721, 3.89954, 5.61181)
+
+[node name="flourescentLight3" parent="SetPieces" instance=ExtResource("17_knv8l")]
+transform = Transform3D(-1.94248e-08, 0, 0.188458, 0, 0.6, 0, -0.444387, 0, -8.23774e-09, 3.97166, 3.89954, -0.656289)
+
 [node name="Destructables" type="Node3D" parent="."]
+
+[node name="Sink" parent="Destructables" instance=ExtResource("12_wirwd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.49154, 0.533714, 11.4058)
+
+[node name="Sink2" parent="Destructables" instance=ExtResource("12_wirwd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.514884, 0.533714, 11.4058)
+
+[node name="Sink3" parent="Destructables" instance=ExtResource("12_wirwd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.469724, 0.533714, 11.4058)
+
+[node name="Mirror" parent="Destructables" instance=ExtResource("15_j6iji")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.481659, 2.05749, 11.906)
+
+[node name="StallDoor" parent="Destructables" instance=ExtResource("15_ddcb6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.72548, 2.03068, 0.525353)
+
+[node name="StallDoor2" parent="Destructables" instance=ExtResource("15_ddcb6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.72548, 2.03068, -3.46808)
+
+[node name="StallDoor3" parent="Destructables" instance=ExtResource("15_ddcb6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.72548, 2.03068, -7.2346)
+
+[node name="TrashCanB" parent="Destructables" instance=ExtResource("17_637jl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.24082, 0.230887, 10.571)
+
+[node name="FireExtinguisher" parent="Destructables" instance=ExtResource("20_ismi3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.2553, 1.56216, 8.79374)
+
+[node name="Toilet" parent="Destructables" instance=ExtResource("19_pfe7r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.776773, 0.424075, 0.472603)
+
+[node name="Toilet2" parent="Destructables" instance=ExtResource("19_pfe7r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.776773, 0.424075, -3.59499)
+
+[node name="Toilet3" parent="Destructables" instance=ExtResource("19_pfe7r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.776773, 0.424075, -7.19777)
 
 [node name="Events" type="Node3D" parent="."]
 
@@ -151,5 +317,22 @@ mesh = SubResource("QuadMesh_a1c6s")
 [node name="BlankEnv" parent="." instance=ExtResource("6_klplo")]
 
 [node name="Door" parent="." instance=ExtResource("9_24lut")]
-transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 3.06876, 0.673294, 8.53276)
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 5.52961, 0.673294, 8.53276)
 targetRoom = "res://Scenes/Lobby.tscn"
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68677, 2.10136, 1.77603)
+size = Vector3(11.2339, 5.1857, 21.559)
+interior = true
+enable_shadows = true
+
+[node name="GoldenCat" parent="." instance=ExtResource("21_2h4b3")]
+transform = Transform3D(0.609841, 0, 0.792524, 0, 1, 0, -0.792524, 0, 0.609841, -0.739659, 0, -8.16523)
+
+[node name="EntitySpawner" parent="." instance=ExtResource("24_wjttw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692302, 0.896095, 0.504184)
+entityPath = "res://Prefabs/Items/Key.tscn"
+spawnForce = Vector3(2, 6, 0)
+
+[connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="spawn"]
+[connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="delete"]
