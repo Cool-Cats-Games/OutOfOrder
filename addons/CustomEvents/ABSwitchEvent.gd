@@ -30,8 +30,9 @@ func trigger(by = null):
 		trigger_toggle(by)
 
 func trigger_toggle(by = null):
-	var e = get_node(A_Event if toggle == Switch.A else B_Event)
-	if is_instance_valid(e):
-		e.trigger(by)
+	if not A_Event.is_empty() and not B_Event.is_empty():
+		var e = get_node(A_Event if toggle == Switch.A else B_Event)
+		if is_instance_valid(e):
+			e.trigger(by)
 	(A_event_triggered if toggle == Switch.A else B_event_triggered).emit()
 	previousToggle = toggle

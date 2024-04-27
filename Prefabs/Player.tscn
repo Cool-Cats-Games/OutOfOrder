@@ -132,7 +132,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ActiveHitbox:position")
+tracks/2/path = NodePath("LightAtkHitbox:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -144,7 +144,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ActiveHitbox:monitoring")
+tracks/3/path = NodePath("LightAtkHitbox:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -197,7 +197,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ActiveHitbox:position")
+tracks/2/path = NodePath("LightAtkHitbox:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -209,7 +209,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ActiveHitbox:monitoring")
+tracks/3/path = NodePath("LightAtkHitbox:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -260,7 +260,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ActiveHitbox:position")
+tracks/2/path = NodePath("LightAtkHitbox:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -272,7 +272,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ActiveHitbox:monitoring")
+tracks/3/path = NodePath("LightAtkHitbox:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -408,7 +408,7 @@ transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-0
 [node name="Wheel5" parent="WheelAssem/WheelContainer" instance=ExtResource("10_wk4b8")]
 transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, 0.368147, 0, 0.334728)
 
-[node name="ActiveHitbox" type="Area3D" parent="."]
+[node name="LightAtkHitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.919909)
 collision_layer = 8
 collision_mask = 132
@@ -416,7 +416,18 @@ monitoring = false
 script = ExtResource("11_x3o7n")
 attackType = "light_attack"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ActiveHitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightAtkHitbox"]
+shape = SubResource("SphereShape3D_v5pse")
+
+[node name="RamHitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.919909)
+collision_layer = 8
+collision_mask = 132
+monitoring = false
+script = ExtResource("11_x3o7n")
+attackType = "ram_attack"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RamHitbox"]
 shape = SubResource("SphereShape3D_v5pse")
 
 [node name="SlamHitbox" type="Area3D" parent="."]
@@ -541,6 +552,7 @@ target_position = Vector3(0, -40, 0)
 [connection signal="state_exited" from="StateMachine/Hover" to="sfx_squirting" method="stop"]
 [connection signal="state_entered" from="StateMachine/LightAttack" to="sfx_attack_swish" method="play_random"]
 [connection signal="timeout" from="StateMachine/SlamLag/Timer" to="StateMachine" method="transition_to" binds= ["Idle"]]
-[connection signal="body_entered" from="ActiveHitbox" to="ActiveHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="LightAtkHitbox" to="LightAtkHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="RamHitbox" to="RamHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="SlamHitbox" to="SlamHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

@@ -261,7 +261,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09119, 3.61514, 1.10841)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42378, 2.12758, -10.0553)
 entityPath = "res://Prefabs/SimpleNPC.tscn"
 spawnLoop = true
-spawnTimer = 10.0
+spawnTimer = 3.0
 timerOnReady = true
 
 [node name="GreaseTrapSpawner" parent="." instance=ExtResource("13_qwgik")]

@@ -334,5 +334,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692302, 0.896095, 0.504184
 entityPath = "res://Prefabs/Items/Key.tscn"
 spawnForce = Vector3(2, 6, 0)
 
-[connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="delete"]
 [connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="spawn"]
+[connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="delete"]

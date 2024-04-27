@@ -88,7 +88,7 @@ func take_damage(dmg, dir, hitbox):
 	super.take_damage(dmg, dir, hitbox)
 	if hp <= 0:
 		get_tree().call_group("EnemyDeathSubscribers", "on_enemy_death", self)
-	set_state("Hurt")
+	set_state("Hurt", {"dmg":dmg, "dir":dir, "hitbox":hitbox})
 
 func walk_to(point):
 	set_state("WalkTo", {"points": [point]})
