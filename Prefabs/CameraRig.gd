@@ -35,8 +35,8 @@ func _process(delta):
 	$A/B/Camera.position = $A/B/Camera.position.lerp(Vector3.ZERO, 0.1)
 	pass
 
-func shake():
-	$A/B/Camera.position += Vector3(randf_range(-0.5,0.5),randf_range(-0.5,0.5),randf_range(-0.5,0.5))
+func shake(ratio = 1.0):
+	$A/B/Camera.position += Vector3(randf_range(-0.5,0.5),randf_range(-0.5,0.5),randf_range(-0.5,0.5)) * ratio
 
 func set_fov(_fov):
 	fov = _fov

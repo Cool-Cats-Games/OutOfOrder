@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ddbpdjor6vt4"]
+[gd_scene load_steps=71 format=3 uid="uid://ddbpdjor6vt4"]
 
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="1_il8ik"]
 [ext_resource type="Texture2D" uid="uid://swy4t206iiwn" path="res://Sprites/axis.png" id="2_5e81f"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Prefabs/ActiveHitbox.gd" id="11_x3o7n"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/PlayerSlamLag.gd" id="12_p64vh"]
 [ext_resource type="AudioStream" uid="uid://bn6todtab3jhs" path="res://Sounds/playersfx/sfx_player_move.wav" id="13_5a6o6"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/Player_special_GatlingSmorgas.gd" id="13_fo217"]
 [ext_resource type="AudioStream" uid="uid://c5thmdagiocc7" path="res://Sounds/playersfx/sfx_player_squirt.wav" id="14_1qple"]
 [ext_resource type="AudioStream" uid="uid://cmr51uksnbx8x" path="res://Sounds/playersfx/sfx_player_jump.wav" id="14_02cv3"]
 [ext_resource type="AudioStream" uid="uid://dm7whqywcx5c8" path="res://Sounds/playersfx/sfx_player_start_moving.wav" id="14_6uaxm"]
@@ -42,6 +43,8 @@
 [ext_resource type="AudioStream" uid="uid://8ya4xq1cbt2m" path="res://Sounds/playersfx/sfx_player_bonk4.wav" id="33_2y5ug"]
 [ext_resource type="AudioStream" uid="uid://dv5wnayfna60b" path="res://Sounds/playersfx/sfx_attack_swish_3.wav" id="33_755jb"]
 [ext_resource type="Texture2D" uid="uid://67icdevfav01" path="res://Sprites/Fist_x64.png" id="37_qigc7"]
+[ext_resource type="Texture2D" uid="uid://nsey6oofh38j" path="res://Models/Misc/fist_fist.png" id="43_ujki1"]
+[ext_resource type="ArrayMesh" uid="uid://betiugugthqik" path="res://Models/MeshInstances/fist_mesh.tres" id="44_swg1p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yvyf2"]
 bounce = 1.0
@@ -97,6 +100,9 @@ shadow_mesh = SubResource("ArrayMesh_yen11")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v5pse"]
 radius = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5ffmh"]
+radius = 1.4602
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3bdt3"]
 radius = 1.5
@@ -301,6 +307,67 @@ _data = {
 "RESET": SubResource("Animation_0riq4")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e1y2"]
+resource_name = "material_fist"
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("43_ujki1")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="Curve" id="Curve_rufn6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0784314, 1), 0.0, 0.0, 0, 0, Vector2(0.360784, 1), 0.0, 0.0, 0, 0, Vector2(0.462745, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_uotsl"]
+curve = SubResource("Curve_rufn6")
+
+[sub_resource type="Curve" id="Curve_38a4u"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.403922, -0.0425532), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_yecsv"]
+curve_z = SubResource("Curve_38a4u")
+
+[sub_resource type="Curve" id="Curve_a2rqq"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 15.1915, 0, 0, Vector2(0.0196078, 1.11702), 0.0, 0.0, 0, 0, Vector2(0.0627451, 3), 0.290652, 0.290652, 0, 0, Vector2(0.156863, 1.81915), 0.0, 0.0, 0, 0, Vector2(0.329412, 1.11702), 0.0, 0.0, 0, 0, Vector2(0.839216, 1.05319), -3.25532, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_70obu"]
+curve = SubResource("Curve_a2rqq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_njvdp"]
+emission_shape_offset = Vector3(1, 0, 0)
+emission_shape_scale = Vector3(0.5, 1, 0.01)
+emission_shape = 3
+emission_box_extents = Vector3(1.575, 1, 1)
+angle_min = -20.5
+direction = Vector3(0, 0, 1)
+directional_velocity_min = 30.0
+directional_velocity_max = 30.0
+directional_velocity_curve = SubResource("CurveXYZTexture_yecsv")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_over_velocity_curve = SubResource("CurveTexture_70obu")
+alpha_curve = SubResource("CurveTexture_uotsl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v82ph"]
+emission_shape_offset = Vector3(0.56, 0, 0)
+emission_shape_scale = Vector3(1, 1, 0.01)
+emission_shape = 3
+emission_box_extents = Vector3(0.465, 1, 1)
+angle_min = -20.5
+direction = Vector3(0, 0, 1)
+directional_velocity_min = 30.0
+directional_velocity_max = 30.0
+directional_velocity_curve = SubResource("CurveXYZTexture_yecsv")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_over_velocity_curve = SubResource("CurveTexture_70obu")
+alpha_curve = SubResource("CurveTexture_uotsl")
+
 [node name="Player" type="RigidBody3D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 65
@@ -384,6 +451,9 @@ script = ExtResource("12_p64vh")
 wait_time = 0.6
 one_shot = true
 
+[node name="GatlingSmorgas" type="Node" parent="StateMachine"]
+script = ExtResource("13_fo217")
+
 [node name="WheelAssem" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282962, 0)
 script = ExtResource("9_ufuem")
@@ -418,6 +488,18 @@ attackType = "light_attack"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightAtkHitbox"]
 shape = SubResource("SphereShape3D_v5pse")
+
+[node name="GatlingHitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.919909)
+collision_layer = 8
+collision_mask = 132
+monitoring = false
+script = ExtResource("11_x3o7n")
+attackType = "gatling_smorgas"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GatlingHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.769764)
+shape = SubResource("SphereShape3D_5ffmh")
 
 [node name="RamHitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.919909)
@@ -497,6 +579,7 @@ sfx = Array[AudioStream]([ExtResource("16_ro864"), ExtResource("17_3sl3u"), ExtR
 
 [node name="sfx_hit_ram" type="AudioStreamPlayer3D" parent="."]
 volume_db = -3.0
+max_polyphony = 7
 bus = &"SFX"
 script = ExtResource("15_kwguw")
 sfx = Array[AudioStream]([ExtResource("26_f6ou5"), ExtResource("27_gpn6c"), ExtResource("28_3uqam"), ExtResource("29_rdoil")])
@@ -539,6 +622,26 @@ one_shot = true
 
 [node name="LongCast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -40, 0)
+
+[node name="GatlingSmorgasR" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.959771, -0.280784, -8.39058e-08, -0.280784, 0.959771, -2.45469e-08, 8.74228e-08, 0, -1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0e1y2")
+emitting = false
+lifetime = 0.5
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_njvdp")
+draw_pass_1 = ExtResource("44_swg1p")
+
+[node name="GatlingSmorgasL" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.982823, 0.184552, -1.48402e-07, -0.184552, 0.982823, 2.78665e-08, -1.50996e-07, 0, -1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0e1y2")
+emitting = false
+lifetime = 0.5
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_v82ph")
+draw_pass_1 = ExtResource("44_swg1p")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="state_entered" from="StateMachine/Move" to="sfx_movement" method="play"]

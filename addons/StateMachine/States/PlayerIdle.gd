@@ -20,6 +20,8 @@ func update(_delta: float) -> void:
 			state_machine.transition_to("Jump")
 		else:
 			state_machine.transition_to("Hover")
+	if Input.is_action_just_pressed("grab"):
+		state_machine.transition_to("GatlingSmorgas")
 	if Input.is_action_just_pressed("shoot") and actor.cream > 0.0:
 		state_machine.transition_to("Creaming")
 	if Input.is_action_just_pressed("light_attack"):
