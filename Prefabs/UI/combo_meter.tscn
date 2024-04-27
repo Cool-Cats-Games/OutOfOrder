@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5h32u1t8w6k8"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/ComboMeter.gd" id="1_bj5if"]
+[ext_resource type="Script" path="res://Prefabs/UI/TweenList.gd" id="2_xuh4k"]
+
+[node name="ComboMeter" type="Control"]
+layout_mode = 3
+anchor_left = 0.742708
+anchor_right = 1.0
+anchor_bottom = 0.362963
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bj5if")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextTweenList" type="Node2D" parent="."]
+position = Vector2(0, 128)
+script = ExtResource("2_xuh4k")
+
+[node name="Template" type="Node2D" parent="TextTweenList"]
+visible = false
+
+[node name="Description" type="RichTextLabel" parent="TextTweenList/Template"]
+offset_left = -4.0
+offset_right = 168.0
+offset_bottom = 23.0
+bbcode_enabled = true
+text = "KNUCKLE SANDWICH"
+
+[node name="Score" type="RichTextLabel" parent="TextTweenList/Template"]
+offset_left = 171.0
+offset_right = 230.0
+offset_bottom = 23.0
+bbcode_enabled = true
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="Count" type="RichTextLabel" parent="TextTweenList/Template"]
+offset_left = 199.0
+offset_right = 239.0
+offset_bottom = 23.0
+bbcode_enabled = true
+text = "[right]x1[/right]"
+
+[node name="ComboTitle" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 241.0
+offset_bottom = 61.0
+bbcode_enabled = true
+text = "[center]COMBO MEAL![/center]"
+
+[node name="Score" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_top = 56.0
+offset_right = 241.0
+offset_bottom = 82.0
+bbcode_enabled = true
+text = "[center]0[/center]"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 87.0
+offset_right = 241.0
+offset_bottom = 114.0
+show_percentage = false

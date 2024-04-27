@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b41d2p7xoir23"]
+
+[ext_resource type="Script" path="res://Prefabs/combo_manager.gd" id="1_3lpqu"]
+
+[node name="ComboManager" type="Node"]
+script = ExtResource("1_3lpqu")

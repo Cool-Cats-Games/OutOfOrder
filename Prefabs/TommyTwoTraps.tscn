@@ -309,6 +309,7 @@ _data = {
 collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_f0alc")
 script = ExtResource("1_afmv6")
+entity_type = "tommytwotraps"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0673828, 0.209473, 0.0301514)

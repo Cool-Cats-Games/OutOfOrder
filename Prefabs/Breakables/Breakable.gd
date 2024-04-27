@@ -4,7 +4,15 @@ extends RigidBody3D
 @export var squibs : Array[Resource]
 @export var breaksfx : Array[AudioStream]
 
+var entity_type = "breakable"
+signal entity_died
+
+func _ready():
+	if has_node("/root/ComboManager") != null:
+		self.connect("entity_died",$"/root/ComboManager".on_combat_event)
+
 func smash():
+  entity_died.emit("died_"+entity_type)
 	queue_free()
 	Utils.play_sound_at(breaksfx, get_tree(), global_position, -3.0)
 	if squibs.size() > 0:
