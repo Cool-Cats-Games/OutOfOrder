@@ -6,6 +6,7 @@ func enter(_msg := {}) -> void:
 	super.enter(_msg)
 	actor.maxSpeed = 6.4
 	fleeingFromPoint = _msg["from"]
+	actor.play_animation("Flee")
 
 func physics_update(_delta: float) -> void:
 	var dir = fleeingFromPoint.direction_to(actor.global_position)

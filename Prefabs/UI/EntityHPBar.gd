@@ -10,7 +10,7 @@ var fadeOffset = 1.0
 func _ready():
 	$Fill.modulate = Color(1,1,1,0.0)
 
-func _process(delta):
+func _process(_delta):
 	$Fill.modulate = Color(1,1,1,1)
 	#$Fill.scale.x = lerp($Fill.scale.x, percent, 0.1)
 	global_position = get_parent().global_position + initialPos

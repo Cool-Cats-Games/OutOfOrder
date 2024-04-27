@@ -1,9 +1,15 @@
 extends RigidBody3D
 
+signal combat_event
+
+var cnormal = Vector3()
 var launchForce = 66.0
 var splatterRef
 var source
-var cnormal = Vector3()
+
+func _ready():
+	if has_node("/root/ComboManager") != null:
+		self.connect("combat_event",$"/root/ComboManager".on_combat_event)
 
 func launch(dir, fbasis, _splatterRef, _source, multiplier = 1.0):
 	look_at(fbasis)
@@ -20,6 +26,8 @@ func _on_area_3d_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(2,global_position.direction_to(body.global_position), self)
 	if not body.get_collision_layer_value(8):
+		#register hit
+		combat_event.emit("ice_cream")
 		#spawn splash effect
 		splatterRef.global_position = global_position
 		splatterRef.global_transform = splatterRef.global_transform.looking_at(cnormal)

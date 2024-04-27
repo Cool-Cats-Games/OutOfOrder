@@ -1,11 +1,16 @@
 extends State
 
+signal combat_event
 
 var ipVis = null
 var initialRH
 var initialCT
 
 var startingHover
+
+func _ready():
+	if has_node("/root/ComboManager") != null:
+		self.connect("combat_event",$"/root/ComboManager".on_combat_event)
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
@@ -57,5 +62,8 @@ func physics_update(_delta: float) -> void:
 		var e = $"../../IceCreamHoverCast".get_collider()
 		if e.has_method("take_damage"):
 			e.take_damage(2, actor.global_position.direction_to(e.global_position), actor)
+			if not e.get_collision_layer_value(8):
+				combat_event.emit("hover_attack")
+				pass
 	pass
 

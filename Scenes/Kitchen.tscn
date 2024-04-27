@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ckdf1aol8rna0"]
+[gd_scene load_steps=25 format=3 uid="uid://ckdf1aol8rna0"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_4ceqc"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_kvr6w"]
@@ -15,6 +15,7 @@
 [ext_resource type="Material" uid="uid://br8xxpc4hd2y3" path="res://Materials/material_tileWall.tres" id="12_h2uk8"]
 [ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="13_krr7i"]
 [ext_resource type="PackedScene" uid="uid://dnlddpqxw01vu" path="res://Prefabs/Objects/FlourescentLight.tscn" id="15_3iuva"]
+[ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="16_iw31e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c4ed"]
 albedo_color = Color(0.745407, 0.630015, 0.637592, 1)
@@ -200,7 +201,7 @@ metadata/_edit_group_ = true
 shape = SubResource("ConcavePolygonShape3D_vaqal")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-2.029, 0, -1.50996e-07, 0, 3.006, 0, 3.0637e-07, 0, -1, -0.170374, 1.462, 12.639)
+transform = Transform3D(-2.029, 0, -1.50996e-07, 0, 3.006, 0, 3.0637e-07, 0, -1, 0.0328571, 1.462, 12.639)
 material_override = ExtResource("10_u6lu4")
 mesh = SubResource("QuadMesh_k8aq2")
 
@@ -213,13 +214,13 @@ mesh = SubResource("QuadMesh_k8aq2")
 [node name="BlankEnv" parent="." instance=ExtResource("6_voep8")]
 
 [node name="DorrwayCutout" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.68637e-08, 0, 1.98721, 0, 1.98721, 0, -1.98721, 0, -8.68637e-08, -0.179842, 1.94146, 13.2315)
+transform = Transform3D(-8.68637e-08, 0, 1.98721, 0, 1.98721, 0, -1.98721, 0, -8.68637e-08, 0.0233891, 1.94146, 13.2315)
 material_override = ExtResource("12_h2uk8")
 mesh = SubResource("ArrayMesh_xrxlc")
 skeleton = NodePath("")
 
 [node name="C" parent="." instance=ExtResource("13_krr7i")]
-transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, -0.0809075, 0.729436, 9.99479)
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0.0166009, 0.729436, 9.99479)
 targetRoom = "res://Scenes/Lobby.tscn"
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
@@ -233,3 +234,6 @@ transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 
 
 [node name="flourescentLight2" parent="." instance=ExtResource("15_3iuva")]
 transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -4.43626, 3.86669, 8.43664)
+
+[node name="TommyTwoTraps" parent="." instance=ExtResource("16_iw31e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63973, 1.58401, -7.725)

@@ -17,3 +17,6 @@ func exit():
 
 func on_alert_done(anim_name):
 	state_machine.transition_to("Flee", {"from": pointOfAlert})
+
+func test_exit(target_state_name) -> bool:
+	return target_state_name != "Alert"

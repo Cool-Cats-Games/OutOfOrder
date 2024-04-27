@@ -1,12 +1,14 @@
 extends State
 
+@onready var hitbox = $"../../LightAtkHitbox"
+
 var attackState = 0
 
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
 	var s = str(1 + attackState)
-	$"../../ActiveHitbox".damage_calculation = $"../../ActiveHitbox".set_damage
+	hitbox.damage_calculation = hitbox.set_damage
 	$"../../AnimationPlayer".play("LightAttack" + s)
 	$"../../AnimationPlayer".animation_finished.connect(attack_finished)
 	actor.get_character_model().apply_torque(Vector3(0,-100 if attackState == 0 else 100,00))
@@ -20,4 +22,4 @@ func exit():
 	super.exit()
 	$"../../AnimationPlayer".animation_finished.disconnect(attack_finished)
 	$"../../FistRig/Fist".modulate.a = 0.0
-	$"../../ActiveHitbox".monitoring = false
+	hitbox.monitoring = false

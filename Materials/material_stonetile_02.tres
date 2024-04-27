@@ -10,3 +10,5 @@ uv1_scale = Vector3(0.625, 0.625, 0.625)
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

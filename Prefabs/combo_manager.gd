@@ -52,9 +52,11 @@ func create_info_dict():
 var actionsDictionary = { #Keeps track of actions, their display name, and how much score they're worth
 	"light_attack":["Knuckle Sandwich",100],
 	"heavy_attack":["The Walloper",200],
+	"ram_attack":["Blizzard Blitz", 200],
 	"died_breakable":["Mayohem",50],
 	"slam_attack":["The 300-Pounder",400],
 	"ice_cream":["Cold Shoulder",100],
 	"died_tommytwotraps":["Fryer Fried",3000],
-	"died_generic":["Foe Flattened",1000]
+	"died_generic":["Foe Flattened",1000],
+	"hover_attack":["Drip Zone", 100]
 }

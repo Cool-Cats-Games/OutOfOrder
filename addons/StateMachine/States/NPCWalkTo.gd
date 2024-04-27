@@ -9,6 +9,7 @@ var points = []
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
 	points = _msg.points
+	actor.play_animation("Walk")
 
 
 # Virtual function. Corresponds to the `_physics_process()` callback.
