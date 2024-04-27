@@ -7,12 +7,10 @@ var maxHP
 signal entity_died
 
 func _ready():
-	if has_node("/root/ComboManager") != null:
-		self.connect("entity_died",$"/root/ComboManager".on_combat_event)
-
-func _ready():
 	maxHP = hp
 	$EntityHPBar.fadeOffset = 1.0
+	if has_node("/root/ComboManager") != null:
+		self.connect("entity_died",$"/root/ComboManager".on_combat_event)
 
 func take_damage(dmg, dir, hitbox):
 	hp -= dmg

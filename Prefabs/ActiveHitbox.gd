@@ -12,14 +12,13 @@ func _ready():
 		self.connect("combat_event",$"/root/ComboManager".on_combat_event)
 
 func _on_body_entered(body):
-	body.take_damage(damage_calculation.call(body), get_parent().global_transform.basis.z)
+	body.take_damage(damage_calculation.call(body), get_parent().global_transform.basis.z,self)
 	combat_event.emit(attackType) #Notify the ComboManager that a combo event occurred
 	get_tree().call_group("MainCamera", "shake")
 	var he = hitEffectResource.instantiate()
 	get_parent().get_parent().add_child(he)
 	he.position = global_position.lerp(body.global_position, 0.5)
 	$"../sfx_hit_ram".play_random()
-
 
 func velocity_damage(body):
 	if not "linear_velocity" in body:

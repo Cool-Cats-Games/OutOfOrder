@@ -12,7 +12,7 @@ func _ready():
 		self.connect("entity_died",$"/root/ComboManager".on_combat_event)
 
 func smash():
-  entity_died.emit("died_"+entity_type)
+	entity_died.emit("died_"+entity_type)
 	queue_free()
 	Utils.play_sound_at(breaksfx, get_tree(), global_position, -3.0)
 	if squibs.size() > 0:
