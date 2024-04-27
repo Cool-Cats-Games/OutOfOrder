@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Settings="*res://Data/Settings.gd"
 Utils="*res://System/Utils.gd"
+ComboManager="*res://Prefabs/combo_manager.gd"
 
 [display]
 

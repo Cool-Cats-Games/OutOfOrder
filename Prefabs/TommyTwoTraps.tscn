@@ -281,6 +281,7 @@ bind/8/pose = Transform3D(1, -2.38384e-07, -4.08073e-09, -1.55431e-14, 0.0171158
 collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_f0alc")
 script = ExtResource("1_afmv6")
+entity_type = "tommytwotraps"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0673828, 0.209473, 0.0301514)

@@ -408,6 +408,7 @@ collision_layer = 8
 collision_mask = 4
 monitoring = false
 script = ExtResource("11_x3o7n")
+attackType = "light_attack"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActiveHitbox"]
 shape = SubResource("SphereShape3D_v5pse")
@@ -417,6 +418,7 @@ collision_layer = 8
 collision_mask = 4
 monitoring = false
 script = ExtResource("11_x3o7n")
+attackType = "slam_attack"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SlamHitbox"]
 shape = SubResource("SphereShape3D_3bdt3")

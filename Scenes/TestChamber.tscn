@@ -258,9 +258,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 2)
 
 [node name="SimpleEnemy" parent="." instance=ExtResource("15_b1e8c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.78553, 2.15716, 15.9153)
+entity_type = "generic"
 
 [node name="TommyTwoTraps" parent="." instance=ExtResource("16_xipuv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89986, 2.4617, 2.81948)
 
 [node name="Grill" parent="." instance=ExtResource("17_k0iob")]
 transform = Transform3D(0.346199, 0, 0.938161, 0, 1, 0, -0.938161, 0, 0.346199, 6.04472, 1.29506, -2.43047)
+entity_type = "generic"
