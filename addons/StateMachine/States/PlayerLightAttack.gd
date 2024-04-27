@@ -18,5 +18,6 @@ func attack_finished(anim_name):
 
 func exit():
 	super.exit()
+	$"../../AnimationPlayer".animation_finished.disconnect(attack_finished)
 	$"../../FistRig/Fist".modulate.a = 0.0
 	$"../../ActiveHitbox".monitoring = false

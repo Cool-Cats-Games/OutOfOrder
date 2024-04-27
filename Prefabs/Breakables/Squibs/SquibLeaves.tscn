@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnxgk7lghv3sr"]
+
+[ext_resource type="Texture2D" uid="uid://rn3cew0vplj7" path="res://Sprites/leaf_01.png" id="1_onb3b"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5kdb"]
+bounce = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_umeic"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5srcp"]
+angle_min = -225.5
+angle_max = 144.5
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 6.75
+gravity = Vector3(0, -5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s813d"]
+transparency = 1
+albedo_texture = ExtResource("1_onb3b")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ba8ck"]
+material = SubResource("StandardMaterial3D_s813d")
+
+[node name="Squib_Leaves" type="RigidBody3D"]
+collision_layer = 32
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_u5kdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_umeic")
+
+[node name="TTL" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5srcp")
+draw_pass_1 = SubResource("QuadMesh_ba8ck")
+
+[connection signal="timeout" from="TTL" to="." method="queue_free"]
+[connection signal="ready" from="GPUParticles3D" to="GPUParticles3D" method="set_emitting" binds= [true]]

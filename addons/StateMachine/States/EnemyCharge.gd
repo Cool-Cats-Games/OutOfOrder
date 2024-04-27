@@ -18,10 +18,12 @@ func enter(_msg := {}) -> void:
 	actor.localInputVector = Vector3.ZERO
 	timer.one_shot = oneShot
 	timer.start(waitTime)
-	print($"../../TommyTwoTraps/AnimationPlayer".get_animation_list())
 	pass
 
 func physics_update(_delta: float) -> void:
+	if not is_instance_valid(target):
+		state_machine.transition_to("Idle")
+		return
 	var dir = actor.global_position.direction_to(target.global_position)
 	var gt = Transform3D()
 	gt = gt.translated(actor.global_position)

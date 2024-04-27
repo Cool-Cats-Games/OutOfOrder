@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5sy8d1bgfyrr"]
+
+[ext_resource type="PackedScene" uid="uid://butfo4pdyk3sn" path="res://Models/Squibs/Eyeball.dae" id="1_w0dvf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5kdb"]
+bounce = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k6eux"]
+radius = 0.157781
+
+[node name="SquibEyeball" type="RigidBody3D"]
+collision_layer = 32
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_u5kdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_k6eux")
+
+[node name="TTL" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Eyeball" parent="." instance=ExtResource("1_w0dvf")]
+
+[connection signal="timeout" from="TTL" to="." method="queue_free"]

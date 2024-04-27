@@ -20,7 +20,10 @@ func _on_body_entered(body):
 	he.position = global_position.lerp(body.global_position, 0.5)
 	$"../sfx_hit_ram".play_random()
 
+
 func velocity_damage(body):
+	if not "linear_velocity" in body:
+		return get_parent().linear_velocity
 	return (get_parent().linear_velocity - body.linear_velocity).length()
 
 func set_damage(body):

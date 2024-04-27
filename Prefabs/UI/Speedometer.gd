@@ -12,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player:
+	if is_instance_valid(player):
 		speed = player.speed
 	$SpeedometerNeedle.rotation = lerp($SpeedometerNeedle.rotation, deg_to_rad(lerp(-90,90, get_speed_percent())), 0.5)
 	$Label.text = str(get_speed_percent() * 100).left(3) + ".0"

@@ -1,14 +1,24 @@
 extends AudioStreamPlayer3D
 
 @export var sfx : Array[AudioStream]
+@export var playGlobal = false
 
 var freeOnFinish = true
 
-func play_random(from_position: float = 0.0):
-	stream = sfx.pick_random()
-	super.play(from_position)
+func _ready():
+	if autoplay:
+		play_random()
 
-func configure( _sfx, pos = Vector3.ZERO, vol = 0.0, pitch = 1.0, free_after_finish = true):
+func play_random(from_position: float = 0.0):
+	if sfx.size() == 0:
+		return
+	stream = sfx.pick_random()
+	if playGlobal:
+		Utils.play_sound_at(stream, get_tree(), global_position, volume_db, pitch_scale, freeOnFinish, attenuation_model)
+	else:
+		super.play(from_position)
+
+func configure( _sfx, pos = Vector3.ZERO, vol = 0.0, pitch = 1.0, free_after_finish = true, attentuationModel = 0):
 	if _sfx is AudioStream:
 		sfx = [_sfx]
 	if _sfx is Array:
@@ -16,6 +26,7 @@ func configure( _sfx, pos = Vector3.ZERO, vol = 0.0, pitch = 1.0, free_after_fin
 	position = pos
 	volume_db = vol
 	pitch_scale = pitch
+	attenuation_model = attentuationModel
 	freeOnFinish = free_after_finish
 
 

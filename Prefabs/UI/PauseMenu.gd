@@ -27,10 +27,10 @@ func _process(delta):
 	pass
 
 func quit_game():
-	#get_tree().quit()
+	get_tree().quit()
 	get_tree().paused = false
-	AudioManager.fade_out_music()
-	ModeManager.end_game(false)
+	#AudioManager.fade_out_music()
+
 	return_to_menu.call_deferred()
 	pass # Replace with function body.
 

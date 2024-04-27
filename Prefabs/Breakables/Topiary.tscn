@@ -1,0 +1,27 @@
+[gd_scene load_steps=9 format=3 uid="uid://ksjqspcx50oq"]
+
+[ext_resource type="Script" path="res://Prefabs/Breakables/Breakable.gd" id="1_wrsuv"]
+[ext_resource type="PackedScene" uid="uid://bb402qrap66w3" path="res://Prefabs/Breakables/Squibs/Squib_ChairLeg.tscn" id="2_lebko"]
+[ext_resource type="PackedScene" uid="uid://bnxgk7lghv3sr" path="res://Prefabs/Breakables/Squibs/SquibLeaves.tscn" id="3_1gnng"]
+[ext_resource type="PackedScene" uid="uid://dybgsrfaepe1h" path="res://Models/Objects/Topiary.dae" id="3_p2l0i"]
+[ext_resource type="PackedScene" uid="uid://eimoto5w8on4" path="res://Prefabs/Breakables/Squibs/ClayShard.tscn" id="4_3noej"]
+[ext_resource type="AudioStream" uid="uid://3wua72layxge" path="res://Sounds/sfx_topiary_break.wav" id="5_jd32x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_db8xv"]
+size = Vector3(1, 2.6084, 1)
+
+[node name="Topiary" type="RigidBody3D"]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_hsj2v")
+script = ExtResource("1_wrsuv")
+squibs = Array[Resource]([ExtResource("2_lebko"), ExtResource("3_1gnng"), ExtResource("4_3noej")])
+breaksfx = Array[AudioStream]([ExtResource("5_jd32x")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.804199, 0)
+shape = SubResource("BoxShape3D_db8xv")
+
+[node name="Topiary" parent="." instance=ExtResource("3_p2l0i")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, -0.423178, 0)

@@ -1,12 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://djb5d0t85d6yn"]
+[gd_scene load_steps=29 format=3 uid="uid://djb5d0t85d6yn"]
 
 [ext_resource type="Shader" path="res://Shaders/gridShader.gdshader" id="1_coq6j"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_wmcyt"]
 [ext_resource type="PackedScene" uid="uid://bkatl43sgnc2w" path="res://Prefabs/CharacterSpringbox.tscn" id="3_8ykxg"]
 [ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="4_54imy"]
 [ext_resource type="Material" uid="uid://cj2gw37rtkjm3" path="res://Materials/UnitMaterial_1x.tres" id="5_a0xp5"]
+[ext_resource type="PackedScene" uid="uid://djxklyob7v6gc" path="res://System/world_environment.tscn" id="5_i8jnx"]
 [ext_resource type="Texture2D" uid="uid://dsiyvte174xqs" path="res://Textures/misc/unit64x.png" id="5_wckn4"]
-[ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="6_j8r7y"]
 [ext_resource type="PackedScene" uid="uid://b0qbak3kyhqyn" path="res://Prefabs/Entity.tscn" id="7_ru5cl"]
 [ext_resource type="Script" path="res://Prefabs/Entity.gd" id="8_m236c"]
 [ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="9_d3ac0"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cslms2v84q4ki" path="res://Prefabs/SimpleEnemy.tscn" id="15_b1e8c"]
 [ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="16_xipuv"]
 [ext_resource type="PackedScene" uid="uid://cgvm3b0wsb1vx" path="res://Prefabs/Breakables/Grill.tscn" id="17_k0iob"]
+[ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="18_g3qg0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6fk7"]
 render_priority = 0
@@ -45,30 +46,6 @@ shader_parameter/in_dashed_count_y = 6.0
 [sub_resource type="BoxMesh" id="BoxMesh_fnrto"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xje42"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sa04w"]
-sky_top_color = Color(0.545098, 0.345098, 0.686275, 1)
-sky_horizon_color = Color(0.815686, 0.721569, 0.47451, 1)
-sky_energy_multiplier = 2.0
-ground_bottom_color = Color(0.262745, 0.266667, 0.32549, 1)
-ground_horizon_color = Color(0.780392, 0.686275, 0.592157, 1)
-ground_curve = 0.022974
-ground_energy_multiplier = 2.0
-
-[sub_resource type="Sky" id="Sky_r8onm"]
-sky_material = SubResource("ProceduralSkyMaterial_sa04w")
-
-[sub_resource type="Environment" id="Environment_7dd3f"]
-background_mode = 2
-sky = SubResource("Sky_r8onm")
-ambient_light_source = 3
-ambient_light_color = Color(0.501961, 0.501961, 0.501961, 1)
-ambient_light_energy = 2.0
-fog_enabled = true
-fog_light_color = Color(0.478431, 0.545098, 0.729412, 1)
-fog_light_energy = 0.5
-fog_density = 0.0135
-fog_sky_affect = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_0drap"]
 
@@ -118,8 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45946, 0)
 [node name="CameraRig" parent="." instance=ExtResource("4_54imy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18841, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_7dd3f")
+[node name="WorldEnvironment" parent="." instance=ExtResource("5_i8jnx")]
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8808, 0.539991, -0.00123149)
@@ -190,8 +166,6 @@ mesh = SubResource("BoxMesh_0drap")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube6/StaticBody3D"]
 shape = SubResource("BoxShape3D_ryug1")
-
-[node name="HUD" parent="." instance=ExtResource("6_j8r7y")]
 
 [node name="Entity" parent="." instance=ExtResource("7_ru5cl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02106, 1.31307, 7.61808)
@@ -266,3 +240,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89986, 2.4617, 2.81948)
 [node name="Grill" parent="." instance=ExtResource("17_k0iob")]
 transform = Transform3D(0.346199, 0, 0.938161, 0, 1, 0, -0.938161, 0, 0.346199, 6.04472, 1.29506, -2.43047)
 entity_type = "generic"
+
+[node name="EntitySpawner" parent="." instance=ExtResource("18_g3qg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1893, 3.04259, 0.938191)
+radius = 20.0
+entityPath = "res://Prefabs/TommyTwoTraps.tscn"
+spawnLoop = true
+spawnTimer = 5.0
+timerOnReady = true

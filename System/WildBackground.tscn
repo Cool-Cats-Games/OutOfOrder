@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://crxnowiei4wne"]
+
+[ext_resource type="Shader" path="res://Shaders/ScrollTexture.gdshader" id="1_6sg8h"]
+[ext_resource type="Texture2D" uid="uid://c8k7nisgsxf2m" path="res://Textures/PixelPatterns/pattern_16.png" id="2_edsff"]
+[ext_resource type="Script" path="res://Sprites/RandomPattern.gd" id="3_31etd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_olpnd"]
+shader = ExtResource("1_6sg8h")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/uvScale = 1.0
+shader_parameter/colorMod = Vector4(0.33, 0.36, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2152t"]
+shader = ExtResource("1_6sg8h")
+shader_parameter/scroll_speed = -0.03
+shader_parameter/uvScale = 0.6
+shader_parameter/colorMod = Vector4(0.33, 0.36, 0, 1)
+
+[node name="WildBackground" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 960.0
+offset_bottom = 544.0
+color = Color(0, 0, 0, 1)
+
+[node name="Icon2" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_olpnd")
+scale = Vector2(3.75, 2.125)
+texture = ExtResource("2_edsff")
+centered = false
+script = ExtResource("3_31etd")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_2152t")
+scale = Vector2(3.75, 2.125)
+texture = ExtResource("2_edsff")
+centered = false
+script = ExtResource("3_31etd")

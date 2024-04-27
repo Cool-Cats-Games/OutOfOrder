@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjxelnsgamg04"]
+[gd_scene load_steps=22 format=3 uid="uid://bjxelnsgamg04"]
 
 [ext_resource type="Texture2D" uid="uid://gsjqublly2ib" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0121.png" id="1_1hl55"]
 [ext_resource type="Script" path="res://Prefabs/UI/HUD.gd" id="1_hg23k"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://dergqs3rec8u4" path="res://icon.svg" id="14_tj3gj"]
 [ext_resource type="Script" path="res://Scenes/CreamOMeter.gd" id="15_bfg4m"]
 [ext_resource type="PackedScene" uid="uid://b5h32u1t8w6k8" path="res://Prefabs/UI/combo_meter.tscn" id="17_nq6np"]
+[ext_resource type="Script" path="res://Prefabs/UI/ChallengeContainer.gd" id="17_dnr66"]
+[ext_resource type="PackedScene" uid="uid://j3botqyooby4" path="res://Prefabs/UI/CollectableUI.tscn" id="18_jqchm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t0g4j"]
 shader = ExtResource("11_4p14g")
@@ -109,3 +111,9 @@ position = Vector2(34, 15)
 scale = Vector2(0.85, 0.85)
 
 [node name="ComboMeter" parent="." instance=ExtResource("17_nq6np")]
+[node name="ChallengeContainer" type="Node2D" parent="." groups=["ChallengeEmblems"]]
+position = Vector2(204, 53)
+script = ExtResource("17_dnr66")
+
+[node name="CollectableUI" parent="." instance=ExtResource("18_jqchm")]
+position = Vector2(478, 590)

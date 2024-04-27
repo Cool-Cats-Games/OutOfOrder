@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2svae8ucoc53"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/Challenge.gd" id="1_ymy03"]
+
+[node name="Challenge" type="Node"]
+script = ExtResource("1_ymy03")

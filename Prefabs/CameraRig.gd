@@ -20,6 +20,8 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not is_instance_valid(target):
+		return
 	global_position.x = lerp(global_position.x, target.global_position.x, damp)
 	global_position.z = lerp(global_position.z, target.global_position.z, damp)
 	global_position.y = lerp(global_position.y, target.global_position.y, damp * 0.2)

@@ -54,11 +54,11 @@ func serialize_settings() -> Dictionary:
 
 func set_music_volume(val):
 	musicVolume = val
-	AudioServer.set_bus_volume_db(2, convert_to_decibels(val))
+	AudioServer.set_bus_volume_db(1, convert_to_decibels(val))
 
 func set_sfx_volume(val):
 	sfxVolume = val
-	AudioServer.set_bus_volume_db(1, convert_to_decibels(val))
+	AudioServer.set_bus_volume_db(2, convert_to_decibels(val))
 
 func set_fullscreen(state):
 	isFullscreen = state

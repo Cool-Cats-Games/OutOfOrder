@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://rumqhssfuncr"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_b7qb4"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="1_ltr50"]
+[ext_resource type="AudioStream" uid="uid://etxmn0v0bhpk" path="res://Sounds/sfx_sounds_pause5_in.wav" id="2_gubbb"]
+[ext_resource type="AudioStream" uid="uid://b6q2mbitsxbkl" path="res://Sounds/sfx_sounds_pause5_out.wav" id="3_3oi5j"]
+[ext_resource type="AudioStream" uid="uid://qlubxafxsoii" path="res://Sounds/UI/sfx_UI_Select_C.wav" id="4_n6ex8"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_b7qb4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1197.0
+offset_bottom = 673.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.802004, 0.802004)
+theme_override_constants/separation = 19
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_ltr50")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[center][wave]MAIN MENU[/wave][/center]"
+fit_content = true
+
+[node name="btn_NG" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_ltr50")
+theme_override_font_sizes/font_size = 64
+text = "NEW GAME
+"
+
+[node name="btn_Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_ltr50")
+theme_override_font_sizes/font_size = 64
+text = "QUIT"
+
+[node name="sfx_open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gubbb")
+volume_db = -8.0
+pitch_scale = 0.9
+autoplay = true
+bus = &"SFX"
+
+[node name="sfx_close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3oi5j")
+volume_db = -13.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="sfx_changeSelection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n6ex8")
+volume_db = -1.0
+mix_target = 2
+bus = &"SFX"
+
+[connection signal="focus_entered" from="VBoxContainer/btn_NG" to="sfx_changeSelection" method="play"]
+[connection signal="mouse_entered" from="VBoxContainer/btn_NG" to="sfx_changeSelection" method="play"]
+[connection signal="pressed" from="VBoxContainer/btn_NG" to="." method="_on_btn_ng_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/btn_Quit" to="sfx_changeSelection" method="play"]
+[connection signal="mouse_entered" from="VBoxContainer/btn_Quit" to="sfx_changeSelection" method="play"]
+[connection signal="pressed" from="VBoxContainer/btn_Quit" to="." method="_on_btn_quit_pressed"]

@@ -15,6 +15,7 @@ extends "res://Prefabs/Entity.gd"
 
 
 var facingPoint = Vector3.ZERO
+var isPatrolling = false
 var localInputVector = Vector3()
 var rideSpringScaler = 1.0
 var rotAng = 0.0
@@ -37,6 +38,10 @@ func correct_upright_force():
 	var rotAngle = goalQuaternion.get_angle()
 	var rotAxis = goalQuaternion.get_axis().normalized()
 	apply_torque((rotAxis * (rotAngle * uprightSpringStrength)) - (angular_velocity * uprightSpringDampener))
+
+func get_animation_controller():
+	#override with specific
+	pass
 
 func get_spring_force():
 	var vel = linear_velocity
@@ -78,3 +83,16 @@ func aggro_exit(body):
 
 func set_state(stateName, _msg = {}):
 	get_state_machine().transition_to(stateName, _msg)
+
+func take_damage(dmg, dir, hitbox):
+	super.take_damage(dmg, dir, hitbox)
+	if hp <= 0:
+		get_tree().call_group("EnemyDeathSubscribers", "on_enemy_death", self)
+	set_state("Hurt")
+
+func walk_to(point):
+	set_state("WalkTo", {"points": [point]})
+
+func follow_path(points):
+	print(points)
+	set_state("WalkTo", {"points": points})

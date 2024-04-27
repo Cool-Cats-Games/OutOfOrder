@@ -1,0 +1,107 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnlddpqxw01vu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm2dd"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3akv2"]
+resource_name = "material_light"
+cull_mode = 2
+albedo_color = Color(0.727761, 0.800063, 0.202183, 1)
+roughness = 0.0764706
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qkdyr"]
+_surfaces = [{
+"aabb": AABB(-3.31007, 0.000994801, -1.02656, 6.62014, 9.99996e-06, 2.05311),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 1, 0, 3, 0),
+"name": "material_light",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sh4b6"]
+resource_name = "Cube.001"
+_surfaces = [{
+"aabb": AABB(-3.31007, 0.000994801, -1.02656, 6.62014, 9.99996e-06, 2.05311),
+"attribute_data": PackedByteArray(255, 95, 255, 127, 255, 31, 255, 63, 255, 31, 255, 127, 255, 95, 255, 63),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 1, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_3akv2"),
+"name": "material_light",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 255, 255, 255, 191, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qkdyr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmkhx"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+roughness = 0.0764706
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8behk"]
+_surfaces = [{
+"aabb": AABB(-3.31007, 0.000994801, -1.02656, 6.62013, 0.17733, 2.05311),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 1, 0, 4, 0, 3, 0, 5, 0, 3, 0, 6, 0, 7, 0, 6, 0, 3, 0, 2, 0, 7, 0, 4, 0, 0, 0, 6, 0, 7, 0, 0, 0, 1, 0, 5, 0, 1, 0, 3, 0, 5, 0, 5, 0, 6, 0, 0, 0, 7, 0, 3, 0, 4, 0, 2, 0, 4, 0, 1, 0, 0, 0, 7, 0, 2, 0),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(79, 3, 251, 255, 79, 3, 0, 0, 175, 252, 251, 255, 175, 252, 0, 0, 175, 252, 251, 255, 79, 3, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 79, 3, 251, 255, 175, 252, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wvlqp"]
+resource_name = "Cube"
+_surfaces = [{
+"aabb": AABB(-3.31007, 0.000994801, -1.02656, 6.62013, 0.17733, 2.05311),
+"attribute_data": PackedByteArray(255, 223, 255, 127, 255, 159, 255, 63, 255, 159, 255, 127, 255, 159, 255, 63, 255, 95, 0, 0, 255, 95, 255, 63, 255, 159, 255, 255, 255, 95, 255, 191, 255, 95, 255, 255, 255, 95, 255, 127, 255, 31, 255, 63, 255, 31, 255, 127, 255, 159, 255, 127, 255, 95, 255, 63, 255, 95, 255, 127, 255, 159, 255, 191, 255, 95, 255, 127, 255, 95, 255, 191, 255, 223, 255, 63, 255, 159, 255, 63, 255, 159, 0, 0, 255, 95, 0, 0, 255, 159, 255, 191, 255, 95, 255, 63, 255, 159, 255, 63, 255, 159, 255, 191, 255, 159, 255, 127, 255, 95, 255, 127),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 0, 0, 1, 0, 18, 0, 19, 0, 21, 0, 20, 0, 6, 0, 7, 0, 22, 0, 9, 0, 10, 0, 23, 0, 12, 0, 13, 0, 24, 0, 25, 0, 27, 0, 26, 0),
+"material": SubResource("StandardMaterial3D_pmkhx"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray(79, 3, 251, 255, 79, 3, 255, 255, 175, 252, 251, 255, 175, 252, 255, 255, 175, 252, 251, 255, 79, 3, 255, 255, 175, 252, 251, 255, 175, 252, 74, 210, 0, 0, 0, 0, 255, 255, 74, 210, 255, 255, 0, 0, 255, 255, 74, 210, 79, 3, 251, 255, 175, 252, 6, 206, 0, 0, 0, 0, 0, 0, 135, 201, 0, 0, 0, 0, 255, 255, 85, 206, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 175, 252, 251, 255, 79, 3, 194, 227, 255, 255, 0, 0, 255, 255, 146, 221, 255, 255, 0, 0, 0, 0, 42, 228, 79, 3, 251, 255, 79, 3, 223, 250, 255, 255, 0, 0, 0, 0, 223, 250, 0, 0, 0, 0, 0, 0, 223, 250, 79, 3, 251, 255, 175, 252, 255, 255, 175, 252, 251, 255, 175, 252, 50, 174, 79, 3, 251, 255, 175, 252, 50, 174, 0, 0, 0, 0, 255, 255, 50, 174, 79, 3, 251, 255, 79, 3, 55, 201, 255, 255, 0, 0, 255, 255, 255, 191, 175, 252, 251, 255, 175, 252, 28, 221, 79, 3, 251, 255, 79, 3, 196, 252, 175, 252, 251, 255, 79, 3, 196, 252, 255, 255, 0, 0, 0, 0, 196, 252, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 127, 247, 92, 5, 127, 247, 92, 5, 127, 247, 92, 5, 72, 224, 19, 198, 111, 216, 104, 200, 196, 224, 238, 197, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 218, 45, 187, 32, 162, 51, 93, 28, 127, 45, 255, 32, 76, 204, 28, 176, 76, 204, 28, 176, 76, 204, 28, 176, 255, 127, 255, 191, 0, 248, 172, 12, 0, 248, 172, 12, 0, 248, 172, 12, 208, 215, 152, 200, 0, 0, 255, 127, 24, 52, 4, 28, 86, 175, 17, 203, 86, 175, 17, 203, 86, 175, 17, 203)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8behk")
+
+[node name="flourescentLight" type="Node3D"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="light" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00665813, 0)
+material_override = SubResource("StandardMaterial3D_vm2dd")
+mesh = SubResource("ArrayMesh_sh4b6")
+skeleton = NodePath("")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_wvlqp")
+skeleton = NodePath("")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 15.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+spot_range = 7.19886
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.73376, 0)
+omni_range = 10.0

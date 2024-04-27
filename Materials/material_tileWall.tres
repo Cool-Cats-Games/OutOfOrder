@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://br8xxpc4hd2y3"]
+
+[ext_resource type="Texture2D" uid="uid://bjnbkaqhxnvqo" path="res://Textures/wall_pattern_x128.png" id="1_m6f6c"]
+
+[resource]
+albedo_texture = ExtResource("1_m6f6c")
+metallic = 0.3
+roughness = 0.21
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
