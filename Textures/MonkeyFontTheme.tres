@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bt5kdmrwst66f"]
+
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="1_sqb11"]
+
+[resource]
+default_base_scale = 1.0
+default_font = ExtResource("1_sqb11")
+default_font_size = 28

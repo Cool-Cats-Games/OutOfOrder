@@ -3,7 +3,7 @@ extends Control
 var activeCombo = {} #Text:Text
 @onready var textTweenList = $TextTweenList
 @onready var decayBar = $ProgressBar
-@onready var scoreDisplay = $Score
+@onready var scoreDisplay = $TextTweenList/Total/Score
 
 func _ready():
 	self.visible=false
@@ -20,12 +20,12 @@ func update_combo(dict):
 	else:
 		self.visible=true
 	#Recieve the current combo as a dict, compare to the active combo
-	scoreDisplay.text = "[center]"+str(score)+"[/center]" #TODO replace with lerped incremental increase
+	scoreDisplay.text = str(score) #TODO replace with lerped incremental increase
 	decayBar.value = comboLifetime
 	clear_lines()
 	var index = 0
 	for line in comboEntries:
-		add_line(line,"",str(comboEntries[line][1]),index)
+		add_line(line,str(comboEntries[line][0]),str(comboEntries[line][1]),index)
 		index += 1
 
 func clear_lines():

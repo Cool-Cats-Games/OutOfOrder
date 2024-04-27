@@ -32,5 +32,6 @@ func find_entry(text):
 func update_line_positions():
 	var index = 0
 	for line in lines:
-		line.position = Vector2(0,0) + (Vector2(0,1) * lineSeparation + Vector2(0,10))* index
+		line.position = (Vector2(0,1) * lineSeparation + Vector2(0,10))* index
 		index += 1
+	$Total.position = (Vector2(0,1) * lineSeparation + Vector2(0,10)) * (index+2)

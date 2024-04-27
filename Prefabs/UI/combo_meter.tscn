@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5h32u1t8w6k8"]
+[gd_scene load_steps=4 format=3 uid="uid://b5h32u1t8w6k8"]
 
 [ext_resource type="Script" path="res://Prefabs/UI/ComboMeter.gd" id="1_bj5if"]
 [ext_resource type="Script" path="res://Prefabs/UI/TweenList.gd" id="2_xuh4k"]
+[ext_resource type="Theme" uid="uid://bt5kdmrwst66f" path="res://Textures/MonkeyFontTheme.tres" id="3_dd0dt"]
 
 [node name="ComboMeter" type="Control"]
 layout_mode = 3
@@ -21,46 +22,69 @@ script = ExtResource("2_xuh4k")
 visible = false
 
 [node name="Description" type="RichTextLabel" parent="TextTweenList/Template"]
-offset_left = -4.0
-offset_right = 168.0
-offset_bottom = 23.0
+offset_left = -52.0
+offset_right = 158.0
+offset_bottom = 26.0
+theme = ExtResource("3_dd0dt")
 bbcode_enabled = true
 text = "KNUCKLE SANDWICH"
 
-[node name="Score" type="RichTextLabel" parent="TextTweenList/Template"]
-offset_left = 171.0
-offset_right = 230.0
-offset_bottom = 23.0
-bbcode_enabled = true
-text = "100"
-metadata/_edit_use_anchors_ = true
-
 [node name="Count" type="RichTextLabel" parent="TextTweenList/Template"]
-offset_left = 199.0
-offset_right = 239.0
-offset_bottom = 23.0
+offset_left = 196.0
+offset_right = 246.0
+offset_bottom = 26.0
+theme = ExtResource("3_dd0dt")
 bbcode_enabled = true
-text = "[right]x1[/right]"
+text = "[right]x100[/right]"
+
+[node name="Score" type="RichTextLabel" parent="TextTweenList/Template"]
+offset_left = 144.0
+offset_right = 194.0
+offset_bottom = 26.0
+theme = ExtResource("3_dd0dt")
+bbcode_enabled = true
+text = "[right]1000[/right]"
+
+[node name="Total" type="Node2D" parent="TextTweenList"]
+
+[node name="TotalLine" type="RichTextLabel" parent="TextTweenList/Total"]
+offset_top = -72.0
+offset_right = 241.0
+offset_bottom = -46.0
+theme = ExtResource("3_dd0dt")
+bbcode_enabled = true
+text = "[center]_____________________[/center]"
+
+[node name="TotalLine2" type="RichTextLabel" parent="TextTweenList/Total"]
+offset_left = -0.999695
+offset_top = -46.0
+offset_right = 240.0
+offset_bottom = -20.0
+theme = ExtResource("3_dd0dt")
+bbcode_enabled = true
+text = "TOTAL:"
+
+[node name="Score" type="RichTextLabel" parent="TextTweenList/Total"]
+offset_left = 102.0
+offset_top = -44.0
+offset_right = 236.0
+offset_bottom = -18.0
+theme = ExtResource("3_dd0dt")
+bbcode_enabled = true
+text = "[right]0[/right]"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 241.0
+offset_bottom = 61.0
+show_percentage = false
 
 [node name="ComboTitle" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_top = 35.0
 offset_right = 241.0
 offset_bottom = 61.0
+theme = ExtResource("3_dd0dt")
 bbcode_enabled = true
 text = "[center]COMBO MEAL![/center]"
-
-[node name="Score" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_top = 56.0
-offset_right = 241.0
-offset_bottom = 82.0
-bbcode_enabled = true
-text = "[center]0[/center]"
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_top = 87.0
-offset_right = 241.0
-offset_bottom = 114.0
-show_percentage = false
