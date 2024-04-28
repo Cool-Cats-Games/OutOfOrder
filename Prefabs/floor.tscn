@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi6m4ui7qk7sm"]
+
+[ext_resource type="Material" uid="uid://dp813bemnqj7s" path="res://Materials/material_stoneTile_01.tres" id="1_4g0l2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xm43f"]
+resource_local_to_scene = true
+size = Vector2(8, 8)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_quebr"]
+data = PackedVector3Array(4, -4, 0, -4, -4, 0, 4, 4, 0, -4, -4, 0, -4, 4, 0, 4, 4, 0)
+
+[node name="Floor" type="Node3D"]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4, 0, 4)
+material_override = ExtResource("1_4g0l2")
+mesh = SubResource("QuadMesh_xm43f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_quebr")

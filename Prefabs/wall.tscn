@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://byakiv2073a1o"]
+
+[ext_resource type="Material" uid="uid://bchvx4m23vve5" path="res://Materials/material_restroomWall.tres" id="1_8awf2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_uobjl"]
+size = Vector2(8, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ljoan"]
+data = PackedVector3Array(4, -2, 0, -4, -2, 0, 4, 2, 0, -4, -2, 0, -4, 2, 0, 4, 2, 0)
+
+[node name="Wall" type="Node3D"]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("1_8awf2")
+mesh = SubResource("QuadMesh_uobjl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ljoan")
