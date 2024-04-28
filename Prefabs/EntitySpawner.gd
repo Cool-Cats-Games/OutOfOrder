@@ -20,6 +20,22 @@ var spawned = []
 var res
 
 func _ready():
+	initialize()
+
+func configure(esr : EntitySpawner):
+	enabled = esr.enabled
+	radius = esr.radius
+	entityPath = esr.entityPath
+	spawnForce = esr.spawnForce
+	spawnLoop = esr.spawnLoop
+	spawnOnReady = esr.spawnOnReady
+	spawnTimer = esr.spawnTimer
+	timerOnReady = esr.timerOnReady
+	spawnLimit = esr.spawnLimit
+	requires_floor = esr.requires_floor
+	initialize()
+
+func initialize():
 	res = load(entityPath)
 	if spawnTimer > 0.0:
 		$Timer.wait_time = spawnTimer

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EntitySpawner" load_steps=2 format=3 uid="uid://bsgc87rb4drfy"]
+
+[ext_resource type="Script" path="res://Prefabs/EntitySpawnerResource.gd" id="1_dcvwl"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_dcvwl")
+enabled = true
+radius = 5.0
+entityPath = ""
+spawnForce = Vector3(0, 0, 0)
+spawnLoop = true
+spawnOnReady = false
+spawnTimer = 0.0
+timerOnReady = false
+spawnLimit = 0
+requires_floor = true

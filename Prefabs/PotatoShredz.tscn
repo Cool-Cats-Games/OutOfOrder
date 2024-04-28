@@ -298,6 +298,7 @@ collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_f0alc")
 script = ExtResource("1_fuam1")
 rideHeight = 1.2
+entity_type = "potatoshredz"
 hp = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -418,7 +419,7 @@ bones/9/rotation = Quaternion(0, 0, -3.72529e-09, 1)
 bones/9/scale = Vector3(1, 1, 1)
 
 [node name="Eyes_2" type="BoneAttachment3D" parent="PotatoShreds/Armature/Skeleton3D"]
-transform = Transform3D(0.0139115, 0.103383, 0.0494826, -0.0519742, 0.0276717, -0.18487, -0.214719, -4.81981e-09, 0.0603659, 0.0298704, 0.904936, -0.00214086)
+transform = Transform3D(0.0139115, 0.103384, 0.0494826, -0.0519742, 0.0276718, -0.18487, -0.214718, -4.8198e-09, 0.0603657, 0.029871, 0.904937, -0.00214085)
 bone_name = "Eyes_2"
 bone_idx = 8
 
@@ -427,7 +428,7 @@ mesh = SubResource("ArrayMesh_5qet1")
 skeleton = NodePath("")
 
 [node name="Frybox" type="BoneAttachment3D" parent="PotatoShreds/Armature/Skeleton3D"]
-transform = Transform3D(1.01769, -0.244594, 0, 0.272397, 0.913819, 0, 0, 0, 1.06136, -0.113488, 0.424, 0)
+transform = Transform3D(1.0177, -0.244594, 0, 0.272398, 0.913819, 0, 0, 0, 1.06136, -0.113488, 0.424, 0)
 bone_name = "Frybox"
 bone_idx = 9
 
@@ -444,7 +445,7 @@ mesh = SubResource("ArrayMesh_tv4c3")
 skin = SubResource("Skin_s1vhj")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="PotatoShreds/Armature/Skeleton3D"]
-transform = Transform3D(0.976577, -0.376592, -0.000675643, 0.390413, 0.869844, -0.0146638, 0.00650693, 0.0149698, 1.06124, -0.244594, 0.913819, 0)
+transform = Transform3D(0.97658, -0.376592, -0.000675661, 0.390413, 0.869844, -0.0146638, 0.00650693, 0.0149698, 1.06123, -0.244594, 0.913819, 0)
 bone_name = "Fries"
 bone_idx = 1
 

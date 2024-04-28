@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jklrxnagyqwu" path="res://Prefabs/Challenges/ChallengeEmblems/KillChallengeEmblem.tscn" id="2_1cy7v"]
 [ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="3_qlbks"]
 
-[node name="KillChallenge" type="Node"]
+[node name="KillChallenge" type="Node3D"]
 script = ExtResource("1_i837n")
 autostart = true
 emblemRes = ExtResource("2_1cy7v")

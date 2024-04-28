@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 signal on_challenge_start()
 signal on_challenge_complete()

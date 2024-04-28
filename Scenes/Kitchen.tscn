@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ckdf1aol8rna0"]
+[gd_scene load_steps=49 format=3 uid="uid://ckdf1aol8rna0"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_4ceqc"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_kvr6w"]
@@ -8,18 +8,59 @@
 [ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="5_qtlax"]
 [ext_resource type="Texture2D" uid="uid://c6sb228h08gc" path="res://Textures/tile_beige.png" id="6_dqtkx"]
 [ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="6_voep8"]
+[ext_resource type="PackedScene" uid="uid://dd0mxqxva5ymf" path="res://Prefabs/Objects/Corkboard.tscn" id="7_35hj1"]
 [ext_resource type="Material" uid="uid://cr6tp7jb75i63" path="res://Materials/material_stonetile_02.tres" id="7_h3d71"]
 [ext_resource type="Material" uid="uid://dp813bemnqj7s" path="res://Materials/material_stoneTile_01.tres" id="8_58uwb"]
 [ext_resource type="Texture2D" uid="uid://opf6gtcdtnkm" path="res://Textures/metalTextures_x64/mtl_O_s.png" id="8_fgyyl"]
+[ext_resource type="Material" uid="uid://op4wh411kghq" path="res://Materials/material_poster_base.tres" id="8_h2hjw"]
 [ext_resource type="ArrayMesh" uid="uid://12bgtgjosvpa" path="res://Models/MeshInstances/WallPiece_mesh.tres" id="9_ou342"]
+[ext_resource type="Texture2D" uid="uid://chu5co66bo7nn" path="res://Textures/posters/poster_12.png" id="9_voedv"]
+[ext_resource type="Texture2D" uid="uid://dcpnn6pklrphi" path="res://Textures/posters/poster_02.png" id="10_7ev07"]
 [ext_resource type="Material" uid="uid://i5qlx14oouhm" path="res://Materials/material_pitchBlack.tres" id="10_u6lu4"]
+[ext_resource type="Texture2D" uid="uid://cibl58nickhnk" path="res://Textures/posters/poster_03.png" id="11_3o8gp"]
 [ext_resource type="Material" uid="uid://br8xxpc4hd2y3" path="res://Materials/material_tileWall.tres" id="12_h2uk8"]
 [ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="13_krr7i"]
 [ext_resource type="PackedScene" uid="uid://dnlddpqxw01vu" path="res://Prefabs/Objects/FlourescentLight.tscn" id="15_3iuva"]
 [ext_resource type="Material" uid="uid://ckyp7l23ji18y" path="res://Materials/material_stainlessSteel.tres" id="15_j1fr5"]
 [ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="16_iw31e"]
+[ext_resource type="PackedScene" uid="uid://decx1c5q41aos" path="res://Prefabs/Breakables/TrashCanB.tscn" id="18_5tnii"]
+[ext_resource type="PackedScene" uid="uid://cgvm3b0wsb1vx" path="res://Prefabs/Breakables/Grill.tscn" id="19_5r104"]
 [ext_resource type="PackedScene" uid="uid://di1gotpig1qk2" path="res://Prefabs/Breakables/RollingCart.tscn" id="19_if3sn"]
 [ext_resource type="PackedScene" uid="uid://drk0ibqddj4iw" path="res://Prefabs/Food/FoodGeneric.tscn" id="20_7aedq"]
+[ext_resource type="PackedScene" uid="uid://svuii41bx8yd" path="res://Prefabs/GreaseTrap.tscn" id="21_2nffg"]
+[ext_resource type="PackedScene" uid="uid://h6dnfbps3mx0" path="res://Prefabs/Breakables/FireExtinguisher.tscn" id="24_qr6mh"]
+[ext_resource type="Script" path="res://Prefabs/Misc/GivePathToNpc.gd" id="25_vb3ah"]
+[ext_resource type="PackedScene" uid="uid://dho6rfs1ghdgx" path="res://Prefabs/Challenges/KillTommyTwoTrapsChallenge.tscn" id="26_k41m5"]
+[ext_resource type="PackedScene" uid="uid://c5ilns3bue7ni" path="res://Prefabs/PotatoShredz.tscn" id="32_u5un3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0qati"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8np7b"]
+resource_local_to_scene = true
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_voedv")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2m7gi"]
+resource_local_to_scene = true
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("10_7ev07")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ckao"]
+resource_local_to_scene = true
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("11_3o8gp")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bv0u"]
 albedo_texture = ExtResource("6_dqtkx")
@@ -92,7 +133,14 @@ shadow_mesh = SubResource("ArrayMesh_xkxjj")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_li17t"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[node name="Room" type="Node3D" groups=["World"]]
+[sub_resource type="Curve3D" id="Curve3D_vhk3w"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.2191, 2.13101, 7.83021, 0, 0, 0, 0, 0, 0, -3.66855, 0.786191, 7.09054, 0, 0, 0, 0, 0, 0, -4.04729, 1.9599, 5.56599, 0, 0, 0, 0, 0, 0, -4.04237, 2.60313, -3.77654, 0, 0, 0, 0, 0, 0, -4.38301, 2.63017, -6.94273, 0, 0, 0, 0, 0, 0, -4.7677, 2.26806, -7.38784, 0, 0, 0, 0, 0, 0, -0.178084, 1.63263, -7.98256, 0, 0, 0, 0, 0, 0, 3.64372, 1.22651, -4.05583, 0, 0, 0, 0, 0, 0, 4.453, 2.24971, 5.84555),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[node name="Kitchen" type="Node3D" groups=["World"]]
 script = ExtResource("1_4ceqc")
 
 [node name="Player" parent="." instance=ExtResource("1_kvr6w")]
@@ -109,6 +157,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89176, 9.13384)
 [node name="GlobalEffectContainer" parent="." instance=ExtResource("5_qtlax")]
 
 [node name="SetPieces" type="Node3D" parent="."]
+
+[node name="Corkboard" parent="SetPieces" instance=ExtResource("7_35hj1")]
+transform = Transform3D(-3.10566e-08, 0.81109, -3.54539e-08, 0, -3.54539e-08, -0.81109, -0.710492, -3.54539e-08, 1.54974e-15, -7.23754, 2.28706, 8.97825)
+
+[node name="Poster3" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-4.35581e-08, 4.89102e-09, -1, 0.0836779, 1.33251, 0, 0.996493, -0.111894, -4.37114e-08, 7.00313, 2.51152, 0.677866)
+material_override = ExtResource("8_h2hjw")
+mesh = SubResource("QuadMesh_0qati")
+skeleton = NodePath("../..")
+
+[node name="Poster4" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-4.35581e-08, 4.89102e-09, -1, 0.0375332, 1.33625, 2.02022e-09, 0.999296, -0.0501892, -4.36647e-08, 7.00313, 2.36123, 2.2252)
+material_override = SubResource("StandardMaterial3D_8np7b")
+mesh = SubResource("QuadMesh_0qati")
+skeleton = NodePath("../..")
+
+[node name="Poster5" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-3.78533e-08, 1.94452e-09, 0.866622, 0.0332677, 1.15799, 0, -0.865983, 0.0444854, -3.78813e-08, -7.2234, 2.12744, 8.61738)
+material_override = SubResource("StandardMaterial3D_2m7gi")
+mesh = SubResource("QuadMesh_0qati")
+skeleton = NodePath("../..")
+
+[node name="Poster6" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-2.82217e-08, 1.44974e-09, 0.646113, -0.0169358, 0.863682, -1.82354e-09, -0.645891, -0.0226465, -2.81836e-08, -7.2234, 2.42064, 9.67195)
+material_override = SubResource("StandardMaterial3D_1ckao")
+mesh = SubResource("QuadMesh_0qati")
+skeleton = NodePath("../..")
 
 [node name="Ground" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(14.58, 0, 0, 0, -1.61409e-06, 1.019, 0, -36.926, -4.45419e-08, 0, 0, -4.92239)
@@ -263,7 +338,46 @@ mesh = SubResource("BoxMesh_0dl1c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MetalBench/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_li17t")
 
+[node name="MetalBench2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(3.745, 0, 0, 0, 4.01158, 0, 0, 0, 7.09846, 0.297001, 2.05326, -1.14961)
+material_override = ExtResource("15_j1fr5")
+mesh = SubResource("BoxMesh_0dl1c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/MetalBench2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MetalBench2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_li17t")
+
+[node name="GreaseTrap" parent="SetPieces" instance=ExtResource("21_2nffg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.52278, 0.170112, 0.475014)
+
+[node name="MetalBench2" type="MeshInstance3D" parent="SetPieces/GreaseTrap"]
+transform = Transform3D(1.79536, 0, 0, 0, 8.207, 0, 0, 0, 2.49641, -2.5751, 3.81671, 0.0270042)
+material_override = ExtResource("15_j1fr5")
+mesh = SubResource("BoxMesh_0dl1c")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/GreaseTrap/MetalBench2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/GreaseTrap/MetalBench2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_li17t")
+
+[node name="GreaseTrap2" parent="SetPieces" instance=ExtResource("21_2nffg")]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 5.40507, 0.170112, -3.15246)
+
+[node name="MetalBench2" type="MeshInstance3D" parent="SetPieces/GreaseTrap2"]
+transform = Transform3D(1.79536, 0, 0, 0, 8.207, 0, 0, 0, 2.49641, -2.5751, 3.81671, 0.0270042)
+material_override = ExtResource("15_j1fr5")
+mesh = SubResource("BoxMesh_0dl1c")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/GreaseTrap2/MetalBench2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/GreaseTrap2/MetalBench2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_li17t")
+
 [node name="Destructables" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00116277, 0.0138772, 0.00659132)
 
 [node name="PhysicBreakable" parent="Destructables" instance=ExtResource("19_if3sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79488, 1.05633, 5.90655)
@@ -271,9 +385,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79488, 1.05633, 5.90655)
 [node name="PhysicBreakable2" parent="Destructables" instance=ExtResource("19_if3sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59117, 1.05633, 5.90655)
 
+[node name="TrashCanB" parent="Destructables" instance=ExtResource("18_5tnii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23749, 0.203638, 11.9813)
+
+[node name="TrashCanB3" parent="Destructables" instance=ExtResource("18_5tnii")]
+transform = Transform3D(-0.104806, 0, -0.994493, 0, 1, 0, 0.994493, 0, -0.104806, 0.125785, 0.202418, -5.69297)
+
+[node name="TrashCanB2" parent="Destructables" instance=ExtResource("18_5tnii")]
+transform = Transform3D(0.7729, 0, 0.634528, 0, 1, 0, -0.634528, 0, 0.7729, -6.84018, 0.203638, 11.2992)
+
+[node name="RollingCart" parent="Destructables" instance=ExtResource("19_if3sn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44583, 0.905799, 0.214505)
+
+[node name="Grill" parent="Destructables" instance=ExtResource("19_5r104")]
+transform = Transform3D(-0.0414397, 0, -0.999141, 0, 1, 0, 0.999141, 0, -0.0414397, -5.61022, 1.09911, 2.79099)
+
+[node name="Grill2" parent="Destructables" instance=ExtResource("19_5r104")]
+transform = Transform3D(-0.143855, 0, -0.989599, 0, 1, 0, 0.989599, 0, -0.143855, -5.3013, 1.03208, -1.99511)
+
+[node name="Grill3" parent="Destructables" instance=ExtResource("19_5r104")]
+transform = Transform3D(-0.0620414, 0, 0.998073, 0, 1, 0, -0.998073, 0, -0.0620414, 5.41357, 1.05106, -5.30723)
+
+[node name="FireExtinguisher" parent="Destructables" instance=ExtResource("24_qr6mh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.55482, 1.44295, 11.8323)
+
 [node name="Events" type="Node3D" parent="."]
 
 [node name="Challenges" type="Node3D" parent="."]
+
+[node name="KillTommyTwotrapsChallenge" parent="Challenges" instance=ExtResource("26_k41m5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26864, 1.14102, -9.70659)
 
 [node name="BlankEnv" parent="." instance=ExtResource("6_voep8")]
 
@@ -290,5 +431,16 @@ enable_shadows = true
 [node name="TommyTwoTraps" parent="." instance=ExtResource("16_iw31e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63973, 1.58401, -11.941)
 
+[node name="TommyTwoTraps2" parent="." instance=ExtResource("16_iw31e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8327, 1.58401, -3.99744)
+
 [node name="FoodGeneric" parent="." instance=ExtResource("20_7aedq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64602, 1.80476, 5.81398)
+
+[node name="PatrolPath" type="Path3D" parent="." groups=["PatrolPath"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00577068, -0.0137181, -0.0148382)
+curve = SubResource("Curve3D_vhk3w")
+script = ExtResource("25_vb3ah")
+
+[node name="PotatoShredz" parent="." instance=ExtResource("32_u5un3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31429, 1.87118, 2.02875)
