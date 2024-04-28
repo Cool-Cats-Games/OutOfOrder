@@ -8,6 +8,8 @@ var currentComboScore = 0
 var totalScore = 0
 
 var lifespan = 100
+
+var specialThreshold = 1000
 var startingDecay = 1 #Combo lasts 20 seconds by default
 var decay = startingDecay
 var decayIncrease = 1 #Amount decay increases during an active combo
@@ -26,6 +28,9 @@ func add_instance(text):
 		var displayText = info[0]
 		var score = info[1]
 		currentComboScore += score
+		#get_tree().call_group("ComboScoreObserver", "score_increased", currentComboScore)
+		if currentComboScore >= specialThreshold:
+			get_tree().call_group("ComboScoreObserver", "on_special_threshold")
 		if displayText in currentCombo:
 			currentCombo[displayText][1] += 1
 		else:
@@ -43,6 +48,7 @@ func _process(delta):
 		currentCombo = {}
 		totalScore += currentComboScore
 		currentComboScore=0
+		get_tree().call_group("ComboScoreObserver", "combo_ended")
 	if comboDisplay != null:
 		comboDisplay.update_combo(create_info_dict())
 

@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3ednjhi31td"]
+
+[ext_resource type="Script" path="res://Prefabs/Effects/Explosion.gd" id="1_50r25"]
+[ext_resource type="Texture2D" uid="uid://3dt4vwa4nk7c" path="res://Assets/Sprites/Explosion.png" id="2_urbxi"]
+[ext_resource type="Script" path="res://Prefabs/Effects/BurstIgnition.gd" id="3_tccdi"]
+[ext_resource type="PackedScene" uid="uid://dg7rptxouve7s" path="res://Assets/Particles/explosion_shrapnel.tscn" id="4_77alx"]
+[ext_resource type="AudioStream" uid="uid://bkevrelwubwkq" path="res://Assets/Sounds/Retro Explosion Short 15.wav" id="5_7qf30"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_clkl3"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_1ew3h"]
+max_value = 10.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.238994, 4.94737), 14.0942, 14.0942, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_y3wrj"]
+curve = SubResource("Curve_1ew3h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ldr3t"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 23.39
+initial_velocity_max = 23.39
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_y3wrj")
+anim_speed_min = 6.81
+anim_speed_max = 6.81
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqaem"]
+radius = 15.0
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_50r25")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_clkl3")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ldr3t")
+texture = ExtResource("2_urbxi")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.9
+randomness = 1.0
+
+[node name="BurstIgnition" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("3_tccdi")
+
+[node name="Radius" type="CollisionShape2D" parent="BurstIgnition"]
+shape = SubResource("CircleShape2D_xqaem")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ExplosionShrapnel" parent="." instance=ExtResource("4_77alx")]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7qf30")
+volume_db = -8.0
+bus = &"Sfx"
+
+[connection signal="on_fire" from="." to="Timer" method="start"]
+[connection signal="on_fire" from="." to="sfx" method="play"]
+[connection signal="on_fire" from="." to="GPUParticles2D" method="set" binds= ["emitting", true]]
+[connection signal="body_entered" from="BurstIgnition" to="BurstIgnition" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

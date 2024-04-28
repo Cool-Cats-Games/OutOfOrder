@@ -324,6 +324,7 @@ script = ExtResource("6_j7ika")
 
 [node name="WalkTo" type="Node" parent="StateMachine"]
 script = ExtResource("7_hg27w")
+stateAnimationName = "Run"
 
 [node name="FindPatrolPath" type="Node" parent="StateMachine"]
 script = ExtResource("8_8khti")
@@ -350,8 +351,8 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
-bones/0/scale = Vector3(1, 1, 1)
+bones/0/rotation = Quaternion(0, 0, 0.130393, 0.991462)
+bones/0/scale = Vector3(1.05352, 0.945987, 1.06136)
 bones/1/name = "Fries"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.991264, -0.131825, -0.00421838, 0.13175, 0.991173, -0.0147893, 0.00613073, 0.0141043, 0.999882, 0, 1, 0)
@@ -371,28 +372,28 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(0.945385, 0.312082, 0.094082, -0.10949, 0.575908, -0.810149, -0.307016, 0.755602, 0.578625, 0, 1, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 1, 0)
-bones/3/rotation = Quaternion(0.44465, 0.113906, -0.11972, 0.880329)
+bones/3/rotation = Quaternion(0.362822, 0.257482, 0.130087, 0.886082)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Fri.L.2"
 bones/4/parent = 3
 bones/4/rest = Transform3D(0.857759, 0.514052, -0.000876746, -0.514052, 0.857753, -0.00316822, -0.000876596, 0.00316826, 0.999995, -2.23517e-08, 0.55018, -1.86265e-08)
 bones/4/enabled = true
 bones/4/position = Vector3(-2.23517e-08, 0.55018, -1.86265e-08)
-bones/4/rotation = Quaternion(0.00164366, -3.94563e-08, -0.266685, 0.963782)
+bones/4/rotation = Quaternion(-0.221078, 0.235914, -0.0685382, 0.943807)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Fri.R.1"
 bones/5/parent = 0
 bones/5/rest = Transform3D(0.965728, 0.228646, -0.122844, -0.0177248, 0.530274, 0.847641, 0.258951, -0.816413, 0.516153, 0, 1, 0)
 bones/5/enabled = true
 bones/5/position = Vector3(0, 1, 0)
-bones/5/rotation = Quaternion(-0.479401, -0.109992, -0.0709775, 0.867778)
+bones/5/rotation = Quaternion(-0.45635, -0.217488, 0.179295, 0.843977)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Fri.R.2"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.716232, 0.697689, 0.0155492, -0.697689, 0.715379, 0.0382303, 0.0155493, -0.0382302, 0.999148, -1.86265e-08, 0.659404, 5.58794e-08)
 bones/6/enabled = true
 bones/6/position = Vector3(-1.86265e-08, 0.659404, 5.58794e-08)
-bones/6/rotation = Quaternion(-0.0206401, -6.41501e-09, -0.376675, 0.926115)
+bones/6/rotation = Quaternion(0.152408, -0.262058, -0.142522, 0.942223)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Eyes"
 bones/7/parent = 0
@@ -417,7 +418,7 @@ bones/9/rotation = Quaternion(0, 0, -3.72529e-09, 1)
 bones/9/scale = Vector3(1, 1, 1)
 
 [node name="Eyes_2" type="BoneAttachment3D" parent="PotatoShreds/Armature/Skeleton3D"]
-transform = Transform3D(-1.15632e-08, 0.101586, -6.4197e-09, -0.0568758, -4.5003e-09, -0.202305, -0.202305, -4.54115e-09, 0.0568758, 0.249483, 0.915913, -0.00201708)
+transform = Transform3D(0.0139115, 0.103383, 0.0494826, -0.0519742, 0.0276717, -0.18487, -0.214719, -4.81981e-09, 0.0603659, 0.0298704, 0.904936, -0.00214086)
 bone_name = "Eyes_2"
 bone_idx = 8
 
@@ -426,7 +427,7 @@ mesh = SubResource("ArrayMesh_5qet1")
 skeleton = NodePath("")
 
 [node name="Frybox" type="BoneAttachment3D" parent="PotatoShreds/Armature/Skeleton3D"]
-transform = Transform3D(1, 7.45058e-09, 0, -7.45058e-09, 1, 0, 0, 0, 1, 1.86265e-09, 0.463987, 0)
+transform = Transform3D(1.01769, -0.244594, 0, 0.272397, 0.913819, 0, 0, 0, 1.06136, -0.113488, 0.424, 0)
 bone_name = "Frybox"
 bone_idx = 9
 
@@ -443,7 +444,7 @@ mesh = SubResource("ArrayMesh_tv4c3")
 skin = SubResource("Skin_s1vhj")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="PotatoShreds/Armature/Skeleton3D"]
-transform = Transform3D(0.991264, -0.131825, -0.00421839, 0.13175, 0.991173, -0.0147893, 0.00613075, 0.0141043, 0.999882, 0, 1, 0)
+transform = Transform3D(0.976577, -0.376592, -0.000675643, 0.390413, 0.869844, -0.0146638, 0.00650693, 0.0149698, 1.06124, -0.244594, 0.913819, 0)
 bone_name = "Fries"
 bone_idx = 1
 

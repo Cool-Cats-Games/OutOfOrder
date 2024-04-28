@@ -13,5 +13,6 @@ emblemRes = ExtResource("2_1cy7v")
 script = ExtResource("3_qlbks")
 deleteAfterTrigger = true
 
+[connection signal="on_challenge_complete" from="." to="." method="_on_on_challenge_complete"]
 [connection signal="on_count_changed" from="KillCounter" to="." method="_on_kill_counter_on_count_changed"]
 [connection signal="on_event_triggered" from="KillCounter" to="." method="complete"]

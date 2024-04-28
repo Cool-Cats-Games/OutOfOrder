@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwocsk2nrsr6k"]
+
+[ext_resource type="Script" path="res://Prefabs/Effects/SmallFlame.gd" id="1_g0g2f"]
+[ext_resource type="Texture2D" uid="uid://cjkqaf7lxv7tj" path="res://Assets/Sprites/smallflame.png" id="2_soghq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2tny6"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_dnqcv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23301, 0.88421), 0.0, 0.0, 0, 0, Vector2(0.640777, 0.842105), 0.0, 0.0, 0, 0, Vector2(0.996764, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3emcl"]
+curve = SubResource("Curve_dnqcv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_krnie"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+flatness = 1.0
+gravity = Vector3(0, 25.705, 0)
+initial_velocity_min = 10.15
+initial_velocity_max = 10.15
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_3emcl")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="SmallFlame" type="Node2D"]
+script = ExtResource("1_g0g2f")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_2tny6")
+position = Vector2(0, -2)
+emitting = false
+amount = 7
+process_material = SubResource("ParticleProcessMaterial_krnie")
+texture = ExtResource("2_soghq")
+one_shot = true
+
+[connection signal="on_fire" from="." to="." method="_on_on_fire"]

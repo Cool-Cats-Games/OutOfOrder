@@ -2,10 +2,14 @@ class_name State
 extends Node
 
 @export var sfx : Array[AudioStream]
+@export var stateAnimationName = ""
 
 var actor = null
 var animationController = null
 var state_machine: StateMachine = null
+var callback = null
+var deferredCallback = null
+var isExitting = false
 
 signal state_entered()
 signal state_exited()
@@ -26,6 +30,11 @@ func physics_update(_delta: float) -> void:
 # is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	emit_signal("state_entered")
+	isExitting = false
+	if "callback" in _msg:
+		callback = _msg.callback
+	if "deferredCallback" in _msg:
+		deferredCallback = _msg.deferredCallback
 	if actor.has_method("play_sound") and sfx.size() > 0:
 		actor.play_sound(sfx.pick_random())
 	pass
@@ -33,7 +42,14 @@ func enter(_msg := {}) -> void:
 # Virtual function. Called by the state machine before changing the active state. Use this function
 # to clean up the state.
 func exit() -> void:
+	isExitting = true
 	emit_signal("state_exited")
+	if callback != null:
+		callback.call()
+		callback = null
+	if deferredCallback != null:
+		deferredCallback.call_deferred()
+		deferredCallback = null
 	pass
 
 #Virtual function to add unique, per state behavior for testing if its possible to enter the state

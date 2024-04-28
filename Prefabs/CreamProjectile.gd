@@ -27,7 +27,8 @@ func _on_area_3d_body_entered(body):
 		body.take_damage(2,global_position.direction_to(body.global_position), self)
 	if not body.get_collision_layer_value(8):
 		#register hit
-		combat_event.emit("ice_cream")
+		if not body.get_collision_layer_value(1):
+			combat_event.emit("ice_cream")
 		#spawn splash effect
 		splatterRef.global_position = global_position
 		splatterRef.global_transform = splatterRef.global_transform.looking_at(cnormal)

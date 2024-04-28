@@ -45,7 +45,7 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 		return
 	var targetState = get_node(target_state_name)
 	if targetState.test(target_state_name) and (state.test_exit(target_state_name) if is_instance_valid(state) else true):
-		if is_instance_valid(state):
+		if is_instance_valid(state) and not state.isExitting:
 			state.exit()
 		prevState = state
 		state = targetState

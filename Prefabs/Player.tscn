@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://ddbpdjor6vt4"]
+[gd_scene load_steps=86 format=3 uid="uid://ddbpdjor6vt4"]
 
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="1_il8ik"]
 [ext_resource type="Texture2D" uid="uid://swy4t206iiwn" path="res://Sprites/axis.png" id="2_5e81f"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://c5thmdagiocc7" path="res://Sounds/playersfx/sfx_player_squirt.wav" id="14_1qple"]
 [ext_resource type="AudioStream" uid="uid://cmr51uksnbx8x" path="res://Sounds/playersfx/sfx_player_jump.wav" id="14_02cv3"]
 [ext_resource type="AudioStream" uid="uid://dm7whqywcx5c8" path="res://Sounds/playersfx/sfx_player_start_moving.wav" id="14_6uaxm"]
+[ext_resource type="AudioStream" uid="uid://dx2bfde0eiffy" path="res://Sounds/sfx_player_start_gatling.wav" id="14_x1wih"]
 [ext_resource type="Script" path="res://Prefabs/RandomAudioPlayer3d.gd" id="15_kwguw"]
 [ext_resource type="AudioStream" uid="uid://dp62l4j8oofbh" path="res://Sounds/playersfx/sfx_player_stop_moving.wav" id="15_moos0"]
 [ext_resource type="AudioStream" uid="uid://bjjsmf4ori4qs" path="res://Sounds/playersfx/sfx_player_outofcream.wav" id="15_wp570"]
@@ -31,12 +32,19 @@
 [ext_resource type="AudioStream" uid="uid://b1n48sa5kruho" path="res://Sounds/playersfx/sfx_player_land_3.wav" id="18_yv2uk"]
 [ext_resource type="AudioStream" uid="uid://dbjdiymeyhsj" path="res://Sounds/playersfx/sfx_player_start_squirt.wav" id="21_4bo8b"]
 [ext_resource type="AudioStream" uid="uid://bxrg2uxujsubi" path="res://Sounds/playersfx/sfx_player_start_squirt_2.wav" id="22_v3lgf"]
+[ext_resource type="AudioStream" uid="uid://cvkti7hti6u5o" path="res://Sounds/sfx_special_ready.wav" id="24_s324s"]
 [ext_resource type="AudioStream" uid="uid://e5mlxud4ae05" path="res://Sounds/playersfx/sfx_player_chargehit_01.wav" id="26_f6ou5"]
+[ext_resource type="AudioStream" uid="uid://bod03tin38gco" path="res://Sounds/sfx_gatling_wooshes.wav" id="26_fon01"]
+[ext_resource type="PackedScene" uid="uid://o1eyrmvojskb" path="res://Prefabs/PolyphonicAudiostream3D.tscn" id="27_aoojo"]
 [ext_resource type="AudioStream" uid="uid://nsd1smhsg230" path="res://Sounds/playersfx/sfx_player_chargehit_02.wav" id="27_gpn6c"]
 [ext_resource type="AudioStream" uid="uid://bjdna7xdxrfph" path="res://Sounds/playersfx/sfx_player_chargehit_03.wav" id="28_3uqam"]
+[ext_resource type="AudioStream" uid="uid://8wapo6bgmmoc" path="res://Sounds/sfx_fastpunch_01.wav" id="28_u081c"]
+[ext_resource type="AudioStream" uid="uid://0kfen8r5hfqw" path="res://Sounds/sfx_fastpunch_02.wav" id="29_cxquo"]
 [ext_resource type="AudioStream" uid="uid://cdphykp7jtsdv" path="res://Sounds/playersfx/sfx_player_chargehit_04.wav" id="29_rdoil"]
+[ext_resource type="AudioStream" uid="uid://cjjrjljflxkxr" path="res://Sounds/sfx_fastpunch_03.wav" id="30_dpl58"]
 [ext_resource type="AudioStream" uid="uid://s07ifjy08jja" path="res://Sounds/playersfx/sfx_player_bonk1.wav" id="30_e3miw"]
 [ext_resource type="AudioStream" uid="uid://hls2cugl6yu3" path="res://Sounds/playersfx/sfx_attack_swish_1.wav" id="31_cdg0x"]
+[ext_resource type="AudioStream" uid="uid://c5l7ivcmtxnlc" path="res://Sounds/sfx_fastpunch_4.wav" id="31_g45ki"]
 [ext_resource type="AudioStream" uid="uid://ble5dkjijygco" path="res://Sounds/playersfx/sfx_player_bonk2.wav" id="31_qkmj0"]
 [ext_resource type="AudioStream" uid="uid://b0ukp6onnm5qi" path="res://Sounds/playersfx/sfx_player_bonk3.wav" id="32_0q3wm"]
 [ext_resource type="AudioStream" uid="uid://b22irl0hq3squ" path="res://Sounds/playersfx/sfx_attack_swish_2.wav" id="32_1typg"]
@@ -45,6 +53,13 @@
 [ext_resource type="Texture2D" uid="uid://67icdevfav01" path="res://Sprites/Fist_x64.png" id="37_qigc7"]
 [ext_resource type="Texture2D" uid="uid://nsey6oofh38j" path="res://Models/Misc/fist_fist.png" id="43_ujki1"]
 [ext_resource type="ArrayMesh" uid="uid://betiugugthqik" path="res://Models/MeshInstances/fist_mesh.tres" id="44_swg1p"]
+[ext_resource type="AudioStream" uid="uid://dt2o3og3mo1b7" path="res://Sounds/sfx_squelch_01.wav" id="45_ycmvm"]
+[ext_resource type="AudioStream" uid="uid://dms5rngpmv2pw" path="res://Sounds/sfx_squelch_02.wav" id="46_7rc26"]
+[ext_resource type="AudioStream" uid="uid://ca0a3m26ngv30" path="res://Sounds/sfx_squelch_03.wav" id="47_majvp"]
+[ext_resource type="AudioStream" uid="uid://c434v3buu72dg" path="res://Sounds/sfx_playerhurt_01.WAV" id="48_10yp6"]
+[ext_resource type="AudioStream" uid="uid://dcoti7mkr35pj" path="res://Sounds/sfx_playerhurt_02.WAV" id="49_a6ybx"]
+[ext_resource type="AudioStream" uid="uid://cw7q555getpt0" path="res://Sounds/sfx_playerhurt_03.WAV" id="50_ofo8p"]
+[ext_resource type="AudioStream" uid="uid://cuo5h6knvlq2h" path="res://Sounds/sfx_playerhurt_04.WAV" id="51_bsxeq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yvyf2"]
 bounce = 1.0
@@ -350,6 +365,7 @@ directional_velocity_max = 30.0
 directional_velocity_curve = SubResource("CurveXYZTexture_yecsv")
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
+scale_max = 2.0
 scale_over_velocity_curve = SubResource("CurveTexture_70obu")
 alpha_curve = SubResource("CurveTexture_uotsl")
 
@@ -368,7 +384,7 @@ scale_min = 0.5
 scale_over_velocity_curve = SubResource("CurveTexture_70obu")
 alpha_curve = SubResource("CurveTexture_uotsl")
 
-[node name="Player" type="RigidBody3D" groups=["Player"]]
+[node name="Player" type="RigidBody3D" groups=["ComboScoreObserver", "Player"]]
 collision_layer = 2
 collision_mask = 65
 axis_lock_angular_x = true
@@ -453,6 +469,7 @@ one_shot = true
 
 [node name="GatlingSmorgas" type="Node" parent="StateMachine"]
 script = ExtResource("13_fo217")
+sfx = Array[AudioStream]([ExtResource("14_x1wih")])
 
 [node name="WheelAssem" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282962, 0)
@@ -561,6 +578,21 @@ stream = ExtResource("15_moos0")
 volume_db = -16.0
 bus = &"SFX"
 
+[node name="sfx_special_ready" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("24_s324s")
+volume_db = -16.0
+bus = &"SFX"
+
+[node name="sfx_GatlingWoosh" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("26_fon01")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="sfx_gatlingpunches" parent="." instance=ExtResource("27_aoojo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362247, 0.456322, -0.132186)
+volume_db = -5.0
+sfx = Array[AudioStream]([ExtResource("28_u081c"), ExtResource("29_cxquo"), ExtResource("30_dpl58"), ExtResource("31_g45ki")])
+
 [node name="sfx_jump" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("14_02cv3")
 volume_db = -10.0
@@ -589,6 +621,18 @@ volume_db = -3.0
 bus = &"SFX"
 script = ExtResource("15_kwguw")
 sfx = Array[AudioStream]([ExtResource("31_cdg0x"), ExtResource("32_1typg"), ExtResource("33_755jb")])
+
+[node name="sfx_hurt_cream_squelch" type="AudioStreamPlayer3D" parent="."]
+volume_db = -3.0
+bus = &"SFX"
+script = ExtResource("15_kwguw")
+sfx = Array[AudioStream]([ExtResource("45_ycmvm"), ExtResource("46_7rc26"), ExtResource("47_majvp")])
+
+[node name="sfx_hurt" type="AudioStreamPlayer3D" parent="."]
+volume_db = -3.0
+bus = &"SFX"
+script = ExtResource("15_kwguw")
+sfx = Array[AudioStream]([ExtResource("48_10yp6"), ExtResource("49_a6ybx"), ExtResource("50_ofo8p"), ExtResource("51_bsxeq")])
 
 [node name="sfx_bump" type="AudioStreamPlayer3D" parent="."]
 volume_db = -7.0
@@ -655,6 +699,8 @@ draw_pass_1 = ExtResource("44_swg1p")
 [connection signal="state_exited" from="StateMachine/Hover" to="sfx_squirting" method="stop"]
 [connection signal="state_entered" from="StateMachine/LightAttack" to="sfx_attack_swish" method="play_random"]
 [connection signal="timeout" from="StateMachine/SlamLag/Timer" to="StateMachine" method="transition_to" binds= ["Idle"]]
+[connection signal="state_entered" from="StateMachine/GatlingSmorgas" to="sfx_GatlingWoosh" method="play"]
+[connection signal="state_exited" from="StateMachine/GatlingSmorgas" to="sfx_GatlingWoosh" method="stop"]
 [connection signal="body_entered" from="LightAtkHitbox" to="LightAtkHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="RamHitbox" to="RamHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="SlamHitbox" to="SlamHitbox" method="_on_body_entered"]

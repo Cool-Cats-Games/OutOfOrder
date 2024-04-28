@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3wfnjnxypyph"]
+
+[ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_8ky3y"]
+[ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_ityfq"]
+[ext_resource type="PackedScene" uid="uid://bkatl43sgnc2w" path="res://Prefabs/CharacterSpringbox.tscn" id="3_qsbj8"]
+[ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="4_0wa4b"]
+[ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="5_e1rnj"]
+[ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="6_qq06c"]
+[ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="7_k0ddw"]
+[ext_resource type="Material" uid="uid://cr6tp7jb75i63" path="res://Materials/material_stonetile_02.tres" id="7_msbmd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_j2d0k"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sopbl"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[node name="BroomCloset" type="Node3D" groups=["World"]]
+script = ExtResource("1_8ky3y")
+
+[node name="Player" parent="." instance=ExtResource("2_ityfq")]
+
+[node name="CharacterSpringbox" parent="." instance=ExtResource("3_qsbj8")]
+
+[node name="CameraRig" parent="." instance=ExtResource("4_0wa4b")]
+
+[node name="HUD" parent="." instance=ExtResource("5_e1rnj")]
+
+[node name="GlobalEffectContainer" parent="." instance=ExtResource("6_qq06c")]
+
+[node name="SetPieces" type="Node3D" parent="."]
+
+[node name="ground" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(13.3323, 0, 0, 0, -6.06059e-07, 1, 0, -13.865, -4.37114e-08, 2.93757, -1.63429, 0)
+material_override = ExtResource("7_msbmd")
+mesh = SubResource("QuadMesh_j2d0k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_sopbl")
+
+[node name="Destructables" type="Node3D" parent="."]
+
+[node name="Events" type="Node3D" parent="."]
+
+[node name="Challenges" type="Node3D" parent="."]
+
+[node name="BlankEnv" parent="." instance=ExtResource("7_k0ddw")]

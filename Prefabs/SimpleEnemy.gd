@@ -14,6 +14,8 @@ extends "res://Prefabs/Entity.gd"
 @export var uprightSpringDampener = 4.0
 
 
+var enableForceIntegration = true
+var enableCorrectiveForce = true
 var facingPoint = Vector3.ZERO
 var isPatrolling = false
 var localInputVector = Vector3()
@@ -24,13 +26,16 @@ var target = null
 
 func _integrate_forces(state):
 	floorCast.rotation = rotation * -1
-	apply_force(floorCast.target_position * get_spring_force())
+	if enableForceIntegration:
+		apply_force(floorCast.target_position * get_spring_force())
 	var unitInput = localInputVector.normalized()
 	var goalVel = unitInput * maxSpeed
 	var stepVel = linear_velocity.lerp(goalVel, acceleration)
-	apply_force(stepVel * mass)
+	if enableForceIntegration:
+		apply_force(stepVel * mass)
 	speed = abs(Vector3(linear_velocity.x, 0.0, linear_velocity.z).length())
-	correct_upright_force()
+	if enableForceIntegration and enableCorrectiveForce:
+		correct_upright_force()
 
 func correct_upright_force():
 	var charCurrentRotation = quaternion

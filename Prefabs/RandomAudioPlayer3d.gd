@@ -9,6 +9,7 @@ func _ready():
 	if autoplay:
 		play_random()
 
+
 func play_random(from_position: float = 0.0):
 	if sfx.size() == 0:
 		return

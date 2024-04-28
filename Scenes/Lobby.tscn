@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://nuqiwofmdvbx"]
+[gd_scene load_steps=73 format=3 uid="uid://nuqiwofmdvbx"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_angve"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_1cv8f"]
@@ -35,11 +35,13 @@
 [ext_resource type="Script" path="res://Prefabs/Misc/GivePathToNpc.gd" id="30_uvpq0"]
 [ext_resource type="Script" path="res://addons/CustomEvents/ABSwitchEvent.gd" id="31_ekggs"]
 [ext_resource type="Script" path="res://addons/CustomEvents/TimerEvent.gd" id="32_5h7dx"]
+[ext_resource type="Script" path="res://addons/CustomEvents/InputEventTrigger.gd" id="36_3djj4"]
 [ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="36_ge5cc"]
 [ext_resource type="PackedScene" uid="uid://d1yv2g7l7d5sn" path="res://Prefabs/Challenges/KillChallenge.tscn" id="37_a22wy"]
 [ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="38_eu6g5"]
 [ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="39_e16fd"]
 [ext_resource type="PackedScene" uid="uid://bmshh5t8uodbl" path="res://Prefabs/GoldenCat.tscn" id="40_18e5i"]
+[ext_resource type="PackedScene" uid="uid://dos2jeeu6b7a2" path="res://Prefabs/SimpleNPC.tscn" id="41_8yor2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqfgk"]
 resource_name = "Material"
@@ -261,7 +263,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09119, 3.61514, 1.10841)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42378, 2.12758, -10.0553)
 entityPath = "res://Prefabs/SimpleNPC.tscn"
 spawnLoop = true
-spawnTimer = 3.0
+spawnTimer = 7.0
 timerOnReady = true
 
 [node name="GreaseTrapSpawner" parent="." instance=ExtResource("13_qwgik")]
@@ -690,10 +692,13 @@ script = ExtResource("32_5h7dx")
 time = 4.5
 nextEvents = Array[NodePath]([NodePath("../ABSwitchEvent")])
 
+[node name="InputEventTrigger" type="Node3D" parent="Events"]
+script = ExtResource("36_3djj4")
+actionName = "spawn_npc"
+
 [node name="GlobalEffectContainer" parent="." instance=ExtResource("36_ge5cc")]
 
 [node name="KillChallenge" parent="." instance=ExtResource("37_a22wy")]
-autostart = false
 
 [node name="Door" parent="." instance=ExtResource("38_eu6g5")]
 transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 8.89239, 0.712493, 9.83495)
@@ -713,10 +718,14 @@ targetRoom = "res://Scenes/Restroom.tscn"
 [node name="GoldenCat" parent="." instance=ExtResource("40_18e5i")]
 transform = Transform3D(0.263789, 0, 0.96458, 0, 1, 0, -0.96458, 0, 0.263789, 7.4838, 1.74904, -6.78323)
 
+[node name="SimpleNPC" parent="." instance=ExtResource("41_8yor2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82378, 1.68736, 5.24586)
+
 [connection signal="on_entity_spawned" from="NPCSpawner" to="DoorToCounter" method="give_path_to"]
 [connection signal="on_entity_spawned" from="GreaseTrapSpawner" to="WalkOut2" method="give_path_to" flags=3]
 [connection signal="on_entity_spawned" from="FryboySpawner" to="WalkOut" method="give_path_to" flags=3]
 [connection signal="A_event_triggered" from="Events/ABSwitchEvent" to="GreaseTrapSpawner" method="spawn"]
 [connection signal="B_event_triggered" from="Events/ABSwitchEvent" to="FryboySpawner" method="spawn"]
+[connection signal="on_event_triggered" from="Events/InputEventTrigger" to="NPCSpawner" method="spawn"]
 [connection signal="on_challenge_complete" from="KillChallenge" to="Events/TimerEvent" method="stop"]
 [connection signal="on_challenge_start" from="KillChallenge" to="Events/TimerEvent" method="trigger"]

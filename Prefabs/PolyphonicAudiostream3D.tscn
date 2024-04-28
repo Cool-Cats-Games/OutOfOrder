@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://o1eyrmvojskb"]
+
+[ext_resource type="Script" path="res://Prefabs/PolyphopnicAudiostream3D.gd" id="1_t2b38"]
+
+[node name="PolyphonicAudiostream3D" type="AudioStreamPlayer3D"]
+max_polyphony = 6
+bus = &"SFX"
+script = ExtResource("1_t2b38")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="."]
