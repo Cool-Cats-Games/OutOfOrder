@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://4cq482aiqxjr"]
+
+[ext_resource type="PackedScene" uid="uid://gfonak5lukdt" path="res://Models/Food/banana.glb" id="1_dkgtr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yhhe3"]
+radius = 0.0978209
+
+[node name="banana" type="RigidBody3D"]
+sleeping = true
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0882778, 0)
+shape = SubResource("SphereShape3D_yhhe3")
+
+[node name="banana2" parent="." instance=ExtResource("1_dkgtr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

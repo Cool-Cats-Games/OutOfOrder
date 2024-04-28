@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbt8rfufxym6j"]
+
+[ext_resource type="PackedScene" uid="uid://bff1m6f48ihab" path="res://Models/Food/bottleKetchup.glb" id="1_acyyt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g1ela"]
+height = 0.174042
+radius = 0.0391793
+
+[node name="ketchup" type="RigidBody3D"]
+sleeping = true
+freeze = true
+
+[node name="bottleKetchup2" parent="." instance=ExtResource("1_acyyt")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0863514, 0)
+shape = SubResource("CylinderShape3D_g1ela")

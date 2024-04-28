@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://gnienlxsmxnn"]
+
+[ext_resource type="PackedScene" uid="uid://cll2kityprwcd" path="res://Models/Food/burger.glb" id="1_7dsrq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cb8n4"]
+height = 0.28727
+radius = 0.189234
+
+[node name="burger" type="RigidBody3D"]
+sleeping = true
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.143544, 0)
+shape = SubResource("CylinderShape3D_cb8n4")
+
+[node name="burger2" parent="." instance=ExtResource("1_7dsrq")]

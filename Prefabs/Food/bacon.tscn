@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bawi4rv3gxrrf"]
+
+[ext_resource type="PackedScene" uid="uid://blamk6be517s6" path="res://Models/Food/bacon.glb" id="1_myn4p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efj4d"]
+size = Vector3(0.0701904, 0.0195313, 0.263672)
+
+[node name="bacon" type="RigidBody3D"]
+sleeping = true
+freeze = true
+
+[node name="bacon2" parent="." instance=ExtResource("1_myn4p")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.00477797, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000183105, 0.0130825, 0)
+shape = SubResource("BoxShape3D_efj4d")
