@@ -8,6 +8,7 @@ var fadeOffset = 1.0
 @export var fadeCurve : Curve
 
 func _ready():
+	fadeOffset = 1.0
 	$Fill.modulate = Color(1,1,1,0.0)
 
 func _process(_delta):
