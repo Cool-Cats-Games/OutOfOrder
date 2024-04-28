@@ -8,7 +8,8 @@ var crossfadeRate = 0.1
 
 func _process(delta):
 	if isCrossfading:
-		currentPart.volume_db = lerp(currentPart.volume_db, -80.0, crossfadeRate)
+		if currentPart != targetPart:
+			currentPart.volume_db = lerp(currentPart.volume_db, -80.0, crossfadeRate)
 		targetPart.volume_db = lerp(targetPart.volume_db, 0.0, crossfadeRate)
 		if targetPart.volume_db > -0.01:
 			currentPart = targetPart
@@ -26,7 +27,7 @@ func play_playist(playlistName = "Playlist", startingPart = "A"):
 				s.volume_db = scale_to_db(0.0)
 			else:
 				currentPart = s
-			s.play()
+			switch_part(startingPart)
 
 func switch_part(to = "A"):
 	targetPart = currentPlaylist.get_node(to)

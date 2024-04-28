@@ -1,0 +1,165 @@
+[gd_scene load_steps=9 format=3 uid="uid://82apoebtwsp5"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/ChallengeEmblems/KillChallengeEmblem.gd" id="1_4kwa0"]
+[ext_resource type="Texture2D" uid="uid://b2pvtgt38rg1l" path="res://Sprites/UI/BoardGameIcons(x64)/skull.png" id="2_ifjal"]
+[ext_resource type="Texture2D" uid="uid://vyke0sdspdev" path="res://Sprites/characterProfiles/PotatoShredz.png" id="3_h7307"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="4_e5ksw"]
+
+[sub_resource type="Animation" id="Animation_lknat"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emblem:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Status:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Status:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Status:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Status:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_csm8m"]
+resource_name = "active"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Emblem:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.0872665, -0.25, 0, 0.25, 0, 0.0872665, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 3)
+}
+
+[sub_resource type="Animation" id="Animation_pmpji"]
+resource_name = "status"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Status:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.078125, -0.25, 0, 0.25, 0, 1.1875, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Status:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.03125, -0.25, 0, 0.25, 0, 1.21875, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Status:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-29.5, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Status:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(31, -0.25, 0, 0.25, 0, -7, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y8nrw"]
+_data = {
+"RESET": SubResource("Animation_lknat"),
+"active": SubResource("Animation_csm8m"),
+"status": SubResource("Animation_pmpji")
+}
+
+[node name="KillPotatoShredzEmblem" type="Node2D"]
+script = ExtResource("1_4kwa0")
+
+[node name="Emblem" type="Sprite2D" parent="."]
+position = Vector2(-11, -7)
+scale = Vector2(0.778964, 0.778964)
+texture = ExtResource("2_ifjal")
+
+[node name="Emblem2" type="Sprite2D" parent="Emblem"]
+position = Vector2(37.2289, 19.2564)
+scale = Vector2(1.28376, 1.28376)
+texture = ExtResource("3_h7307")
+
+[node name="Status" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y8nrw")
+}
+autoplay = "active"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 17.0
+offset_right = 56.0
+offset_bottom = 81.0
+scale = Vector2(0.415408, 0.415408)
+theme_override_fonts/font = ExtResource("4_e5ksw")
+theme_override_font_sizes/font_size = 72
+text = "x"

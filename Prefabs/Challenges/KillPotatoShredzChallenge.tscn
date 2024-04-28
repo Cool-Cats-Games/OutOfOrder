@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtkxt3pjx25sf"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/KillEntityChallenge.gd" id="1_qmlcg"]
+[ext_resource type="PackedScene" uid="uid://bwbaoie8kv7be" path="res://Prefabs/Challenges/ChallengeEmblems/KillTommyTwoTrapsEmblem.tscn" id="2_jeqj8"]
+[ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="3_4v4dd"]
+[ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="4_0tkfh"]
+
+[node name="KillPotatoShredzChallenge" type="Node3D"]
+script = ExtResource("1_qmlcg")
+useResource = false
+autostart = true
+emblemRes = ExtResource("2_jeqj8")
+
+[node name="KillCounter" type="Node3D" parent="." groups=["EnemyDeathSubscribers"]]
+script = ExtResource("3_4v4dd")
+entity_type = "tommytwotraps"
+goal = 1
+deleteAfterTrigger = true
+
+[node name="EntitySpawner" parent="." instance=ExtResource("4_0tkfh")]
+radius = 5.0
+entityPath = "res://Prefabs/PotatoShredz.tscn"
+spawnLoop = true
+spawnTimer = 5.0
+
+[connection signal="on_challenge_complete" from="." to="." method="_on_on_challenge_complete"]
+[connection signal="on_challenge_complete" from="." to="EntitySpawner" method="set" binds= ["enabled", false]]
+[connection signal="on_challenge_start" from="." to="EntitySpawner" method="spawn"]
+[connection signal="on_count_changed" from="KillCounter" to="." method="_on_kill_counter_on_count_changed"]
+[connection signal="on_event_triggered" from="KillCounter" to="." method="complete"]

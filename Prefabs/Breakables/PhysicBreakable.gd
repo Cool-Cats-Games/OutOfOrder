@@ -3,6 +3,10 @@ extends "res://Prefabs/SimpleEnemy.gd"
 @export var squibs : Array[Resource]
 @export var breaksfx : Array[AudioStream]
 
+func _ready():
+	super._ready()
+	add_to_group("Breakables")
+
 func take_damage(dmg, dir, hitbox):
 	hp -= dmg
 	apply_force(dir * mass * dmg)

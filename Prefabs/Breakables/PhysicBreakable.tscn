@@ -22,6 +22,7 @@ height = 1.5
 collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_f0alc")
 script = ExtResource("1_6iryp")
+entity_type = "breakable"
 hp = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

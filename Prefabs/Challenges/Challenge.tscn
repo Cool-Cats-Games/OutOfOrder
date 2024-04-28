@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Prefabs/Challenges/Challenge.gd" id="1_ymy03"]
 
-[node name="Challenge" type="Node"]
+[node name="Challenge" type="Node3D"]
 script = ExtResource("1_ymy03")
