@@ -19,11 +19,14 @@ var boostMax = 50.0
 var boostRegen = 0.5
 var boostSpeed = 60.0
 var damage = 10.0
+var enableIntegrateForces = true
 var canBoost = true
 var characterModel = null
 var cream = 100.0
+var creamDepleted = false
 var creamMax = 100.0
 var creamRegen = 0.5
+var creamHitPenalty = 75
 var facingPoint = Vector3.ZERO
 var hp = 4
 var hpMax = 4
@@ -32,6 +35,7 @@ var mainCamera = null
 var rideSpringScaler = 1.0
 var rotAng = 0.0
 var speed = 0.0
+var specialAvaliable = false
 var ticks = 0
 
 var isOffGround = false
@@ -53,7 +57,10 @@ func _process(_delta):
 		if boost == boostMax:
 			canBoost = true
 	var is_at_cream = cream == creamMax
-	cream = clamp(cream + creamRegen, 0.0, creamMax)
+	if cream <= 0.0:
+		creamDepleted = true
+		#emit signal for whatever when run out of cream
+	cream = clamp(cream + (creamRegen if not creamDepleted else 0.0), 0.0, creamMax)
 	if not is_at_cream and cream == creamMax:
 		$sfx_creamReady.play()
 	if isOffGround and $Landed.is_colliding() and $StateMachine.get_state_name() != "Hover":
@@ -66,12 +73,18 @@ func _process(_delta):
 
 func _integrate_forces(_state):
 	floorCast.rotation = rotation * -1
-	apply_force(floorCast.target_position * get_spring_force())
+	if enableIntegrateForces:
+		apply_force(floorCast.target_position * get_spring_force())
 	var unitInput = localInputVector.normalized()
 	var goalVel = unitInput * maxSpeed
 	var stepVel = linear_velocity.lerp(goalVel, acceleration)
-	apply_force(stepVel * mass)
+	if enableIntegrateForces:
+		apply_force(stepVel * mass)
 	speed = abs(Vector3(linear_velocity.x, 0.0, linear_velocity.z).length())
+
+func combo_ended():
+	$sfx_special_ready.stop()
+	specialAvaliable = false
 
 func get_character_model():
 	return characterModel
@@ -120,6 +133,10 @@ func get_spring_force():
 			body.apply_force(-1.0 * floorCast.target_position * springforce)
 	return springforce * rideSpringScaler
 
+func on_special_threshold():
+	specialAvaliable = true
+	$sfx_special_ready.play()
+
 func initialize_location():
 	var targetPointName = GameDataManager.gameData.doorName
 	var d = Utils.get_world(get_tree()).get_node(NodePath(targetPointName))
@@ -139,19 +156,27 @@ func play_sound(stream):
 	$sfx_player_generic.play()
 
 func take_damage(dir):
-	apply_force(Vector3.UP * 400 + dir * 200)
-	hp -= 1
+	#apply_force(Vector3.UP * 450 + dir * 250)
+	apply_central_impulse(Vector3.UP * 4 + dir * 2.5)
 	get_character_model().play_animation("damage")
-	$DamageTimer.start()
-	get_tree().call_group("HUD", "update_health", hp)
-	if hp <= 0:
-		var dfx = load("res://Prefabs/Effects/DeathParticles.tscn").instantiate()
-		Utils.get_world(get_tree()).add_child(dfx)
-		dfx.position = position
-		queue_free()
-		get_character_model().queue_free()
-		get_tree().call_group("HUD", "hide")
-		print("Game Over")
+	if not creamDepleted:
+		cream = clamp(cream - creamHitPenalty, 0.0, creamMax)
+		$sfx_hurt_cream_squelch.play_random()
+		if cream == 0.0:
+			creamDepleted = true
+	else:
+		hp -= 1
+		$sfx_hurt.play_random()
+		$DamageTimer.start()
+		get_tree().call_group("HUD", "update_health", hp)
+		if hp <= 0:
+			var dfx = load("res://Prefabs/Effects/DeathParticles.tscn").instantiate()
+			Utils.get_world(get_tree()).add_child(dfx)
+			dfx.position = position
+			queue_free()
+			get_character_model().queue_free()
+			get_tree().call_group("HUD", "hide")
+			print("Game Over")
 	
 
 func toggle_hover(s = true):

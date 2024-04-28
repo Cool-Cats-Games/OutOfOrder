@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bjxelnsgamg04"]
+[gd_scene load_steps=30 format=3 uid="uid://bjxelnsgamg04"]
 
 [ext_resource type="Texture2D" uid="uid://gsjqublly2ib" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0121.png" id="1_1hl55"]
 [ext_resource type="Script" path="res://Prefabs/UI/HUD.gd" id="1_hg23k"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shader" path="res://Shaders/radialReveal.gdshader" id="11_4p14g"]
 [ext_resource type="Texture2D" uid="uid://dbhyds4axbjyu" path="res://Sprites/10x10TransparentMask.png" id="12_axstx"]
 [ext_resource type="Shader" path="res://Shaders/liquidfill.gdshader" id="13_g8hk6"]
+[ext_resource type="Texture2D" uid="uid://t8bfdphlh8pn" path="res://Sprites/Effects/smallflame.png" id="14_hnrob"]
 [ext_resource type="Texture2D" uid="uid://dergqs3rec8u4" path="res://icon.svg" id="14_tj3gj"]
 [ext_resource type="Script" path="res://Scenes/CreamOMeter.gd" id="15_bfg4m"]
 [ext_resource type="Script" path="res://Prefabs/UI/ChallengeContainer.gd" id="17_dnr66"]
@@ -32,9 +33,80 @@ shader_parameter/offset = Vector2(-0.995, -0.84)
 shader_parameter/fill_texture_overlay = ExtResource("12_axstx")
 shader_parameter/bg_texture = ExtResource("10_thfp3")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5wkx6"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_p231i"]
+offsets = PackedFloat32Array(0, 0.0518519, 0.911111, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.584314, 1, 1, 1, 1, 0.45098, 0.45098, 0.45098, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2j6re"]
+gradient = SubResource("Gradient_p231i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6fpac"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 33.215
+emission_ring_inner_radius = 30.255
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -40, 0)
+scale_min = 0.6
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_2j6re")
+hue_variation_max = 0.1
+anim_speed_min = 4.0
+anim_speed_max = 4.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_53g3m"]
 shader = ExtResource("13_g8hk6")
 shader_parameter/fV = 0.0
+shader_parameter/colormod = Vector4(1, 1, 1, 1)
+shader_parameter/modColBy = 0.0
+
+[sub_resource type="Animation" id="Animation_uo5or"]
+resource_name = "creamdepleted"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/modColBy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_thogo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/modColBy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whwft"]
+_data = {
+"RESET": SubResource("Animation_thogo"),
+"creamdepleted": SubResource("Animation_uo5or")
+}
 
 [node name="HUD" type="CanvasLayer" groups=["HUD"]]
 script = ExtResource("1_hg23k")
@@ -99,18 +171,39 @@ texture = ExtResource("10_thfp3")
 material = SubResource("ShaderMaterial_t0g4j")
 texture = ExtResource("10_thfp3")
 
-[node name="CreamOMeter" type="Sprite2D" parent="."]
+[node name="fire_particles_2" type="GPUParticles2D" parent="."]
+process_mode = 3
+material = SubResource("CanvasItemMaterial_5wkx6")
+position = Vector2(124, 51)
+emitting = false
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_6fpac")
+texture = ExtResource("14_hnrob")
+lifetime = 0.5
+fixed_fps = 60
+
+[node name="CreamOMeter" type="Sprite2D" parent="." groups=["ComboScoreObserver"]]
 material = SubResource("ShaderMaterial_53g3m")
 position = Vector2(233, 161)
 scale = Vector2(2.26563, 2.26563)
 texture = ExtResource("14_tj3gj")
 script = ExtResource("15_bfg4m")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CreamOMeter"]
+libraries = {
+"": SubResource("AnimationLibrary_whwft")
+}
+speed_scale = 0.5
+
 [node name="HealthGauge" type="Node2D" parent="."]
 position = Vector2(34, 15)
 scale = Vector2(0.85, 0.85)
 
 [node name="ComboMeter" parent="." instance=ExtResource("17_nq6np")]
+offset_left = -3.99969
+offset_top = 3.0
+offset_right = -3.99969
+offset_bottom = 3.0
 
 [node name="ChallengeContainer" type="Node2D" parent="." groups=["ChallengeEmblems"]]
 position = Vector2(204, 53)
@@ -118,3 +211,5 @@ script = ExtResource("17_dnr66")
 
 [node name="CollectableUI" parent="." instance=ExtResource("18_jqchm")]
 position = Vector2(478, 590)
+
+[connection signal="animation_finished" from="CreamOMeter/AnimationPlayer" to="CreamOMeter" method="_on_animation_player_animation_finished"]

@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5h32u1t8w6k8"]
+[gd_scene load_steps=7 format=3 uid="uid://b5h32u1t8w6k8"]
 
 [ext_resource type="Script" path="res://Prefabs/UI/ComboMeter.gd" id="1_bj5if"]
 [ext_resource type="Script" path="res://Prefabs/UI/TweenList.gd" id="2_xuh4k"]
 [ext_resource type="Theme" uid="uid://bt5kdmrwst66f" path="res://Textures/MonkeyFontTheme.tres" id="3_dd0dt"]
+[ext_resource type="PackedScene" uid="uid://bdjovo8c28cfx" path="res://Prefabs/Effects/fire_particles_2.tscn" id="4_qncsm"]
+[ext_resource type="AudioStream" uid="uid://3lpvdym2y6j2" path="res://Sounds/sfx_special_reached.wav" id="5_ywv0o"]
+[ext_resource type="AudioStream" uid="uid://sdvjr1rvxroi" path="res://Sounds/sfx_combo_start.wav" id="6_nmvy3"]
 
-[node name="ComboMeter" type="Control"]
+[node name="ComboMeter" type="Control" groups=["ComboScoreObserver"]]
+process_mode = 3
 layout_mode = 3
 anchor_left = 0.742708
 anchor_right = 1.0
 anchor_bottom = 0.362963
+offset_left = 2.00031
+offset_top = 1.0
+offset_right = 2.00031
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bj5if")
@@ -80,11 +88,26 @@ offset_right = 241.0
 offset_bottom = 61.0
 show_percentage = false
 
+[node name="fire_particles_2" parent="." instance=ExtResource("4_qncsm")]
+position = Vector2(117, 26)
+emitting = false
+
 [node name="ComboTitle" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_top = 35.0
 offset_right = 241.0
 offset_bottom = 61.0
 theme = ExtResource("3_dd0dt")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 bbcode_enabled = true
 text = "[center]COMBO MEAL![/center]"
+
+[node name="sfx_special" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ywv0o")
+bus = &"SFX"
+
+[node name="sfx_combo_start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nmvy3")
+bus = &"SFX"

@@ -5,12 +5,15 @@ signal on_walk_to_reached
 @export var threshold = 1.0
 
 var points = []
+var framesStuck = 0
+var maxFramesStuck = 25
+
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
 	points = _msg.points
-	actor.play_animation("Walk")
-
+	actor.play_animation("Walk" if stateAnimationName == "" else stateAnimationName)
+	framesStuck = 0
 
 # Virtual function. Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:
@@ -27,4 +30,8 @@ func physics_update(_delta: float) -> void:
 			state_machine.transition_to("Idle")
 			if not actor.isPatrolling:
 				on_walk_to_reached.emit()
+	if actor.linear_velocity.length() < 0.1:
+		framesStuck += 1
+	if framesStuck > maxFramesStuck:
+		state_machine.transition_to("Idle")
 	pass

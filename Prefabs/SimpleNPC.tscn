@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dos2jeeu6b7a2"]
+[gd_scene load_steps=37 format=3 uid="uid://dos2jeeu6b7a2"]
 
 [ext_resource type="Script" path="res://Prefabs/SimpleNPC.gd" id="1_oovj6"]
 [ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="3_2src0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://addons/StateMachine/States/NPCHurt.gd" id="9_tprfg"]
 [ext_resource type="Material" uid="uid://ll62h1hqidlw" path="res://Materials/NPCMaterial.tres" id="9_uj6yg"]
 [ext_resource type="ArrayMesh" uid="uid://bvg7xrnybfofm" path="res://Models/Characters/NPCs/NPCMeshes/MaleBaseMesh.tres" id="10_8lxbx"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/EntityRagdoll.gd" id="10_o1tkb"]
 [ext_resource type="ArrayMesh" uid="uid://hi0b8jjyv2ov" path="res://Models/Characters/NPCs/NPCHairMeshes/Sallytop.res" id="11_4ijf7"]
 [ext_resource type="Animation" uid="uid://b0ovm48like5u" path="res://Models/Characters/NPCs/Flee.res" id="12_n1q67"]
 [ext_resource type="Animation" uid="uid://cwwmpo78dgs0t" path="res://Models/Characters/NPCs/Scared.res" id="13_1ipf5"]
@@ -22,6 +23,12 @@
 [ext_resource type="Animation" uid="uid://b68soi8dd8d08" path="res://Models/Characters/NPCs/Hurt2.res" id="20_p0rji"]
 [ext_resource type="Animation" uid="uid://b662yfs5mcyrw" path="res://Models/Characters/NPCs/Hurt3.res" id="21_w7gre"]
 [ext_resource type="Animation" uid="uid://umtb1v50mirs" path="res://Models/Characters/NPCs/Hurt4.res" id="22_ln588"]
+[ext_resource type="Animation" uid="uid://bab1r1a4eq8uf" path="res://Models/Characters/NPCs/Ragdoll.res" id="24_5shb8"]
+[ext_resource type="Animation" uid="uid://bxbg5jidu2c44" path="res://Models/Characters/NPCs/Grabbed.res" id="25_4heod"]
+[ext_resource type="Script" path="res://Prefabs/RandomAudioPlayer3d.gd" id="26_ex1dr"]
+[ext_resource type="AudioStream" uid="uid://c1imv7670fc4d" path="res://Sounds/sfx_spin1.wav" id="27_stlt4"]
+[ext_resource type="AudioStream" uid="uid://n311l2wlkeix" path="res://Sounds/sfx_spin2.wav" id="28_41iav"]
+[ext_resource type="AudioStream" uid="uid://ce824wpbnd8xn" path="res://Sounds/sfx_spin3.wav" id="29_k2c3l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
 bounce = 0.7
@@ -74,13 +81,31 @@ bind/11/name = &"Head"
 bind/11/bone = -1
 bind/11/pose = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, -0.880314, 0)
 
+[sub_resource type="Animation" id="Animation_sfer8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 7.85398, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icehg"]
 _data = {
 "Flee": ExtResource("12_n1q67"),
+"Grabbed": ExtResource("25_4heod"),
 "Hurt1": ExtResource("19_t3ole"),
 "Hurt2": ExtResource("20_p0rji"),
 "Hurt3": ExtResource("21_w7gre"),
 "Hurt4": ExtResource("22_ln588"),
+"RESET": SubResource("Animation_sfer8"),
+"Ragdoll": ExtResource("24_5shb8"),
 "Scared": ExtResource("13_1ipf5"),
 "TPose": ExtResource("16_tvsk0"),
 "Walk": ExtResource("14_gtsfu"),
@@ -125,6 +150,12 @@ script = ExtResource("8_ybcv2")
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("9_tprfg")
 
+[node name="Ragdoll" type="Node" parent="StateMachine"]
+script = ExtResource("10_o1tkb")
+
+[node name="Timer" type="Timer" parent="StateMachine/Ragdoll"]
+one_shot = true
+
 [node name="AggroRange" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 2
@@ -146,7 +177,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="MeshContainer" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.10601, 0)
+transform = Transform3D(1.56958e-06, 0, 1, 0, 1, 0, -1, 0, 1.56958e-06, 0, -1.10601, 0)
 
 [node name="Armature" type="Node3D" parent="MeshContainer"]
 
@@ -263,8 +294,17 @@ libraries = {
 "": SubResource("AnimationLibrary_icehg")
 }
 
+[node name="sfx_ragdoll" type="AudioStreamPlayer3D" parent="."]
+volume_db = -7.0
+pitch_scale = 1.5
+bus = &"SFX"
+script = ExtResource("26_ex1dr")
+sfx = Array[AudioStream]([ExtResource("27_stlt4"), ExtResource("28_41iav"), ExtResource("29_k2c3l")])
+
 [connection signal="state_entered" from="StateMachine/Idle" to="MeshContainer/AnimationPlayer" method="play" binds= ["TPose"]]
 [connection signal="state_entered" from="StateMachine/Chase" to="MeshContainer/AnimationPlayer" method="play" binds= ["Walk"]]
+[connection signal="state_entered" from="StateMachine/Ragdoll" to="sfx_ragdoll" method="play_random"]
+[connection signal="timeout" from="StateMachine/Ragdoll/Timer" to="StateMachine/Ragdoll" method="_on_timer_timeout"]
 [connection signal="body_entered" from="AggroRange" to="." method="aggro"]
 [connection signal="body_exited" from="AggroRange" to="." method="aggro_exit"]
 [connection signal="timeout" from="flee_panic_timer" to="." method="_on_flee_panic_timer_timeout"]

@@ -6,7 +6,7 @@ extends Node3D
 
 var target
 var cameraDragging = false
-var damp = 0.2
+var damp = 0.4
 var fov = 75.0
 
 var zoomMax = -15.0

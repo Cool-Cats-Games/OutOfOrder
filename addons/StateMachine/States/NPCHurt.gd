@@ -11,6 +11,8 @@ func enter(_msg := {}) -> void:
 	frames = 0
 	hitboxPosition = _msg.hitbox.global_position
 	hold = 10 + ceili(_msg.dmg)
+	actor.localInputVector = Vector3.ZERO
+	actor.linear_velocity = Vector3.ZERO
 
 func update(_delta: float) -> void:
 	frames += 1

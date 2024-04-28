@@ -5,7 +5,8 @@ var frames = 0
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
-	$"../../SlamHitbox".monitoring = true
+	if not _msg.has("skipHitbox"):
+		$"../../SlamHitbox".monitoring = true
 	actor.get_character_model().play_animation("SlamBounce")
 	$Timer.start()
 	frames = 0

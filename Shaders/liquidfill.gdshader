@@ -17,6 +17,10 @@ shader_type canvas_item;
 
 // fV = fill value
 uniform float fV;
+uniform vec4 colormod = vec4(1.0,1.0,1.0,1.0);
+uniform float modColBy = 0.0;
+
+const float timeScale = 15.0;
 
 void fragment() {
     vec2 uv = ((UV / -0.10)) + vec2(1.25,1.25);
@@ -41,5 +45,5 @@ void fragment() {
 		vec4((step(sdf,1.)-step(sdf,.9))+
 		(fF+(clamp(bF-fF,0.,1.)*.8))+
 		clamp(pow((sdf+.01)*
-		((1.-(fF+bF))*c),5.),0.,1.));
+		((1.-(fF+bF))*c),5.),0.,1.)) * (colormod - vec4(0.0,(sin(TIME * timeScale) + 1.0) * modColBy,(sin(TIME * timeScale) + 1.0) * modColBy,0.0));
 }
