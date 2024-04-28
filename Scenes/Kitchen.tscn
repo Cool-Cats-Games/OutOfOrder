@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckdf1aol8rna0"]
+[gd_scene load_steps=32 format=3 uid="uid://ckdf1aol8rna0"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_4ceqc"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_kvr6w"]
@@ -10,25 +10,39 @@
 [ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="6_voep8"]
 [ext_resource type="Material" uid="uid://cr6tp7jb75i63" path="res://Materials/material_stonetile_02.tres" id="7_h3d71"]
 [ext_resource type="Material" uid="uid://dp813bemnqj7s" path="res://Materials/material_stoneTile_01.tres" id="8_58uwb"]
+[ext_resource type="Texture2D" uid="uid://opf6gtcdtnkm" path="res://Textures/metalTextures_x64/mtl_O_s.png" id="8_fgyyl"]
 [ext_resource type="ArrayMesh" uid="uid://12bgtgjosvpa" path="res://Models/MeshInstances/WallPiece_mesh.tres" id="9_ou342"]
 [ext_resource type="Material" uid="uid://i5qlx14oouhm" path="res://Materials/material_pitchBlack.tres" id="10_u6lu4"]
 [ext_resource type="Material" uid="uid://br8xxpc4hd2y3" path="res://Materials/material_tileWall.tres" id="12_h2uk8"]
 [ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="13_krr7i"]
 [ext_resource type="PackedScene" uid="uid://dnlddpqxw01vu" path="res://Prefabs/Objects/FlourescentLight.tscn" id="15_3iuva"]
+[ext_resource type="Material" uid="uid://ckyp7l23ji18y" path="res://Materials/material_stainlessSteel.tres" id="15_j1fr5"]
 [ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="16_iw31e"]
+[ext_resource type="PackedScene" uid="uid://di1gotpig1qk2" path="res://Prefabs/Breakables/RollingCart.tscn" id="19_if3sn"]
+[ext_resource type="PackedScene" uid="uid://drk0ibqddj4iw" path="res://Prefabs/Food/FoodGeneric.tscn" id="20_7aedq"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c4ed"]
-albedo_color = Color(0.745407, 0.630015, 0.637592, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bv0u"]
 albedo_texture = ExtResource("6_dqtkx")
-uv1_scale = Vector3(0.24, 0.24, 0.24)
+metallic = 0.3
+roughness = 0.21
+uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
 uv1_world_triplanar = true
-texture_filter = 0
+texture_filter = 2
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_e6uaa"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fo2qt"]
 data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c4ed"]
+albedo_texture = ExtResource("8_fgyyl")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vaqal"]
 data = PackedVector3Array(1, 1, 1, 1, -1, 1, 0, -1, 1, 0, 1, -1, 0, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 0, 1, -1, 1, -1, -1, 1, 1, -1, 1, 1, -1, 1, -1, 1, 1, 1, 1)
@@ -73,6 +87,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xkxjj")
 
+[sub_resource type="BoxMesh" id="BoxMesh_0dl1c"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_li17t"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
 [node name="Room" type="Node3D" groups=["World"]]
 script = ExtResource("1_4ceqc")
 
@@ -93,7 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89176, 9.13384)
 
 [node name="Ground" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(14.58, 0, 0, 0, -1.61409e-06, 1.019, 0, -36.926, -4.45419e-08, 0, 0, -4.92239)
-material_override = SubResource("StandardMaterial3D_0c4ed")
+material_override = SubResource("StandardMaterial3D_1bv0u")
 mesh = SubResource("QuadMesh_e6uaa")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Ground"]
@@ -205,19 +224,58 @@ transform = Transform3D(-2.029, 0, -1.50996e-07, 0, 3.006, 0, 3.0637e-07, 0, -1,
 material_override = ExtResource("10_u6lu4")
 mesh = SubResource("QuadMesh_k8aq2")
 
+[node name="flourescentLight" parent="SetPieces" instance=ExtResource("15_3iuva")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 4.06282, 3.86669, 8.14291)
+metadata/_edit_lock_ = true
+
+[node name="flourescentLight2" parent="SetPieces" instance=ExtResource("15_3iuva")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -3.94454, 3.86669, 8.20261)
+metadata/_edit_lock_ = true
+
+[node name="flourescentLight3" parent="SetPieces" instance=ExtResource("15_3iuva")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 4.06282, 3.86669, 1.96503)
+metadata/_edit_lock_ = true
+
+[node name="flourescentLight4" parent="SetPieces" instance=ExtResource("15_3iuva")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -3.94454, 3.86669, 2.02472)
+metadata/_edit_lock_ = true
+
+[node name="flourescentLight5" parent="SetPieces" instance=ExtResource("15_3iuva")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 4.06282, 3.86669, -4.85567)
+metadata/_edit_lock_ = true
+
+[node name="flourescentLight6" parent="SetPieces" instance=ExtResource("15_3iuva")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -3.94454, 3.86669, -4.79598)
+
+[node name="DorrwayCutout" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-8.68637e-08, 0, 1.98721, 0, 1.98721, 0, -1.98721, 0, -8.68637e-08, 0.0233891, 1.94146, 13.2315)
+material_override = ExtResource("12_h2uk8")
+mesh = SubResource("ArrayMesh_xrxlc")
+skeleton = NodePath("")
+
+[node name="MetalBench" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(3.745, 0, 0, 0, 1.93217, 0, 0, 0, 1, 0.297001, 0.894241, 5.72983)
+material_override = ExtResource("15_j1fr5")
+mesh = SubResource("BoxMesh_0dl1c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/MetalBench"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MetalBench/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_li17t")
+
 [node name="Destructables" type="Node3D" parent="."]
+
+[node name="PhysicBreakable" parent="Destructables" instance=ExtResource("19_if3sn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79488, 1.05633, 5.90655)
+
+[node name="PhysicBreakable2" parent="Destructables" instance=ExtResource("19_if3sn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59117, 1.05633, 5.90655)
 
 [node name="Events" type="Node3D" parent="."]
 
 [node name="Challenges" type="Node3D" parent="."]
 
 [node name="BlankEnv" parent="." instance=ExtResource("6_voep8")]
-
-[node name="DorrwayCutout" type="MeshInstance3D" parent="."]
-transform = Transform3D(-8.68637e-08, 0, 1.98721, 0, 1.98721, 0, -1.98721, 0, -8.68637e-08, 0.0233891, 1.94146, 13.2315)
-material_override = ExtResource("12_h2uk8")
-mesh = SubResource("ArrayMesh_xrxlc")
-skeleton = NodePath("")
 
 [node name="C" parent="." instance=ExtResource("13_krr7i")]
 transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0.0166009, 0.729436, 9.99479)
@@ -229,11 +287,8 @@ size = Vector3(15.879, 5.1857, 37.8235)
 interior = true
 enable_shadows = true
 
-[node name="flourescentLight" parent="." instance=ExtResource("15_3iuva")]
-transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 4.34243, 3.86669, 8.43664)
-
-[node name="flourescentLight2" parent="." instance=ExtResource("15_3iuva")]
-transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -4.43626, 3.86669, 8.43664)
-
 [node name="TommyTwoTraps" parent="." instance=ExtResource("16_iw31e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63973, 1.58401, -7.725)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63973, 1.58401, -11.941)
+
+[node name="FoodGeneric" parent="." instance=ExtResource("20_7aedq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64602, 1.80476, 5.81398)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://oun6s5kkpcrf"]
+[gd_scene load_steps=27 format=3 uid="uid://oun6s5kkpcrf"]
 
 [ext_resource type="Script" path="res://Prefabs/Breakables/SelfHelpKiosk.gd" id="1_576lr"]
 [ext_resource type="Texture2D" uid="uid://dcpnn6pklrphi" path="res://Textures/posters/poster_02.png" id="3_033iy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d0qeoogv82cex" path="res://Textures/posters/poster_07.png" id="8_ov3h1"]
 [ext_resource type="Texture2D" uid="uid://chu5co66bo7nn" path="res://Textures/posters/poster_12.png" id="8_u7sfj"]
 [ext_resource type="PackedScene" uid="uid://cdugpcebfoa4r" path="res://Prefabs/Breakables/Squibs/Squib_Lever.tscn" id="9_khten"]
+[ext_resource type="Texture2D" uid="uid://h1wn38mr4duv" path="res://Textures/posters/poster_15.png" id="9_tbq6j"]
 [ext_resource type="PackedScene" uid="uid://c2cotx4xboard" path="res://Prefabs/Breakables/Squibs/Squib_Tubing.tscn" id="10_keork"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
@@ -196,7 +197,7 @@ sleeping = true
 lock_rotation = true
 freeze = true
 script = ExtResource("1_576lr")
-screens = Array[Texture]([ExtResource("3_qkh6y"), ExtResource("3_033iy"), ExtResource("4_cb8xo"), ExtResource("5_4m78k"), ExtResource("6_tfhdp"), ExtResource("8_u7sfj"), ExtResource("8_ov3h1")])
+screens = Array[Texture]([ExtResource("3_qkh6y"), ExtResource("3_033iy"), ExtResource("4_cb8xo"), ExtResource("5_4m78k"), ExtResource("6_tfhdp"), ExtResource("8_u7sfj"), ExtResource("8_ov3h1"), ExtResource("9_tbq6j")])
 destroyedRes = "res://Prefabs/Breakables/Destroyed/SelfHelpKiosk_Destroyed.tscn"
 squibs = Array[Resource]([ExtResource("9_khten"), ExtResource("10_keork")])
 

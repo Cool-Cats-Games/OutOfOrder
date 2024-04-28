@@ -20,6 +20,10 @@ static func play_mono_sound(sfx, tree):
 	dsfx.finished.connect(dsfx.queue_free)
 	dsfx.play()
 
+static func random_vector(rmin = 1.0, rmax = 1.0):
+	return Vector3(randf_range(rmin, rmax),randf_range(rmin, rmax),randf_range(rmin, rmax))
+	
+
 static func ShortestRotation(to : Quaternion, from : Quaternion) -> Quaternion:
 	if to.dot(from) < 0:
 		return to * (from * -1).inverse()
