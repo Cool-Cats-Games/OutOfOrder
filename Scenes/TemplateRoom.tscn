@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkd2q8bgw4e8"]
+[gd_scene load_steps=10 format=3 uid="uid://bkd2q8bgw4e8"]
 
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_b0j5b"]
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_lxibi"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="4_a8rbs"]
 [ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="5_4cco2"]
 [ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="6_6p7c7"]
+[ext_resource type="Script" path="res://Scenes/KillPlane.gd" id="8_4q7c5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_woy1e"]
+size = Vector3(10000, 100, 10000)
 
 [node name="TemplateRoom" type="Node3D" groups=["World"]]
 script = ExtResource("1_lxibi")
@@ -30,3 +34,12 @@ script = ExtResource("1_lxibi")
 [node name="Challenges" type="Node3D" parent="."]
 
 [node name="BlankEnv" parent="." instance=ExtResource("6_6p7c7")]
+
+[node name="KillPlane" type="Area3D" parent="."]
+script = ExtResource("8_4q7c5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, 0)
+shape = SubResource("BoxShape3D_woy1e")
+
+[connection signal="body_entered" from="KillPlane" to="KillPlane" method="_on_body_entered"]

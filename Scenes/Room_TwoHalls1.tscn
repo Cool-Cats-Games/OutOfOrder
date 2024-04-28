@@ -1,0 +1,297 @@
+[gd_scene load_steps=23 format=3 uid="uid://b58es4jrr1p0b"]
+
+[ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_v3le4"]
+[ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_2tw4s"]
+[ext_resource type="PackedScene" uid="uid://bkatl43sgnc2w" path="res://Prefabs/CharacterSpringbox.tscn" id="3_s4jkh"]
+[ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="4_v28sp"]
+[ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="5_hb73r"]
+[ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="6_yio5b"]
+[ext_resource type="PackedScene" uid="uid://bi6m4ui7qk7sm" path="res://Prefabs/floor.tscn" id="7_20qd4"]
+[ext_resource type="PackedScene" uid="uid://byakiv2073a1o" path="res://Prefabs/wall.tscn" id="8_hov1i"]
+[ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="8_wrxcj"]
+[ext_resource type="Material" uid="uid://cr6tp7jb75i63" path="res://Materials/material_stonetile_02.tres" id="9_hpg8i"]
+[ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="10_0g30h"]
+[ext_resource type="PackedScene" uid="uid://bcuj61yh0jaxw" path="res://Prefabs/ceiling.tscn" id="10_dcj6e"]
+[ext_resource type="Material" uid="uid://i5qlx14oouhm" path="res://Materials/material_pitchBlack.tres" id="11_g6c7m"]
+[ext_resource type="PackedScene" uid="uid://dnlddpqxw01vu" path="res://Prefabs/Objects/FlourescentLight.tscn" id="13_km2k5"]
+[ext_resource type="PackedScene" uid="uid://b4qih57vkpa1" path="res://Models/Objects/FireExtinguisher.dae" id="14_1p3h1"]
+[ext_resource type="PackedScene" uid="uid://decx1c5q41aos" path="res://Prefabs/Breakables/TrashCanB.tscn" id="15_d871d"]
+[ext_resource type="PackedScene" uid="uid://ksjqspcx50oq" path="res://Prefabs/Breakables/Topiary.tscn" id="17_wwgth"]
+[ext_resource type="PackedScene" uid="uid://bmshh5t8uodbl" path="res://Prefabs/GoldenCat.tscn" id="18_y4ter"]
+[ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="19_svgqg"]
+[ext_resource type="Script" path="res://Scenes/KillPlane.gd" id="20_yny66"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lmk24"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w2b32"]
+size = Vector3(10000, 100, 10000)
+
+[node name="TemplateRoom" type="Node3D" groups=["World"]]
+script = ExtResource("1_v3le4")
+
+[node name="Player" parent="." instance=ExtResource("2_2tw4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1631, 2.23859, 11.9862)
+
+[node name="CharacterSpringbox" parent="." instance=ExtResource("3_s4jkh")]
+
+[node name="CameraRig" parent="." instance=ExtResource("4_v28sp")]
+
+[node name="HUD" parent="." instance=ExtResource("5_hb73r")]
+
+[node name="GlobalEffectContainer" parent="." instance=ExtResource("6_yio5b")]
+
+[node name="SetPieces" type="Node3D" parent="."]
+
+[node name="Floor" parent="SetPieces" instance=ExtResource("7_20qd4")]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Floor2" parent="SetPieces" instance=ExtResource("7_20qd4")]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 5, -32, 0, 0)
+
+[node name="Floor3" parent="SetPieces" instance=ExtResource("7_20qd4")]
+transform = Transform3D(-4.37114e-08, 0, 3, 0, 5, 0, -1, 0, -1.31134e-07, -24, 0, 16)
+
+[node name="Floor4" parent="SetPieces" instance=ExtResource("7_20qd4")]
+transform = Transform3D(-4.37114e-08, 0, 3, 0, 5, 0, -1, 0, -1.31134e-07, -24, 0, 32)
+
+[node name="Wall" parent="SetPieces" instance=ExtResource("8_hov1i")]
+
+[node name="MeshInstance3D" parent="SetPieces/Wall" index="0"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 8)
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall2" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall2" index="0"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 8)
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall3" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 0, 40)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall3" index="0"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 8)
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall11" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 16, 0, 40)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall11" index="0"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 8)
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall12" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40, 0, 0)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall12" index="0"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 8)
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall5" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 4)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall5" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall6" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 20)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall6" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall8" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 0, 20)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall8" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall9" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 0, 4)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall9" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall10" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24, 0, 36)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall10" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Wall7" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 36)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall7" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Doorway8Wide" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 40)
+
+[node name="MeshInstance3D" parent="SetPieces/Doorway8Wide" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Door" parent="SetPieces/Doorway8Wide" instance=ExtResource("10_0g30h")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0.0296113, 0.673294, -3.46724)
+targetRoom = "res://Scenes/Lobby.tscn"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SetPieces/Doorway8Wide"]
+transform = Transform3D(2, 0, 6.3573e-08, 0, 3, 0, -1.27146e-07, 0, 1, 0, 1.5, 0.005)
+material_override = ExtResource("11_g6c7m")
+mesh = SubResource("QuadMesh_lmk24")
+
+[node name="Doorway8Wide2" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28, 0, 40)
+
+[node name="MeshInstance3D" parent="SetPieces/Doorway8Wide2" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Door" parent="SetPieces/Doorway8Wide2" instance=ExtResource("10_0g30h")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0.0296113, 0.673294, -3.46724)
+targetRoom = "res://Scenes/Lobby.tscn"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SetPieces/Doorway8Wide2"]
+transform = Transform3D(2, 0, 6.3573e-08, 0, 3, 0, -1.27146e-07, 0, 1, 0, 1.5, 0.005)
+material_override = ExtResource("11_g6c7m")
+mesh = SubResource("QuadMesh_lmk24")
+
+[node name="Doorway8Wide3" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 0)
+
+[node name="MeshInstance3D" parent="SetPieces/Doorway8Wide3" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Door" parent="SetPieces/Doorway8Wide3" instance=ExtResource("10_0g30h")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0.0296113, 0.673294, -3.46724)
+targetRoom = "res://Scenes/Lobby.tscn"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SetPieces/Doorway8Wide3"]
+transform = Transform3D(2, 0, 6.3573e-08, 0, 3, 0, -1.27146e-07, 0, 1, 0, 1.5, 0.005)
+material_override = ExtResource("11_g6c7m")
+mesh = SubResource("QuadMesh_lmk24")
+
+[node name="Doorway8Wide4" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="MeshInstance3D" parent="SetPieces/Doorway8Wide4" index="0"]
+material_override = ExtResource("9_hpg8i")
+
+[node name="Door" parent="SetPieces/Doorway8Wide4" instance=ExtResource("10_0g30h")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0.0296113, 0.673294, -3.46724)
+targetRoom = "res://Scenes/Lobby.tscn"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SetPieces/Doorway8Wide4"]
+transform = Transform3D(2, 0, 6.3573e-08, 0, 3, 0, -1.27146e-07, 0, 1, 0, 1.5, 0.005)
+material_override = ExtResource("11_g6c7m")
+mesh = SubResource("QuadMesh_lmk24")
+
+[node name="Wall4" parent="SetPieces" instance=ExtResource("8_hov1i")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -24, 0, 24)
+
+[node name="MeshInstance3D" parent="SetPieces/Wall4" index="0"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 8)
+material_override = ExtResource("9_hpg8i")
+
+[node name="Ceiling" parent="SetPieces" instance=ExtResource("10_dcj6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 0, 4, 40)
+metadata/_edit_lock_ = true
+
+[node name="Ceiling2" parent="SetPieces" instance=ExtResource("10_dcj6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, -32, 4, 40)
+metadata/_edit_lock_ = true
+
+[node name="Ceiling3" parent="SetPieces" instance=ExtResource("10_dcj6e")]
+transform = Transform3D(-4.37114e-08, 0, -3, 0, 1, 0, 1, 0, -1.31134e-07, -24, 4, 24)
+metadata/_edit_lock_ = true
+
+[node name="Ceiling4" parent="SetPieces" instance=ExtResource("10_dcj6e")]
+transform = Transform3D(-4.37114e-08, 0, -3, 0, 1, 0, 1, 0, -1.31134e-07, -24, 4, 8)
+metadata/_edit_lock_ = true
+
+[node name="Destructables" type="Node3D" parent="."]
+
+[node name="flourescentLight3" parent="Destructables" instance=ExtResource("13_km2k5")]
+transform = Transform3D(-1.94248e-08, 0, 0.188458, 0, 0.6, 0, -0.444387, 0, -8.23774e-09, 3.97166, 3.89954, 12.3437)
+
+[node name="flourescentLight4" parent="Destructables" instance=ExtResource("13_km2k5")]
+transform = Transform3D(-1.94248e-08, 0, 0.188458, 0, 0.6, 0, -0.444387, 0, -8.23774e-09, 3.97166, 3.89954, 28.3437)
+
+[node name="flourescentLight5" parent="Destructables" instance=ExtResource("13_km2k5")]
+transform = Transform3D(-1.94248e-08, 0, 0.188458, 0, 0.6, 0, -0.444387, 0, -8.23774e-09, -28.0283, 3.89954, 12.3437)
+
+[node name="flourescentLight6" parent="Destructables" instance=ExtResource("13_km2k5")]
+transform = Transform3D(-1.94248e-08, 0, 0.188458, 0, 0.6, 0, -0.444387, 0, -8.23774e-09, -28.0283, 3.89954, 28.3437)
+
+[node name="FireExtinguisher" parent="Destructables" instance=ExtResource("14_1p3h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 2, 20)
+
+[node name="FireExtinguisher2" parent="Destructables" instance=ExtResource("14_1p3h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 2, 20)
+
+[node name="TrashCanB" parent="Destructables" instance=ExtResource("15_d871d")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.95918, 0.230887, 8.371)
+
+[node name="TrashCanB2" parent="Destructables" instance=ExtResource("15_d871d")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -0.95918, 0.230887, 31.571)
+
+[node name="TrashCanB3" parent="Destructables" instance=ExtResource("15_d871d")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.9592, 0.230887, 8.371)
+
+[node name="TrashCanB4" parent="Destructables" instance=ExtResource("15_d871d")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -22.9592, 0.230887, 31.571)
+
+[node name="Events" type="Node3D" parent="."]
+
+[node name="Challenges" type="Node3D" parent="."]
+
+[node name="BlankEnv" parent="." instance=ExtResource("8_wrxcj")]
+
+[node name="Topiary" parent="." instance=ExtResource("17_wwgth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8878, 0.427348, 15.349)
+
+[node name="Topiary2" parent="." instance=ExtResource("17_wwgth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8878, 0.427348, 8.64898)
+
+[node name="Topiary3" parent="." instance=ExtResource("17_wwgth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8878, 0.427348, 31.349)
+
+[node name="Topiary4" parent="." instance=ExtResource("17_wwgth")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8878, 0.427348, 24.649)
+
+[node name="GoldenCat" parent="." instance=ExtResource("18_y4ter")]
+transform = Transform3D(0.417946, 0, -0.908472, 0, 1, 0, 0.908472, 0, 0.417946, 7.5838, 0.04904, 0.51677)
+
+[node name="FryboySpawner" parent="." instance=ExtResource("19_svgqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7555, 0.81484, 20.1536)
+radius = 100.0
+entityPath = "res://Prefabs/PotatoShredz.tscn"
+spawnLoop = true
+spawnOnReady = true
+spawnTimer = 0.5
+timerOnReady = true
+spawnLimit = 10
+
+[node name="KillPlane" type="Area3D" parent="."]
+script = ExtResource("20_yny66")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, 0)
+shape = SubResource("BoxShape3D_w2b32")
+
+[connection signal="body_entered" from="KillPlane" to="KillPlane" method="_on_body_entered"]
+
+[editable path="SetPieces/Wall"]
+[editable path="SetPieces/Wall2"]
+[editable path="SetPieces/Wall3"]
+[editable path="SetPieces/Wall11"]
+[editable path="SetPieces/Wall12"]
+[editable path="SetPieces/Wall5"]
+[editable path="SetPieces/Wall6"]
+[editable path="SetPieces/Wall8"]
+[editable path="SetPieces/Wall9"]
+[editable path="SetPieces/Wall10"]
+[editable path="SetPieces/Wall7"]
+[editable path="SetPieces/Doorway8Wide"]
+[editable path="SetPieces/Doorway8Wide2"]
+[editable path="SetPieces/Doorway8Wide3"]
+[editable path="SetPieces/Doorway8Wide4"]
+[editable path="SetPieces/Wall4"]

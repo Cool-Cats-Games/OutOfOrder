@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcj7ggeb7l0vy"]
+
+[ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_2vcyq"]
+[ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_v0mee"]
+[ext_resource type="PackedScene" uid="uid://bkatl43sgnc2w" path="res://Prefabs/CharacterSpringbox.tscn" id="3_sdv5i"]
+[ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="4_vfjvy"]
+[ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="5_bqk8j"]
+[ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="6_baofb"]
+[ext_resource type="PackedScene" uid="uid://bi6m4ui7qk7sm" path="res://Prefabs/floor.tscn" id="7_ems48"]
+[ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="8_naykj"]
+
+[node name="TemplateRoom" type="Node3D" groups=["World"]]
+script = ExtResource("1_2vcyq")
+
+[node name="Player" parent="." instance=ExtResource("2_v0mee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1631, 3.23859, 1.98621)
+
+[node name="CharacterSpringbox" parent="." instance=ExtResource("3_sdv5i")]
+
+[node name="CameraRig" parent="." instance=ExtResource("4_vfjvy")]
+
+[node name="HUD" parent="." instance=ExtResource("5_bqk8j")]
+
+[node name="GlobalEffectContainer" parent="." instance=ExtResource("6_baofb")]
+
+[node name="SetPieces" type="Node3D" parent="."]
+
+[node name="Floor" parent="SetPieces" instance=ExtResource("7_ems48")]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Floor2" parent="SetPieces" instance=ExtResource("7_ems48")]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 5, -32, 0, 0)
+
+[node name="Floor3" parent="SetPieces" instance=ExtResource("7_ems48")]
+transform = Transform3D(-4.37114e-08, 0, 3, 0, 5, 0, -1, 0, -1.31134e-07, -24, 0, 8)
+
+[node name="Floor4" parent="SetPieces" instance=ExtResource("7_ems48")]
+transform = Transform3D(-4.37114e-08, 0, 3, 0, 5, 0, -1, 0, -1.31134e-07, -24, 0, 40)
+
+[node name="Destructables" type="Node3D" parent="."]
+
+[node name="Events" type="Node3D" parent="."]
+
+[node name="Challenges" type="Node3D" parent="."]
+
+[node name="BlankEnv" parent="." instance=ExtResource("8_naykj")]
