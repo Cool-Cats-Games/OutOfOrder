@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://hm1e07njko26"]
+
+[ext_resource type="PackedScene" uid="uid://bl0lesh8giqlu" path="res://Models/Food/cake.glb" id="1_s0r2o"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fg65b"]
+height = 0.23884
+radius = 0.321069
+
+[node name="cake" type="RigidBody3D"]
+sleeping = true
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117383, 0)
+shape = SubResource("CylinderShape3D_fg65b")
+
+[node name="cake2" parent="." instance=ExtResource("1_s0r2o")]

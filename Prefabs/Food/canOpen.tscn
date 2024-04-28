@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgabpc6smosko"]
+
+[ext_resource type="PackedScene" uid="uid://bxr0v6kfdkqa3" path="res://Models/Food/canOpen.glb" id="1_1pja4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_acfg0"]
+height = 0.158189
+radius = 0.0760637
+
+[node name="canOpen" type="RigidBody3D"]
+sleeping = true
+freeze = true
+
+[node name="canOpen2" parent="." instance=ExtResource("1_1pja4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0798752, 0)
+shape = SubResource("CylinderShape3D_acfg0")

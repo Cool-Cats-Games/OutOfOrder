@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://biuto8m8ysuam"]
+
+[ext_resource type="PackedScene" uid="uid://bpgh2iifkssdh" path="res://Models/Food/avocadoHalf.glb" id="1_v5g61"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3k0tv"]
+radius = 0.0978209
+
+[node name="avocadoHalf" type="RigidBody3D"]
+sleeping = true
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0437197, 0)
+shape = SubResource("SphereShape3D_3k0tv")
+
+[node name="avocadoHalf2" parent="." instance=ExtResource("1_v5g61")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

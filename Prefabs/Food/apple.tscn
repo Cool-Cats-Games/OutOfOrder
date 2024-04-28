@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu67o4da7g4y4"]
+
+[ext_resource type="PackedScene" uid="uid://df8j8eihpnqrs" path="res://Models/Food/apple.glb" id="1_mlbta"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ulv0s"]
+radius = 0.0978209
+
+[node name="apple" type="RigidBody3D"]
+sleeping = true
+freeze = true
+
+[node name="apple2" parent="." instance=ExtResource("1_mlbta")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0882778, 0)
+shape = SubResource("SphereShape3D_ulv0s")
