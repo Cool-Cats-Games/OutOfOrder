@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ntjerootm8i"]
+
+[ext_resource type="Script" path="res://Prefabs/PhysicsDistributor.gd" id="1_1b8aw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n736x"]
+
+[node name="PhysicsDistributor" type="Area3D"]
+transform = Transform3D(1.91198, 0, 0, 0, 1.91198, 0, 0, 0, 1.91198, 0, 0, 0)
+script = ExtResource("1_1b8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_n736x")

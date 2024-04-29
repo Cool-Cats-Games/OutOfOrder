@@ -20,7 +20,7 @@ static func play_mono_sound(sfx, tree):
 	dsfx.finished.connect(dsfx.queue_free)
 	dsfx.play()
 
-static func random_vector(rmin = 1.0, rmax = 1.0):
+static func random_vector(rmin = -1.0, rmax = 1.0):
 	return Vector3(randf_range(rmin, rmax),randf_range(rmin, rmax),randf_range(rmin, rmax))
 	
 

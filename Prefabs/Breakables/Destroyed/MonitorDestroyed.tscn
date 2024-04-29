@@ -1,0 +1,199 @@
+[gd_scene load_steps=26 format=3 uid="uid://dqt43je1wwuwy"]
+
+[ext_resource type="Texture2D" uid="uid://doijamir1wuca" path="res://Textures/misc/screen_glitch.png" id="1_6nrw2"]
+[ext_resource type="Texture2D" uid="uid://8871pnvl13g5" path="res://Textures/misc/broken screen.png" id="2_ktni4"]
+[ext_resource type="PackedScene" uid="uid://71mlfoi6ud08" path="res://Prefabs/3dSoundPlayer.tscn" id="4_gvebu"]
+[ext_resource type="AudioStream" uid="uid://cdf3yun8bdvo5" path="res://Sounds/sfx_break_metal_01.wav" id="5_7cng2"]
+[ext_resource type="Material" uid="uid://b86gtsoltjlns" path="res://Models/material_blackplastic.tres" id="5_u3ath"]
+[ext_resource type="AudioStream" uid="uid://t3ek75qen3vj" path="res://Sounds/sfx_break_metal_02.WAV" id="6_bmqor"]
+[ext_resource type="AudioStream" uid="uid://hgfqavjip6wq" path="res://Sounds/sfx_break_metal_03.WAV" id="7_elchq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ngyi8"]
+size = Vector3(0.445801, 1.09766, 1.38965)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5l67m"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+scale_min = 0.1
+scale_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65pm1"]
+shading_mode = 0
+albedo_color = Color(0.951607, 0.837839, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_khjo2"]
+material = SubResource("StandardMaterial3D_65pm1")
+size = Vector2(0.045, 0.2)
+
+[sub_resource type="Curve" id="Curve_8j5ty"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.473684, 0.89011), 0.0, 0.0, 0, 0, Vector2(1, 0.67033), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nuvi6"]
+curve = SubResource("Curve_8j5ty")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4oca"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_max = 0.5
+gravity = Vector3(0, 2, 0)
+scale_min = 0.1
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_nuvi6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yapus"]
+transparency = 1
+albedo_color = Color(0.270222, 0.270222, 0.270222, 0.243137)
+
+[sub_resource type="SphereMesh" id="SphereMesh_u2vyd"]
+material = SubResource("StandardMaterial3D_yapus")
+radial_segments = 7
+rings = 7
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tid13"]
+_surfaces = [{
+"aabb": AABB(0.149605, -1.91492, -1.21942, 0.145319, 3.82985, 2.43885),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 1, 0, 4, 0, 5, 0, 4, 0, 6, 0, 7, 0, 6, 0, 2, 0, 4, 0, 1, 0, 2, 0, 3, 0, 5, 0, 7, 0, 0, 0, 1, 0, 3, 0, 3, 0, 4, 0, 5, 0, 5, 0, 6, 0, 7, 0, 7, 0, 2, 0, 0, 0, 4, 0, 2, 0, 6, 0, 3, 0, 7, 0, 0, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 254, 255, 254, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rgarf"]
+resource_name = "Cube.001"
+_surfaces = [{
+"aabb": AABB(0.149605, -1.91492, -1.21942, 0.145319, 3.82985, 2.43885),
+"attribute_data": PackedByteArray(255, 159, 255, 255, 255, 95, 255, 191, 255, 95, 255, 255, 255, 159, 255, 191, 255, 95, 255, 127, 255, 95, 255, 191, 255, 159, 255, 127, 255, 95, 255, 63, 255, 95, 255, 127, 255, 159, 255, 63, 255, 95, 0, 0, 255, 95, 255, 63, 255, 95, 255, 127, 255, 31, 255, 63, 255, 31, 255, 127, 255, 223, 255, 127, 255, 159, 255, 63, 255, 159, 255, 127, 255, 159, 255, 191, 255, 159, 255, 127, 255, 159, 255, 63, 255, 159, 0, 0, 255, 95, 255, 63, 255, 223, 255, 63),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 0, 0, 1, 0, 18, 0, 3, 0, 4, 0, 19, 0, 6, 0, 7, 0, 20, 0, 9, 0, 10, 0, 21, 0, 12, 0, 13, 0, 22, 0, 15, 0, 16, 0, 23, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 254, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 254, 255, 84, 213, 0, 0, 254, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 254, 255, 0, 0, 84, 213, 255, 255, 0, 0, 254, 255, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 254, 255, 254, 255, 255, 191, 0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 254, 255, 0, 0, 255, 255, 255, 255, 254, 255, 254, 255, 255, 255, 255, 255, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 84, 213, 255, 255, 254, 255, 0, 0, 255, 255, 255, 255, 254, 255, 254, 255, 84, 213, 0, 0, 254, 255, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 254, 255, 254, 255, 255, 255, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 84, 213, 255, 191, 255, 191, 255, 191, 255, 191, 255, 191, 255, 191, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 255, 191, 255, 127, 255, 191, 84, 213, 84, 213, 255, 191, 255, 191, 170, 42, 170, 42, 255, 255, 255, 255, 0, 0, 255, 127, 255, 127, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tid13")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45fdq"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.956863)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ja8xn"]
+resource_name = "material_black"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.0764706
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8b8vd"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2.00001, 1e-05, 2.00001),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 1, 0, 3, 0),
+"name": "material_black",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_twr01"]
+resource_name = "Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2.00001, 1e-05, 2.00001),
+"attribute_data": PackedByteArray(255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 1, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_ja8xn"),
+"name": "material_black",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 254, 255, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8b8vd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr0bw"]
+shading_mode = 0
+albedo_texture = ExtResource("1_6nrw2")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6x81"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("2_ktni4")
+uv1_scale = Vector3(1, 0.9, 1)
+uv1_offset = Vector3(0, 0.005, 0)
+texture_filter = 0
+
+[node name="SelfHelpKiosk" type="StaticBody3D"]
+collision_layer = 64
+physics_material_override = SubResource("PhysicsMaterial_hsj2v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00128168, -0.0400429, -0.0038147)
+shape = SubResource("BoxShape3D_ngyi8")
+
+[node name="sparks" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.0491984, 0, 0.998789, 0, 1, 0, -0.998789, 0, -0.0491984, 0.181012, -0.204542, -0.470122)
+amount = 3
+lifetime = 4.0
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_5l67m")
+draw_pass_1 = SubResource("QuadMesh_khjo2")
+
+[node name="smoke" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228861, 0)
+process_material = SubResource("ParticleProcessMaterial_g4oca")
+draw_pass_1 = SubResource("SphereMesh_u2vyd")
+
+[node name="3DSoundPlayer" parent="." instance=ExtResource("4_gvebu")]
+autoplay = true
+sfx = Array[AudioStream]([ExtResource("5_7cng2"), ExtResource("6_bmqor"), ExtResource("7_elchq")])
+
+[node name="SelfHelpKiosk" type="Node3D" parent="."]
+transform = Transform3D(0.395267, 0.026316, 0.0554203, -0.0318361, 0.396857, 0.0386154, -0.0524443, -0.0425694, 0.394256, 0, 0, 0)
+
+[node name="Cube_001" type="MeshInstance3D" parent="SelfHelpKiosk"]
+transform = Transform3D(1, 0, 0, 0, 0.576514, 0, 0, 0, 1.10975, 0, 0, 0)
+mesh = SubResource("ArrayMesh_rgarf")
+skeleton = NodePath("")
+
+[node name="Cube_002" type="MeshInstance3D" parent="SelfHelpKiosk"]
+transform = Transform3D(1.28152, 0, 0, 0, 0.643974, 0, 0, 0, 1.27391, -0.140289, 0, 0)
+material_override = ExtResource("5_u3ath")
+mesh = SubResource("ArrayMesh_rgarf")
+skeleton = NodePath("")
+
+[node name="Screen" type="MeshInstance3D" parent="SelfHelpKiosk"]
+transform = Transform3D(-3.10395e-08, 1, 1.39807e-08, 3.10395e-08, -9.12696e-08, -0.845544, -1.04151, -5.96046e-08, -4.0671e-08, 0.308411, 0.0180632, 0.0320477)
+material_override = SubResource("StandardMaterial3D_45fdq")
+mesh = SubResource("ArrayMesh_twr01")
+skeleton = NodePath("")
+
+[node name="Screen3" type="MeshInstance3D" parent="SelfHelpKiosk"]
+transform = Transform3D(-3.10395e-08, 1, 1.60142e-07, 4.65593e-08, -1.49012e-07, -0.845544, -1.04151, -1.19209e-07, -6.10066e-08, 0.30411, 0.0173332, 0.0319179)
+material_override = SubResource("StandardMaterial3D_vr0bw")
+mesh = SubResource("ArrayMesh_twr01")
+skeleton = NodePath("")
+
+[node name="Screen4" type="MeshInstance3D" parent="SelfHelpKiosk"]
+transform = Transform3D(-3.10395e-08, 1, 1.35994e-07, 4.65593e-08, -1.47149e-07, -0.845544, -1.04151, -1.04308e-07, -6.10066e-08, 0.315605, 0.019284, 0.0322651)
+material_override = SubResource("StandardMaterial3D_b6x81")
+mesh = SubResource("ArrayMesh_twr01")
+skeleton = NodePath("")

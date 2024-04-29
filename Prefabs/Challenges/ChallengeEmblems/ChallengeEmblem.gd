@@ -5,7 +5,7 @@ var target_pos
 
 func initialize(_idx):
 	idx = _idx
-	target_pos = 40 * idx
+	target_pos = 70 * idx
 
 func _process(delta):
 	position = position.lerp(Vector2(target_pos, 0.0), 0.1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ckdf1aol8rna0"]
+[gd_scene load_steps=56 format=3 uid="uid://ckdf1aol8rna0"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_4ceqc"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_kvr6w"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="13_krr7i"]
 [ext_resource type="PackedScene" uid="uid://dnlddpqxw01vu" path="res://Prefabs/Objects/FlourescentLight.tscn" id="15_3iuva"]
 [ext_resource type="Material" uid="uid://ckyp7l23ji18y" path="res://Materials/material_stainlessSteel.tres" id="15_j1fr5"]
-[ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="16_iw31e"]
 [ext_resource type="PackedScene" uid="uid://decx1c5q41aos" path="res://Prefabs/Breakables/TrashCanB.tscn" id="18_5tnii"]
 [ext_resource type="PackedScene" uid="uid://cgvm3b0wsb1vx" path="res://Prefabs/Breakables/Grill.tscn" id="19_5r104"]
 [ext_resource type="PackedScene" uid="uid://di1gotpig1qk2" path="res://Prefabs/Breakables/RollingCart.tscn" id="19_if3sn"]
@@ -31,7 +30,15 @@
 [ext_resource type="PackedScene" uid="uid://h6dnfbps3mx0" path="res://Prefabs/Breakables/FireExtinguisher.tscn" id="24_qr6mh"]
 [ext_resource type="Script" path="res://Prefabs/Misc/GivePathToNpc.gd" id="25_vb3ah"]
 [ext_resource type="PackedScene" uid="uid://dho6rfs1ghdgx" path="res://Prefabs/Challenges/KillTommyTwoTrapsChallenge.tscn" id="26_k41m5"]
-[ext_resource type="PackedScene" uid="uid://c5ilns3bue7ni" path="res://Prefabs/PotatoShredz.tscn" id="32_u5un3"]
+[ext_resource type="PackedScene" uid="uid://bawi4rv3gxrrf" path="res://Prefabs/Food/bacon.tscn" id="33_lgcpg"]
+[ext_resource type="PackedScene" uid="uid://4cq482aiqxjr" path="res://Prefabs/Food/banana.tscn" id="34_0hg0a"]
+[ext_resource type="PackedScene" uid="uid://gnienlxsmxnn" path="res://Prefabs/Food/burger.tscn" id="35_m67k1"]
+[ext_resource type="PackedScene" uid="uid://pnxjayjthsds" path="res://Prefabs/Food/mustard.tscn" id="36_oksnp"]
+[ext_resource type="PackedScene" uid="uid://hm1e07njko26" path="res://Prefabs/Food/cake.tscn" id="37_td0t1"]
+[ext_resource type="PackedScene" uid="uid://dbt8rfufxym6j" path="res://Prefabs/Food/ketchup.tscn" id="38_c7evy"]
+[ext_resource type="PackedScene" uid="uid://cgabpc6smosko" path="res://Prefabs/Food/canOpen.tscn" id="39_f02jv"]
+[ext_resource type="PackedScene" uid="uid://dos2jeeu6b7a2" path="res://Prefabs/SimpleNPC.tscn" id="39_kndox"]
+[ext_resource type="PackedScene" uid="uid://bsjcuukhgst82" path="res://Prefabs/Breakables/Monitor.tscn" id="40_6whu8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0qati"]
 
@@ -189,6 +196,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(14.58, 0, 0, 0, -1.61409e-06, 1.019, 0, -36.926, -4.45419e-08, 0, 0, -4.92239)
 material_override = SubResource("StandardMaterial3D_1bv0u")
 mesh = SubResource("QuadMesh_e6uaa")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Ground"]
 
@@ -329,7 +337,7 @@ mesh = SubResource("ArrayMesh_xrxlc")
 skeleton = NodePath("")
 
 [node name="MetalBench" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(3.745, 0, 0, 0, 1.93217, 0, 0, 0, 1, 0.297001, 0.894241, 5.72983)
+transform = Transform3D(3.745, 0, 0, 0, 1.93217, 0, 0, 0, 1.92029, 0.297001, 0.894241, 5.72983)
 material_override = ExtResource("15_j1fr5")
 mesh = SubResource("BoxMesh_0dl1c")
 
@@ -379,11 +387,38 @@ shape = SubResource("ConcavePolygonShape3D_li17t")
 [node name="Destructables" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00116277, 0.0138772, 0.00659132)
 
-[node name="PhysicBreakable" parent="Destructables" instance=ExtResource("19_if3sn")]
+[node name="KartA" parent="Destructables" instance=ExtResource("19_if3sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79488, 1.05633, 5.90655)
 
-[node name="PhysicBreakable2" parent="Destructables" instance=ExtResource("19_if3sn")]
+[node name="FoodGeneric" parent="Destructables/KartA" instance=ExtResource("20_7aedq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150023, 0.734553, -0.0991611)
+
+[node name="banana" parent="Destructables/KartA" instance=ExtResource("34_0hg0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00849271, 0.723713, 0.372319)
+
+[node name="burger" parent="Destructables/KartA" instance=ExtResource("35_m67k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225803, 0.790123, -0.445671)
+
+[node name="ketchup2" parent="Destructables/KartA" instance=ExtResource("38_c7evy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.161767, 0.723713, -0.719831)
+
+[node name="KartB" parent="Destructables" instance=ExtResource("19_if3sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59117, 1.05633, 5.90655)
+
+[node name="mustard" parent="Destructables/KartB" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, -0.428041)
+
+[node name="mustard2" parent="Destructables/KartB" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, -0.122651)
+
+[node name="mustard3" parent="Destructables/KartB" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, 0.105319)
+
+[node name="burger2" parent="Destructables/KartB" instance=ExtResource("35_m67k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119657, 0.723713, 0.666389)
+
+[node name="ketchup" parent="Destructables/KartB" instance=ExtResource("38_c7evy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.224997, 0.723713, -0.151191)
 
 [node name="TrashCanB" parent="Destructables" instance=ExtResource("18_5tnii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23749, 0.203638, 11.9813)
@@ -397,11 +432,32 @@ transform = Transform3D(0.7729, 0, 0.634528, 0, 1, 0, -0.634528, 0, 0.7729, -6.8
 [node name="RollingCart" parent="Destructables" instance=ExtResource("19_if3sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44583, 0.905799, 0.214505)
 
+[node name="bacon" parent="Destructables/RollingCart" instance=ExtResource("33_lgcpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243183, 0.738204, 0.183745)
+
+[node name="bacon2" parent="Destructables/RollingCart" instance=ExtResource("33_lgcpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072823, 0.738204, 0.183745)
+
+[node name="bacon3" parent="Destructables/RollingCart" instance=ExtResource("33_lgcpg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151917, 0.738204, 0.183745)
+
+[node name="cake" parent="Destructables/RollingCart" instance=ExtResource("37_td0t1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0379729, 0.723714, -0.511047)
+
+[node name="canOpen" parent="Destructables/RollingCart" instance=ExtResource("39_f02jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0266829, 0.723714, 0.629785)
+
+[node name="banana2" parent="Destructables/RollingCart" instance=ExtResource("34_0hg0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.322017, 0.723714, 0.0312077)
+
+[node name="ketchup3" parent="Destructables/RollingCart" instance=ExtResource("38_c7evy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310423, 0.723714, 0.476005)
+
 [node name="Grill" parent="Destructables" instance=ExtResource("19_5r104")]
 transform = Transform3D(-0.0414397, 0, -0.999141, 0, 1, 0, 0.999141, 0, -0.0414397, -5.61022, 1.09911, 2.79099)
 
 [node name="Grill2" parent="Destructables" instance=ExtResource("19_5r104")]
-transform = Transform3D(-0.143855, 0, -0.989599, 0, 1, 0, 0.989599, 0, -0.143855, -5.3013, 1.03208, -1.99511)
+transform = Transform3D(-0.143855, 0, -0.989599, 0, 1, 0, 0.989599, 0, -0.143855, -5.79296, 1.03208, -1.99511)
 
 [node name="Grill3" parent="Destructables" instance=ExtResource("19_5r104")]
 transform = Transform3D(-0.0620414, 0, 0.998073, 0, 1, 0, -0.998073, 0, -0.0620414, 5.41357, 1.05106, -5.30723)
@@ -428,19 +484,28 @@ size = Vector3(15.879, 5.1857, 37.8235)
 interior = true
 enable_shadows = true
 
-[node name="TommyTwoTraps" parent="." instance=ExtResource("16_iw31e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.63973, 1.58401, -11.941)
-
-[node name="TommyTwoTraps2" parent="." instance=ExtResource("16_iw31e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8327, 1.58401, -3.99744)
-
-[node name="FoodGeneric" parent="." instance=ExtResource("20_7aedq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64602, 1.80476, 5.81398)
-
 [node name="PatrolPath" type="Path3D" parent="." groups=["PatrolPath"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00577068, -0.0137181, -0.0148382)
 curve = SubResource("Curve3D_vhk3w")
 script = ExtResource("25_vb3ah")
 
-[node name="PotatoShredz" parent="." instance=ExtResource("32_u5un3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31429, 1.87118, 2.02875)
+[node name="Monitor" parent="." instance=ExtResource("40_6whu8")]
+transform = Transform3D(0.417568, 0.221911, -0.881132, -0.236376, 0.962862, 0.130476, 0.877362, 0.153796, 0.454514, 2.1695, 3.38141, 2.52617)
+
+[node name="Monitor2" parent="." instance=ExtResource("40_6whu8")]
+transform = Transform3D(-0.724845, -0.347614, -0.594781, -0.432416, 0.901674, -3.7803e-08, 0.536298, 0.257193, -0.803888, -1.71128, 3.40808, 2.46174)
+
+[node name="SimpleNPC" parent="." instance=ExtResource("39_kndox")]
+transform = Transform3D(-0.0723678, 0, 0.997378, 0, 1, 0, -0.997378, 0, -0.0723678, -2.98979, 1.35752, -1.0956)
+skin = "res://Textures/characters/MinimumWage.png"
+hair = "res://Models/Characters/NPCs/NPCHairMeshes/BaseballMaxer.res"
+
+[node name="SimpleNPC2" parent="." instance=ExtResource("39_kndox")]
+transform = Transform3D(0.258263, 0, -0.966075, 0, 1, 0, 0.966075, 0, 0.258263, 3.54823, 1.35752, -1.0956)
+skin = "res://Textures/characters/MinimumWage.png"
+hair = "res://Models/Characters/NPCs/NPCHairMeshes/BaseballMaxer.res"
+
+[node name="SimpleNPC3" parent="." instance=ExtResource("39_kndox")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.133889, 1.35752, 3.54578)
+skin = "res://Textures/characters/MinimumWage.png"
+hair = "res://Models/Characters/NPCs/NPCHairMeshes/BaseballMaxer.res"

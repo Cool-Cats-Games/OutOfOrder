@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://di1gotpig1qk2"]
+[gd_scene load_steps=28 format=3 uid="uid://di1gotpig1qk2"]
 
 [ext_resource type="Script" path="res://Prefabs/Breakables/PhysicBreakable.gd" id="1_hipdu"]
 [ext_resource type="AudioStream" uid="uid://cdf3yun8bdvo5" path="res://Sounds/sfx_break_metal_01.wav" id="2_xjubd"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://addons/StateMachine/States/EnemyIdle.gd" id="4_lu3et"]
 [ext_resource type="Material" uid="uid://b86gtsoltjlns" path="res://Models/material_blackplastic.tres" id="5_w0g5h"]
 [ext_resource type="Script" path="res://addons/CustomEvents/SquibReleaseEvent.gd" id="6_y7qr7"]
-[ext_resource type="Script" path="res://Prefabs/PhysicsDistributor.gd" id="10_2y8e7"]
+[ext_resource type="PackedScene" uid="uid://d3ntjerootm8i" path="res://Prefabs/PhysicsDistributor.tscn" id="10_nueqd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
 bounce = 0.7
@@ -185,8 +185,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tjgwt")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n736x"]
-
 [node name="RollingCart" type="RigidBody3D"]
 collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_f0alc")
@@ -248,12 +246,7 @@ squibs = {
 "res://Prefabs/Breakables/Squibs/SquibWheel.tscn": 2
 }
 
-[node name="PhysicsDistributor" type="Area3D" parent="."]
-transform = Transform3D(1.91198, 0, 0, 0, 1.91198, 0, 0, 0, 1.91198, 0, 0, 0)
-script = ExtResource("10_2y8e7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsDistributor"]
-shape = SubResource("BoxShape3D_n736x")
+[node name="PhysicsDistributor" parent="." instance=ExtResource("10_nueqd")]
 
 [connection signal="on_death" from="." to="Squibs" method="trigger"]
-[connection signal="on_death" from="." to="PhysicsDistributor" method="apply_random" binds= [5.0]]
+[connection signal="on_death" from="." to="PhysicsDistributor" method="apply_random" binds= [10.0]]

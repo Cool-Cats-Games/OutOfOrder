@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp7yiusbq6q4i"]
+
+[ext_resource type="Script" path="res://addons/CustomEvents/ChangeScene.gd" id="1_bbywy"]
+
+[node name="ChangeScene" type="Node3D"]
+script = ExtResource("1_bbywy")

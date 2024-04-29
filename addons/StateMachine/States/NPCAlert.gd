@@ -20,3 +20,6 @@ func on_alert_done(anim_name):
 
 func test_exit(target_state_name) -> bool:
 	return target_state_name != "Alert"
+
+func test(target_state_name):
+	return state_machine.get_state_name() != name

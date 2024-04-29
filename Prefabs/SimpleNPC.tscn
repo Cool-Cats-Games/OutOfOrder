@@ -12,9 +12,9 @@
 [ext_resource type="Material" uid="uid://ll62h1hqidlw" path="res://Materials/NPCMaterial.tres" id="9_uj6yg"]
 [ext_resource type="ArrayMesh" uid="uid://bvg7xrnybfofm" path="res://Models/Characters/NPCs/NPCMeshes/MaleBaseMesh.tres" id="10_8lxbx"]
 [ext_resource type="Script" path="res://addons/StateMachine/States/EntityRagdoll.gd" id="10_o1tkb"]
-[ext_resource type="ArrayMesh" uid="uid://hi0b8jjyv2ov" path="res://Models/Characters/NPCs/NPCHairMeshes/Sallytop.res" id="11_4ijf7"]
 [ext_resource type="Animation" uid="uid://b0ovm48like5u" path="res://Models/Characters/NPCs/Flee.res" id="12_n1q67"]
 [ext_resource type="Animation" uid="uid://cwwmpo78dgs0t" path="res://Models/Characters/NPCs/Scared.res" id="13_1ipf5"]
+[ext_resource type="ArrayMesh" uid="uid://b4g0qoy5dae1h" path="res://Models/Characters/NPCs/NPCHairMeshes/RoughnTuff.res" id="13_80e4s"]
 [ext_resource type="Animation" uid="uid://d021cfh30xv7t" path="res://Models/Characters/NPCs/Walk.res" id="14_gtsfu"]
 [ext_resource type="Script" path="res://Prefabs/NPCs/FleeRange.gd" id="14_jy07k"]
 [ext_resource type="Animation" uid="uid://uogxxta0srjl" path="res://Models/Characters/NPCs/Walk_Holding.res" id="15_xrfnd"]
@@ -23,8 +23,8 @@
 [ext_resource type="Animation" uid="uid://b68soi8dd8d08" path="res://Models/Characters/NPCs/Hurt2.res" id="20_p0rji"]
 [ext_resource type="Animation" uid="uid://b662yfs5mcyrw" path="res://Models/Characters/NPCs/Hurt3.res" id="21_w7gre"]
 [ext_resource type="Animation" uid="uid://umtb1v50mirs" path="res://Models/Characters/NPCs/Hurt4.res" id="22_ln588"]
-[ext_resource type="Animation" uid="uid://bab1r1a4eq8uf" path="res://Models/Characters/NPCs/Ragdoll.res" id="24_5shb8"]
-[ext_resource type="Animation" uid="uid://bxbg5jidu2c44" path="res://Models/Characters/NPCs/Grabbed.res" id="25_4heod"]
+[ext_resource type="Animation" uid="uid://cmtlvotajyx" path="res://Models/Characters/NPCs/Ragdoll.res" id="24_5shb8"]
+[ext_resource type="Animation" uid="uid://cxm37y3tc0p6k" path="res://Models/Characters/NPCs/Grabbed.res" id="25_4heod"]
 [ext_resource type="Script" path="res://Prefabs/RandomAudioPlayer3d.gd" id="26_ex1dr"]
 [ext_resource type="AudioStream" uid="uid://c1imv7670fc4d" path="res://Sounds/sfx_spin1.wav" id="27_stlt4"]
 [ext_resource type="AudioStream" uid="uid://n311l2wlkeix" path="res://Sounds/sfx_spin2.wav" id="28_41iav"]
@@ -117,13 +117,14 @@ collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_f0alc")
 script = ExtResource("1_oovj6")
 rideHeight = 1.4
+entity_type = "npc"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.379182, 0)
 shape = SubResource("CapsuleShape3D_pdml2")
 
 [node name="EntityHPBar" parent="." instance=ExtResource("3_2src0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977433, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87884, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, -1.5, 0)
@@ -177,7 +178,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="MeshContainer" type="Node3D" parent="."]
-transform = Transform3D(1.56958e-06, 0, 1, 0, 1, 0, -1, 0, 1.56958e-06, 0, -1.10601, 0)
+transform = Transform3D(1.56958e-06, 0, 1, 0, 1, 0, -1, 0, 1.56958e-06, 0, -1.13829, 0)
 
 [node name="Armature" type="Node3D" parent="MeshContainer"]
 
@@ -186,7 +187,7 @@ bones/0/name = "Pelvis"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.115944, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 1.36014, 0)
+bones/0/position = Vector3(0, 1.32338, 0)
 bones/0/rotation = Quaternion(0, 1.19209e-07, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Leg.L"
@@ -194,7 +195,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(3.57628e-07, 0, -1, 0, -1, 0, -1, 0, -3.57628e-07, -3.41302e-08, -0.00195539, 0.143152)
 bones/1/enabled = true
 bones/1/position = Vector3(-3.41302e-08, -0.00195539, 0.143152)
-bones/1/rotation = Quaternion(0.673366, -0.215821, -0.673366, -0.215821)
+bones/1/rotation = Quaternion(0.671201, -0.136692, -0.721863, -0.0985848)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Shin.L"
 bones/2/parent = 1
@@ -208,7 +209,7 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(3.57628e-07, 0, -1, 0, -1, 0, -1, 0, -3.57628e-07, 3.8146e-08, -0.00195539, -0.159996)
 bones/3/enabled = true
 bones/3/position = Vector3(3.8146e-08, -0.00195539, -0.159996)
-bones/3/rotation = Quaternion(0.676188, 0.206809, -0.676188, 0.206809)
+bones/3/rotation = Quaternion(0.721845, 0.136066, -0.671414, 0.0981332)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Shin.R"
 bones/4/parent = 3
@@ -236,7 +237,7 @@ bones/7/parent = 6
 bones/7/rest = Transform3D(4.76837e-07, -3.39001e-07, -1.00001, -0.0763704, -0.997079, 3.05476e-07, -0.997079, 0.0763704, -4.76841e-07, -9.79744e-08, 0.538309, 0.410935)
 bones/7/enabled = true
 bones/7/position = Vector3(-9.79744e-08, 0.538309, 0.410935)
-bones/7/rotation = Quaternion(0.134088, 0.694277, -0.0806734, 0.70249)
+bones/7/rotation = Quaternion(0.696232, 0.0701065, -0.710097, 0.0781564)
 bones/7/scale = Vector3(1, 1, 1.00001)
 bones/8/name = "Arm.L.001"
 bones/8/parent = 7
@@ -250,7 +251,7 @@ bones/9/parent = 6
 bones/9/rest = Transform3D(3.15905e-06, 0.0179119, -0.999854, 0.0869819, -0.99605, -0.0178439, -0.99621, -0.0869679, -0.00156131, -0.00136278, 0.551991, -0.379397)
 bones/9/enabled = true
 bones/9/position = Vector3(-0.00136278, 0.551991, -0.379397)
-bones/9/rotation = Quaternion(0.0729859, -0.703884, -0.0114757, -0.706462)
+bones/9/rotation = Quaternion(0.718679, -0.128232, -0.674475, -0.110181)
 bones/9/scale = Vector3(1, 1, 1.00001)
 bones/10/name = "Arm.R.001"
 bones/10/parent = 9
@@ -275,13 +276,13 @@ bones/12/rotation = Quaternion(0, -1.19209e-07, 0, 1)
 bones/12/scale = Vector3(0.176239, 0.176239, 0.176239)
 
 [node name="Hair" type="BoneAttachment3D" parent="MeshContainer/Armature/Skeleton3D"]
-transform = Transform3D(0.176239, 0, 0, 0, 0.176239, 0, 0, 0, 0.176239, 0, 2.82306, 0)
+transform = Transform3D(0.176239, 0, 1.03029e-13, 0, 0.176239, 0, -1.03029e-13, 0, 0.176239, 0, 2.7863, 0)
 bone_name = "Hair"
 bone_idx = 12
 
 [node name="Hair" type="MeshInstance3D" parent="MeshContainer/Armature/Skeleton3D/Hair"]
 material_override = ExtResource("9_uj6yg")
-mesh = ExtResource("11_4ijf7")
+mesh = ExtResource("13_80e4s")
 skeleton = NodePath("")
 
 [node name="Mesh" type="MeshInstance3D" parent="MeshContainer/Armature/Skeleton3D"]

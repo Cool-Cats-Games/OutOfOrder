@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://drk0ibqddj4iw"]
+[gd_scene load_steps=4 format=3 uid="uid://drk0ibqddj4iw"]
 
 [ext_resource type="PackedScene" uid="uid://df8j8eihpnqrs" path="res://Models/Food/apple.glb" id="1_g2cc8"]
+[ext_resource type="PhysicsMaterial" uid="uid://cv1ymvsrc71f1" path="res://Materials/physMat_bouncy.tres" id="1_qmkb6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_18c1y"]
 radius = 0.0978209
 
 [node name="FoodGeneric" type="RigidBody3D"]
+physics_material_override = ExtResource("1_qmkb6")
 sleeping = true
 freeze = true
 

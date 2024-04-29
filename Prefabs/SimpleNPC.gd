@@ -4,13 +4,26 @@ extends "res://Prefabs/SimpleEnemy.gd"
 @onready var hairMesh = $MeshContainer/Armature/Skeleton3D/Hair/Hair
 @onready var bodyMesh = $MeshContainer/Armature/Skeleton3D/Mesh
 
+@export var skin = ""
+@export var hair = ""
+@export var body = ""
+
 var customName = ""
 
 func _ready():
 	super._ready()
-	load_random_body()
-	load_random_hair()
-	load_random_npc_skin()
+	if body != "":
+		load_body(body)
+	else:
+		load_random_body()
+	if hair != "":
+		load_hair(hair)
+	else:
+		load_random_hair()
+	if skin != "":
+		load_skin(skin)
+	else:
+		load_random_npc_skin()
 	set_name(customName)
 
 func get_animation_controller():
@@ -34,6 +47,9 @@ func load_random_body():
 	bodyMesh.mesh = load(modelFolder + pick)
 	customName += pick.split(".")[0]
 
+func load_body(path):
+	bodyMesh.mesh = load(path)
+
 func load_random_hair():
 	var modelFolder = "res://Models/Characters/NPCs/NPCHairMeshes/"
 	var files = DirAccess.get_files_at(modelFolder)
@@ -41,6 +57,9 @@ func load_random_hair():
 	pick = pick.replace(".remap", "")
 	hairMesh.mesh = load(modelFolder + pick)
 	customName += "-" + pick.split(".")[0]
+
+func load_hair(path):
+	hairMesh.mesh = load(path)
 
 func load_random_npc_skin():
 	var skinFolder = "res://Textures/characters/"
@@ -51,6 +70,12 @@ func load_random_npc_skin():
 	bodyMesh.material_override.albedo_texture = tex
 	hairMesh.material_override.albedo_texture = tex
 	customName += "-" + pick.split(".")[0]
+
+func load_skin(path):
+	var tex = load(path)
+	bodyMesh.material_override.albedo_texture = tex
+	hairMesh.material_override.albedo_texture = tex
+	
 
 func panic(from = global_position + Vector3(randf_range(-1.0,1.0),randf_range(-1.0,1.0),randf_range(-1.0,1.0))):
 	set_state("Alert", {"from": from})

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyycgyha5xlks"]
+[gd_scene load_steps=16 format=3 uid="uid://cyycgyha5xlks"]
 
 [ext_resource type="Script" path="res://Prefabs/Breakables/Breakable.gd" id="1_6uv7i"]
 [ext_resource type="PackedScene" uid="uid://bb402qrap66w3" path="res://Prefabs/Breakables/Squibs/Squib_ChairLeg.tscn" id="2_la0db"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://d2wgmhlbksmvn" path="res://Sounds/sfx_smash_wood_04.wav" id="6_4epte"]
 [ext_resource type="AudioStream" uid="uid://7v2lsuqye1nr" path="res://Sounds/sfx_smash_wood_05.wav" id="7_g6o0t"]
 [ext_resource type="Texture2D" uid="uid://72xbuv2622i" path="res://Textures/64x_textures_02/Wood.png" id="8_dsh83"]
+[ext_resource type="PackedScene" uid="uid://d3ntjerootm8i" path="res://Prefabs/PhysicsDistributor.tscn" id="9_sh2gr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
 
@@ -101,3 +102,8 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0124512, 0.19487, 0.0140991)
 shape = SubResource("BoxShape3D_rmkag")
+
+[node name="PhysicsDistributor" parent="." instance=ExtResource("9_sh2gr")]
+transform = Transform3D(1.91198, 0, 0, 0, 1.91198, 0, 0, 0, 1.91198, 0, 0.23041, 0)
+
+[connection signal="on_smashed" from="." to="PhysicsDistributor" method="apply_random" binds= [10.0]]

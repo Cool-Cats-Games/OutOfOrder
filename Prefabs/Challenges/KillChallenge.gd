@@ -11,5 +11,5 @@ func _on_kill_counter_on_count_changed(count, goal):
 
 
 func _on_on_challenge_complete():
-	AudioManager.switch_part("A")
+	#AudioManager.switch_part("A")
 	pass # Replace with function body.

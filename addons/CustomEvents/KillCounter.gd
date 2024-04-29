@@ -4,7 +4,7 @@ extends "res://addons/CustomEvents/CounterEvent.gd"
 
 func on_enemy_death(e):
 	if not entity_type == "":
-		if e.entity_type:
+		if e.entity_type == entity_type:
 			increment()
 	else:
 		increment()

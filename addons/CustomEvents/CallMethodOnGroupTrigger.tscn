@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0bhxiyfgy83a"]
+
+[ext_resource type="Script" path="res://addons/CustomEvents/CallMethodOnGroupTrigger.gd" id="1_bmnvo"]
+
+[node name="CallMethodOnGroup" type="Node2D"]
+script = ExtResource("1_bmnvo")
+deleteAfterTrigger = true
+triggerOnReady = true
+
+[connection signal="on_trigger" from="." to="." method="_on_on_trigger"]

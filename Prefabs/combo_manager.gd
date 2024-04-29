@@ -64,6 +64,7 @@ var actionsDictionary = { #Keeps track of actions, their display name, and how m
 	"ice_cream":["Cold Shoulder",100],
 	"died_tommytwotraps":["Fryer Fried",3000],
 	"died_potatoshredz":["Want Fries With That?", 700],
+	"died_npc":["Capitalist Casualty", 1000],
 	"died_generic":["Foe Flattened",1000],
 	"hover_attack":["Drip Zone", 100],
 	"gatling_smorgas": ["Gatling Smorgas", 100]

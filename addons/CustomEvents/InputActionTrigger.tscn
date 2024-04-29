@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://1i6fw3xokc0b"]
+
+[ext_resource type="Script" path="res://addons/CustomEvents/InputActionTrigger.gd" id="1_xvuy8"]
+
+[node name="InputActionTrigger" type="Node3D"]
+script = ExtResource("1_xvuy8")
+action = "ui_accept"

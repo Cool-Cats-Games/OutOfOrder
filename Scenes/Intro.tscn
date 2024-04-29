@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf8swe746j2ac"]
+
+[ext_resource type="VideoStream" path="res://Videos/intro_noaudio.ogv" id="1_5dl0f"]
+[ext_resource type="PackedScene" uid="uid://dp7yiusbq6q4i" path="res://addons/CustomEvents/ChangeScene.tscn" id="2_a14ml"]
+[ext_resource type="PackedScene" uid="uid://rumqhssfuncr" path="res://Scenes/MainMenu.tscn" id="3_wly63"]
+[ext_resource type="PackedScene" uid="uid://1i6fw3xokc0b" path="res://addons/CustomEvents/InputActionTrigger.tscn" id="4_73iau"]
+[ext_resource type="AudioStream" uid="uid://4v56defe6en2" path="res://Videos/coolcats_2023_slowed.wav" id="5_cv5nf"]
+
+[node name="Intro" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 1312.0
+offset_bottom = 752.0
+color = Color(0, 0, 0, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1088.0
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("1_5dl0f")
+volume_db = -8.0
+autoplay = true
+buffering_msec = 1000
+
+[node name="ChangeScene" parent="." instance=ExtResource("2_a14ml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298, 265, 0)
+scene = ExtResource("3_wly63")
+
+[node name="InputActionTrigger" parent="." instance=ExtResource("4_73iau")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 321, 286, 0)
+nextEvents = Array[NodePath]([NodePath("../ChangeScene")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cv5nf")
+volume_db = -8.0
+autoplay = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="ChangeScene" method="trigger"]

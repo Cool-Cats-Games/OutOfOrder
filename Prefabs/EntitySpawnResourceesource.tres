@@ -5,7 +5,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_dcvwl")
-enabled = true
+enabled = false
 radius = 5.0
 entityPath = ""
 spawnForce = Vector3(0, 0, 0)
