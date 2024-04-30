@@ -9,6 +9,7 @@ extends "res://Prefabs/SimpleEnemy.gd"
 @export var body = ""
 
 var customName = ""
+var isMale = true
 
 func _ready():
 	super._ready()
@@ -42,12 +43,14 @@ func follow_path(points):
 func load_random_body():
 	var modelFolder = "res://Models/Characters/NPCs/NPCMeshes/"
 	var files = DirAccess.get_files_at(modelFolder)
-	var pick = Array(files).pick_random()
+	var pick : String = Array(files).pick_random()
 	pick = pick.replace(".remap", "")
+	isMale = pick.contains("Male")
 	bodyMesh.mesh = load(modelFolder + pick)
 	customName += pick.split(".")[0]
 
 func load_body(path):
+	isMale = path.contains("Male")
 	bodyMesh.mesh = load(path)
 
 func load_random_hair():

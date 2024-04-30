@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dho6rfs1ghdgx"]
+[gd_scene load_steps=6 format=3 uid="uid://dho6rfs1ghdgx"]
 
 [ext_resource type="Script" path="res://Prefabs/Challenges/KillEntityChallenge.gd" id="1_lbcfg"]
 [ext_resource type="PackedScene" uid="uid://bwbaoie8kv7be" path="res://Prefabs/Challenges/ChallengeEmblems/KillTommyTwoTrapsEmblem.tscn" id="2_m1e3q"]
 [ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="3_8nu7n"]
 [ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="4_pegyi"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="5_eipuy"]
 
 [node name="KillTommyTwotrapsChallenge" type="Node3D"]
 script = ExtResource("1_lbcfg")
@@ -14,7 +15,7 @@ emblemRes = ExtResource("2_m1e3q")
 [node name="KillCounter" type="Node3D" parent="." groups=["EnemyDeathSubscribers"]]
 script = ExtResource("3_8nu7n")
 entity_type = "tommytwotraps"
-goal = 1
+goal = 7
 deleteAfterTrigger = true
 
 [node name="EntitySpawner" parent="." instance=ExtResource("4_pegyi")]
@@ -22,6 +23,11 @@ radius = 5.0
 entityPath = "res://Prefabs/TommyTwoTraps.tscn"
 spawnLoop = true
 spawnTimer = 5.0
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("5_eipuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.156238, 1.19209e-07, -0.13282)
+playlistName = "Battlefight"
+part = "B"
 
 [connection signal="on_challenge_complete" from="." to="." method="_on_on_challenge_complete"]
 [connection signal="on_challenge_complete" from="." to="EntitySpawner" method="set" binds= ["enabled", false]]

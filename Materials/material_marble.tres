@@ -9,3 +9,5 @@ albedo_texture = ExtResource("1_n1msd")
 metallic = 0.18
 roughness = 0.0
 texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

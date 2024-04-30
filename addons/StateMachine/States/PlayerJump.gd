@@ -18,7 +18,7 @@ func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and actor.cream > 0.0:
 		state_machine.transition_to("Hover")
 	if Input.is_action_just_pressed("light_attack"):
-		if actor.specialAvaliable:
+		if actor.specialAvaliable and actor.cream > 0.3 * actor.creamMax:
 			state_machine.transition_to("GatlingSmorgas", {"isInAir": true})
 		else:
 			state_machine.transition_to("SlamAttack")

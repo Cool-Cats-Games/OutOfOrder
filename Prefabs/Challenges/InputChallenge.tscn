@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4rc4pram2yvn"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/Challenge.gd" id="1_gjxev"]
+[ext_resource type="PackedScene" uid="uid://1i6fw3xokc0b" path="res://addons/CustomEvents/InputActionTrigger.tscn" id="2_omgk6"]
+[ext_resource type="PackedScene" uid="uid://c3ea4ig7uibjr" path="res://Prefabs/Challenges/ChallengeEmblems/InputChallengeEmblem.tscn" id="2_pwm5q"]
+
+[node name="InputChallenge" type="Node3D"]
+script = ExtResource("1_gjxev")
+emblemRes = ExtResource("2_pwm5q")
+
+[node name="InputActionTrigger" parent="." instance=ExtResource("2_omgk6")]
+action = "any_movement"
+isListening = false
+deleteAfterTrigger = true
+
+[connection signal="on_challenge_start" from="." to="InputActionTrigger" method="start"]
+[connection signal="on_event_triggered" from="InputActionTrigger" to="." method="complete"]

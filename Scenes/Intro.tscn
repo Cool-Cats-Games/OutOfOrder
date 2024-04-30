@@ -34,7 +34,7 @@ nextEvents = Array[NodePath]([NodePath("../ChangeScene")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_cv5nf")
-volume_db = -8.0
+volume_db = -6.0
 autoplay = true
 
 [connection signal="finished" from="VideoStreamPlayer" to="ChangeScene" method="trigger"]

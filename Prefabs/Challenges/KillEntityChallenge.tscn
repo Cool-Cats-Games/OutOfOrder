@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://celhyuiftlxuo"]
+[gd_scene load_steps=6 format=3 uid="uid://celhyuiftlxuo"]
 
 [ext_resource type="Script" path="res://Prefabs/Challenges/KillEntityChallenge.gd" id="1_d50iy"]
 [ext_resource type="Resource" uid="uid://bsgc87rb4drfy" path="res://Prefabs/EntitySpawnResourceesource.tres" id="2_rmt08"]
 [ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="3_0cebm"]
 [ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="3_lx4b2"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="5_nbmfi"]
 
 [node name="KillEntityChallenge" type="Node3D"]
 script = ExtResource("1_d50iy")
@@ -18,6 +19,12 @@ deleteAfterTrigger = true
 [node name="EntitySpawner" parent="." instance=ExtResource("3_0cebm")]
 spawnLoop = true
 spawnTimer = 5.0
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("5_nbmfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.156238, 1.19209e-07, -0.13282)
+playlistName = "Battlfight"
+part = "B"
+overrideSamePart = false
 
 [connection signal="on_challenge_complete" from="." to="." method="_on_on_challenge_complete"]
 [connection signal="on_challenge_complete" from="." to="EntitySpawner" method="set" binds= ["enabled", false]]

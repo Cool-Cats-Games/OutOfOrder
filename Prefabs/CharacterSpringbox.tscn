@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bkatl43sgnc2w"]
+[gd_scene load_steps=60 format=3 uid="uid://bkatl43sgnc2w"]
 
 [ext_resource type="Script" path="res://Prefabs/CharacterSpringbox.gd" id="1_hv03o"]
 [ext_resource type="Shader" path="res://Shaders/Fire3dshader.gdshader" id="2_y8bl4"]
@@ -653,6 +653,42 @@ radial_segments = 13
 cap_top = false
 cap_bottom = false
 
+[sub_resource type="Curve" id="Curve_q37jt"]
+_data = [Vector2(0, 0.755801), 0.0, 0.0, 0, 0, Vector2(0.240793, 0.978453), 0.0, 0.0, 0, 0, Vector2(0.614731, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b4wev"]
+curve = SubResource("Curve_q37jt")
+
+[sub_resource type="Curve" id="Curve_b5k6g"]
+_data = [Vector2(0, 0.0950277), 0.0, 0.0, 0, 0, Vector2(0.436261, 0.806077), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4sjtc"]
+curve = SubResource("Curve_b5k6g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pmp1k"]
+direction = Vector3(0, 1, -1)
+spread = 19.895
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, -1, 0)
+scale_min = 0.5
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_4sjtc")
+alpha_curve = SubResource("CurveTexture_b4wev")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30tx7"]
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.61339, 0.61339, 0.61339, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_01qb6"]
+material = SubResource("StandardMaterial3D_30tx7")
+radial_segments = 6
+rings = 6
+
 [node name="CharacterSpringbox" type="RigidBody3D"]
 collision_layer = 32
 collision_mask = 65
@@ -798,6 +834,9 @@ visible = false
 libraries = {
 "": SubResource("AnimationLibrary_rxwjg")
 }
+next/SlamBounce = &"RESET"
+next/damage = &"RESET"
+next/damage_exit = &"RESET"
 
 [node name="NozzlePointR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.233792, 0.133744, 0.709029)
@@ -811,3 +850,11 @@ visible = false
 material_override = SubResource("ShaderMaterial_pc4v6")
 mesh = SubResource("CylinderMesh_3pe26")
 script = ExtResource("11_cfxnq")
+
+[node name="MovementParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.994742, -0.175098)
+emitting = false
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_pmp1k")
+draw_pass_1 = SubResource("SphereMesh_01qb6")

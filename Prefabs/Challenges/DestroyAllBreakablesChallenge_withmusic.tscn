@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bce6wd1fc4loq"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/DestroyAllBreakablesChallenge.gd" id="1_80mxn"]
+[ext_resource type="PackedScene" uid="uid://bgi1l4yglmv4j" path="res://Prefabs/Challenges/ChallengeEmblems/BreakableChallengeEmblem.tscn" id="2_3e200"]
+[ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="3_0bmdy"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="4_1decl"]
+
+[node name="DestroyAllBreakablesChallenge_with_music" type="Node3D"]
+script = ExtResource("1_80mxn")
+autostart = true
+emblemRes = ExtResource("2_3e200")
+
+[node name="KillCounter" type="Node3D" parent="." groups=["BreakablesBrokenSubscriber", "EnemyDeathSubscribers"]]
+script = ExtResource("3_0bmdy")
+entity_type = "breakable"
+deleteAfterTrigger = true
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("4_1decl")]
+playlistName = "Battlefight"
+part = "B"
+
+[connection signal="on_count_changed" from="KillCounter" to="." method="_on_kill_counter_on_count_changed"]
+[connection signal="on_event_triggered" from="KillCounter" to="." method="complete"]

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://0mob4sistrj2"]
+
+[ext_resource type="Texture2D" uid="uid://cq1u0h5tyd5bn" path="res://Textures/64x_textures_02/asphalt.png" id="1_dua35"]
+
+[resource]
+albedo_texture = ExtResource("1_dua35")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

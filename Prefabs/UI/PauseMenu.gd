@@ -27,7 +27,7 @@ func _process(delta):
 	pass
 
 func quit_game():
-	get_tree().quit()
+	#get_tree().quit()
 	get_tree().paused = false
 	#AudioManager.fade_out_music()
 

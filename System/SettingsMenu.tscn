@@ -51,6 +51,10 @@ size_flags_vertical = 3
 theme_override_constants/separation = 2
 alignment = 1
 
+[node name="MasterControl" parent="AspectRatio/Column/ControlList" instance=ExtResource("2_tvrvu")]
+layout_mode = 2
+label = "Master"
+
 [node name="MusicControl" parent="AspectRatio/Column/ControlList" instance=ExtResource("2_tvrvu")]
 layout_mode = 2
 label = "Music"
@@ -109,6 +113,7 @@ bus = &"SFX"
 [node name="UI_Option" parent="." instance=ExtResource("2_mabxq")]
 visible = false
 
+[connection signal="value_changed" from="AspectRatio/Column/ControlList/MasterControl" to="." method="_on_master_control_value_changed"]
 [connection signal="value_changed" from="AspectRatio/Column/ControlList/MusicControl" to="." method="_on_music_control_value_changed"]
 [connection signal="value_changed" from="AspectRatio/Column/ControlList/SFXControl" to="." method="_on_sfx_control_value_changed"]
 [connection signal="focus_entered" from="AspectRatio/Column/ControlList/FullscreenControl/FullscreenToggle" to="sfx_changeSelection" method="play"]

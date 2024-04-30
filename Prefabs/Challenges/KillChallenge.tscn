@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1yv2g7l7d5sn"]
+[gd_scene load_steps=5 format=3 uid="uid://d1yv2g7l7d5sn"]
 
 [ext_resource type="Script" path="res://Prefabs/Challenges/KillChallenge.gd" id="1_i837n"]
 [ext_resource type="PackedScene" uid="uid://jklrxnagyqwu" path="res://Prefabs/Challenges/ChallengeEmblems/KillChallengeEmblem.tscn" id="2_1cy7v"]
 [ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="3_qlbks"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="4_kfvjl"]
 
 [node name="KillChallenge" type="Node3D"]
 script = ExtResource("1_i837n")
@@ -12,6 +13,12 @@ emblemRes = ExtResource("2_1cy7v")
 [node name="KillCounter" type="Node3D" parent="." groups=["EnemyDeathSubscribers"]]
 script = ExtResource("3_qlbks")
 deleteAfterTrigger = true
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("4_kfvjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.156238, 1.19209e-07, -0.13282)
+playlistName = "Battlefight"
+part = "B"
+overrideSamePart = false
 
 [connection signal="on_challenge_complete" from="." to="." method="_on_on_challenge_complete"]
 [connection signal="on_count_changed" from="KillCounter" to="." method="_on_kill_counter_on_count_changed"]

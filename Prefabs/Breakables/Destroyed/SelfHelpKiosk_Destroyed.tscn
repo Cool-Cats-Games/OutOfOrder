@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://v4fmdxbjr07j"]
+[gd_scene load_steps=46 format=3 uid="uid://v4fmdxbjr07j"]
 
 [ext_resource type="Texture2D" uid="uid://doijamir1wuca" path="res://Textures/misc/screen_glitch.png" id="1_on0dr"]
 [ext_resource type="Texture2D" uid="uid://8871pnvl13g5" path="res://Textures/misc/broken screen.png" id="2_nbygv"]
@@ -89,6 +89,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7l6ws")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsw62"]
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axp6c"]
 resource_name = "material_busted"
 cull_mode = 2
@@ -132,6 +136,8 @@ shadow_mesh = SubResource("ArrayMesh_1vq1b")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7lxn"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.956863)
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ja8xn"]
 resource_name = "material_black"
@@ -175,6 +181,8 @@ shadow_mesh = SubResource("ArrayMesh_26j3h")
 shading_mode = 0
 albedo_texture = ExtResource("1_on0dr")
 texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5mws"]
 transparency = 1
@@ -183,6 +191,16 @@ albedo_texture = ExtResource("2_nbygv")
 uv1_scale = Vector3(1, 0.9, 1)
 uv1_offset = Vector3(0, 0.005, 0)
 texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sjxp"]
+resource_name = "material_black"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.0764706
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qkp6k"]
 _surfaces = [{
@@ -206,7 +224,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 18, 0, 20, 0, 19, 0, 21, 0, 23, 0, 22, 0, 6, 0, 7, 0, 24, 0, 25, 0, 27, 0, 26, 0, 28, 0, 30, 0, 29, 0, 31, 0, 33, 0, 32, 0),
-"material": SubResource("StandardMaterial3D_ja8xn"),
+"material": SubResource("StandardMaterial3D_1sjxp"),
 "name": "material_black",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -215,6 +233,14 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qkp6k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dr6un"]
+resource_name = "material_black"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.0764706
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nk5xc"]
 _surfaces = [{
@@ -238,7 +264,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 0, 0, 1, 0, 3, 0),
-"material": SubResource("StandardMaterial3D_ja8xn"),
+"material": SubResource("StandardMaterial3D_dr6un"),
 "name": "material_black",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -247,6 +273,14 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nk5xc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y84nt"]
+resource_name = "material_black"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.0764706
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0xsle"]
 _surfaces = [{
@@ -270,7 +304,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 144,
 "index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 18, 0, 20, 0, 19, 0, 21, 0, 23, 0, 22, 0, 24, 0, 26, 0, 25, 0, 27, 0, 29, 0, 28, 0, 30, 0, 32, 0, 31, 0, 33, 0, 35, 0, 34, 0, 36, 0, 38, 0, 37, 0, 39, 0, 41, 0, 40, 0, 42, 0, 44, 0, 43, 0, 45, 0, 47, 0, 46, 0, 48, 0, 50, 0, 49, 0, 51, 0, 53, 0, 52, 0, 54, 0, 56, 0, 55, 0, 57, 0, 59, 0, 58, 0, 60, 0, 62, 0, 61, 0, 63, 0, 65, 0, 64, 0, 66, 0, 68, 0, 67, 0, 69, 0, 71, 0, 70, 0, 72, 0, 74, 0, 73, 0, 75, 0, 77, 0, 76, 0, 78, 0, 80, 0, 79, 0, 81, 0, 83, 0, 82, 0, 12, 0, 13, 0, 84, 0, 85, 0, 87, 0, 86, 0, 88, 0, 90, 0, 89, 0, 91, 0, 93, 0, 92, 0, 94, 0, 96, 0, 95, 0, 97, 0, 99, 0, 98, 0, 100, 0, 102, 0, 101, 0, 103, 0, 105, 0, 104, 0, 106, 0, 108, 0, 107, 0, 109, 0, 111, 0, 110, 0, 42, 0, 43, 0, 112, 0, 113, 0, 115, 0, 114, 0, 116, 0, 118, 0, 117, 0, 119, 0, 121, 0, 120, 0, 122, 0, 124, 0, 123, 0, 125, 0, 127, 0, 126, 0, 60, 0, 61, 0, 128, 0, 129, 0, 131, 0, 130, 0, 66, 0, 67, 0, 132, 0, 133, 0, 135, 0, 134, 0),
-"material": SubResource("StandardMaterial3D_ja8xn"),
+"material": SubResource("StandardMaterial3D_y84nt"),
 "name": "material_black",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -408,6 +442,7 @@ skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="SelfHelpKiosk_Broken"]
 transform = Transform3D(0.936232, 0.232872, 0.0271496, -0.220823, 0.913431, -0.219949, -0.0787651, 0.207149, 0.939352, 0.0971579, 0, 0)
+material_override = SubResource("StandardMaterial3D_vsw62")
 mesh = SubResource("ArrayMesh_bq15v")
 skeleton = NodePath("")
 

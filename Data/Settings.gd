@@ -1,13 +1,16 @@
 extends Node
 
-var isFullscreen = false
-var musicVolume = .5
+var isFullscreen = true
+var masterVolume = 0.45
+var musicVolume = .45
 var sfxVolume = .6
 
 var currentScore = null
 var bestScore = null
 
 var lastInputIsJoypad = false
+
+var version = 0.13
 
 func _ready():
 	load_settings()
@@ -37,6 +40,16 @@ func load_settings():
 		save_settings()
 
 func parse_settings_data(dat):
+	if not dat.has("version"):
+		save_settings()
+		parse_settings_data(serialize_settings())
+		return
+	if dat.version < version:
+		save_settings()
+		parse_settings_data(serialize_settings())
+		return
+	version = dat.version
+	set_master_volume(dat.masterVolume)
 	set_music_volume(dat.musicVolume)
 	set_sfx_volume(dat.sfxVolume)
 	set_fullscreen(dat.isFullscreen)
@@ -47,9 +60,11 @@ func save_settings():
 
 func serialize_settings() -> Dictionary:
 	var settings = {}
+	settings["masterVolume"] = masterVolume
 	settings["musicVolume"] = musicVolume
 	settings["sfxVolume"] = sfxVolume
 	settings["isFullscreen"] = isFullscreen
+	settings["version"] = version
 	return settings
 
 func set_music_volume(val):
@@ -63,4 +78,7 @@ func set_sfx_volume(val):
 func set_fullscreen(state):
 	isFullscreen = state
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if isFullscreen else DisplayServer.WINDOW_MODE_WINDOWED)
-	
+
+func set_master_volume(val):
+	masterVolume = val
+	AudioServer.set_bus_volume_db(0, convert_to_decibels(val))

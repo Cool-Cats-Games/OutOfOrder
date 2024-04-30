@@ -1,0 +1,200 @@
+[gd_scene load_steps=16 format=3 uid="uid://6gpbgwrgwpxy"]
+
+[ext_resource type="Texture2D" uid="uid://38runxuoi4gx" path="res://Sprites/misc/COOL_CATS_LOGO2.png" id="1_1b0m8"]
+[ext_resource type="Shader" path="res://Shaders/ScrollTexture.gdshader" id="1_fnhcm"]
+[ext_resource type="Script" path="res://Scenes/Credits.gd" id="1_jk80s"]
+[ext_resource type="Texture2D" uid="uid://bse8sy0ymchra" path="res://Textures/PixelPatterns/pattern_27.png" id="2_m8fmb"]
+[ext_resource type="Script" path="res://Sprites/RandomPattern.gd" id="3_7qe5x"]
+[ext_resource type="PackedScene" uid="uid://ojyo8d2mqtxw" path="res://Prefabs/UI/HomeButton.tscn" id="5_f7ony"]
+[ext_resource type="Shader" path="res://Shaders/texture2d_uvmod.gdshader" id="6_pl7od"]
+[ext_resource type="Texture2D" uid="uid://5ehi860mpnl0" path="res://Sprites/UI/smupAssets/boxUI_bg.png" id="7_ew1vw"]
+[ext_resource type="Texture2D" uid="uid://dhknncy8cijyx" path="res://Sprites/UI/smupAssets/boxUI_frame.png" id="8_dk3v5"]
+[ext_resource type="Texture2D" uid="uid://cinp4mtmgpkte" path="res://Sprites/UI/smupAssets/bar_01.png" id="9_5hb5u"]
+[ext_resource type="Texture2D" uid="uid://tbnkpi1ikuih" path="res://Sprites/UI/smupAssets/bar_02.png" id="10_x0y8p"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="11_b7t3g"]
+[ext_resource type="PackedScene" uid="uid://crw4f0uu0ban6" path="res://Prefabs/UI/Transitions.tscn" id="13_7nvje"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_54elr"]
+shader = ExtResource("1_fnhcm")
+shader_parameter/scroll_speed = -0.05
+shader_parameter/uvScale = 2.0
+shader_parameter/colorMod = Vector4(1, 1, 1, 0.065)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdpyj"]
+shader = ExtResource("6_pl7od")
+shader_parameter/uvscale = Vector2(1, 0.83)
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_jk80s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 984.0
+offset_bottom = 544.0
+color = Color(0.0941176, 0.0784314, 0.227451, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_54elr")
+position = Vector2(480, 272)
+scale = Vector2(3.75, 2.125)
+texture = ExtResource("2_m8fmb")
+script = ExtResource("3_7qe5x")
+
+[node name="CoolCatsLogo2" type="Sprite2D" parent="."]
+texture_filter = 4
+position = Vector2(144, 216)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_1b0m8")
+
+[node name="HomeButton" parent="." instance=ExtResource("5_f7ony")]
+offset_right = -699.0
+scale = Vector2(0.5, 0.5)
+
+[node name="BoxUiBg" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_pdpyj")
+position = Vector2(855, 251.5)
+scale = Vector2(2.27018, 1.51938)
+texture = ExtResource("7_ew1vw")
+
+[node name="BoxUiFrame2" type="Sprite2D" parent="."]
+position = Vector2(979.5, 247.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_dk3v5")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 274, 266)
+
+[node name="BoxUiFrame" type="Sprite2D" parent="."]
+position = Vector2(732.5, 247.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_dk3v5")
+region_enabled = true
+region_rect = Rect2(0, 0, 274, 266)
+
+[node name="Bar01" type="Sprite2D" parent="."]
+position = Vector2(864, 48)
+texture = ExtResource("9_5hb5u")
+
+[node name="Bar02" type="Sprite2D" parent="."]
+position = Vector2(752, 40)
+texture = ExtResource("10_x0y8p")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 272.0
+offset_top = 56.0
+offset_right = 584.0
+offset_bottom = 407.0
+scale = Vector2(0.761863, 0.761863)
+theme_override_fonts/font = ExtResource("11_b7t3g")
+theme_override_font_sizes/font_size = 64
+text = "Game Design
+Art (2D & 3D)
+Sounds
+Music
+Programming
+Testing"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 352.0
+offset_right = 628.0
+offset_bottom = 594.0
+theme_override_fonts/font = ExtResource("11_b7t3g")
+theme_override_font_sizes/font_size = 32
+text = "Additional assets used:
+Kenny Assets: (Patterns)
+Kenny Assets: (Pixel Input Prompts)
+Kenny Assets: (Board Game Icons)
+Kenny Assets: (food)
+Juhani Junkala - (Essential Retro VideoGame Sounds)
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 568.0
+offset_top = 16.0
+offset_right = 1000.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_b7t3g")
+theme_override_font_sizes/font_size = 52
+text = "The COOL CATS are:"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 552.0
+offset_top = 104.0
+offset_right = 1053.0
+offset_bottom = 160.0
+theme_override_fonts/normal_font = ExtResource("11_b7t3g")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]CovalentBonds, AKA:
+-----  Hungolomghnonoloughongous"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 552.0
+offset_top = 168.0
+offset_right = 1019.0
+offset_bottom = 224.0
+theme_override_fonts/normal_font = ExtResource("11_b7t3g")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave]Wafflepan"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 552.0
+offset_top = 216.0
+offset_right = 1019.0
+offset_bottom = 272.0
+theme_override_fonts/normal_font = ExtResource("11_b7t3g")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave]Pantomime"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+offset_left = 552.0
+offset_top = 264.0
+offset_right = 1019.0
+offset_bottom = 320.0
+theme_override_fonts/normal_font = ExtResource("11_b7t3g")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave]Sharp Edge"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+offset_left = 552.0
+offset_top = 312.0
+offset_right = 1019.0
+offset_bottom = 368.0
+theme_override_fonts/normal_font = ExtResource("11_b7t3g")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave]Based Guitar"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="."]
+offset_left = 552.0
+offset_top = 360.0
+offset_right = 1019.0
+offset_bottom = 416.0
+theme_override_fonts/normal_font = ExtResource("11_b7t3g")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave]Kaizoro"
+fit_content = true
+scroll_active = false
+
+[node name="Transitions" parent="." instance=ExtResource("13_7nvje")]
+
+[connection signal="pressed" from="HomeButton" to="HomeButton" method="queue_free"]
+[connection signal="pressed" from="HomeButton" to="Transitions" method="fade_out"]
+[connection signal="on_fadeout_complete" from="Transitions" to="." method="_on_transitions_on_fadeout_complete"]

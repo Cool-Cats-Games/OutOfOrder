@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://biqx11jkdycul"]
+[gd_scene load_steps=37 format=3 uid="uid://biqx11jkdycul"]
 
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_d2k81"]
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_ptipc"]
@@ -20,8 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://decx1c5q41aos" path="res://Prefabs/Breakables/TrashCanB.tscn" id="17_637jl"]
 [ext_resource type="PackedScene" uid="uid://dnlddpqxw01vu" path="res://Prefabs/Objects/FlourescentLight.tscn" id="17_knv8l"]
 [ext_resource type="PackedScene" uid="uid://dujpydliwospp" path="res://Prefabs/Breakables/Toilet.tscn" id="19_pfe7r"]
+[ext_resource type="PackedScene" uid="uid://cgebye5i38nyc" path="res://Prefabs/Challenges/DestroyAllBreakablesChallenge.tscn" id="20_4nogu"]
 [ext_resource type="PackedScene" uid="uid://h6dnfbps3mx0" path="res://Prefabs/Breakables/FireExtinguisher.tscn" id="20_ismi3"]
 [ext_resource type="PackedScene" uid="uid://bmshh5t8uodbl" path="res://Prefabs/GoldenCat.tscn" id="21_2h4b3"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="24_ed7xe"]
 [ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="24_wjttw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jpau"]
@@ -314,6 +316,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.776
 
 [node name="Challenges" type="Node3D" parent="."]
 
+[node name="DestroyAllBreakablesChallenge" parent="Challenges" instance=ExtResource("20_4nogu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.05698, 1.86874, 9.08659)
+autostart = true
+
 [node name="BlankEnv" parent="." instance=ExtResource("6_klplo")]
 
 [node name="Door" parent="." instance=ExtResource("9_24lut")]
@@ -333,6 +339,11 @@ transform = Transform3D(0.609841, 0, 0.792524, 0, 1, 0, -0.792524, 0, 0.609841, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.692302, 0.896095, 0.504184)
 entityPath = "res://Prefabs/Items/Key.tscn"
 spawnForce = Vector3(2, 6, 0)
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("24_ed7xe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32845, 0, 11.0132)
+playlistName = "Battlefight"
+triggerOnReady = true
 
 [connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="spawn"]
 [connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="delete"]

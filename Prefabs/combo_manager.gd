@@ -61,10 +61,10 @@ var actionsDictionary = { #Keeps track of actions, their display name, and how m
 	"ram_attack":["Blizzard Blitz", 200],
 	"died_breakable":["Mayohem",50],
 	"slam_attack":["The 300-Pounder",400],
-	"ice_cream":["Cold Shoulder",100],
+	"ice_cream":["Killa Vanilla",100],
 	"died_tommytwotraps":["Fryer Fried",3000],
-	"died_potatoshredz":["Want Fries With That?", 700],
-	"died_npc":["Capitalist Casualty", 1000],
+	"died_potatoshredz":["Fries With That?", 700],
+	"died_npc":["Customer Served", 1000],
 	"died_generic":["Foe Flattened",1000],
 	"hover_attack":["Drip Zone", 100],
 	"gatling_smorgas": ["Gatling Smorgas", 100]

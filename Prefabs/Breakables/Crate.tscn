@@ -1,0 +1,53 @@
+[gd_scene load_steps=18 format=3 uid="uid://cdk8gpn7lblkg"]
+
+[ext_resource type="Script" path="res://Prefabs/Breakables/Breakable.gd" id="1_wbffu"]
+[ext_resource type="PackedScene" uid="uid://dui3p62khabu4" path="res://Prefabs/Breakables/Squibs/SquibGarbageWad.tscn" id="2_5syjy"]
+[ext_resource type="PackedScene" uid="uid://pscij2tpd1ad" path="res://Prefabs/Breakables/Squibs/SquibJoja.tscn" id="3_mihxl"]
+[ext_resource type="PackedScene" uid="uid://bb402qrap66w3" path="res://Prefabs/Breakables/Squibs/Squib_ChairLeg.tscn" id="4_k568k"]
+[ext_resource type="PackedScene" uid="uid://c2cotx4xboard" path="res://Prefabs/Breakables/Squibs/Squib_Tubing.tscn" id="5_d4dti"]
+[ext_resource type="AudioStream" uid="uid://d2h7mltu7rrx2" path="res://Sounds/sfx_smash_wood_01.wav" id="6_tgajs"]
+[ext_resource type="AudioStream" uid="uid://d0fdi0v8bv4c5" path="res://Sounds/sfx_smash_wood_02.wav" id="7_ww46e"]
+[ext_resource type="AudioStream" uid="uid://timrj7wg0s6b" path="res://Sounds/sfx_smash_wood_03.wav" id="8_qco8w"]
+[ext_resource type="AudioStream" uid="uid://d2wgmhlbksmvn" path="res://Sounds/sfx_smash_wood_04.wav" id="9_x8phb"]
+[ext_resource type="AudioStream" uid="uid://7v2lsuqye1nr" path="res://Sounds/sfx_smash_wood_05.wav" id="10_1nxwj"]
+[ext_resource type="Texture2D" uid="uid://uq6an6ajdu4" path="res://Textures/metalTextures_x64/mtl_walk01_c.png" id="11_l5ciw"]
+[ext_resource type="Texture2D" uid="uid://deja5q3k4k55l" path="res://Textures/64x_textures_02/CrateOver.png" id="12_3gl4g"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s50l"]
+albedo_texture = ExtResource("11_l5ciw")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_l4ap2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7clyl"]
+transparency = 1
+albedo_texture = ExtResource("12_3gl4g")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_enpl2"]
+
+[node name="Crate" type="RigidBody3D"]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_hsj2v")
+sleeping = true
+script = ExtResource("1_wbffu")
+squibs = Array[Resource]([ExtResource("2_5syjy"), ExtResource("3_mihxl"), ExtResource("4_k568k"), ExtResource("5_d4dti")])
+breaksfx = Array[AudioStream]([ExtResource("6_tgajs"), ExtResource("7_ww46e"), ExtResource("8_qco8w"), ExtResource("9_x8phb"), ExtResource("10_1nxwj")])
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_5s50l")
+mesh = SubResource("BoxMesh_l4ap2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7clyl")
+mesh = SubResource("BoxMesh_l4ap2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_enpl2")

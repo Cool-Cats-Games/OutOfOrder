@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bti0gxsnayvrs"]
+
+[ext_resource type="Texture2D" uid="uid://brpe1ho7xfm48" path="res://Textures/64x_textures_02/greenfence.png" id="1_d45id"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_d45id")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://vxh13e1x8pe5"]
+
+[ext_resource type="Texture2D" uid="uid://cd8ths4h25qwq" path="res://Sprites/misc/exit.png" id="1_riu6u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mhxlj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s00v"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("1_riu6u")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 3.0
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_dul8r"]
+
+[node name="ExitSign" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_mhxlj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.101932)
+material_override = SubResource("StandardMaterial3D_4s00v")
+mesh = SubResource("QuadMesh_dul8r")

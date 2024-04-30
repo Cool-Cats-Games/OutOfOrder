@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://svuii41bx8yd"]
+[gd_scene load_steps=11 format=3 uid="uid://svuii41bx8yd"]
 
 [ext_resource type="Script" path="res://Prefabs/GreaseTrap.gd" id="1_2wobs"]
 [ext_resource type="Material" uid="uid://ckyp7l23ji18y" path="res://Materials/material_stainlessSteel.tres" id="2_0itkw"]
 [ext_resource type="Script" path="res://Prefabs/GreaseLauncher.gd" id="3_afedt"]
 [ext_resource type="AudioStream" uid="uid://bn2y7te3kbota" path="res://Sounds/sfx_splash.wav" id="4_miy4e"]
+[ext_resource type="AudioStream" uid="uid://bypmccl34euyp" path="res://Sounds/sfx_enemies/sfx_TTT_bubbling.wav" id="5_pjjp1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlb56"]
 
@@ -87,5 +88,10 @@ autostart = true
 [node name="sfx_splatter" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_miy4e")
 bus = &"SFX"
+
+[node name="sfx_bubbling" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_pjjp1")
+autoplay = true
+max_distance = 10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

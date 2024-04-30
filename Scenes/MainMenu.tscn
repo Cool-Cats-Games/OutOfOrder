@@ -1,11 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://rumqhssfuncr"]
+[gd_scene load_steps=23 format=3 uid="uid://rumqhssfuncr"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_b7qb4"]
 [ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="1_ltr50"]
 [ext_resource type="AudioStream" uid="uid://etxmn0v0bhpk" path="res://Sounds/sfx_sounds_pause5_in.wav" id="2_gubbb"]
 [ext_resource type="AudioStream" uid="uid://b6q2mbitsxbkl" path="res://Sounds/sfx_sounds_pause5_out.wav" id="3_3oi5j"]
-[ext_resource type="AudioStream" uid="uid://qlubxafxsoii" path="res://Sounds/UI/sfx_UI_Select_C.wav" id="4_n6ex8"]
+[ext_resource type="AudioStream" uid="uid://d2erkkwlvnnri" path="res://Sounds/UI/sfx_ui_confirm_1.wav" id="4_hsxpe"]
+[ext_resource type="AudioStream" uid="uid://jmxg3ikmfuj3" path="res://Sounds/UI/sfx_UI_Select_D.ogg" id="5_qghj6"]
+[ext_resource type="AudioStream" uid="uid://cmwpfo86ldg28" path="res://Sounds/UI/sfx_ui_confirm_4.wav" id="5_r0g0g"]
 [ext_resource type="AudioStream" uid="uid://dnasehvtcyiqd" path="res://Music/Menugod.wav" id="6_t2a14"]
+[ext_resource type="PackedScene" uid="uid://crw4f0uu0ban6" path="res://Prefabs/UI/Transitions.tscn" id="7_g31ep"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="8_iegmk"]
+[ext_resource type="Texture2D" uid="uid://c4qms23f2ygin" path="res://Sprites/misc/logo.png" id="9_ebeqd"]
+[ext_resource type="Texture2D" uid="uid://bh80qurf0mu3t" path="res://Sprites/misc/COOLCATS_presents.png" id="10_6vcms"]
+[ext_resource type="PackedScene" uid="uid://bm2pou5vyj7ly" path="res://addons/CustomEvents/ToggleWackyBackground.tscn" id="13_n0213"]
+
+[sub_resource type="Animation" id="Animation_d5c2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_m41aw"]
 resource_name = "default"
@@ -34,37 +56,192 @@ tracks/1/keys = {
 "values": [-80.0, -80.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_d5c2q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect2:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("music:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-80.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_twv2o"]
 _data = {
 "RESET": SubResource("Animation_d5c2q"),
 "default": SubResource("Animation_m41aw")
+}
+
+[sub_resource type="Animation" id="Animation_dd6na"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Logo:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Logo:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Logo:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_xrwfm"]
+resource_name = "default"
+length = 2.0
+loop_mode = 2
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.25, 1.65, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.25, 1.65, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.25, 1.65, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Logo:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.25, 1.65, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Logo:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 0.35, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Logo:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 0.35, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jynrh"]
+_data = {
+"RESET": SubResource("Animation_dd6na"),
+"default": SubResource("Animation_xrwfm")
+}
+
+[sub_resource type="Animation" id="Animation_8k343"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_r5err"]
+resource_name = "default"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.087, -0.25, 0, 0.25, 0, 0.0872665, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0dpt"]
+_data = {
+"RESET": SubResource("Animation_8k343"),
+"default": SubResource("Animation_r5err")
 }
 
 [node name="MainMenu" type="Node2D"]
@@ -84,16 +261,20 @@ offset_bottom = 673.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.802004, 0.802004)
-theme_override_constants/separation = 19
+theme_override_constants/separation = 18
 alignment = 1
 
-[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
+[node name="spacer" type="RichTextLabel" parent="VBoxContainer"]
 clip_contents = false
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_ltr50")
-theme_override_font_sizes/normal_font_size = 128
+theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "[center][wave]MAIN MENU[/wave][/center]"
+text = " 
+ 
+ 
+
+"
 fit_content = true
 
 [node name="btn_NG" type="Button" parent="VBoxContainer"]
@@ -101,8 +282,26 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_ltr50")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 60
 text = "NEW GAME
+"
+
+[node name="btn_Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_ltr50")
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS
+"
+
+[node name="btn_Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_ltr50")
+theme_override_font_sizes/font_size = 48
+text = "CREDITS
 "
 
 [node name="btn_Quit" type="Button" parent="VBoxContainer"]
@@ -110,7 +309,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_ltr50")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 48
 text = "QUIT"
 
 [node name="sfx_open" type="AudioStreamPlayer" parent="."]
@@ -120,6 +319,15 @@ pitch_scale = 0.9
 autoplay = true
 bus = &"SFX"
 
+[node name="sfx_ng" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hsxpe")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="sfx_credits" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r0g0g")
+bus = &"SFX"
+
 [node name="sfx_close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3oi5j")
 volume_db = -13.0
@@ -127,22 +335,41 @@ pitch_scale = 0.8
 bus = &"SFX"
 
 [node name="sfx_changeSelection" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_n6ex8")
-volume_db = -1.0
+stream = ExtResource("5_qghj6")
 mix_target = 2
 bus = &"SFX"
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_t2a14")
 volume_db = -80.0
-autoplay = true
 bus = &"Music"
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(475, 104)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_ebeqd")
+
+[node name="CoolcatsPresents" type="Sprite2D" parent="."]
+position = Vector2(120, 481)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_6vcms")
+
+[node name="Version" type="Label" parent="."]
+offset_left = 853.0
+offset_top = 518.0
+offset_right = 1165.0
+offset_bottom = 574.0
+scale = Vector2(0.303793, 0.303793)
+theme_override_fonts/font = ExtResource("1_ltr50")
+theme_override_font_sizes/font_size = 64
+text = "VERSION 0.1.2"
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_right = 960.0
 offset_bottom = 540.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -150,10 +377,39 @@ libraries = {
 }
 autoplay = "default"
 
+[node name="Transitions" parent="." instance=ExtResource("7_g31ep")]
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("8_iegmk")]
+fadeInPlaylist = true
+playlistName = "Menu"
+triggerOnReady = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jynrh")
+}
+autoplay = "default"
+speed_scale = 0.4
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o0dpt")
+}
+autoplay = "default"
+speed_scale = 0.43
+
+[node name="ToggleWackyBackground" parent="." instance=ExtResource("13_n0213")]
+
 [connection signal="focus_entered" from="VBoxContainer/btn_NG" to="sfx_changeSelection" method="play"]
 [connection signal="mouse_entered" from="VBoxContainer/btn_NG" to="sfx_changeSelection" method="play"]
 [connection signal="pressed" from="VBoxContainer/btn_NG" to="." method="_on_btn_ng_pressed"]
 [connection signal="ready" from="VBoxContainer/btn_NG" to="VBoxContainer/btn_NG" method="grab_focus"]
+[connection signal="focus_entered" from="VBoxContainer/btn_Settings" to="sfx_changeSelection" method="play"]
+[connection signal="mouse_entered" from="VBoxContainer/btn_Settings" to="sfx_changeSelection" method="play"]
+[connection signal="pressed" from="VBoxContainer/btn_Settings" to="." method="_on_btn_settings_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/btn_Credits" to="sfx_changeSelection" method="play"]
+[connection signal="mouse_entered" from="VBoxContainer/btn_Credits" to="sfx_changeSelection" method="play"]
+[connection signal="pressed" from="VBoxContainer/btn_Credits" to="." method="_on_btn_credits_pressed"]
 [connection signal="focus_entered" from="VBoxContainer/btn_Quit" to="sfx_changeSelection" method="play"]
 [connection signal="mouse_entered" from="VBoxContainer/btn_Quit" to="sfx_changeSelection" method="play"]
 [connection signal="pressed" from="VBoxContainer/btn_Quit" to="." method="_on_btn_quit_pressed"]

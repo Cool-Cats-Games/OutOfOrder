@@ -17,15 +17,19 @@ shader_parameter/scroll_speed = -0.03
 shader_parameter/uvScale = 0.6
 shader_parameter/colorMod = Vector4(0.33, 0.36, 0, 1)
 
-[node name="WildBackground" type="Node2D"]
+[node name="CanvasLayer" type="CanvasLayer" groups=["BackgroundLayer"]]
+layer = -3
+
+[node name="WildBackground" type="Node2D" parent="."]
+z_index = -2
 script = ExtResource("1_owdxp")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="WildBackground"]
 offset_right = 960.0
 offset_bottom = 544.0
 color = Color(0, 0, 0, 1)
 
-[node name="Icon2" type="Sprite2D" parent="."]
+[node name="Icon2" type="Sprite2D" parent="WildBackground"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_olpnd")
 scale = Vector2(3.75, 2.125)
@@ -33,7 +37,7 @@ texture = ExtResource("2_edsff")
 centered = false
 script = ExtResource("3_31etd")
 
-[node name="Icon3" type="Sprite2D" parent="."]
+[node name="Icon3" type="Sprite2D" parent="WildBackground"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_2152t")
 scale = Vector2(3.75, 2.125)

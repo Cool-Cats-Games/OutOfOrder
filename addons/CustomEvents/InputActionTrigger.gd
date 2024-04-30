@@ -4,9 +4,11 @@ enum InputTypes {JustPressed, Pressed, JustReleased, Released}
 
 @export var action : String
 @export var listenType : InputTypes
+@export var isListening = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not isListening: return
 	match listenType:
 		InputTypes.JustPressed:
 			if Input.is_action_just_pressed(action):
@@ -21,3 +23,6 @@ func _process(delta):
 			if Input.is_action_just_released(action):
 				trigger()
 	pass
+
+func start():
+	isListening = true

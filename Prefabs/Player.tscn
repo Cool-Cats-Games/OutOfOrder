@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://ddbpdjor6vt4"]
+[gd_scene load_steps=87 format=3 uid="uid://ddbpdjor6vt4"]
 
 [ext_resource type="Script" path="res://Prefabs/Player.gd" id="1_il8ik"]
 [ext_resource type="Texture2D" uid="uid://swy4t206iiwn" path="res://Sprites/axis.png" id="2_5e81f"]
@@ -121,6 +121,9 @@ radius = 1.4602
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3bdt3"]
 radius = 1.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ewfua"]
+height = 1.5855
 
 [sub_resource type="Animation" id="Animation_uqx48"]
 resource_name = "LightAttack1"
@@ -324,7 +327,9 @@ _data = {
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e1y2"]
 resource_name = "material_fist"
+render_priority = 2
 transparency = 1
+no_depth_test = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("43_ujki1")
 roughness = 0.5
@@ -539,6 +544,16 @@ attackType = "slam_attack"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SlamHitbox"]
 shape = SubResource("SphereShape3D_3bdt3")
 
+[node name="SlamProtectiveHitbox" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 132
+monitoring = false
+script = ExtResource("11_x3o7n")
+attackType = "slam_attack"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlamProtectiveHitbox"]
+shape = SubResource("CapsuleShape3D_ewfua")
+
 [node name="sfx_player_generic" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"
 
@@ -585,13 +600,16 @@ bus = &"SFX"
 
 [node name="sfx_GatlingWoosh" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("26_fon01")
-volume_db = -6.0
+volume_db = -3.0
+pitch_scale = 1.1
 bus = &"SFX"
 
 [node name="sfx_gatlingpunches" parent="." instance=ExtResource("27_aoojo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362247, 0.456322, -0.132186)
-volume_db = -5.0
+volume_db = -4.0
+pitch_scale = 1.1
 sfx = Array[AudioStream]([ExtResource("28_u081c"), ExtResource("29_cxquo"), ExtResource("30_dpl58"), ExtResource("31_g45ki")])
+limitOne = true
 
 [node name="sfx_jump" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("14_02cv3")
@@ -610,7 +628,7 @@ script = ExtResource("15_kwguw")
 sfx = Array[AudioStream]([ExtResource("16_ro864"), ExtResource("17_3sl3u"), ExtResource("18_yv2uk")])
 
 [node name="sfx_hit_ram" type="AudioStreamPlayer3D" parent="."]
-volume_db = -3.0
+volume_db = -2.0
 max_polyphony = 7
 bus = &"SFX"
 script = ExtResource("15_kwguw")
@@ -698,10 +716,13 @@ draw_pass_1 = ExtResource("44_swg1p")
 [connection signal="state_entered" from="StateMachine/Hover" to="sfx_squirt" method="play_random"]
 [connection signal="state_exited" from="StateMachine/Hover" to="sfx_squirting" method="stop"]
 [connection signal="state_entered" from="StateMachine/LightAttack" to="sfx_attack_swish" method="play_random"]
+[connection signal="state_entered" from="StateMachine/SlamAttack" to="SlamProtectiveHitbox" method="set_monitoring" binds= [true]]
+[connection signal="state_exited" from="StateMachine/SlamAttack" to="SlamProtectiveHitbox" method="set_monitoring" binds= [false]]
 [connection signal="timeout" from="StateMachine/SlamLag/Timer" to="StateMachine" method="transition_to" binds= ["Idle"]]
 [connection signal="state_entered" from="StateMachine/GatlingSmorgas" to="sfx_GatlingWoosh" method="play"]
 [connection signal="state_exited" from="StateMachine/GatlingSmorgas" to="sfx_GatlingWoosh" method="stop"]
 [connection signal="body_entered" from="LightAtkHitbox" to="LightAtkHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="RamHitbox" to="RamHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="SlamHitbox" to="SlamHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="SlamProtectiveHitbox" to="SlamProtectiveHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

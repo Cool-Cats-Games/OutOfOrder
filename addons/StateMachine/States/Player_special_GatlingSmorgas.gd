@@ -9,6 +9,7 @@ var ipVis = null
 var isInAir
 
 var bodiesHit = []
+var bodiesIgnore = []
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
@@ -67,7 +68,7 @@ func physics_update(_delta: float) -> void:
 	if hitbox.has_overlapping_bodies():
 		for b in hitbox.get_overlapping_bodies():
 			if b.has_method("take_damage") and hitframes % 7 == 0 :
-				b.take_damage(1, Vector3.ZERO, hitbox)
+				b.take_damage(1.15, Vector3.ZERO, hitbox)
 			if not b.get_collision_layer_value(8) and hitframes % 7 == 0:
 				if not bodiesHit.has(b):
 					bodiesHit.append(b)
@@ -77,7 +78,7 @@ func physics_update(_delta: float) -> void:
 				Utils.get_world(get_tree()).add_child(he)
 				he.position = hitbox.global_position.lerp(b.global_position, 0.5)
 				actor.get_node("sfx_gatlingpunches").play_random()
-				actor.cream += 10
+				actor.cream += 8.5
 		hitframes += 1
 	else:
 		hitframes = 0

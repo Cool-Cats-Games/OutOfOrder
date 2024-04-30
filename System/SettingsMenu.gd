@@ -6,16 +6,17 @@ var prevSettings = {}
 var firstFrame = true
 var canClose = false
 
-@onready var ControlContainer = $AspectRatio;
-@onready var MusicSlider = $AspectRatio/Column/ControlList/MusicControl;
-@onready var EffectsSlider = $AspectRatio/Column/ControlList/SFXControl;
-@onready var FullscreenToggle = $AspectRatio/Column/ControlList/FullscreenControl/FullscreenToggle;
-@onready var ConfirmModal = $UI_Option;
+@onready var ControlContainer = $AspectRatio
+@onready var MasterSlider = $AspectRatio/Column/ControlList/MasterControl
+@onready var MusicSlider = $AspectRatio/Column/ControlList/MusicControl
+@onready var EffectsSlider = $AspectRatio/Column/ControlList/SFXControl
+@onready var FullscreenToggle = $AspectRatio/Column/ControlList/FullscreenControl/FullscreenToggle
+@onready var ConfirmModal = $UI_Option
 
 func _ready():
 	firstFrame = true
 	prevSettings = Settings.serialize_settings()
-	
+	MasterSlider.value = Settings.masterVolume
 	MusicSlider.value = Settings.musicVolume
 	EffectsSlider.value = Settings.sfxVolume
 	FullscreenToggle.set_pressed_no_signal(Settings.isFullscreen)
@@ -68,4 +69,9 @@ func _on_back_button_pressed():
 
 
 func _on_back_button_focus_entered():
+	pass # Replace with function body.
+
+
+func _on_master_control_value_changed( value ):
+	Settings.set_master_volume(value)
 	pass # Replace with function body.

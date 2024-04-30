@@ -3,7 +3,7 @@ extends Node3D
 var roomData = {}
 
 func _ready():
-	WildBackground.generate_new_background()
+	WildBackground.get_child(0).generate_new_background()
 	if not GameDataManager.room_discovered(name):
 		initialize_room_state()
 		update_state()

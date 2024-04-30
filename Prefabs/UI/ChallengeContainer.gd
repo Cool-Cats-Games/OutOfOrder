@@ -14,7 +14,7 @@ func complete_challenge(c):
 	for ace in activeChallenges:
 		if not ace.isCompleted: return
 	#if reach this point, all challenges complete
-	AudioManager.switch_part("A")
+	AudioManager.switch_part("A", true)
 	#enable all doors
 	for d in get_tree().get_nodes_in_group("Doors"):
 		d.set_state(d.initialState)
