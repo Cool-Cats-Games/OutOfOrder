@@ -8,6 +8,8 @@ cull_mode = 2
 albedo_texture = ExtResource("1_py16m")
 roughness = 0.0764706
 texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xokch"]
 _surfaces = [{

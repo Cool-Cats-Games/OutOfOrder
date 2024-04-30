@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ckdf1aol8rna0"]
+[gd_scene load_steps=70 format=3 uid="uid://ckdf1aol8rna0"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_4ceqc"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_kvr6w"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://dp813bemnqj7s" path="res://Materials/material_stoneTile_01.tres" id="8_58uwb"]
 [ext_resource type="Texture2D" uid="uid://opf6gtcdtnkm" path="res://Textures/metalTextures_x64/mtl_O_s.png" id="8_fgyyl"]
 [ext_resource type="Material" uid="uid://op4wh411kghq" path="res://Materials/material_poster_base.tres" id="8_h2hjw"]
+[ext_resource type="PackedScene" uid="uid://boltmuaw84kvt" path="res://Prefabs/Objects/PosterPrefabs/poster_12.tscn" id="9_h08x8"]
 [ext_resource type="ArrayMesh" uid="uid://12bgtgjosvpa" path="res://Models/MeshInstances/WallPiece_mesh.tres" id="9_ou342"]
 [ext_resource type="Texture2D" uid="uid://chu5co66bo7nn" path="res://Textures/posters/poster_12.png" id="9_voedv"]
 [ext_resource type="Texture2D" uid="uid://dcpnn6pklrphi" path="res://Textures/posters/poster_02.png" id="10_7ev07"]
@@ -27,11 +28,13 @@
 [ext_resource type="PackedScene" uid="uid://di1gotpig1qk2" path="res://Prefabs/Breakables/RollingCart.tscn" id="19_if3sn"]
 [ext_resource type="PackedScene" uid="uid://drk0ibqddj4iw" path="res://Prefabs/Food/FoodGeneric.tscn" id="20_7aedq"]
 [ext_resource type="PackedScene" uid="uid://svuii41bx8yd" path="res://Prefabs/GreaseTrap.tscn" id="21_2nffg"]
+[ext_resource type="Material" uid="uid://dt5i6yumjwkj8" path="res://Materials/material_roughmetalwall.tres" id="22_e3ka5"]
 [ext_resource type="PackedScene" uid="uid://h6dnfbps3mx0" path="res://Prefabs/Breakables/FireExtinguisher.tscn" id="24_qr6mh"]
+[ext_resource type="Texture2D" uid="uid://dblul47gleuvt" path="res://Textures/doors/door01.png" id="24_sjcf4"]
 [ext_resource type="Script" path="res://Prefabs/Misc/GivePathToNpc.gd" id="25_vb3ah"]
-[ext_resource type="PackedScene" uid="uid://dho6rfs1ghdgx" path="res://Prefabs/Challenges/KillTommyTwoTrapsChallenge.tscn" id="26_k41m5"]
 [ext_resource type="PackedScene" uid="uid://bawi4rv3gxrrf" path="res://Prefabs/Food/bacon.tscn" id="33_lgcpg"]
 [ext_resource type="PackedScene" uid="uid://4cq482aiqxjr" path="res://Prefabs/Food/banana.tscn" id="34_0hg0a"]
+[ext_resource type="PackedScene" uid="uid://cfi6v85pr0kam" path="res://Prefabs/Challenges/loadRandomChallenge.tscn" id="35_i70dm"]
 [ext_resource type="PackedScene" uid="uid://gnienlxsmxnn" path="res://Prefabs/Food/burger.tscn" id="35_m67k1"]
 [ext_resource type="PackedScene" uid="uid://pnxjayjthsds" path="res://Prefabs/Food/mustard.tscn" id="36_oksnp"]
 [ext_resource type="PackedScene" uid="uid://hm1e07njko26" path="res://Prefabs/Food/cake.tscn" id="37_td0t1"]
@@ -39,10 +42,14 @@
 [ext_resource type="PackedScene" uid="uid://cgabpc6smosko" path="res://Prefabs/Food/canOpen.tscn" id="39_f02jv"]
 [ext_resource type="PackedScene" uid="uid://dos2jeeu6b7a2" path="res://Prefabs/SimpleNPC.tscn" id="39_kndox"]
 [ext_resource type="PackedScene" uid="uid://bsjcuukhgst82" path="res://Prefabs/Breakables/Monitor.tscn" id="40_6whu8"]
+[ext_resource type="PackedScene" uid="uid://bmshh5t8uodbl" path="res://Prefabs/GoldenCat.tscn" id="41_1hiob"]
+[ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="42_hxp1i"]
+[ext_resource type="PackedScene" uid="uid://c5ilns3bue7ni" path="res://Prefabs/PotatoShredz.tscn" id="43_e3uvx"]
+[ext_resource type="PackedScene" uid="uid://vxh13e1x8pe5" path="res://Prefabs/Objects/ExitSign.tscn" id="45_4yvwj"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0qati"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8np7b"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8ofi"]
 resource_local_to_scene = true
 shading_mode = 2
 vertex_color_use_as_albedo = true
@@ -140,6 +147,57 @@ shadow_mesh = SubResource("ArrayMesh_xkxjj")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_li17t"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2lex"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+roughness = 0.0764706
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fgvj1"]
+_surfaces = [{
+"aabb": AABB(-0.150092, -1, -1, 0.450324, 2.00001, 2.00001),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 4, 0, 0, 0, 5, 0, 7, 0, 6, 0, 0, 0, 1, 0, 8, 0, 9, 0, 4, 0, 6, 0, 6, 0, 4, 0, 3, 0, 0, 0, 10, 0, 2, 0, 2, 0, 10, 0, 11, 0, 0, 0, 4, 0, 10, 0, 5, 0, 6, 0, 3, 0),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(253, 255, 254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 253, 255, 0, 0, 254, 255, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 9, 195, 146, 63, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 253, 255, 0, 0, 146, 63, 0, 0, 253, 255, 9, 195, 107, 192, 0, 0, 253, 255, 0, 0, 107, 192, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rtmx2"]
+resource_name = "Cube"
+_surfaces = [{
+"aabb": AABB(-0.150092, -1, -1, 0.450324, 2.00001, 2.00001),
+"attribute_data": PackedByteArray(255, 159, 255, 63, 255, 95, 255, 31, 255, 95, 255, 63, 255, 159, 255, 127, 255, 159, 255, 63, 193, 144, 26, 112, 255, 159, 255, 159, 255, 95, 255, 127, 255, 95, 255, 159, 255, 159, 255, 31, 255, 95, 26, 112, 255, 95, 255, 127, 255, 95, 255, 63, 193, 144, 228, 79, 255, 95, 228, 79, 255, 159, 255, 127),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 0, 0, 1, 0, 9, 0, 10, 0, 5, 0, 11, 0, 11, 0, 5, 0, 3, 0, 4, 0, 13, 0, 12, 0, 12, 0, 13, 0, 14, 0, 4, 0, 5, 0, 13, 0, 6, 0, 7, 0, 15, 0),
+"material": SubResource("StandardMaterial3D_n2lex"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(253, 255, 254, 255, 254, 255, 255, 191, 0, 0, 0, 0, 254, 255, 255, 191, 253, 255, 0, 0, 254, 255, 255, 191, 253, 255, 254, 255, 0, 0, 84, 213, 253, 255, 254, 255, 254, 255, 84, 213, 253, 255, 9, 195, 146, 63, 84, 213, 0, 0, 254, 255, 0, 0, 255, 255, 253, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 254, 255, 255, 191, 253, 255, 0, 0, 146, 63, 84, 213, 253, 255, 0, 0, 0, 0, 84, 213, 253, 255, 0, 0, 254, 255, 84, 213, 253, 255, 9, 195, 107, 192, 84, 213, 253, 255, 0, 0, 107, 192, 84, 213, 253, 255, 254, 255, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 255, 191, 255, 191, 255, 191, 255, 191, 255, 191, 255, 191, 255, 255, 255, 255, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 255, 191, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fgvj1")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2il8y"]
+data = PackedVector3Array(0.3002, 1, 1, 0.3002, -1, 1, -0.1501, -1, 1, 0.3002, 1, -1, 0.3002, 0.5237, -0.5033, 0.3002, 1, 1, -0.1501, 1, -1, -0.1501, -1, -1, 0.3002, -1, -1, 0.3002, 1, 1, -0.1501, -1, 1, -0.1501, 1, 1, 0.3002, -1, -0.5033, 0.3002, 0.5237, -0.5033, 0.3002, -1, -1, 0.3002, -1, -1, 0.3002, 0.5237, -0.5033, 0.3002, 1, -1, 0.3002, 1, 1, 0.3002, 0.5237, 0.5033, 0.3002, -1, 1, 0.3002, -1, 1, 0.3002, 0.5237, 0.5033, 0.3002, -1, 0.5033, 0.3002, 1, 1, 0.3002, 0.5237, -0.5033, 0.3002, 0.5237, 0.5033, -0.1501, 1, -1, 0.3002, -1, -1, 0.3002, 1, -1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_bdqgp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lgn1y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kxtc"]
+albedo_texture = ExtResource("24_sjcf4")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
 [sub_resource type="Curve3D" id="Curve3D_vhk3w"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.2191, 2.13101, 7.83021, 0, 0, 0, 0, 0, 0, -3.66855, 0.786191, 7.09054, 0, 0, 0, 0, 0, 0, -4.04729, 1.9599, 5.56599, 0, 0, 0, 0, 0, 0, -4.04237, 2.60313, -3.77654, 0, 0, 0, 0, 0, 0, -4.38301, 2.63017, -6.94273, 0, 0, 0, 0, 0, 0, -4.7677, 2.26806, -7.38784, 0, 0, 0, 0, 0, 0, -0.178084, 1.63263, -7.98256, 0, 0, 0, 0, 0, 0, 3.64372, 1.22651, -4.05583, 0, 0, 0, 0, 0, 0, 4.453, 2.24971, 5.84555),
@@ -174,11 +232,9 @@ material_override = ExtResource("8_h2hjw")
 mesh = SubResource("QuadMesh_0qati")
 skeleton = NodePath("../..")
 
-[node name="Poster4" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(-4.35581e-08, 4.89102e-09, -1, 0.0375332, 1.33625, 2.02022e-09, 0.999296, -0.0501892, -4.36647e-08, 7.00313, 2.36123, 2.2252)
-material_override = SubResource("StandardMaterial3D_8np7b")
-mesh = SubResource("QuadMesh_0qati")
-skeleton = NodePath("../..")
+[node name="Poster12" parent="SetPieces" instance=ExtResource("9_h08x8")]
+transform = Transform3D(-4.37114e-08, 0, -1, -0.0936044, 1.33132, 4.09158e-09, 0.995609, 0.125167, -4.35195e-08, 7.018, 2.56, 3.116)
+material_override = SubResource("StandardMaterial3D_i8ofi")
 
 [node name="Poster5" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(-3.78533e-08, 1.94452e-09, 0.866622, 0.0332677, 1.15799, 0, -0.865983, 0.0444854, -3.78813e-08, -7.2234, 2.12744, 8.61738)
@@ -346,6 +402,16 @@ mesh = SubResource("BoxMesh_0dl1c")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MetalBench/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_li17t")
 
+[node name="MetalBench3" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(3.745, 0, 0, 0, 1.93217, 0, 0, 0, 1.92029, 0.297001, 0.894241, -15.869)
+material_override = ExtResource("15_j1fr5")
+mesh = SubResource("BoxMesh_0dl1c")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/MetalBench3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MetalBench3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_li17t")
+
 [node name="MetalBench2" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(3.745, 0, 0, 0, 4.01158, 0, 0, 0, 7.09846, 0.297001, 2.05326, -1.14961)
 material_override = ExtResource("15_j1fr5")
@@ -384,6 +450,56 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/GreaseTrap2/MetalBench2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_li17t")
 
+[node name="DorrwayCutout2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -1.19295, 2.01591, -23.1325)
+material_override = ExtResource("22_e3ka5")
+mesh = SubResource("ArrayMesh_rtmx2")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/DorrwayCutout2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/DorrwayCutout2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2il8y")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SetPieces/DorrwayCutout2"]
+transform = Transform3D(2.15151e-07, 0, 0.5, 0, 1.5175, 0, -1.105, 0, 9.73536e-08, 0.296312, -0.227392, -0.00690059)
+material_override = ExtResource("10_u6lu4")
+mesh = SubResource("QuadMesh_bdqgp")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="SetPieces/DorrwayCutout2"]
+transform = Transform3D(0.56, 2.84217e-14, 4.23516e-22, 0, -8.74228e-08, 0.949, 7.10543e-15, -2, -4.14821e-08, 0.0149994, 0.996, 0)
+material_override = ExtResource("22_e3ka5")
+mesh = SubResource("QuadMesh_lgn1y")
+
+[node name="DorrwayCutout3" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-0.54, 0, -3.01992e-07, 0, 2, 0, 8.15377e-08, 0, -2, 6.96289, 2.01591, -17.9891)
+material_override = ExtResource("22_e3ka5")
+mesh = SubResource("ArrayMesh_rtmx2")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/DorrwayCutout3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/DorrwayCutout3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2il8y")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SetPieces/DorrwayCutout3"]
+transform = Transform3D(2.15151e-07, 0, 0.5, 0, 1.6, 0, -1.105, 0, 9.73536e-08, 0.206, -0.227, -0.007)
+material_override = ExtResource("10_u6lu4")
+mesh = SubResource("QuadMesh_bdqgp")
+skeleton = NodePath("../..")
+
+[node name="DoorMesh" type="MeshInstance3D" parent="SetPieces/DorrwayCutout3"]
+transform = Transform3D(2.15151e-07, 0, 0.5, 0, 1.5175, 0, -1.105, 0, 9.73536e-08, 0.296312, -0.243663, -0.00690079)
+material_override = SubResource("StandardMaterial3D_5kxtc")
+mesh = SubResource("QuadMesh_bdqgp")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="SetPieces/DorrwayCutout3"]
+transform = Transform3D(0.56, 2.84217e-14, 4.23516e-22, 0, -8.74228e-08, 0.949, 7.10543e-15, -2, -4.14821e-08, 0.0149994, 0.996, 0)
+material_override = ExtResource("22_e3ka5")
+mesh = SubResource("QuadMesh_lgn1y")
+
 [node name="Destructables" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00116277, 0.0138772, 0.00659132)
 
@@ -418,6 +534,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, 0.105319
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119657, 0.723713, 0.666389)
 
 [node name="ketchup" parent="Destructables/KartB" instance=ExtResource("38_c7evy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.224997, 0.723713, -0.151191)
+
+[node name="KartB2" parent="Destructables" instance=ExtResource("19_if3sn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.06776, 1.05633, -15.5675)
+
+[node name="mustard" parent="Destructables/KartB2" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, -0.428041)
+
+[node name="mustard2" parent="Destructables/KartB2" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, -0.122651)
+
+[node name="mustard3" parent="Destructables/KartB2" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, 0.105319)
+
+[node name="burger2" parent="Destructables/KartB2" instance=ExtResource("35_m67k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119657, 0.723713, 0.666389)
+
+[node name="ketchup" parent="Destructables/KartB2" instance=ExtResource("38_c7evy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.224997, 0.723713, -0.151191)
+
+[node name="KartB3" parent="Destructables" instance=ExtResource("19_if3sn")]
+transform = Transform3D(-0.999258, 0, 0.03851, 0, 1, 0, -0.03851, 0, -0.999258, 2.88061, 1.05633, -15.5675)
+
+[node name="mustard" parent="Destructables/KartB3" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, -0.428041)
+
+[node name="mustard2" parent="Destructables/KartB3" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, -0.122651)
+
+[node name="mustard3" parent="Destructables/KartB3" instance=ExtResource("36_oksnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0505266, 0.723713, 0.105319)
+
+[node name="burger2" parent="Destructables/KartB3" instance=ExtResource("35_m67k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119657, 0.723713, 0.666389)
+
+[node name="ketchup" parent="Destructables/KartB3" instance=ExtResource("38_c7evy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.224997, 0.723713, -0.151191)
 
 [node name="TrashCanB" parent="Destructables" instance=ExtResource("18_5tnii")]
@@ -462,6 +614,15 @@ transform = Transform3D(-0.143855, 0, -0.989599, 0, 1, 0, 0.989599, 0, -0.143855
 [node name="Grill3" parent="Destructables" instance=ExtResource("19_5r104")]
 transform = Transform3D(-0.0620414, 0, 0.998073, 0, 1, 0, -0.998073, 0, -0.0620414, 5.41357, 1.05106, -5.30723)
 
+[node name="Monitor" parent="Destructables" instance=ExtResource("40_6whu8")]
+transform = Transform3D(0.417568, 0.221911, -0.881132, -0.236376, 0.962862, 0.130476, 0.877362, 0.153796, 0.454514, 2.16834, 3.36753, 2.51958)
+
+[node name="Monitor2" parent="Destructables" instance=ExtResource("40_6whu8")]
+transform = Transform3D(-0.724845, -0.347614, -0.594781, -0.432416, 0.901674, -3.7803e-08, 0.536298, 0.257193, -0.803888, -1.71244, 3.3942, 2.45515)
+
+[node name="Monitor3" parent="Destructables" instance=ExtResource("40_6whu8")]
+transform = Transform3D(-0.967505, -0.249399, 0.0416405, -0.24918, 0.968401, 0.0104495, -0.0429313, -0.000265829, -0.999078, 6.85215, 1.90454, -8.91905)
+
 [node name="FireExtinguisher" parent="Destructables" instance=ExtResource("24_qr6mh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.55482, 1.44295, 11.8323)
 
@@ -469,14 +630,24 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.554
 
 [node name="Challenges" type="Node3D" parent="."]
 
-[node name="KillTommyTwotrapsChallenge" parent="Challenges" instance=ExtResource("26_k41m5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26864, 1.14102, -9.70659)
+[node name="LoadRandomChallenge" parent="Challenges" instance=ExtResource("35_i70dm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0828652, 1.09629, -10.0363)
+challenges = Array[String](["res://Prefabs/Challenges/DestroyAllBreakablesChallenge_withmusic.tscn", "res://Prefabs/Challenges/KillPotatoShredzChallenge.tscn", "res://Prefabs/Challenges/KillTommyTwoTrapsChallenge.tscn"])
 
 [node name="BlankEnv" parent="." instance=ExtResource("6_voep8")]
 
 [node name="C" parent="." instance=ExtResource("13_krr7i")]
 transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0.0166009, 0.729436, 9.99479)
 targetRoom = "res://Scenes/Lobby.tscn"
+
+[node name="A" parent="." instance=ExtResource("13_krr7i")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.22313, 0.729436, -20.0959)
+targetRoom = "res://Scenes/BroomCloset.tscn"
+
+[node name="B" parent="." instance=ExtResource("13_krr7i")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 4.437, 0.729436, -18.0231)
+requires = "BackDoorKey"
+targetRoom = "res://Scenes/Outside.tscn"
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.364197, 2.10136, -4.64866)
@@ -488,12 +659,6 @@ enable_shadows = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00577068, -0.0137181, -0.0148382)
 curve = SubResource("Curve3D_vhk3w")
 script = ExtResource("25_vb3ah")
-
-[node name="Monitor" parent="." instance=ExtResource("40_6whu8")]
-transform = Transform3D(0.417568, 0.221911, -0.881132, -0.236376, 0.962862, 0.130476, 0.877362, 0.153796, 0.454514, 2.1695, 3.38141, 2.52617)
-
-[node name="Monitor2" parent="." instance=ExtResource("40_6whu8")]
-transform = Transform3D(-0.724845, -0.347614, -0.594781, -0.432416, 0.901674, -3.7803e-08, 0.536298, 0.257193, -0.803888, -1.71128, 3.40808, 2.46174)
 
 [node name="SimpleNPC" parent="." instance=ExtResource("39_kndox")]
 transform = Transform3D(-0.0723678, 0, 0.997378, 0, 1, 0, -0.997378, 0, -0.0723678, -2.98979, 1.35752, -1.0956)
@@ -509,3 +674,15 @@ hair = "res://Models/Characters/NPCs/NPCHairMeshes/BaseballMaxer.res"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.133889, 1.35752, 3.54578)
 skin = "res://Textures/characters/MinimumWage.png"
 hair = "res://Models/Characters/NPCs/NPCHairMeshes/BaseballMaxer.res"
+
+[node name="GoldenCat" parent="." instance=ExtResource("41_1hiob")]
+transform = Transform3D(-0.518311, 0, -0.855192, 0, 1, 0, 0.855192, 0, -0.518311, 6.53733, -6.60448e-08, -5.03127)
+
+[node name="TommyTwoTraps" parent="." instance=ExtResource("42_hxp1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.52868, 1.14237, -10.2298)
+
+[node name="PotatoShredz" parent="." instance=ExtResource("43_e3uvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97814, 1.26887, -10.1341)
+
+[node name="ExitSign" parent="." instance=ExtResource("45_4yvwj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.68268, 3.58783, -17.9901)

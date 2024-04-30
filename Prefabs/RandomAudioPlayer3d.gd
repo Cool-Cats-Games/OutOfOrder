@@ -2,6 +2,7 @@ extends AudioStreamPlayer3D
 
 @export var sfx : Array[AudioStream]
 @export var playGlobal = false
+@export var limitOne = false
 
 var freeOnFinish = true
 
@@ -11,6 +12,8 @@ func _ready():
 
 
 func play_random(from_position: float = 0.0):
+	if (limitOne and playing) and not playGlobal:
+		return
 	if sfx.size() == 0:
 		return
 	stream = sfx.pick_random()

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmnvrxhq8wssn"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/Challenge.gd" id="1_lfglc"]
+[ext_resource type="PackedScene" uid="uid://c2dhmsd6l0gvy" path="res://Prefabs/Challenges/ChallengeEmblems/JumpChallengeEmblem.tscn" id="2_h4lph"]
+[ext_resource type="PackedScene" uid="uid://1i6fw3xokc0b" path="res://addons/CustomEvents/InputActionTrigger.tscn" id="3_cfqjb"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="4_udyf1"]
+
+[node name="JumpChallenge" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77077, -2, -1.51477)
+visible = false
+script = ExtResource("1_lfglc")
+emblemRes = ExtResource("2_h4lph")
+
+[node name="InputActionTrigger" parent="." instance=ExtResource("3_cfqjb")]
+action = "jump"
+isListening = false
+deleteAfterTrigger = true
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35548, 7.87965, -2.41518)
+text = "Press SPACE or A button to jump"
+font = ExtResource("4_udyf1")
+font_size = 196
+
+[connection signal="on_challenge_complete" from="." to="." method="hide"]
+[connection signal="on_challenge_start" from="." to="InputActionTrigger" method="start"]
+[connection signal="on_event_triggered" from="InputActionTrigger" to="." method="complete"]

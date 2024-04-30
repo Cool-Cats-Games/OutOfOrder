@@ -94,7 +94,7 @@ collision_layer = 32
 physics_material_override = SubResource("PhysicsMaterial_3e6go")
 lock_rotation = true
 script = ExtResource("1_fi063")
-itemName = "DoorKey"
+itemName = "BackDoorKey"
 pickupSound = ExtResource("2_wkctx")
 delayGrabable = true
 

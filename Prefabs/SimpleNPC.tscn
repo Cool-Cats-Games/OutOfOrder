@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dos2jeeu6b7a2"]
+[gd_scene load_steps=54 format=3 uid="uid://dos2jeeu6b7a2"]
 
 [ext_resource type="Script" path="res://Prefabs/SimpleNPC.gd" id="1_oovj6"]
 [ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="3_2src0"]
@@ -29,6 +29,23 @@
 [ext_resource type="AudioStream" uid="uid://c1imv7670fc4d" path="res://Sounds/sfx_spin1.wav" id="27_stlt4"]
 [ext_resource type="AudioStream" uid="uid://n311l2wlkeix" path="res://Sounds/sfx_spin2.wav" id="28_41iav"]
 [ext_resource type="AudioStream" uid="uid://ce824wpbnd8xn" path="res://Sounds/sfx_spin3.wav" id="29_k2c3l"]
+[ext_resource type="Script" path="res://addons/CustomEvents/SquibReleaseEvent.gd" id="30_0f8pe"]
+[ext_resource type="AudioStream" uid="uid://b43g8q4bvs4vw" path="res://Sounds/sfx_fleshy_break.wav" id="30_uffqt"]
+[ext_resource type="AudioStream" uid="uid://cheklqsj1jeuo" path="res://Sounds/sfx_fleshy_break2.wav" id="31_otsab"]
+[ext_resource type="AudioStream" uid="uid://dc3tn61dll00h" path="res://Sounds/sfx_fleshy_break3.wav" id="32_76eov"]
+[ext_resource type="AudioStream" uid="uid://qrfj4pdq21cg" path="res://Sounds/sfx_fleshy_break_3.wav" id="33_gduxe"]
+[ext_resource type="AudioStream" uid="uid://ene58qop2wb0" path="res://Sounds/sfx_npc/sfx_npcs_death_01.wav" id="34_xe3q5"]
+[ext_resource type="AudioStream" uid="uid://cqub6gddnikuf" path="res://Sounds/sfx_npc/sfx_npcs_death_02.wav" id="35_xp2ty"]
+[ext_resource type="AudioStream" uid="uid://bhv6fthmufmp5" path="res://Sounds/sfx_npc/sfx_npcs_death_03.wav" id="36_3sbbo"]
+[ext_resource type="AudioStream" uid="uid://duo8ceg0fsb6f" path="res://Sounds/sfx_npc/sfx_npcs_death_04.wav" id="37_3inc4"]
+[ext_resource type="AudioStream" uid="uid://dpf34dslq3b60" path="res://Sounds/sfx_npc/sfx_npc_death_05.wav" id="38_86fnk"]
+[ext_resource type="AudioStream" uid="uid://c4hlj6imsfv7t" path="res://Sounds/sfx_npc/sfx_npc_male_hurt1.wav" id="39_l8b85"]
+[ext_resource type="AudioStream" uid="uid://3ris1hvd5a7v" path="res://Sounds/sfx_npc/sfx_npc_male_hurt2.wav" id="40_qaada"]
+[ext_resource type="AudioStream" uid="uid://cqtjn0bhsy8he" path="res://Sounds/sfx_npc/sfx_npc_male_hurt3.wav" id="41_3yye4"]
+[ext_resource type="AudioStream" uid="uid://qmdepn5ptdyt" path="res://Sounds/sfx_npc/sfx_npc_male_hurt4.wav" id="42_0pw48"]
+[ext_resource type="AudioStream" uid="uid://ljyj37gl8iey" path="res://Sounds/sfx_npc/sfx_npc_female_hurt1.wav" id="43_2msmt"]
+[ext_resource type="AudioStream" uid="uid://bko1dkcstn8bl" path="res://Sounds/sfx_npc/sfx_npc_female_hurt2.wav" id="44_dvwc3"]
+[ext_resource type="AudioStream" uid="uid://bqmp2xgtu00bn" path="res://Sounds/sfx_npc/sfx_npc_female_hurt3.wav" id="45_631kg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
 bounce = 0.7
@@ -187,7 +204,7 @@ bones/0/name = "Pelvis"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, -0.115944, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 1.32338, 0)
+bones/0/position = Vector3(0, 1.36014, 0)
 bones/0/rotation = Quaternion(0, 1.19209e-07, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Leg.L"
@@ -195,7 +212,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(3.57628e-07, 0, -1, 0, -1, 0, -1, 0, -3.57628e-07, -3.41302e-08, -0.00195539, 0.143152)
 bones/1/enabled = true
 bones/1/position = Vector3(-3.41302e-08, -0.00195539, 0.143152)
-bones/1/rotation = Quaternion(0.671201, -0.136692, -0.721863, -0.0985848)
+bones/1/rotation = Quaternion(0.673366, -0.215821, -0.673366, -0.215821)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Shin.L"
 bones/2/parent = 1
@@ -209,7 +226,7 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(3.57628e-07, 0, -1, 0, -1, 0, -1, 0, -3.57628e-07, 3.8146e-08, -0.00195539, -0.159996)
 bones/3/enabled = true
 bones/3/position = Vector3(3.8146e-08, -0.00195539, -0.159996)
-bones/3/rotation = Quaternion(0.721845, 0.136066, -0.671414, 0.0981332)
+bones/3/rotation = Quaternion(0.676188, 0.206809, -0.676188, 0.206809)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Shin.R"
 bones/4/parent = 3
@@ -237,7 +254,7 @@ bones/7/parent = 6
 bones/7/rest = Transform3D(4.76837e-07, -3.39001e-07, -1.00001, -0.0763704, -0.997079, 3.05476e-07, -0.997079, 0.0763704, -4.76841e-07, -9.79744e-08, 0.538309, 0.410935)
 bones/7/enabled = true
 bones/7/position = Vector3(-9.79744e-08, 0.538309, 0.410935)
-bones/7/rotation = Quaternion(0.696232, 0.0701065, -0.710097, 0.0781564)
+bones/7/rotation = Quaternion(0.134088, 0.694277, -0.0806734, 0.70249)
 bones/7/scale = Vector3(1, 1, 1.00001)
 bones/8/name = "Arm.L.001"
 bones/8/parent = 7
@@ -251,7 +268,7 @@ bones/9/parent = 6
 bones/9/rest = Transform3D(3.15905e-06, 0.0179119, -0.999854, 0.0869819, -0.99605, -0.0178439, -0.99621, -0.0869679, -0.00156131, -0.00136278, 0.551991, -0.379397)
 bones/9/enabled = true
 bones/9/position = Vector3(-0.00136278, 0.551991, -0.379397)
-bones/9/rotation = Quaternion(0.718679, -0.128232, -0.674475, -0.110181)
+bones/9/rotation = Quaternion(0.0729859, -0.703884, -0.0114757, -0.706462)
 bones/9/scale = Vector3(1, 1, 1.00001)
 bones/10/name = "Arm.R.001"
 bones/10/parent = 9
@@ -276,7 +293,7 @@ bones/12/rotation = Quaternion(0, -1.19209e-07, 0, 1)
 bones/12/scale = Vector3(0.176239, 0.176239, 0.176239)
 
 [node name="Hair" type="BoneAttachment3D" parent="MeshContainer/Armature/Skeleton3D"]
-transform = Transform3D(0.176239, 0, 1.03029e-13, 0, 0.176239, 0, -1.03029e-13, 0, 0.176239, 0, 2.7863, 0)
+transform = Transform3D(0.176239, 0, 0, 0, 0.176239, 0, 0, 0, 0.176239, 0, 2.82306, 0)
 bone_name = "Hair"
 bone_idx = 12
 
@@ -302,6 +319,45 @@ bus = &"SFX"
 script = ExtResource("26_ex1dr")
 sfx = Array[AudioStream]([ExtResource("27_stlt4"), ExtResource("28_41iav"), ExtResource("29_k2c3l")])
 
+[node name="sfx_death" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+script = ExtResource("26_ex1dr")
+sfx = Array[AudioStream]([ExtResource("30_uffqt"), ExtResource("31_otsab"), ExtResource("32_76eov"), ExtResource("33_gduxe")])
+playGlobal = true
+
+[node name="sfx_deathscream" type="AudioStreamPlayer3D" parent="."]
+volume_db = 3.0
+bus = &"SFX"
+script = ExtResource("26_ex1dr")
+sfx = Array[AudioStream]([ExtResource("34_xe3q5"), ExtResource("35_xp2ty"), ExtResource("36_3sbbo"), ExtResource("37_3inc4"), ExtResource("38_86fnk")])
+playGlobal = true
+
+[node name="sfx_hurt_male" type="AudioStreamPlayer3D" parent="."]
+volume_db = -2.0
+bus = &"SFX"
+script = ExtResource("26_ex1dr")
+sfx = Array[AudioStream]([ExtResource("39_l8b85"), ExtResource("40_qaada"), ExtResource("41_3yye4"), ExtResource("42_0pw48")])
+limitOne = true
+
+[node name="sfx_hurt_female" type="AudioStreamPlayer3D" parent="."]
+volume_db = -2.0
+bus = &"SFX"
+script = ExtResource("26_ex1dr")
+sfx = Array[AudioStream]([ExtResource("43_2msmt"), ExtResource("44_dvwc3"), ExtResource("45_631kg")])
+limitOne = true
+
+[node name="SquibRelease" type="Node3D" parent="."]
+script = ExtResource("30_0f8pe")
+squibs = {
+"res://Prefabs/Breakables/Squibs/SquibFleshy01.tscn": -3,
+"res://Prefabs/Breakables/Squibs/SquibFleshy02.tscn": -3,
+"res://Prefabs/Breakables/Squibs/SquibFleshy03.tscn": -2,
+"res://Prefabs/Breakables/Squibs/SquibFleshy04.tscn": -2
+}
+
+[connection signal="on_death" from="." to="SquibRelease" method="trigger"]
+[connection signal="on_death" from="." to="sfx_death" method="play_random"]
+[connection signal="on_death" from="." to="sfx_deathscream" method="play_random"]
 [connection signal="state_entered" from="StateMachine/Idle" to="MeshContainer/AnimationPlayer" method="play" binds= ["TPose"]]
 [connection signal="state_entered" from="StateMachine/Chase" to="MeshContainer/AnimationPlayer" method="play" binds= ["Walk"]]
 [connection signal="state_entered" from="StateMachine/Ragdoll" to="sfx_ragdoll" method="play_random"]

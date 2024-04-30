@@ -43,6 +43,7 @@ func trigger(by = null):
 	var room = get_tree().get_first_node_in_group("World")
 	room.update_state()
 	room.save_room_data()
+	GameDataManager.gameData.currentRoom = targetRoom
 	get_tree().change_scene_to_file.call_deferred(targetRoom)
 
 func _on_body_entered(body):

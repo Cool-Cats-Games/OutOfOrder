@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3wfnjnxypyph"]
+[gd_scene load_steps=48 format=3 uid="uid://b3wfnjnxypyph"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_8ky3y"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_ityfq"]
@@ -6,22 +6,188 @@
 [ext_resource type="PackedScene" uid="uid://bfqw6me51ohlw" path="res://Prefabs/CameraRig.tscn" id="4_0wa4b"]
 [ext_resource type="PackedScene" uid="uid://bjxelnsgamg04" path="res://Prefabs/UI/HUD.tscn" id="5_e1rnj"]
 [ext_resource type="PackedScene" uid="uid://cbemgvwvf8mlh" path="res://System/GlobalEffectContainer.tscn" id="6_qq06c"]
-[ext_resource type="PackedScene" uid="uid://dpi8cv42dpkfs" path="res://System/BlackEnv.tscn" id="7_k0ddw"]
 [ext_resource type="Material" uid="uid://cr6tp7jb75i63" path="res://Materials/material_stonetile_02.tres" id="7_msbmd"]
+[ext_resource type="Material" uid="uid://dt5i6yumjwkj8" path="res://Materials/material_roughmetalwall.tres" id="8_0dm78"]
+[ext_resource type="PackedScene" uid="uid://dnlddpqxw01vu" path="res://Prefabs/Objects/FlourescentLight.tscn" id="9_3yq0c"]
+[ext_resource type="PackedScene" uid="uid://c4rc4pram2yvn" path="res://Prefabs/Challenges/InputChallenge.tscn" id="10_hwn6p"]
+[ext_resource type="Texture2D" uid="uid://dynnlkkysl58" path="res://Textures/64x_textures_02/bored_metal.png" id="10_kihnq"]
+[ext_resource type="Material" uid="uid://i5qlx14oouhm" path="res://Materials/material_pitchBlack.tres" id="11_hdfrm"]
+[ext_resource type="PackedScene" uid="uid://cgvm3b0wsb1vx" path="res://Prefabs/Breakables/Grill.tscn" id="11_lae53"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="11_nfs6n"]
+[ext_resource type="Script" path="res://addons/CustomEvents/TimerEvent.gd" id="12_on6o5"]
+[ext_resource type="PackedScene" uid="uid://cdk8gpn7lblkg" path="res://Prefabs/Breakables/Crate.tscn" id="12_r4ftj"]
+[ext_resource type="PackedScene" uid="uid://bmnvrxhq8wssn" path="res://Prefabs/Challenges/jumpChallenge.tscn" id="13_1xehb"]
+[ext_resource type="PackedScene" uid="uid://di1gotpig1qk2" path="res://Prefabs/Breakables/RollingCart.tscn" id="13_anryy"]
+[ext_resource type="Texture2D" uid="uid://bqjlw70n06llt" path="res://Sprites/UI/ButtonsIcons/stick_move.png" id="16_av8vf"]
+[ext_resource type="Texture2D" uid="uid://bax7k48k2bhbo" path="res://Sprites/UI/ButtonsIcons/button_a.png" id="18_g8wkv"]
+[ext_resource type="PackedScene" uid="uid://cgebye5i38nyc" path="res://Prefabs/Challenges/DestroyAllBreakablesChallenge.tscn" id="18_iuvnl"]
+[ext_resource type="Texture2D" uid="uid://cr5vkv8fykt2e" path="res://Sprites/UI/ButtonsIcons/button_x.png" id="21_kenht"]
+[ext_resource type="Texture2D" uid="uid://dgmq75yid2fpp" path="res://Sprites/UI/ButtonsIcons/trigger_l_click.png" id="22_sbcqb"]
+[ext_resource type="Texture2D" uid="uid://cjkwdjc8co01y" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tilemap/tilemap_white.png" id="23_bccay"]
+[ext_resource type="Texture2D" uid="uid://b22pqodqovro8" path="res://Sprites/UI/ButtonsIcons/trigger_r_click.png" id="24_hyx0n"]
+[ext_resource type="PackedScene" uid="uid://2svae8ucoc53" path="res://Prefabs/Challenges/Challenge.tscn" id="25_klaqg"]
+[ext_resource type="PackedScene" uid="uid://cqydt1k5f6ift" path="res://Prefabs/Challenges/ChallengeEmblems/HoverEmblem.tscn" id="26_u6p3v"]
+[ext_resource type="Script" path="res://addons/CustomEvents/GenericEvent.gd" id="27_b0cdh"]
+[ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="29_3op1u"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="30_qf2ng"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_j2d0k"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sopbl"]
 data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
 
+[sub_resource type="QuadMesh" id="QuadMesh_gov0h"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dkclo"]
+data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqlh5"]
+albedo_texture = ExtResource("10_kihnq")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_iywfn"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7a7ha"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2lex"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+roughness = 0.0764706
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ir833"]
+_surfaces = [{
+"aabb": AABB(-0.150092, -1, -1, 0.450324, 2.00001, 2.00001),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 4, 0, 0, 0, 5, 0, 7, 0, 6, 0, 0, 0, 1, 0, 8, 0, 9, 0, 4, 0, 6, 0, 6, 0, 4, 0, 3, 0, 0, 0, 10, 0, 2, 0, 2, 0, 10, 0, 11, 0, 0, 0, 4, 0, 10, 0, 5, 0, 6, 0, 3, 0),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(253, 255, 254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 253, 255, 0, 0, 254, 255, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 9, 195, 146, 63, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 253, 255, 0, 0, 146, 63, 0, 0, 253, 255, 9, 195, 107, 192, 0, 0, 253, 255, 0, 0, 107, 192, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xrxlc"]
+resource_name = "Cube"
+_surfaces = [{
+"aabb": AABB(-0.150092, -1, -1, 0.450324, 2.00001, 2.00001),
+"attribute_data": PackedByteArray(255, 159, 255, 63, 255, 95, 255, 31, 255, 95, 255, 63, 255, 159, 255, 127, 255, 159, 255, 63, 193, 144, 26, 112, 255, 159, 255, 159, 255, 95, 255, 127, 255, 95, 255, 159, 255, 159, 255, 31, 255, 95, 26, 112, 255, 95, 255, 127, 255, 95, 255, 63, 193, 144, 228, 79, 255, 95, 228, 79, 255, 159, 255, 127),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 0, 0, 1, 0, 9, 0, 10, 0, 5, 0, 11, 0, 11, 0, 5, 0, 3, 0, 4, 0, 13, 0, 12, 0, 12, 0, 13, 0, 14, 0, 4, 0, 5, 0, 13, 0, 6, 0, 7, 0, 15, 0),
+"material": SubResource("StandardMaterial3D_n2lex"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(253, 255, 254, 255, 254, 255, 255, 191, 0, 0, 0, 0, 254, 255, 255, 191, 253, 255, 0, 0, 254, 255, 255, 191, 253, 255, 254, 255, 0, 0, 84, 213, 253, 255, 254, 255, 254, 255, 84, 213, 253, 255, 9, 195, 146, 63, 84, 213, 0, 0, 254, 255, 0, 0, 255, 255, 253, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 254, 255, 255, 191, 253, 255, 0, 0, 146, 63, 84, 213, 253, 255, 0, 0, 0, 0, 84, 213, 253, 255, 0, 0, 254, 255, 84, 213, 253, 255, 9, 195, 107, 192, 84, 213, 253, 255, 0, 0, 107, 192, 84, 213, 253, 255, 254, 255, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 255, 191, 255, 191, 255, 191, 255, 191, 255, 191, 255, 191, 255, 255, 255, 255, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 170, 42, 255, 191, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ir833")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_purtp"]
+data = PackedVector3Array(0.3002, 1, 1, 0.3002, -1, 1, -0.1501, -1, 1, 0.3002, 1, -1, 0.3002, 0.5237, -0.5033, 0.3002, 1, 1, -0.1501, 1, -1, -0.1501, -1, -1, 0.3002, -1, -1, 0.3002, 1, 1, -0.1501, -1, 1, -0.1501, 1, 1, 0.3002, -1, -0.5033, 0.3002, 0.5237, -0.5033, 0.3002, -1, -1, 0.3002, -1, -1, 0.3002, 0.5237, -0.5033, 0.3002, 1, -1, 0.3002, 1, 1, 0.3002, 0.5237, 0.5033, 0.3002, -1, 1, 0.3002, -1, 1, 0.3002, 0.5237, 0.5033, 0.3002, -1, 0.5033, 0.3002, 1, 1, 0.3002, 0.5237, -0.5033, 0.3002, 0.5237, 0.5033, -0.1501, 1, -1, 0.3002, -1, -1, 0.3002, 1, -1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dvypj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_pqii2"]
+
+[sub_resource type="Environment" id="Environment_rbd2r"]
+background_mode = 3
+
+[sub_resource type="Animation" id="Animation_25ugg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoverMask/ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraRig:zoomFactor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_wy6ox"]
+resource_name = "default"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoverMask/ColorRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.3, 1.9)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraRig:zoomFactor")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvybo"]
+_data = {
+"RESET": SubResource("Animation_25ugg"),
+"default": SubResource("Animation_wy6ox")
+}
+
 [node name="BroomCloset" type="Node3D" groups=["World"]]
 script = ExtResource("1_8ky3y")
+
+[node name="BGMask" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BGMask"]
+offset_right = 963.0
+offset_bottom = 546.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CoverMask" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CoverMask"]
+offset_right = 963.0
+offset_bottom = 546.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_ityfq")]
 
 [node name="CharacterSpringbox" parent="." instance=ExtResource("3_qsbj8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5331, -0.844224, -0.00398064)
 
 [node name="CameraRig" parent="." instance=ExtResource("4_0wa4b")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+zoomFactor = 0.0
 
 [node name="HUD" parent="." instance=ExtResource("5_e1rnj")]
 
@@ -30,19 +196,310 @@ script = ExtResource("1_8ky3y")
 [node name="SetPieces" type="Node3D" parent="."]
 
 [node name="ground" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(13.3323, 0, 0, 0, -6.06059e-07, 1, 0, -13.865, -4.37114e-08, 2.93757, -1.63429, 0)
+transform = Transform3D(50, 0, 0, 0, -3.27835e-07, 1, 0, -7.5, -4.37114e-08, 20, -2, 0)
 material_override = ExtResource("7_msbmd")
 mesh = SubResource("QuadMesh_j2d0k")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/ground"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_sopbl")
 
+[node name="ground2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(50, 0, 0, 0, -3.27835e-07, -1, 0, 7.5, -4.37114e-08, 20, 4.9, 0)
+visible = false
+material_override = ExtResource("7_msbmd")
+mesh = SubResource("QuadMesh_j2d0k")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/ground2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/ground2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_sopbl")
+
+[node name="Wall" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(50, 0, 0, 0, 7, 0, 0, 0, 1, 20, 1.5, -3.75)
+material_override = ExtResource("8_0dm78")
+mesh = SubResource("QuadMesh_gov0h")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Wall/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dkclo")
+
+[node name="Wall3" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-3.27835e-07, 0, 1, 0, 7, 0, -7.5, 0, -4.37114e-08, -4.84, 1.5, 0)
+material_override = ExtResource("8_0dm78")
+mesh = SubResource("QuadMesh_gov0h")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Wall3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dkclo")
+
+[node name="Wall4" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-3.27835e-07, 0, -1, 0, 7, 0, 7.5, 0, -4.37114e-08, 44.8758, 1.5, 0)
+material_override = ExtResource("7_msbmd")
+mesh = SubResource("QuadMesh_gov0h")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Wall4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Wall4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dkclo")
+
+[node name="Wall2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-50, 0, -8.74228e-08, 0, 7, 0, 4.37114e-06, 0, -1, 20, 1.5, 3.68518)
+mesh = SubResource("QuadMesh_gov0h")
+skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/Wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/Wall2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dkclo")
+
+[node name="flourescentLight" parent="SetPieces" instance=ExtResource("9_3yq0c")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.868476, 4.67682, -2.6034)
+
+[node name="flourescentLight2" parent="SetPieces" instance=ExtResource("9_3yq0c")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 13.4008, 4.67682, -2.6034)
+
+[node name="flourescentLight3" parent="SetPieces" instance=ExtResource("9_3yq0c")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 27.3356, 4.67682, -2.6034)
+
+[node name="flourescentLight4" parent="SetPieces" instance=ExtResource("9_3yq0c")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 42.3056, 4.67682, -2.6034)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SetPieces"]
+transform = Transform3D(1, 0, 0, 0, 0.770802, 0.637074, 0, -0.637074, 0.770802, 0, 3.33642, 9.11249)
+light_energy = 0.3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(1.69882, 0, 0, 0, 1, 0, 0, 0, 7.55375, 9.082, -1.508, 0)
+material_override = SubResource("StandardMaterial3D_fqlh5")
+mesh = SubResource("BoxMesh_iywfn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7a7ha")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(1.69882, 0, 0, 0, 0.418815, 0, 0, 0, 7.55375, 32.1329, -1.79246, 0)
+material_override = SubResource("StandardMaterial3D_fqlh5")
+mesh = SubResource("BoxMesh_iywfn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7a7ha")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(1.69882, 0, 0, 0, 2.25215, 0, 0, 0, 7.55375, 33.8315, -0.869399, -0.000718594)
+material_override = SubResource("StandardMaterial3D_fqlh5")
+mesh = SubResource("BoxMesh_iywfn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7a7ha")
+
+[node name="DorrwayCutout" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 44.5506, 0.121785, -0.203801)
+material_override = ExtResource("8_0dm78")
+mesh = SubResource("ArrayMesh_xrxlc")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/DorrwayCutout"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/DorrwayCutout/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_purtp")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SetPieces/DorrwayCutout"]
+transform = Transform3D(2.15151e-07, 0, 0.5, 0, 1.5175, 0, -1.105, 0, 9.73536e-08, 0.296312, -0.227392, -0.00690059)
+material_override = ExtResource("11_hdfrm")
+mesh = SubResource("QuadMesh_dvypj")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="SetPieces/DorrwayCutout"]
+transform = Transform3D(0.56, 2.84217e-14, 4.23516e-22, 0, -8.74228e-08, 0.949, 7.10543e-15, -2, -4.14821e-08, 0.0149994, 0.996, 0)
+material_override = ExtResource("8_0dm78")
+mesh = SubResource("QuadMesh_pqii2")
+
 [node name="Destructables" type="Node3D" parent="."]
+
+[node name="Grill" parent="Destructables" instance=ExtResource("11_lae53")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.8745, -0.990504, -2.55652)
+
+[node name="Crate" parent="Destructables" instance=ExtResource("12_r4ftj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5664, -1.5345, 1.18892)
+
+[node name="Crate2" parent="Destructables" instance=ExtResource("12_r4ftj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3169, -1.5345, -1.39322)
+
+[node name="Crate3" parent="Destructables" instance=ExtResource("12_r4ftj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8631, -1.5345, -0.236084)
+
+[node name="Crate4" parent="Destructables" instance=ExtResource("12_r4ftj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8631, -0.49411, -0.236084)
+
+[node name="Crate5" parent="Destructables" instance=ExtResource("12_r4ftj")]
+transform = Transform3D(0.96725, 0, 0.253825, 0, 1, 0, -0.253825, 0, 0.96725, 20.4251, -1.5345, 2.43538)
+
+[node name="Crate6" parent="Destructables" instance=ExtResource("12_r4ftj")]
+transform = Transform3D(0.96725, 0, 0.253825, 0, 1, 0, -0.253825, 0, 0.96725, 29.6389, -1.5345, 1.87096)
+
+[node name="Crate7" parent="Destructables" instance=ExtResource("12_r4ftj")]
+transform = Transform3D(0.96725, 0, 0.253825, 0, 1, 0, -0.253825, 0, 0.96725, 28.0883, -1.5345, -1.04885)
+
+[node name="Crate8" parent="Destructables" instance=ExtResource("12_r4ftj")]
+transform = Transform3D(0.96725, 0, 0.253825, 0, 1, 0, -0.253825, 0, 0.96725, 28.0883, -0.49411, -1.04885)
+
+[node name="RollingCart" parent="Destructables" instance=ExtResource("13_anryy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.2991, -1.09732, -2.48319)
 
 [node name="Events" type="Node3D" parent="."]
 
 [node name="Challenges" type="Node3D" parent="."]
 
-[node name="BlankEnv" parent="." instance=ExtResource("7_k0ddw")]
+[node name="InputChallenge" parent="Challenges" instance=ExtResource("10_hwn6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77077, -2, -1.51477)
+visible = false
+lock_rooms_on_start = false
+
+[node name="Label3D" type="Label3D" parent="Challenges/InputChallenge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49851, 7.87965, -2.41518)
+text = "Move with WSAD or     Left Thumbstick"
+font = ExtResource("11_nfs6n")
+font_size = 196
+
+[node name="Sprite3D" type="Sprite3D" parent="Challenges/InputChallenge/Label3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.328636, 0, 0)
+texture = ExtResource("16_av8vf")
+
+[node name="JumpChallenge" parent="Challenges" instance=ExtResource("13_1xehb")]
+lock_rooms_on_start = false
+
+[node name="Label3D" parent="Challenges/JumpChallenge" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35548, 7.87965, -1.46186)
+text = "Press SPACE or    to jump"
+
+[node name="Sprite3D" type="Sprite3D" parent="Challenges/JumpChallenge/Label3D" index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.31593, 0, 0)
+texture = ExtResource("18_g8wkv")
+
+[node name="TimerEvent" type="Node3D" parent="Challenges"]
+script = ExtResource("12_on6o5")
+time = 2.0
+oneShot = true
+autoStart = true
+
+[node name="DestroyAllBreakablesChallenge" parent="Challenges" instance=ExtResource("18_iuvnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1255, -2, 1.62252)
+visible = false
+lock_rooms_on_start = false
+
+[node name="Label3D" type="Label3D" parent="Challenges/DestroyAllBreakablesChallenge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49851, 7.87965, -4.9023)
+text = "Press C or    to attack"
+font = ExtResource("11_nfs6n")
+font_size = 196
+
+[node name="Sprite3D" type="Sprite3D" parent="Challenges/DestroyAllBreakablesChallenge/Label3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.133314, 0, 0)
+texture = ExtResource("21_kenht")
+
+[node name="Label3D2" type="Label3D" parent="Challenges/DestroyAllBreakablesChallenge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28171, 4.58722, -4.9023)
+text = "You can also boost with
+SHIFT or 
+to do a ram attack"
+font = ExtResource("11_nfs6n")
+font_size = 196
+
+[node name="Sprite3D" type="Sprite3D" parent="Challenges/DestroyAllBreakablesChallenge/Label3D2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.68791, 0, 0)
+texture = ExtResource("22_sbcqb")
+
+[node name="Label3D3" type="Label3D" parent="Challenges/DestroyAllBreakablesChallenge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.11379, 4.58722, -4.9023)
+text = "Shoot jets of Ice Cream!
+Left Mb   or "
+font = ExtResource("11_nfs6n")
+font_size = 196
+
+[node name="Sprite3D" type="Sprite3D" parent="Challenges/DestroyAllBreakablesChallenge/Label3D3"]
+transform = Transform3D(5.34, 0, 0, 0, 5.34, 0, 0, 0, 5.34, 0.587172, -0.345344, 0)
+texture_filter = 1
+texture = ExtResource("23_bccay")
+region_enabled = true
+region_rect = Rect2(170, 50, 16, 17)
+
+[node name="Sprite3D2" type="Sprite3D" parent="Challenges/DestroyAllBreakablesChallenge/Label3D3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.68791, -0.540999, 0)
+texture = ExtResource("24_hyx0n")
+
+[node name="HoverChallenge" parent="Challenges" instance=ExtResource("25_klaqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0587, -2, -3.28149)
+visible = false
+emblemRes = ExtResource("26_u6p3v")
+lock_rooms_on_start = false
+
+[node name="Label3D" type="Label3D" parent="Challenges/HoverChallenge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0012, 7.4091, 0.359637)
+text = "Press SPACE or    while 
+in the air to hover using
+Ice Cream Jet!"
+font = ExtResource("11_nfs6n")
+font_size = 196
+
+[node name="Sprite3D" type="Sprite3D" parent="Challenges/HoverChallenge/Label3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.5769, 0.835466, 0)
+texture = ExtResource("18_g8wkv")
+
+[node name="GenericEvent" type="Node3D" parent="Challenges/HoverChallenge" groups=["PlayerHoverObserver"]]
+script = ExtResource("27_b0cdh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rbd2r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yvybo")
+}
+autoplay = "default"
+speed_scale = 0.75
+
+[node name="A" parent="." instance=ExtResource("29_3op1u")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.1982, -1.16489, -0.184485)
+targetRoom = "res://Scenes/Kitchen.tscn"
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("30_qf2ng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5868, -2, -2.72637)
+fadeInPlaylist = true
+playlistName = "Tutorial"
+onlyPlayIfNoMusic = true
+triggerOnReady = true
+
+[connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/InputChallenge" method="hide"]
+[connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/JumpChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/JumpChallenge" method="start_challenge"]
+[connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="start_challenge"]
+[connection signal="on_event_triggered" from="Challenges/TimerEvent" to="Challenges/InputChallenge" method="show"]
+[connection signal="on_event_triggered" from="Challenges/TimerEvent" to="Challenges/InputChallenge" method="start_challenge"]
+[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="hide"]
+[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/HoverChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/HoverChallenge" method="start_challenge"]
+[connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Challenges/HoverChallenge" method="hide"]
+[connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Challenges/HoverChallenge/GenericEvent" method="queue_free"]
+[connection signal="on_event_triggered" from="Challenges/HoverChallenge/GenericEvent" to="Challenges/HoverChallenge" method="complete"]
+
+[editable path="Challenges/JumpChallenge"]

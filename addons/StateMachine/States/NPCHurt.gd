@@ -13,6 +13,8 @@ func enter(_msg := {}) -> void:
 	hold = 10 + ceili(_msg.dmg)
 	actor.localInputVector = Vector3.ZERO
 	actor.linear_velocity = Vector3.ZERO
+	var hurtsfx = $"../../sfx_hurt_male" if actor.isMale else $"../../sfx_hurt_female"
+	hurtsfx.play_random()
 
 func update(_delta: float) -> void:
 	frames += 1

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfi6v85pr0kam"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/LoadRandomChallenge.gd" id="1_qnsi7"]
+
+[node name="LoadRandomChallenge" type="Node3D"]
+script = ExtResource("1_qnsi7")

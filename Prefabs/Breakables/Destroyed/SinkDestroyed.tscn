@@ -1,9 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://c60e1xolvdbu0"]
+[gd_scene load_steps=17 format=3 uid="uid://c60e1xolvdbu0"]
 
 [ext_resource type="PackedScene" uid="uid://d1grpwbxuyt3k" path="res://Models/Objects/SinkDestroyed.glb" id="1_e26vs"]
 [ext_resource type="Shader" path="res://Shaders/lowpoly_fresnel.gdshader" id="4_kfvxk"]
 [ext_resource type="PackedScene" uid="uid://71mlfoi6ud08" path="res://Prefabs/3dSoundPlayer.tscn" id="5_a00l0"]
+[ext_resource type="Script" path="res://Prefabs/RandomAudioPlayer3d.gd" id="5_dvuqh"]
 [ext_resource type="AudioStream" uid="uid://c3ijnj8c665d7" path="res://Sounds/sfx_water_spray.wav" id="6_8devy"]
+[ext_resource type="AudioStream" uid="uid://bu6bhyj07x66w" path="res://Sounds/sfx_porcelain_break1.wav" id="6_433uw"]
+[ext_resource type="AudioStream" uid="uid://ta56dngigma6" path="res://Sounds/sfx_porcelain_break2.wav" id="7_nhrkq"]
+[ext_resource type="AudioStream" uid="uid://dp1qc2wjwsr7r" path="res://Sounds/sfx_porcelain_break3.wav" id="8_r2wni"]
 
 [sub_resource type="Curve" id="Curve_ljm08"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.34202, 0.542373), 0.0, 0.0, 0, 0, Vector2(0.732899, 0.737288), 0.0, 0.0, 0, 0, Vector2(0.996743, 0), 0.0, 0.0, 0, 0]
@@ -73,3 +77,9 @@ stream = ExtResource("6_8devy")
 unit_size = 12.0
 autoplay = true
 max_distance = 10.0
+
+[node name="sfx_sink_break" type="AudioStreamPlayer3D" parent="."]
+autoplay = true
+bus = &"SFX"
+script = ExtResource("5_dvuqh")
+sfx = Array[AudioStream]([ExtResource("6_433uw"), ExtResource("7_nhrkq"), ExtResource("8_r2wni")])

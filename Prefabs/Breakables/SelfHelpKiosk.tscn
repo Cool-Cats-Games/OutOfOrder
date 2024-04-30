@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://oun6s5kkpcrf"]
+[gd_scene load_steps=28 format=3 uid="uid://oun6s5kkpcrf"]
 
 [ext_resource type="Script" path="res://Prefabs/Breakables/SelfHelpKiosk.gd" id="1_576lr"]
 [ext_resource type="Texture2D" uid="uid://dcpnn6pklrphi" path="res://Textures/posters/poster_02.png" id="3_033iy"]
@@ -22,6 +22,8 @@ resource_name = "material_black"
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 roughness = 0.0764706
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_31kie"]
 _surfaces = [{
@@ -91,6 +93,8 @@ shadow_mesh = SubResource("ArrayMesh_kr4fu")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 8.69
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qx4mf"]
 _surfaces = [{
@@ -128,6 +132,12 @@ shadow_mesh = SubResource("ArrayMesh_qx4mf")
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_qkh6y")
 texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlkfh"]
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tid13"]
 _surfaces = [{
@@ -231,6 +241,7 @@ mesh = SubResource("ArrayMesh_pf8eu")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="SelfHelpKiosk"]
+material_override = SubResource("StandardMaterial3D_jlkfh")
 mesh = SubResource("ArrayMesh_c56tm")
 skeleton = NodePath("")
 

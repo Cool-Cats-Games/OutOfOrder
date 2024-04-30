@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://x3sghtfkky3t"]
+[gd_scene load_steps=46 format=3 uid="uid://x3sghtfkky3t"]
 
 [ext_resource type="Script" path="res://Prefabs/TommyTwoTraps.gd" id="1_afmv6"]
 [ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="3_yv36c"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://cdf3yun8bdvo5" path="res://Sounds/sfx_break_metal_01.wav" id="20_srweq"]
 [ext_resource type="AudioStream" uid="uid://t3ek75qen3vj" path="res://Sounds/sfx_break_metal_02.WAV" id="21_gadyn"]
 [ext_resource type="AudioStream" uid="uid://hgfqavjip6wq" path="res://Sounds/sfx_break_metal_03.WAV" id="22_ljdid"]
+[ext_resource type="AudioStream" uid="uid://bypmccl34euyp" path="res://Sounds/sfx_enemies/sfx_TTT_bubbling.wav" id="26_wlmwv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
 bounce = 0.7
@@ -522,6 +523,12 @@ squibs = {
 [node name="deathSFX" parent="." instance=ExtResource("19_ii4m4")]
 sfx = Array[AudioStream]([ExtResource("20_srweq"), ExtResource("21_gadyn"), ExtResource("22_ljdid")])
 playGlobal = true
+
+[node name="sfx_bubbling" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("26_wlmwv")
+autoplay = true
+max_distance = 17.0
+bus = &"SFX"
 
 [connection signal="on_death" from="." to="DeathSquibs" method="trigger"]
 [connection signal="on_death" from="." to="deathSFX" method="play_random"]

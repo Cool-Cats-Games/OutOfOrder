@@ -8,3 +8,5 @@ cull_mode = 2
 albedo_texture = ExtResource("1_ghawj")
 roughness = 0.59
 texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

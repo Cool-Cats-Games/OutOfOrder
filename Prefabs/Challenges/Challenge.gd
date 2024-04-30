@@ -7,6 +7,7 @@ signal on_challenge_complete()
 @export var emblemRes : Resource
 @export var lock_rooms_on_start = true
 
+
 var hasStarted = false
 var isCompleted = false
 
@@ -41,6 +42,9 @@ func start_challenge():
 		get_tree().call_group("Doors", "set_state", 2)
 	#load challenge ico on HUD
 	get_tree().call_group("ChallengeEmblems", "add_challenge", self)
+	for c in get_children():
+		if c.has_method("play_playlist"):
+			c.play_playlist()
 
 func update_emblem(_msg = {}):
 	if hasStarted:

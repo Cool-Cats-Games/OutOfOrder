@@ -16,6 +16,7 @@ emblemRes = ExtResource("3_rhxru")
 [node name="KillCounter" type="Node3D" parent="." groups=["EnemyDeathSubscribers"]]
 script = ExtResource("3_5c1k5")
 entity_type = "npc"
+goal = 6
 deleteAfterTrigger = true
 
 [node name="EntitySpawner" parent="." instance=ExtResource("4_naqud")]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://egud3fwxo4xe"]
+
+[ext_resource type="Script" path="res://addons/CustomEvents/QueuePlaylistEvent.gd" id="1_233mv"]
+
+[node name="QueuePlaylistEvent" type="Node3D"]
+script = ExtResource("1_233mv")

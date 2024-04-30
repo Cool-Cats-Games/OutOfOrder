@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://br20itsteg3bc"]
+[gd_scene load_steps=7 format=3 uid="uid://br20itsteg3bc"]
 
 [ext_resource type="Script" path="res://System/AudioManager.gd" id="1_clgmp"]
 [ext_resource type="AudioStream" uid="uid://consb2ek8vj4p" path="res://Music/Battlefight_chill.wav" id="2_0uu2h"]
-[ext_resource type="AudioStream" uid="uid://dpywb1klwua7x" path="res://Music/Battlefight_intense.wav" id="3_5baco"]
+[ext_resource type="PackedScene" uid="uid://dpd26xmq75b2y" path="res://Prefabs/fader.tscn" id="3_b7ow7"]
+[ext_resource type="AudioStream" uid="uid://cl2qn3gih64vc" path="res://Music/battlefight_altmix.wav" id="4_3avig"]
+[ext_resource type="AudioStream" uid="uid://7sjmrli3vw1j" path="res://Music/Tutorial.wav" id="4_k25uk"]
+[ext_resource type="AudioStream" uid="uid://dnasehvtcyiqd" path="res://Music/Menugod.wav" id="5_l1n3h"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_clgmp")
@@ -13,6 +16,29 @@ script = ExtResource("1_clgmp")
 stream = ExtResource("2_0uu2h")
 bus = &"Music"
 
+[node name="Fader" parent="Battlefight/A" instance=ExtResource("3_b7ow7")]
+
 [node name="B" type="AudioStreamPlayer" parent="Battlefight"]
-stream = ExtResource("3_5baco")
+stream = ExtResource("4_3avig")
 bus = &"Music"
+
+[node name="Fader" parent="Battlefight/B" instance=ExtResource("3_b7ow7")]
+
+[node name="Tutorial" type="Node" parent="."]
+
+[node name="A" type="AudioStreamPlayer" parent="Tutorial"]
+stream = ExtResource("4_k25uk")
+bus = &"Music"
+
+[node name="Fader" parent="Tutorial/A" instance=ExtResource("3_b7ow7")]
+
+[node name="Menu" type="Node" parent="."]
+
+[node name="A" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource("5_l1n3h")
+bus = &"Music"
+
+[node name="Fader" parent="Menu/A" instance=ExtResource("3_b7ow7")]
+
+[node name="SoundChannel" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

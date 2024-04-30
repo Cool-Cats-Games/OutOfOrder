@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpd26xmq75b2y"]
+
+[ext_resource type="Script" path="res://Prefabs/Fader.gd" id="1_ku0do"]
+
+[node name="Fader" type="Node"]
+script = ExtResource("1_ku0do")

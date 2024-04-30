@@ -1,12 +1,12 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ll62h1hqidlw"]
 
-[ext_resource type="Texture2D" uid="uid://cjawrljf5w3ni" path="res://Textures/characters/MinimumWage.png" id="1_bqfgg"]
+[ext_resource type="Texture2D" uid="uid://dco4yepfgq6u7" path="res://Textures/characters/Daven.png" id="1_8wal5"]
 
 [resource]
 resource_local_to_scene = true
 resource_name = "BaseManMaterial"
 cull_mode = 2
 shading_mode = 2
-albedo_texture = ExtResource("1_bqfgg")
+albedo_texture = ExtResource("1_8wal5")
 roughness = 0.5
 texture_filter = 0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm2pou5vyj7ly"]
+
+[ext_resource type="Script" path="res://addons/CustomEvents/ToggleWackyBackground.gd" id="1_onmhw"]
+
+[node name="ToggleWackyBackground" type="Node3D"]
+script = ExtResource("1_onmhw")
+triggerOnReady = true

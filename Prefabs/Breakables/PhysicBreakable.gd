@@ -14,6 +14,7 @@ func take_damage(dmg, dir, hitbox):
 		queue_free()
 		on_death.emit()
 		entity_died.emit("died_"+entity_type)
+		get_tree().call_group("BreakablesBrokenSubscriber", "on_breakable_smashed", self)
 		Utils.play_sound_at(breaksfx, get_tree(), global_position, -3.0)
 		if squibs.size() == 0:return
 		for s in range(randi_range(2,6)):

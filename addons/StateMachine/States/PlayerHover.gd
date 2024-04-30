@@ -14,6 +14,7 @@ func _ready():
 
 func enter(_msg := {}) -> void:
 	super.enter(_msg)
+	get_tree().call_group("PlayerHoverObserver", "trigger")
 	ipVis = actor.mainCamera.get_node("inputVisual")
 	actor.toggle_hover(true)
 	initialRH = actor.rideHeight
@@ -63,7 +64,7 @@ func physics_update(_delta: float) -> void:
 		if e.has_method("take_damage"):
 			e.take_damage(2, actor.global_position.direction_to(e.global_position), actor)
 			if not e.get_collision_layer_value(8) and not e.get_collision_layer_value(1):
-				combat_event.emit("hover_attack")
+				combat_event.emit("hover_attack", "hover_attack")
 				pass
 	pass
 

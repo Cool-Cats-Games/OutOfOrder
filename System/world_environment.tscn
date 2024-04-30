@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://djxklyob7v6gc"]
+[gd_scene load_steps=5 format=3 uid="uid://djxklyob7v6gc"]
+
+[ext_resource type="PackedScene" uid="uid://bm2pou5vyj7ly" path="res://addons/CustomEvents/ToggleWackyBackground.tscn" id="1_f1o0x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sa04w"]
 sky_top_color = Color(0.520322, 0.441557, 0.613733, 1)
@@ -27,3 +29,6 @@ fog_sky_affect = 0.2
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_7dd3f")
+
+[node name="ToggleWackyBackground" parent="." instance=ExtResource("1_f1o0x")]
+enable = false

@@ -1,6 +1,7 @@
 extends Node3D
 
 signal on_entity_spawned(entity)
+signal resource_loaded()
 
 @export var enabled = true
 @export var radius = 0.0
@@ -15,9 +16,10 @@ signal on_entity_spawned(entity)
 @export var requires_floor = true #Whether it checks to spawn on floor
 #@export var dont_spawn_in_vision = false #Whether it checks to spawn outside player vision
 
+var hasInitialized = false
+var res
 var spawned = []
 
-var res
 
 func _ready():
 	initialize()
@@ -37,6 +39,8 @@ func configure(esr : EntitySpawner):
 
 func initialize():
 	res = load(entityPath)
+	resource_loaded.emit()
+	hasInitialized = true
 	if spawnTimer > 0.0:
 		$Timer.wait_time = spawnTimer
 	if timerOnReady:
@@ -49,6 +53,8 @@ func spawn():
 	if enabled:
 		if spawnLimit == 0 or spawned.size() < spawnLimit:
 			var tries = 100 #How many times to try and spawn
+			if not hasInitialized:
+				await self.resource_loaded
 			var eobj = res.instantiate()
 			Utils.get_world(get_tree()).add_child(eobj)
 			var spawnPosition = global_position + (Vector3(randf_range(-radius, radius),0.0,randf_range(-radius, radius)))
@@ -67,6 +73,9 @@ func spawn():
 				eobj.connect("entity_died",self.on_spawned_entity_died)
 	if spawnLoop and spawnTimer > 0.0:
 		start_spawn_timer()
+
+func trigger(by = null):
+	spawn()
 
 func on_spawned_entity_died(entity):
 	if entity in spawned:

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx6n1tvyf1udb"]
+
+[ext_resource type="Texture2D" uid="uid://b8hkxwtw6mt7d" path="res://Textures/posters/poster_16.png" id="1_3ymo7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5x2qh"]
+resource_local_to_scene = true
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_3ymo7")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_sq1gh"]
+
+[node name="poster16" type="MeshInstance3D"]
+transform = Transform3D(1.28442, 0, 0, 0, 1.48183, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_5x2qh")
+mesh = SubResource("QuadMesh_sq1gh")

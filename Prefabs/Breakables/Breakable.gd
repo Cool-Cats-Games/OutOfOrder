@@ -10,11 +10,13 @@ var entity_type = "breakable"
 signal entity_died
 
 func _ready():
+	add_to_group("Breakables")
 	if has_node("/root/ComboManager") != null:
 		self.connect("entity_died",$"/root/ComboManager".on_combat_event)
 
 func smash():
 	entity_died.emit("died_"+entity_type)
+	get_tree().call_group("BreakablesBrokenSubscriber", "on_breakable_smashed", self)
 	queue_free()
 	Utils.play_sound_at(breaksfx, get_tree(), global_position, -3.0)
 	on_smashed.emit()
