@@ -6,13 +6,13 @@ func _ready():
 
 
 func _on_btn_ng_pressed():
-	GameDataManager.gameData = load("res://Data/GameDataResource.tres")
+	GameDataManager.gameData = load("res://Data/GameDataResource.tres").duplicate()
 	$VBoxContainer.hide()
 	$Transitions.fade_out()
 	$sfx_ng.play()
 	AudioManager.stop()
 	await $Transitions.on_fadeout_complete
-	get_tree().change_scene_to_file("res://Scenes/BroomCloset.tscn")
+	get_tree().change_scene_to_file("res://Scenes/BlankScene.tscn")
 	pass # Replace with function body.
 
 

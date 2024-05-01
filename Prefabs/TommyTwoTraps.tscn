@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://x3sghtfkky3t"]
+[gd_scene load_steps=49 format=3 uid="uid://x3sghtfkky3t"]
 
 [ext_resource type="Script" path="res://Prefabs/TommyTwoTraps.gd" id="1_afmv6"]
 [ext_resource type="PackedScene" uid="uid://cdtjqyr2ka37j" path="res://Prefabs/UI/EntityHPBar.tscn" id="3_yv36c"]
@@ -25,7 +25,10 @@
 [ext_resource type="AudioStream" uid="uid://cdf3yun8bdvo5" path="res://Sounds/sfx_break_metal_01.wav" id="20_srweq"]
 [ext_resource type="AudioStream" uid="uid://t3ek75qen3vj" path="res://Sounds/sfx_break_metal_02.WAV" id="21_gadyn"]
 [ext_resource type="AudioStream" uid="uid://hgfqavjip6wq" path="res://Sounds/sfx_break_metal_03.WAV" id="22_ljdid"]
+[ext_resource type="AudioStream" uid="uid://dydnp1s77abgc" path="res://Sounds/sfx_enemies/sfx_ttt_hurt.wav" id="26_v4dux"]
 [ext_resource type="AudioStream" uid="uid://bypmccl34euyp" path="res://Sounds/sfx_enemies/sfx_TTT_bubbling.wav" id="26_wlmwv"]
+[ext_resource type="AudioStream" uid="uid://cgm3jg6emr1cf" path="res://Sounds/sfx_enemies/sfx_ttt_hurt2.wav" id="27_6gs1x"]
+[ext_resource type="AudioStream" uid="uid://cagd7xq2h2u4j" path="res://Sounds/sfx_enemies/sfx_ttt_hurt3.wav" id="28_josgq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
 bounce = 0.7
@@ -524,6 +527,9 @@ squibs = {
 sfx = Array[AudioStream]([ExtResource("20_srweq"), ExtResource("21_gadyn"), ExtResource("22_ljdid")])
 playGlobal = true
 
+[node name="hurtSFX" parent="." instance=ExtResource("19_ii4m4")]
+sfx = Array[AudioStream]([ExtResource("26_v4dux"), ExtResource("27_6gs1x"), ExtResource("28_josgq")])
+
 [node name="sfx_bubbling" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("26_wlmwv")
 autoplay = true
@@ -536,6 +542,7 @@ bus = &"SFX"
 [connection signal="on_chase_reached" from="StateMachine/Chase" to="StateMachine" method="transition_to" binds= ["Charge"]]
 [connection signal="state_entered" from="StateMachine/Chase" to="TommyTwoTraps/AnimationPlayer" method="play" binds= ["Run"]]
 [connection signal="state_entered" from="StateMachine/Charge" to="TommyTwoTraps/AnimationPlayer" method="play" binds= ["Charge"]]
+[connection signal="state_entered" from="StateMachine/Hurt" to="hurtSFX" method="play_random"]
 [connection signal="on_walk_to_reached" from="StateMachine/WalkTo" to="StateMachine" method="transition_to" binds= ["FindPatrolPath"]]
 [connection signal="state_entered" from="StateMachine/WalkTo" to="TommyTwoTraps/AnimationPlayer" method="play" binds= ["Run"]]
 [connection signal="body_entered" from="AggroRange" to="." method="aggro"]

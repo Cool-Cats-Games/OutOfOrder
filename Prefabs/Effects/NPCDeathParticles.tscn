@@ -1,0 +1,133 @@
+[gd_scene load_steps=20 format=3 uid="uid://1ua0rqy87bf3"]
+
+[ext_resource type="Script" path="res://Prefabs/Effects/NPCDeathParticles.gd" id="1_e6ard"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dsssy"]
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, -20, 0)
+
+[sub_resource type="Curve" id="Curve_b6g44"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wp403"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0)
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_e2n5q"]
+material = SubResource("StandardMaterial3D_wp403")
+size = 0.245
+curve = SubResource("Curve_b6g44")
+
+[sub_resource type="Curve" id="Curve_p6dus"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_odlgo"]
+curve = SubResource("Curve_p6dus")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i4mj3"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_max = 20.0
+scale_curve = SubResource("CurveTexture_odlgo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcgig"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_67mkv"]
+material = SubResource("StandardMaterial3D_mcgig")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Curve" id="Curve_865ms"]
+max_value = 0.25
+_data = [Vector2(0, 0.0302198), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tyaem"]
+curve = SubResource("Curve_865ms")
+
+[sub_resource type="Curve" id="Curve_7kglg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0442478, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.850467, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.626374), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_k13pd"]
+curve = SubResource("Curve_7kglg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_noyd6"]
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_k13pd")
+alpha_curve = SubResource("CurveTexture_tyaem")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_joycj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y4gvi"]
+noise = SubResource("FastNoiseLite_joycj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg8bv"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 0, 0.682353)
+albedo_texture = SubResource("NoiseTexture2D_y4gvi")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_ncn08"]
+material = SubResource("StandardMaterial3D_rg8bv")
+radial_segments = 6
+rings = 6
+
+[node name="NPCDeathParticles" type="Node3D"]
+script = ExtResource("1_e6ard")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.96
+fixed_fps = 60
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_dsssy")
+draw_pass_1 = SubResource("RibbonTrailMesh_e2n5q")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.96
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_i4mj3")
+draw_pass_1 = SubResource("QuadMesh_67mkv")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_noyd6")
+draw_pass_1 = SubResource("SphereMesh_ncn08")
+
+[node name="time" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="time" to="." method="queue_free"]

@@ -4,6 +4,7 @@ extends RigidBody3D
 @export var canGrab = true
 @export var pickupSound : AudioStream
 @export var delayGrabable = false
+@export var deletePermenant = false
 
 func _ready():
 	if delayGrabable:
@@ -11,8 +12,10 @@ func _ready():
 		$delay.start()
 
 func grab():
+	if deletePermenant:
+		Utils.get_world(get_tree()).register_instance_deleted(get_path())
 	queue_free()
-	Utils.play_mono_sound(pickupSound, get_tree())
+	Utils.play_mono_sound(pickupSound, get_tree(), 3.0)
 	GameDataManager.add_item(itemName, 1)
 
 func _on_area_3d_body_entered(body):

@@ -1,25 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bowoxrm5kopcf"]
+[gd_scene load_steps=6 format=3 uid="uid://bowoxrm5kopcf"]
 
 [ext_resource type="Script" path="res://Prefabs/Breakables/Breakable.gd" id="1_d5lxs"]
-[ext_resource type="PackedScene" uid="uid://f7y14t4nkyxf" path="res://Prefabs/Breakables/Squibs/SquibBase.tscn" id="2_1hcdy"]
 [ext_resource type="Material" uid="uid://cj2gw37rtkjm3" path="res://Materials/UnitMaterial_1x.tres" id="2_vp3e4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hsj2v"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_5jwc5"]
+[sub_resource type="BoxMesh" id="BoxMesh_j1ppm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_enpl2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_om5fs"]
 
 [node name="Breakable" type="RigidBody3D"]
 collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_hsj2v")
 sleeping = true
 script = ExtResource("1_d5lxs")
-squibs = Array[Resource]([ExtResource("2_1hcdy")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_vp3e4")
-mesh = SubResource("BoxMesh_5jwc5")
+mesh = SubResource("BoxMesh_j1ppm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_enpl2")
+shape = SubResource("BoxShape3D_om5fs")

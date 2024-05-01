@@ -30,7 +30,9 @@ func spawn_random_squib():
 	slr.position = position
 	slr.apply_force(Vector3(randf_range(-1.0,1.0) * 50, randf_range(10,50) * 5, randf_range(-1.0,1.0) * 50))
 	slr.apply_torque(Vector3(randf_range(-1.0,1.0) * 5, randf_range(-1.0,1.0), randf_range(-1.0,1.0) * 5))
-	slr.get_node("TTL").start(randf_range(0.5,5.0))
+	var ttl = slr.get_node("TTL")
+	if is_instance_valid(ttl):
+		ttl.start(randf_range(0.5,5.0))
 
 func take_damage(dmg, dir, hitbox):
 	hp -= dmg

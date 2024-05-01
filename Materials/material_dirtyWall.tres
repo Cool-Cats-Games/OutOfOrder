@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dhxmi8x643gew"]
+
+[ext_resource type="Texture2D" uid="uid://77o3d7v1cf21" path="res://Models/RetroUrbanKit/detailDumpster_closed_metal_wall.png" id="1_w65c4"]
+
+[resource]
+resource_name = "wall_metal"
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_w65c4")
+metallic = 0.35
+roughness = 0.5
+emission_enabled = true
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

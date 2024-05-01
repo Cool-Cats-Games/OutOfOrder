@@ -73,6 +73,7 @@ func play_sound_at(stream, volume = 0.0, bus = "SFX", varied = false):
 	$SoundChannel.bus = bus
 	if varied:
 		$SoundChannel.pitch_scale = randf_range(0.85,1.15)
+	$SoundChannel.play()
 
 func scale_to_db(ratio = 1.0):
 	return lerp(-80.0,0.0, ratio)

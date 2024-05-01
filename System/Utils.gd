@@ -10,11 +10,12 @@ static func play_sound_at(sfx, tree, pos = Vector3.ZERO, vol = 0.0, pitch = 1.0,
 	dsfx.configure(sfx, pos, vol, pitch, freeAfterPlay, attentuationModel)
 	dsfx.play_random()
 
-static func play_mono_sound(sfx, tree):
+static func play_mono_sound(sfx, tree, volume = 0.0):
 	if sfx is String:
 		sfx = load(sfx)
 	var dsfx = AudioStreamPlayer.new()
 	dsfx.bus = "SFX"
+	dsfx.volume_db = volume
 	dsfx.stream = sfx
 	get_world(tree).add_child(dsfx)
 	dsfx.finished.connect(dsfx.queue_free)

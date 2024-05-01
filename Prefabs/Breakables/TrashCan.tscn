@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dhqlkumo1v6rs"]
+[gd_scene load_steps=24 format=3 uid="uid://dhqlkumo1v6rs"]
 
 [ext_resource type="Script" path="res://Prefabs/Breakables/Breakable.gd" id="1_ehg6u"]
 [ext_resource type="PackedScene" uid="uid://pscij2tpd1ad" path="res://Prefabs/Breakables/Squibs/SquibJoja.tscn" id="2_3o3xh"]
 [ext_resource type="PackedScene" uid="uid://dui3p62khabu4" path="res://Prefabs/Breakables/Squibs/SquibGarbageWad.tscn" id="3_thy76"]
 [ext_resource type="Texture2D" uid="uid://bjke3drengbed" path="res://Textures/64x_textures_02/bored_metal_medium_yellow.png" id="4_0od17"]
 [ext_resource type="PackedScene" uid="uid://dlrooeyos2i6f" path="res://Prefabs/Breakables/Squibs/SquibPaperWad.tscn" id="4_nx4uo"]
+[ext_resource type="PackedScene" uid="uid://b7msc3tgsnghs" path="res://Prefabs/Breakables/Squibs/Squib_passerineGameCase.tscn" id="5_17mxd"]
 [ext_resource type="Texture2D" uid="uid://dl632ipxy73lc" path="res://Sprites/Wc.png" id="5_an5mx"]
 [ext_resource type="AudioStream" uid="uid://timrj7wg0s6b" path="res://Sounds/sfx_smash_wood_03.wav" id="5_y0fyb"]
 [ext_resource type="AudioStream" uid="uid://t3ek75qen3vj" path="res://Sounds/sfx_break_metal_02.WAV" id="6_mdbjq"]
@@ -145,7 +146,7 @@ collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_hsj2v")
 sleeping = true
 script = ExtResource("1_ehg6u")
-squibs = Array[Resource]([ExtResource("2_3o3xh"), ExtResource("3_thy76"), ExtResource("4_nx4uo")])
+squibs = Array[Resource]([ExtResource("2_3o3xh"), ExtResource("3_thy76"), ExtResource("4_nx4uo"), ExtResource("5_17mxd")])
 breaksfx = Array[AudioStream]([ExtResource("5_y0fyb"), ExtResource("6_mdbjq")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

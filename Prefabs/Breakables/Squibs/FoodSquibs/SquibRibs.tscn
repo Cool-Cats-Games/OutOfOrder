@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmyi3ba6pqeb7"]
+
+[ext_resource type="PackedScene" uid="uid://bwht0smwm14ev" path="res://Models/Food/meatRibs.glb" id="1_k6n87"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5kdb"]
+bounce = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6cs8y"]
+size = Vector3(0.107666, 0.561523, 0.374023)
+
+[node name="SquibRibs" type="RigidBody3D"]
+collision_layer = 32
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_u5kdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0115506, 0.0334357, 0)
+shape = SubResource("BoxShape3D_6cs8y")
+
+[node name="TTL" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="meatRibs2" parent="." instance=ExtResource("1_k6n87")]
+
+[connection signal="timeout" from="TTL" to="." method="queue_free"]

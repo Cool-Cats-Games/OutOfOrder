@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://blpbjqgf2aka8"]
+
+[ext_resource type="Texture2D" uid="uid://0tkawdg2tnb4" path="res://Textures/64x_textures_01/sewers/door.bmp" id="1_4uekc"]
+
+[resource]
+cull_mode = 1
+albedo_texture = ExtResource("1_4uekc")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

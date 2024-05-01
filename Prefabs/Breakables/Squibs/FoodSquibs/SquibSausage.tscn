@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck846qh6ysxb8"]
+
+[ext_resource type="PackedScene" uid="uid://dyg51555q2x5n" path="res://Models/Food/meatSausage.glb" id="1_4jm2t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5kdb"]
+bounce = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dnql5"]
+radius = 0.159052
+
+[node name="SquibSausage" type="RigidBody3D"]
+collision_layer = 32
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_u5kdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0815178, 0)
+shape = SubResource("SphereShape3D_dnql5")
+
+[node name="TTL" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="meatSausage2" parent="." instance=ExtResource("1_4jm2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0816941, 0)
+
+[connection signal="timeout" from="TTL" to="." method="queue_free"]

@@ -1,0 +1,230 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmu5nwl31nf0n"]
+
+[ext_resource type="Texture2D" uid="uid://krydov5ff1hs" path="res://Sprites/UI/controller_1_v2.png" id="1_ma50v"]
+[ext_resource type="Script" path="res://Scenes/ControllerIntro.gd" id="1_ndwcr"]
+[ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="2_m4s6k"]
+[ext_resource type="Script" path="res://Prefabs/UI/UI_InputSwitch.gd" id="4_mvqad"]
+[ext_resource type="Texture2D" uid="uid://bax7k48k2bhbo" path="res://Sprites/UI/ButtonsIcons/button_a.png" id="4_y1hwd"]
+[ext_resource type="Texture2D" uid="uid://qcn0dgn7fkco" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tilemap/tilemap_white_packed.png" id="5_b4txi"]
+[ext_resource type="PackedScene" uid="uid://1i6fw3xokc0b" path="res://addons/CustomEvents/InputActionTrigger.tscn" id="7_kbcs2"]
+
+[sub_resource type="Animation" id="Animation_8ylkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI_Input_Switch:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxContainer/VBoxContainer/Label3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI_Input_Switch:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputActionTrigger:isListening")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i7id3"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI_Input_Switch:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxContainer/VBoxContainer/Label3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI_Input_Switch:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InputActionTrigger:isListening")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xylg"]
+_data = {
+"RESET": SubResource("Animation_8ylkg"),
+"fadein": SubResource("Animation_i7id3")
+}
+
+[node name="ControllerIntro" type="CanvasLayer"]
+script = ExtResource("1_ndwcr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 965.0
+offset_bottom = 548.0
+color = Color(0, 0, 0, 1)
+
+[node name="Controller1V2" type="Sprite2D" parent="."]
+position = Vector2(480, 270)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ma50v")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m4s6k")
+theme_override_font_sizes/font_size = 32
+text = "This game is best played with a controller."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+text = " 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ "
+
+[node name="Label3" type="Label" parent="BoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "Press               to continue"
+horizontal_alignment = 1
+
+[node name="UI_Input_Switch" type="Node2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(456, 406)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("4_mvqad")
+
+[node name="GamePad" type="Node2D" parent="UI_Input_Switch"]
+
+[node name="ButtonA" type="Sprite2D" parent="UI_Input_Switch/GamePad"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_y1hwd")
+
+[node name="KB" type="Node2D" parent="UI_Input_Switch"]
+
+[node name="TilemapWhite" type="Sprite2D" parent="UI_Input_Switch/KB"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_b4txi")
+region_enabled = true
+region_rect = Rect2(513, 161, 30, 29)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 965.0
+offset_bottom = 548.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6xylg")
+}
+autoplay = "fadein"
+
+[node name="InputActionTrigger" parent="." instance=ExtResource("7_kbcs2")]
+action = "ui_misc_confirm"
+isListening = false
+deleteAfterTrigger = true
+
+[connection signal="on_event_triggered" from="InputActionTrigger" to="." method="_on_input_action_trigger_on_event_triggered"]

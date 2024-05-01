@@ -7,6 +7,7 @@ var canAct = false
 func _ready():
 	get_tree().paused = true
 	$sfx_open.play()
+	AudioServer.set_bus_volume_db(1, -15)
 	pass # Replace with function body.
 
 
@@ -23,6 +24,7 @@ func _process(delta):
 			$sfx_close.connect("finished", queue_free, 4)
 			$sfx_close.play()
 			visible = false
+			AudioServer.set_bus_volume_db(1, 0.0)
 			#queue_free()
 	pass
 
@@ -48,4 +50,5 @@ func close_settings():
 	pass
 
 func return_to_menu():
+	AudioServer.set_bus_volume_db(1, 0.0)
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

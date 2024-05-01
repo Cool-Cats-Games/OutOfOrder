@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvkhru7np7rea"]
+
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="1_qp8rg"]
+[ext_resource type="PackedScene" uid="uid://dp7yiusbq6q4i" path="res://addons/CustomEvents/ChangeScene.tscn" id="2_mfkn3"]
+[ext_resource type="PackedScene" uid="uid://b3wfnjnxypyph" path="res://Scenes/BroomCloset.tscn" id="3_7nacm"]
+
+[node name="BlankScene" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 972.0
+offset_bottom = 554.0
+color = Color(0, 0, 0, 1)
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("1_qp8rg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5868, -2, -2.72637)
+fadeInPlaylist = true
+playlistName = "Tutorial"
+onlyPlayIfNoMusic = true
+triggerOnReady = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.3
+one_shot = true
+autostart = true
+
+[node name="ChangeScene" parent="." instance=ExtResource("2_mfkn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.372805, 0, 0.457002)
+scene = ExtResource("3_7nacm")
+
+[connection signal="timeout" from="Timer" to="ChangeScene" method="trigger"]

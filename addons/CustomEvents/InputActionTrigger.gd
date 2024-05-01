@@ -22,7 +22,6 @@ func _process(delta):
 		InputTypes.Released:
 			if Input.is_action_just_released(action):
 				trigger()
-	pass
 
 func start():
 	isListening = true

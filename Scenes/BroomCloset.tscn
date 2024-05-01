@@ -14,7 +14,6 @@
 [ext_resource type="Material" uid="uid://i5qlx14oouhm" path="res://Materials/material_pitchBlack.tres" id="11_hdfrm"]
 [ext_resource type="PackedScene" uid="uid://cgvm3b0wsb1vx" path="res://Prefabs/Breakables/Grill.tscn" id="11_lae53"]
 [ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="11_nfs6n"]
-[ext_resource type="Script" path="res://addons/CustomEvents/TimerEvent.gd" id="12_on6o5"]
 [ext_resource type="PackedScene" uid="uid://cdk8gpn7lblkg" path="res://Prefabs/Breakables/Crate.tscn" id="12_r4ftj"]
 [ext_resource type="PackedScene" uid="uid://bmnvrxhq8wssn" path="res://Prefabs/Challenges/jumpChallenge.tscn" id="13_1xehb"]
 [ext_resource type="PackedScene" uid="uid://di1gotpig1qk2" path="res://Prefabs/Breakables/RollingCart.tscn" id="13_anryy"]
@@ -30,6 +29,7 @@
 [ext_resource type="Script" path="res://addons/CustomEvents/GenericEvent.gd" id="27_b0cdh"]
 [ext_resource type="PackedScene" uid="uid://dqwh8588q3hlk" path="res://Prefabs/Door.tscn" id="29_3op1u"]
 [ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="30_qf2ng"]
+[ext_resource type="Texture2D" uid="uid://cdiacvewpmmap" path="res://Sprites/UI/BoardGameIcons(x64)/arrow_down.png" id="31_03y2c"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_j2d0k"]
 
@@ -256,6 +256,7 @@ shape = SubResource("ConcavePolygonShape3D_dkclo")
 
 [node name="Wall2" type="MeshInstance3D" parent="SetPieces"]
 transform = Transform3D(-50, 0, -8.74228e-08, 0, 7, 0, 4.37114e-06, 0, -1, 20, 1.5, 3.68518)
+material_override = ExtResource("8_0dm78")
 mesh = SubResource("QuadMesh_gov0h")
 skeleton = NodePath("../..")
 metadata/_edit_lock_ = true
@@ -282,13 +283,23 @@ transform = Transform3D(1, 0, 0, 0, 0.770802, 0.637074, 0, -0.637074, 0.770802, 
 light_energy = 0.3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SetPieces"]
-transform = Transform3D(1.69882, 0, 0, 0, 1, 0, 0, 0, 7.55375, 9.082, -1.508, 0)
+transform = Transform3D(1.69882, 0, 0, 0, 1, 0, 0, 0, 7.55375, 7.43642, -1.508, 0)
 material_override = SubResource("StandardMaterial3D_fqlh5")
 mesh = SubResource("BoxMesh_iywfn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7a7ha")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(-7.42578e-08, -1, 0, 1.69882, -4.37114e-08, 0, 0, 0, 7.55375, 8.78371, -1.16073, 0)
+material_override = SubResource("StandardMaterial3D_fqlh5")
+mesh = SubResource("BoxMesh_iywfn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/MeshInstance3D4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7a7ha")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="SetPieces"]
@@ -367,11 +378,22 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.299
 
 [node name="Events" type="Node3D" parent="."]
 
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.4476, 2.70477, -3.43562)
+visible = false
+text = "Using Ice Cream and Special Attacks
+will deplete your cream reserve!
+If you're empty, you won't be able to use
+those moves, and you will be vulnerable to attacks"
+font = ExtResource("11_nfs6n")
+font_size = 196
+outline_size = 22
+
 [node name="Challenges" type="Node3D" parent="."]
 
 [node name="InputChallenge" parent="Challenges" instance=ExtResource("10_hwn6p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77077, -2, -1.51477)
-visible = false
+autostart = true
 lock_rooms_on_start = false
 
 [node name="Label3D" type="Label3D" parent="Challenges/InputChallenge"]
@@ -394,12 +416,6 @@ text = "Press SPACE or    to jump"
 [node name="Sprite3D" type="Sprite3D" parent="Challenges/JumpChallenge/Label3D" index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.31593, 0, 0)
 texture = ExtResource("18_g8wkv")
-
-[node name="TimerEvent" type="Node3D" parent="Challenges"]
-script = ExtResource("12_on6o5")
-time = 2.0
-oneShot = true
-autoStart = true
 
 [node name="DestroyAllBreakablesChallenge" parent="Challenges" instance=ExtResource("18_iuvnl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1255, -2, 1.62252)
@@ -453,7 +469,7 @@ emblemRes = ExtResource("26_u6p3v")
 lock_rooms_on_start = false
 
 [node name="Label3D" type="Label3D" parent="Challenges/HoverChallenge"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0012, 7.4091, 0.359637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0012, 7.4091, 0.0439589)
 text = "Press SPACE or    while 
 in the air to hover using
 Ice Cream Jet!"
@@ -488,18 +504,32 @@ playlistName = "Tutorial"
 onlyPlayIfNoMusic = true
 triggerOnReady = true
 
+[node name="DoorPointer" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 43.9049, 1.36637, 0)
+visible = false
+billboard = 2
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("31_03y2c")
+
 [connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/InputChallenge" method="hide"]
-[connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/JumpChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/InputChallenge/Label3D" method="queue_free"]
 [connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/JumpChallenge" method="start_challenge"]
-[connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/JumpChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/JumpChallenge/Label3D" method="queue_free"]
 [connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="start_challenge"]
-[connection signal="on_event_triggered" from="Challenges/TimerEvent" to="Challenges/InputChallenge" method="show"]
-[connection signal="on_event_triggered" from="Challenges/TimerEvent" to="Challenges/InputChallenge" method="start_challenge"]
+[connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="show"]
 [connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="hide"]
-[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/HoverChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge/Label3D" method="queue_free"]
+[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge/Label3D2" method="queue_free"]
+[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge/Label3D3" method="queue_free"]
 [connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/HoverChallenge" method="start_challenge"]
+[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/HoverChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Label3D2" method="show"]
 [connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Challenges/HoverChallenge" method="hide"]
+[connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Challenges/HoverChallenge/Label3D" method="queue_free"]
 [connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Challenges/HoverChallenge/GenericEvent" method="queue_free"]
+[connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="DoorPointer" method="show"]
 [connection signal="on_event_triggered" from="Challenges/HoverChallenge/GenericEvent" to="Challenges/HoverChallenge" method="complete"]
 
 [editable path="Challenges/JumpChallenge"]

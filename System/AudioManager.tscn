@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://br20itsteg3bc"]
+[gd_scene load_steps=9 format=3 uid="uid://br20itsteg3bc"]
 
 [ext_resource type="Script" path="res://System/AudioManager.gd" id="1_clgmp"]
 [ext_resource type="AudioStream" uid="uid://consb2ek8vj4p" path="res://Music/Battlefight_chill.wav" id="2_0uu2h"]
 [ext_resource type="PackedScene" uid="uid://dpd26xmq75b2y" path="res://Prefabs/fader.tscn" id="3_b7ow7"]
 [ext_resource type="AudioStream" uid="uid://cl2qn3gih64vc" path="res://Music/battlefight_altmix.wav" id="4_3avig"]
-[ext_resource type="AudioStream" uid="uid://7sjmrli3vw1j" path="res://Music/Tutorial.wav" id="4_k25uk"]
+[ext_resource type="AudioStream" uid="uid://cg5kkuk2ntmok" path="res://Music/BigStack.wav" id="5_d6ilx"]
 [ext_resource type="AudioStream" uid="uid://dnasehvtcyiqd" path="res://Music/Menugod.wav" id="5_l1n3h"]
+[ext_resource type="AudioStream" uid="uid://d15snt0ipo8el" path="res://Music/twoHalls.wav" id="6_xhhv0"]
+[ext_resource type="AudioStream" uid="uid://bdgeauyublyfm" path="res://Music/Sewage.wav" id="7_khb4i"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_clgmp")
 
 [node name="Battlefight" type="Node" parent="."]
@@ -27,10 +30,26 @@ bus = &"Music"
 [node name="Tutorial" type="Node" parent="."]
 
 [node name="A" type="AudioStreamPlayer" parent="Tutorial"]
-stream = ExtResource("4_k25uk")
+stream = ExtResource("5_d6ilx")
 bus = &"Music"
 
 [node name="Fader" parent="Tutorial/A" instance=ExtResource("3_b7ow7")]
+
+[node name="2Halls" type="Node" parent="."]
+
+[node name="A" type="AudioStreamPlayer" parent="2Halls"]
+stream = ExtResource("6_xhhv0")
+bus = &"Music"
+
+[node name="Fader" parent="2Halls/A" instance=ExtResource("3_b7ow7")]
+
+[node name="Sewer" type="Node" parent="."]
+
+[node name="A" type="AudioStreamPlayer" parent="Sewer"]
+stream = ExtResource("7_khb4i")
+bus = &"Music"
+
+[node name="Fader" parent="Sewer/A" instance=ExtResource("3_b7ow7")]
 
 [node name="Menu" type="Node" parent="."]
 

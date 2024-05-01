@@ -15,6 +15,7 @@ distance_fade_max_distance = 2.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ad2ak"]
 data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+backface_collision = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qymnj"]
 cull_mode = 2
@@ -25,6 +26,7 @@ distance_fade_max_distance = 2.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4hybv"]
 data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+backface_collision = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frxuj"]
 cull_mode = 2
@@ -35,6 +37,7 @@ distance_fade_max_distance = 2.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wx42q"]
 data = PackedVector3Array(0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0)
+backface_collision = true
 
 [node name="SectionedFence" type="Node3D"]
 

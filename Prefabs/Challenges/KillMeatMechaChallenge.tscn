@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0sysy7hdolg6"]
+
+[ext_resource type="Script" path="res://Prefabs/Challenges/KillEntityChallenge.gd" id="1_11d2y"]
+[ext_resource type="Resource" uid="uid://bsgc87rb4drfy" path="res://Prefabs/EntitySpawnResourceesource.tres" id="2_mt3bs"]
+[ext_resource type="PackedScene" uid="uid://bsg06lsbdealo" path="res://Prefabs/Challenges/ChallengeEmblems/KillMeatMechaEmblem.tscn" id="3_3u4g5"]
+[ext_resource type="Script" path="res://addons/CustomEvents/KillCounter.gd" id="3_ivkqg"]
+[ext_resource type="PackedScene" uid="uid://csuw7m3xaa8tu" path="res://Prefabs/EntitySpawner.tscn" id="4_yimq5"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="5_owvhy"]
+
+[node name="KillMeatMechaChallenge" type="Node3D"]
+script = ExtResource("1_11d2y")
+spawnerRes = ExtResource("2_mt3bs")
+useResource = false
+autostart = true
+emblemRes = ExtResource("3_3u4g5")
+
+[node name="KillCounter" type="Node3D" parent="." groups=["EnemyDeathSubscribers"]]
+script = ExtResource("3_ivkqg")
+entity_type = "meatmecha"
+deleteAfterTrigger = true
+
+[node name="EntitySpawner" parent="." instance=ExtResource("4_yimq5")]
+radius = 30.0
+entityPath = "res://Prefabs/MeatMecha.tscn"
+spawnLoop = true
+spawnTimer = 3.5
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("5_owvhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.156238, 1.19209e-07, -0.13282)
+playlistName = "Battlefight"
+part = "B"
+
+[connection signal="on_challenge_complete" from="." to="." method="_on_on_challenge_complete"]
+[connection signal="on_challenge_complete" from="." to="EntitySpawner" method="set" binds= ["enabled", false]]
+[connection signal="on_challenge_start" from="." to="EntitySpawner" method="spawn"]
+[connection signal="on_count_changed" from="KillCounter" to="." method="_on_kill_counter_on_count_changed"]
+[connection signal="on_event_triggered" from="KillCounter" to="." method="complete"]
