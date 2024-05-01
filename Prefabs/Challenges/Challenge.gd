@@ -6,6 +6,7 @@ signal on_challenge_complete()
 @export var autostart = false
 @export var emblemRes : Resource
 @export var lock_rooms_on_start = true
+@export var playMusicQueueOnStart = true
 
 
 var hasStarted = false
@@ -18,7 +19,7 @@ func _ready():
 		#start_challenge.call_deferred()
 
 func complete():
-	if hasStarted:
+	if hasStarted and not isCompleted:
 		isCompleted = true
 		on_challenge_complete.emit()
 		get_tree().call_group("ChallengeEmblems", "complete_challenge", self)
@@ -42,8 +43,8 @@ func start_challenge():
 		get_tree().call_group("Doors", "set_state", 2)
 	#load challenge ico on HUD
 	get_tree().call_group("ChallengeEmblems", "add_challenge", self)
-	for c in get_children():
-		if c.has_method("play_playlist"):
+	for c in get_children() :
+		if c.has_method("play_playlist") and playMusicQueueOnStart:
 			c.play_playlist()
 
 func update_emblem(_msg = {}):

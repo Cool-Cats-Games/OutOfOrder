@@ -52,3 +52,11 @@ func update_challenge(c):
 func update_state():
 	get_tree().call_group("Doors", "report_state", self)
 	get_tree().call_group("Challenges", "report_state", self)
+
+
+func set_gravity_scale(extra_arg_0):
+	pass # Replace with function body.
+
+
+func toggle_force_integration(extra_arg_0):
+	pass # Replace with function body.

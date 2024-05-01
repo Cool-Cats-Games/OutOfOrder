@@ -199,10 +199,14 @@ speed_scale = 1.5
 
 [node name="sfx_unlock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_v3dan")
+volume_db = 15.0
+pitch_scale = 1.5
 bus = &"SFX"
 
 [node name="sfx_locked" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8o4mf")
+volume_db = 15.0
+pitch_scale = 1.5
 bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

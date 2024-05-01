@@ -343,7 +343,6 @@ spawnForce = Vector3(2, 6, 0)
 [node name="QueuePlaylistEvent" parent="." instance=ExtResource("24_ed7xe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32845, 0, 11.0132)
 playlistName = "Battlefight"
-triggerOnReady = true
 
 [connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="spawn"]
 [connection signal="on_smashed" from="Destructables/Toilet" to="EntitySpawner" method="delete"]

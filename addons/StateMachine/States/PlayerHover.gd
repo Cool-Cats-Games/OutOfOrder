@@ -39,7 +39,7 @@ func exit():
 	actor.rideSpringScaler = 1.0
 
 func update(_delta: float) -> void:
-	actor.cream -= 1.5
+	actor.cream -= 1.1
 	if Input.is_action_just_released("jump"):
 		state_machine.transition_to("Idle", {"startingInAir": true})
 	if actor.cream <= 0.0:

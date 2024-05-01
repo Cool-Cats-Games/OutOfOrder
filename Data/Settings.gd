@@ -10,7 +10,7 @@ var bestScore = null
 
 var lastInputIsJoypad = false
 
-var version = 0.13
+var version = 0.14
 
 func _ready():
 	load_settings()
@@ -38,6 +38,7 @@ func load_settings():
 		parse_settings_data(settingData)
 	else:
 		save_settings()
+		parse_settings_data(serialize_settings())
 
 func parse_settings_data(dat):
 	if not dat.has("version"):
@@ -69,7 +70,7 @@ func serialize_settings() -> Dictionary:
 
 func set_music_volume(val):
 	musicVolume = val
-	AudioServer.set_bus_volume_db(1, convert_to_decibels(val))
+	AudioServer.set_bus_volume_db(3, convert_to_decibels(val))
 
 func set_sfx_volume(val):
 	sfxVolume = val

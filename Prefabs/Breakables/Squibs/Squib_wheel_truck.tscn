@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://4ar0n8c0gfre"]
+
+[ext_resource type="PackedScene" uid="uid://nl37lyahh5sc" path="res://Models/Cars/wheelTruck.glb" id="1_51ov7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u5kdb"]
+bounce = 0.75
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cui3p"]
+height = 0.260594
+radius = 0.302465
+
+[node name="Squib_TruckWheel" type="RigidBody3D"]
+collision_layer = 32
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_u5kdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+shape = SubResource("CylinderShape3D_cui3p")
+
+[node name="TTL" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="wheelTruck2" parent="." instance=ExtResource("1_51ov7")]
+
+[connection signal="timeout" from="TTL" to="." method="queue_free"]

@@ -16,6 +16,9 @@ signal resource_loaded()
 @export var requires_floor = true #Whether it checks to spawn on floor
 #@export var dont_spawn_in_vision = false #Whether it checks to spawn outside player vision
 
+@export var forceFloorHeight = false
+@export var forcedFloorHeight = Vector3.ZERO
+
 var hasInitialized = false
 var res
 var spawned = []
@@ -63,21 +66,25 @@ func spawn():
 				spawnPosition = global_position + (Vector3(randf_range(-radius, radius),0.0,randf_range(-radius, radius)))
 			if tries == 0:
 				print("Failed to spawn entity, no floor found")
+				if forcedFloorHeight:
+					eobj.position.y = forcedFloorHeight.y
 			else:
 				eobj.position = spawnPosition
+				if forcedFloorHeight:
+					eobj.position.y = forcedFloorHeight.y
 				if eobj is RigidBody3D:
 					eobj.linear_velocity *= 0.0
 					eobj.apply_impulse(spawnForce)
 				on_entity_spawned.emit(eobj)
 				spawned.append(eobj)
-				eobj.connect("entity_died",self.on_spawned_entity_died)
+				eobj.connect("entity_died",self.on_spawned_entity_died.bind(eobj))
 	if spawnLoop and spawnTimer > 0.0:
 		start_spawn_timer()
 
 func trigger(by = null):
 	spawn()
 
-func on_spawned_entity_died(entity):
+func on_spawned_entity_died(entityDeathMessage, entity):
 	if entity in spawned:
 		entity.disconnect("entity_died",self.on_spawned_entity_died)
 		spawned.erase(entity)
@@ -88,6 +95,7 @@ func check_floor(pos):
 	var origin = pos + Vector3(0,-10,0)
 	var end = pos + Vector3(0,10,0)
 	var query = PhysicsRayQueryParameters3D.create(origin,end)
+	query.hit_back_faces = true
 	var result = space_state.intersect_ray(query)
 	if result: return true
 	return false

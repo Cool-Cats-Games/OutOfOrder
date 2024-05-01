@@ -2,14 +2,20 @@ extends "res://Prefabs/SimpleEnemy.gd"
 
 @export var squibs : Array[Resource]
 @export var breaksfx : Array[AudioStream]
+@export var hitsfx : Array[AudioStream]
 
 func _ready():
 	super._ready()
 	add_to_group("Breakables")
 
+func play_hit_sound():
+	Utils.play_sound_at(hitsfx, get_tree(), global_position)
+
 func take_damage(dmg, dir, hitbox):
 	hp -= dmg
 	apply_force(dir * mass * dmg)
+	if hitsfx.size() != 0:
+		play_hit_sound()
 	if hp <= 0.0:
 		queue_free()
 		on_death.emit()

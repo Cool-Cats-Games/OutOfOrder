@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ck6to0d3ktuax"]
+
+[ext_resource type="Texture2D" uid="uid://3xacoyjv4bjc" path="res://Textures/metalTextures_x64/mtl_wall02_c.png" id="1_n3k5j"]
+
+[resource]
+albedo_color = Color(0.537011, 0.537011, 0.537011, 1)
+albedo_texture = ExtResource("1_n3k5j")
+uv1_triplanar = true
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

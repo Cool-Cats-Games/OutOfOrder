@@ -10,6 +10,7 @@ extends "res://Prefabs/SimpleEnemy.gd"
 
 var customName = ""
 var isMale = true
+var deathParticles = preload("res://Prefabs/Effects/NPCDeathParticles.tscn")
 
 func _ready():
 	super._ready()
@@ -97,3 +98,10 @@ func _on_flee_panic_timer_timeout():
 	flee_on_patrol()
 	pass # Replace with function body.
 
+
+
+func _on_on_death():
+	var pfx = deathParticles.instantiate()
+	Utils.get_world(get_tree()).add_child(pfx)
+	pfx.global_position = global_position
+	pass # Replace with function body.

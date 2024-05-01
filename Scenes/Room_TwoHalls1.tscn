@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b58es4jrr1p0b"]
+[gd_scene load_steps=84 format=3 uid="uid://b58es4jrr1p0b"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_v3le4"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="2_2tw4s"]
@@ -47,6 +47,13 @@
 [ext_resource type="PackedScene" uid="uid://cu1h7oy3ijt2e" path="res://Prefabs/Objects/PosterPrefabs/poster_2.tscn" id="45_qj1dw"]
 [ext_resource type="Texture2D" uid="uid://dcpnn6pklrphi" path="res://Textures/posters/poster_02.png" id="46_d2ij5"]
 [ext_resource type="PackedScene" uid="uid://cugtmj4qpxrgc" path="res://Prefabs/Objects/PosterPrefabs/poster_1.tscn" id="47_uso5u"]
+[ext_resource type="PackedScene" uid="uid://bw0po6nxyt6jl" path="res://Prefabs/Objects/PosterPrefabs/poster_bathroom_mf.tscn" id="48_lsiec"]
+[ext_resource type="PackedScene" uid="uid://3pompd4d1p7d" path="res://Prefabs/Objects/PosterPrefabs/poster_bathroom_uni.tscn" id="49_lgmig"]
+[ext_resource type="PackedScene" uid="uid://egud3fwxo4xe" path="res://addons/CustomEvents/QueuePlaylistEvent.tscn" id="50_wgc8a"]
+[ext_resource type="PackedScene" uid="uid://vxh13e1x8pe5" path="res://Prefabs/Objects/ExitSign.tscn" id="51_sklki"]
+[ext_resource type="PackedScene" uid="uid://cfi6v85pr0kam" path="res://Prefabs/Challenges/loadRandomChallenge.tscn" id="52_rj37h"]
+[ext_resource type="PackedScene" uid="uid://cwkc5dej2tpto" path="res://Prefabs/Objects/PosterPrefabs/poster_18.tscn" id="53_6uvuw"]
+[ext_resource type="Texture2D" uid="uid://dxa284qtv7yyp" path="res://Textures/posters/poster_18.png" id="54_hijk1"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_lmk24"]
 
@@ -236,6 +243,56 @@ _data = {
 }
 point_count = 11
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkk3n"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("54_hijk1")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc57g"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("54_hijk1")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukrjx"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("54_hijk1")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbjew"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("54_hijk1")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcml7"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("54_hijk1")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
 [node name="TemplateRoom" type="Node3D" groups=["World"]]
 script = ExtResource("1_v3le4")
 
@@ -252,20 +309,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1631, 2.23859, 11.9862)
 
 [node name="Door" parent="." instance=ExtResource("10_0g30h")]
 transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, -28.0296, 0.673294, 37.6934)
-requires = "Key2"
-targetRoom = "res://Scenes/Outside.tscn"
+targetRoom = "res://Scenes/Restroom.tscn"
 
-[node name="Door2" parent="." instance=ExtResource("10_0g30h")]
+[node name="D" parent="." instance=ExtResource("10_0g30h")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -27.9704, 0.673294, 2.4013)
-targetRoom = "res://Scenes/Outside.tscn"
+targetRoom = "res://Scenes/Kitchen.tscn"
 
 [node name="B" parent="." instance=ExtResource("10_0g30h")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.02961, 0.673294, 2.37293)
 targetRoom = "res://Scenes/Lobby.tscn"
 
-[node name="Door4" parent="." instance=ExtResource("10_0g30h")]
-transform = Transform3D(1.5, 0, 3.57628e-07, 0, 1.5, 0, -3.57628e-07, 0, 1.5, 3.97039, 0.673294, 43.4672)
-requires = "Key1"
+[node name="Z" parent="." instance=ExtResource("10_0g30h")]
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 3.97039, 0.673294, 37.5452)
 targetRoom = "res://Scenes/Outside.tscn"
 
 [node name="SetPieces" type="Node3D" parent="."]
@@ -466,7 +521,7 @@ mesh = SubResource("QuadMesh_0371x")
 skeleton = NodePath("../..")
 
 [node name="Poster12" parent="SetPieces" instance=ExtResource("26_ujqq7")]
-transform = Transform3D(-4.35581e-08, 4.89102e-09, -1, 0.0375332, 1.33625, 2.02022e-09, 0.999296, -0.0501892, -4.36647e-08, -3.27358, 9.33763e-07, 15.4993)
+transform = Transform3D(0.999264, -0.0513319, 0, 0.0383878, 1.33621, 0, 0, 0, 1, -7.439, 1.7701, 8.01674)
 material_override = SubResource("StandardMaterial3D_se0j7")
 skeleton = NodePath("../../..")
 
@@ -486,7 +541,7 @@ material_override = SubResource("StandardMaterial3D_si84j")
 skeleton = NodePath("../../..")
 
 [node name="poster11" parent="SetPieces" instance=ExtResource("30_p678p")]
-transform = Transform3D(-9.61651e-08, 0, 1, 0, 2, 0, -2.2, 0, -4.37114e-08, -31.999, 2.325, 12.31)
+transform = Transform3D(-9.61651e-08, 0, 1, 0, 2, 0, -2.2, 0, -4.37114e-08, -31.969, 2.325, 12.31)
 material_override = SubResource("StandardMaterial3D_ggqsb")
 skeleton = NodePath("../..")
 
@@ -565,7 +620,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.95
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -22.9592, 0.230887, 31.571)
 
 [node name="FireExtinguisher" parent="Destructables" instance=ExtResource("15_kjuc8")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.0703, 1.59665, 22.0373)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.1604, 1.59665, 22.0373)
+
+[node name="FireExtinguisher2" parent="Destructables" instance=ExtResource("15_kjuc8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14986, 1.59665, 17.2757)
 
 [node name="Topiary" parent="Destructables" instance=ExtResource("17_wwgth")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8878, 0.427348, 15.349)
@@ -583,6 +641,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8878, 0.427348, 24.649)
 
 [node name="NPCSpawnTimer" type="Node3D" parent="Events"]
 script = ExtResource("16_7asbm")
+time = 2.5
 autoStart = true
 nextEvents = Array[NodePath]([NodePath("../A_or_BC")])
 
@@ -613,7 +672,17 @@ spawnLoop = true
 spawnOnReady = true
 spawnTimer = 0.5
 timerOnReady = true
-spawnLimit = 10
+spawnLimit = 5
+
+[node name="BurgzSpawner" parent="." instance=ExtResource("19_svgqg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7555, 0.81484, 20.1536)
+radius = 100.0
+entityPath = "res://Prefabs/Burgz.tscn"
+spawnLoop = true
+spawnOnReady = true
+spawnTimer = 0.5
+timerOnReady = true
+spawnLimit = 5
 
 [node name="KillPlane" type="Area3D" parent="."]
 script = ExtResource("20_yny66")
@@ -664,6 +733,49 @@ entityPath = "res://Prefabs/SimpleNPC.tscn"
 [node name="NPCSpawner3" parent="." instance=ExtResource("19_svgqg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48486, 1.75039, 36.1297)
 entityPath = "res://Prefabs/SimpleNPC.tscn"
+
+[node name="BathroomSignMF" parent="." instance=ExtResource("48_lsiec")]
+transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -26.6531, 2.06784, 39.9998)
+
+[node name="BathroomSignI" parent="." instance=ExtResource("49_lgmig")]
+transform = Transform3D(-0.6, 0, -5.24537e-08, 0, 0.6, 0, 5.24537e-08, 0, -0.6, -29.343, 2.088, 39.995)
+
+[node name="QueuePlaylistEvent" parent="." instance=ExtResource("50_wgc8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33274, 0.250612, 40)
+fadeInPlaylist = true
+playlistName = "2Halls"
+triggerOnReady = true
+
+[node name="ExitSign" parent="." instance=ExtResource("51_sklki")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.01824, 3.65486, 39.5995)
+
+[node name="LoadRandomChallenge" parent="." instance=ExtResource("52_rj37h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16067, 8.6583e-07, 28.8794)
+challenges = Array[String](["res://Prefabs/Challenges/KillPotatoShredzChallenge.tscn", "res://Prefabs/Challenges/KillNPCChallenge.tscn", "res://Prefabs/Challenges/DestroyAllBreakablesChallenge.tscn", "res://Prefabs/Challenges/KillBurgzChallenge.tscn"])
+ignoreDefaultSongQueue = true
+disableSpawnersForKillChallenges = true
+forceStart = true
+triggerOnReady = true
+
+[node name="poster18" parent="." instance=ExtResource("53_6uvuw")]
+transform = Transform3D(-3.46616e-08, 0, 1, 0, 0.826996, 0, -0.792965, 0, -4.37114e-08, -31.9842, 2.02658, 4.38302)
+material_override = SubResource("StandardMaterial3D_jkk3n")
+
+[node name="poster19" parent="." instance=ExtResource("53_6uvuw")]
+transform = Transform3D(-3.46616e-08, 0, 1, 0, 0.826996, 0, -0.792965, 0, -4.37114e-08, -31.9842, 2.02658, 35.5952)
+material_override = SubResource("StandardMaterial3D_lc57g")
+
+[node name="poster20" parent="." instance=ExtResource("53_6uvuw")]
+transform = Transform3D(-3.46616e-08, 0, -1, 0, 0.826996, 0, 0.792965, 0, -4.37114e-08, 7.99342, 2.02658, 35.6091)
+material_override = SubResource("StandardMaterial3D_ukrjx")
+
+[node name="poster21" parent="." instance=ExtResource("53_6uvuw")]
+transform = Transform3D(-3.46616e-08, 0, -1, 0, 0.826996, 0, 0.792965, 0, -4.37114e-08, 7.99342, 2.02658, 3.58627)
+material_override = SubResource("StandardMaterial3D_kbjew")
+
+[node name="poster22" parent="." instance=ExtResource("53_6uvuw")]
+transform = Transform3D(-0.792965, 0, -8.74228e-08, 0, 0.826996, 0, 6.93232e-08, 0, -1, -5.99646, 2.02658, 15.9841)
+material_override = SubResource("StandardMaterial3D_hcml7")
 
 [connection signal="body_entered" from="KillPlane" to="KillPlane" method="_on_body_entered"]
 [connection signal="on_entity_spawned" from="NPCSpawner1" to="spawner1Path" method="give_path_to"]

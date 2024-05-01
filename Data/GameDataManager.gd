@@ -1,6 +1,10 @@
 extends Node
 
 var gameData = preload("res://Data/GameDataResource.tres")
+var newgameData
+
+func _ready():
+	gameData = load("res://Data/GameDataResource.tres").duplicate()
 
 func add_item(itemName, ammount = 1):
 	if not gameData.inventory.has(itemName):

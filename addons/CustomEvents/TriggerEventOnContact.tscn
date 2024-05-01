@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://drmm67hs50yq4"]
+
+[ext_resource type="Script" path="res://addons/CustomEvents/TriggerEventOnContact.gd" id="1_ov7qi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1v2ej"]
+
+[node name="TriggerEventOnContact" type="Area3D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_ov7qi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1v2ej")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -9,9 +9,34 @@ script = ExtResource("1_gjxev")
 emblemRes = ExtResource("2_pwm5q")
 
 [node name="InputActionTrigger" parent="." instance=ExtResource("2_omgk6")]
-action = "any_movement"
+action = "move_right"
+listenType = 1
+isListening = false
+deleteAfterTrigger = true
+
+[node name="InputActionTrigger2" parent="." instance=ExtResource("2_omgk6")]
+action = "move_left"
+listenType = 1
+isListening = false
+deleteAfterTrigger = true
+
+[node name="InputActionTrigger3" parent="." instance=ExtResource("2_omgk6")]
+action = "move_back"
+listenType = 1
+isListening = false
+deleteAfterTrigger = true
+
+[node name="InputActionTrigger4" parent="." instance=ExtResource("2_omgk6")]
+action = "move_forward"
+listenType = 1
 isListening = false
 deleteAfterTrigger = true
 
 [connection signal="on_challenge_start" from="." to="InputActionTrigger" method="start"]
+[connection signal="on_challenge_start" from="." to="InputActionTrigger2" method="start"]
+[connection signal="on_challenge_start" from="." to="InputActionTrigger3" method="start"]
+[connection signal="on_challenge_start" from="." to="InputActionTrigger4" method="start"]
 [connection signal="on_event_triggered" from="InputActionTrigger" to="." method="complete"]
+[connection signal="on_event_triggered" from="InputActionTrigger2" to="." method="complete"]
+[connection signal="on_event_triggered" from="InputActionTrigger3" to="." method="complete"]
+[connection signal="on_event_triggered" from="InputActionTrigger4" to="." method="complete"]

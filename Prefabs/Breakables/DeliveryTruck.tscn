@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxw2w1uas70tc"]
+
+[ext_resource type="Script" path="res://Prefabs/Breakables/PhysicBreakable.gd" id="1_owi8o"]
+[ext_resource type="Script" path="res://addons/StateMachine/StateMachine.gd" id="2_cnph3"]
+[ext_resource type="AudioStream" uid="uid://cdf3yun8bdvo5" path="res://Sounds/sfx_break_metal_01.wav" id="2_nh3mi"]
+[ext_resource type="Script" path="res://addons/StateMachine/States/EnemyIdle.gd" id="3_3u70n"]
+[ext_resource type="AudioStream" uid="uid://t3ek75qen3vj" path="res://Sounds/sfx_break_metal_02.WAV" id="3_ow2kg"]
+[ext_resource type="AudioStream" uid="uid://hgfqavjip6wq" path="res://Sounds/sfx_break_metal_03.WAV" id="4_ggl8a"]
+[ext_resource type="Script" path="res://addons/CustomEvents/SquibReleaseEvent.gd" id="4_kfqoe"]
+[ext_resource type="PackedScene" uid="uid://cgy5iytc06d32" path="res://Models/Cars/delivery.glb" id="4_r4beq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0alc"]
+bounce = 0.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_duwxi"]
+size = Vector3(2.70703, 2.78027, 4.22656)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4jfyg"]
+size = Vector3(1.96777, 1.84473, 1.28711)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ekfs"]
+size = Vector3(1.96777, 1.23438, 1.28711)
+
+[node name="DeliveryTruck" type="RigidBody3D"]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_f0alc")
+script = ExtResource("1_owi8o")
+hitsfx = Array[AudioStream]([ExtResource("2_nh3mi"), ExtResource("3_ow2kg"), ExtResource("4_ggl8a")])
+rideHeight = 1.2
+rideSpringDamper = 0.5
+rideSpringStrength = 25.0
+entity_type = "breakable"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.5, 0)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_cnph3")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_3u70n")
+
+[node name="truckFlat2" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.839951, 0)
+
+[node name="delivery2" parent="truckFlat2" instance=ExtResource("4_r4beq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0864587)
+
+[node name="SquibReleaseEvent" type="Node3D" parent="."]
+script = ExtResource("4_kfqoe")
+squibs = {
+"res://Prefabs/Breakables/Squibs/Squib_TruckFlatDestroyed.tscn": 1
+}
+randomTTL = false
+
+[node name="SquibReleaseEvent2" type="Node3D" parent="."]
+script = ExtResource("4_kfqoe")
+squibs = {
+"res://Prefabs/Breakables/Squibs/SquibStallDoorAlt.tscn": -4,
+"res://Prefabs/Breakables/Squibs/Squib_Tubing.tscn": -4,
+"res://Prefabs/Breakables/Squibs/Squib_wheel_truck.tscn": 4
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964566, 1.02048)
+visible = false
+shape = SubResource("BoxShape3D_duwxi")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787682, -1.38042)
+shape = SubResource("BoxShape3D_4jfyg")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0696151, -2.61069)
+shape = SubResource("BoxShape3D_7ekfs")
+
+[connection signal="on_death" from="." to="SquibReleaseEvent" method="trigger"]
+[connection signal="on_death" from="." to="SquibReleaseEvent2" method="trigger"]

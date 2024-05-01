@@ -355,9 +355,10 @@ squibs = {
 "res://Prefabs/Breakables/Squibs/SquibFleshy04.tscn": -2
 }
 
-[connection signal="on_death" from="." to="SquibRelease" method="trigger"]
+[connection signal="on_death" from="." to="." method="_on_on_death"]
 [connection signal="on_death" from="." to="sfx_death" method="play_random"]
 [connection signal="on_death" from="." to="sfx_deathscream" method="play_random"]
+[connection signal="on_death" from="." to="SquibRelease" method="trigger"]
 [connection signal="state_entered" from="StateMachine/Idle" to="MeshContainer/AnimationPlayer" method="play" binds= ["TPose"]]
 [connection signal="state_entered" from="StateMachine/Chase" to="MeshContainer/AnimationPlayer" method="play" binds= ["Walk"]]
 [connection signal="state_entered" from="StateMachine/Ragdoll" to="sfx_ragdoll" method="play_random"]

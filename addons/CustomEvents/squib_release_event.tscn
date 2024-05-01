@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c85u12ucpn5qs"]
+
+[ext_resource type="Script" path="res://addons/CustomEvents/SquibReleaseEvent.gd" id="1_jbkg4"]
+
+[node name="SquibReleaseEvent" type="Node3D"]
+script = ExtResource("1_jbkg4")

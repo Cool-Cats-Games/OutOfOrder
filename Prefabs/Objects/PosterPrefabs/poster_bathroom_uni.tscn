@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://3pompd4d1p7d"]
+
+[ext_resource type="Texture2D" uid="uid://lji5ojb05w7k" path="res://Sprites/inclusivebathroom_sign.png" id="1_ahqod"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul5qj"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_ahqod")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_cd8c8"]
+
+[node name="BathroomSignI" type="MeshInstance3D"]
+transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 11.231, 2.49489, 11.8771)
+material_override = SubResource("StandardMaterial3D_ul5qj")
+mesh = SubResource("QuadMesh_cd8c8")
+skeleton = NodePath("../..")

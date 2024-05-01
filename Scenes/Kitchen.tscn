@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://ckdf1aol8rna0"]
+[gd_scene load_steps=84 format=3 uid="uid://ckdf1aol8rna0"]
 
 [ext_resource type="Script" path="res://Prefabs/Room.gd" id="1_4ceqc"]
 [ext_resource type="PackedScene" uid="uid://ddbpdjor6vt4" path="res://Prefabs/Player.tscn" id="1_kvr6w"]
@@ -31,7 +31,9 @@
 [ext_resource type="Material" uid="uid://dt5i6yumjwkj8" path="res://Materials/material_roughmetalwall.tres" id="22_e3ka5"]
 [ext_resource type="PackedScene" uid="uid://h6dnfbps3mx0" path="res://Prefabs/Breakables/FireExtinguisher.tscn" id="24_qr6mh"]
 [ext_resource type="Texture2D" uid="uid://dblul47gleuvt" path="res://Textures/doors/door01.png" id="24_sjcf4"]
+[ext_resource type="Texture2D" uid="uid://ctb7kxqvhm1u1" path="res://Textures/doors/door02.png" id="25_fas3m"]
 [ext_resource type="Script" path="res://Prefabs/Misc/GivePathToNpc.gd" id="25_vb3ah"]
+[ext_resource type="Texture2D" uid="uid://cvlaij4uu1l1n" path="res://Sprites/EmployeesOnly.png" id="26_td11b"]
 [ext_resource type="PackedScene" uid="uid://bawi4rv3gxrrf" path="res://Prefabs/Food/bacon.tscn" id="33_lgcpg"]
 [ext_resource type="PackedScene" uid="uid://4cq482aiqxjr" path="res://Prefabs/Food/banana.tscn" id="34_0hg0a"]
 [ext_resource type="PackedScene" uid="uid://cfi6v85pr0kam" path="res://Prefabs/Challenges/loadRandomChallenge.tscn" id="35_i70dm"]
@@ -46,6 +48,12 @@
 [ext_resource type="PackedScene" uid="uid://x3sghtfkky3t" path="res://Prefabs/TommyTwoTraps.tscn" id="42_hxp1i"]
 [ext_resource type="PackedScene" uid="uid://c5ilns3bue7ni" path="res://Prefabs/PotatoShredz.tscn" id="43_e3uvx"]
 [ext_resource type="PackedScene" uid="uid://vxh13e1x8pe5" path="res://Prefabs/Objects/ExitSign.tscn" id="45_4yvwj"]
+[ext_resource type="PackedScene" uid="uid://bx6n1tvyf1udb" path="res://Prefabs/Objects/PosterPrefabs/poster_16.tscn" id="47_wn2bd"]
+[ext_resource type="Texture2D" uid="uid://b8hkxwtw6mt7d" path="res://Textures/posters/poster_16.png" id="48_csc81"]
+[ext_resource type="PackedScene" uid="uid://4jfao08lbyuw" path="res://Prefabs/Objects/PosterPrefabs/poster_8.tscn" id="49_p013c"]
+[ext_resource type="Texture2D" uid="uid://rtlud78mbeib" path="res://Textures/posters/poster_08.png" id="50_bt54y"]
+[ext_resource type="Script" path="res://Scenes/KillPlane.gd" id="53_xj6gr"]
+[ext_resource type="PackedScene" uid="uid://ddjslinqkqa7l" path="res://Prefabs/Breakables/FoodBarrel.tscn" id="54_6jdym"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0qati"]
 
@@ -198,12 +206,51 @@ texture_filter = 0
 distance_fade_mode = 2
 distance_fade_max_distance = 2.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgvu2"]
+albedo_texture = ExtResource("25_fas3m")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylftn"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("26_td11b")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_j1wp8"]
+
 [sub_resource type="Curve3D" id="Curve3D_vhk3w"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.2191, 2.13101, 7.83021, 0, 0, 0, 0, 0, 0, -3.66855, 0.786191, 7.09054, 0, 0, 0, 0, 0, 0, -4.04729, 1.9599, 5.56599, 0, 0, 0, 0, 0, 0, -4.04237, 2.60313, -3.77654, 0, 0, 0, 0, 0, 0, -4.38301, 2.63017, -6.94273, 0, 0, 0, 0, 0, 0, -4.7677, 2.26806, -7.38784, 0, 0, 0, 0, 0, 0, -0.178084, 1.63263, -7.98256, 0, 0, 0, 0, 0, 0, 3.64372, 1.22651, -4.05583, 0, 0, 0, 0, 0, 0, 4.453, 2.24971, 5.84555),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q637d"]
+resource_local_to_scene = true
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("48_csc81")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0y2jo"]
+resource_local_to_scene = true
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("50_bt54y")
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2v0ph"]
+size = Vector3(10000, 100, 10000)
 
 [node name="Kitchen" type="Node3D" groups=["World"]]
 script = ExtResource("1_4ceqc")
@@ -500,6 +547,39 @@ transform = Transform3D(0.56, 2.84217e-14, 4.23516e-22, 0, -8.74228e-08, 0.949, 
 material_override = ExtResource("22_e3ka5")
 mesh = SubResource("QuadMesh_lgn1y")
 
+[node name="DorrwayCutout4" type="MeshInstance3D" parent="SetPieces"]
+transform = Transform3D(0.54, 0, 0, 0, 2, 0, 0, 0, 2, -7.22207, 2.01591, -19.7462)
+material_override = ExtResource("22_e3ka5")
+mesh = SubResource("ArrayMesh_rtmx2")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SetPieces/DorrwayCutout4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SetPieces/DorrwayCutout4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2il8y")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SetPieces/DorrwayCutout4"]
+transform = Transform3D(2.15151e-07, 0, 0.5, 0, 1.6, 0, -1.105, 0, 9.73536e-08, 0.206, -0.227, -0.007)
+material_override = ExtResource("10_u6lu4")
+mesh = SubResource("QuadMesh_bdqgp")
+skeleton = NodePath("../..")
+
+[node name="DoorMesh" type="MeshInstance3D" parent="SetPieces/DorrwayCutout4"]
+transform = Transform3D(2.15151e-07, 0, 0.5, 0, 1.5175, 0, -1.105, 0, 9.73536e-08, 0.296312, -0.243663, -0.00690079)
+material_override = SubResource("StandardMaterial3D_vgvu2")
+mesh = SubResource("QuadMesh_bdqgp")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="SetPieces/DorrwayCutout4"]
+transform = Transform3D(0.56, 2.84217e-14, 4.23516e-22, 0, -8.74228e-08, 0.949, 7.10543e-15, -2, -4.14821e-08, 0.0149994, 0.996, 0)
+material_override = ExtResource("22_e3ka5")
+mesh = SubResource("QuadMesh_lgn1y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SetPieces/DorrwayCutout4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.323505, 0.761084, 0)
+material_override = SubResource("StandardMaterial3D_ylftn")
+mesh = SubResource("QuadMesh_j1wp8")
+
 [node name="Destructables" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00116277, 0.0138772, 0.00659132)
 
@@ -632,7 +712,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.554
 
 [node name="LoadRandomChallenge" parent="Challenges" instance=ExtResource("35_i70dm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0828652, 1.09629, -10.0363)
-challenges = Array[String](["res://Prefabs/Challenges/DestroyAllBreakablesChallenge_withmusic.tscn", "res://Prefabs/Challenges/KillPotatoShredzChallenge.tscn", "res://Prefabs/Challenges/KillTommyTwoTrapsChallenge.tscn"])
+challenges = Array[String](["res://Prefabs/Challenges/DestroyAllBreakablesChallenge_withmusic.tscn", "res://Prefabs/Challenges/KillPotatoShredzChallenge.tscn", "res://Prefabs/Challenges/KillTommyTwoTrapsChallenge.tscn", "res://Prefabs/Challenges/KillBurgzChallenge.tscn", "res://Prefabs/Challenges/KillMeatMechaChallenge.tscn"])
+triggerOnReady = true
+
+[node name="TestRandomChallenge" parent="Challenges" instance=ExtResource("35_i70dm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0828652, 1.09629, -10.0363)
+challenges = Array[String](["res://Prefabs/Challenges/KillMeatMechaChallenge.tscn"])
 
 [node name="BlankEnv" parent="." instance=ExtResource("6_voep8")]
 
@@ -649,6 +734,11 @@ transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 
 requires = "BackDoorKey"
 targetRoom = "res://Scenes/Outside.tscn"
 
+[node name="D" parent="." instance=ExtResource("13_krr7i")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -4.66298, 0.729436, -19.738)
+requires = "EmployeeKey"
+targetRoom = "res://Scenes/Room_TwoHalls1.tscn"
+
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.364197, 2.10136, -4.64866)
 size = Vector3(15.879, 5.1857, 37.8235)
@@ -660,29 +750,67 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00577068, -0.0137181, -0.01
 curve = SubResource("Curve3D_vhk3w")
 script = ExtResource("25_vb3ah")
 
-[node name="SimpleNPC" parent="." instance=ExtResource("39_kndox")]
+[node name="Wagey" parent="." instance=ExtResource("39_kndox")]
 transform = Transform3D(-0.0723678, 0, 0.997378, 0, 1, 0, -0.997378, 0, -0.0723678, -2.98979, 1.35752, -1.0956)
 skin = "res://Textures/characters/MinimumWage.png"
 hair = "res://Models/Characters/NPCs/NPCHairMeshes/BaseballMaxer.res"
+entity_type = "worker"
 
 [node name="SimpleNPC2" parent="." instance=ExtResource("39_kndox")]
 transform = Transform3D(0.258263, 0, -0.966075, 0, 1, 0, 0.966075, 0, 0.258263, 3.54823, 1.35752, -1.0956)
 skin = "res://Textures/characters/MinimumWage.png"
 hair = "res://Models/Characters/NPCs/NPCHairMeshes/BaseballMaxer.res"
+entity_type = "worker"
 
 [node name="SimpleNPC3" parent="." instance=ExtResource("39_kndox")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.133889, 1.35752, 3.54578)
 skin = "res://Textures/characters/MinimumWage.png"
 hair = "res://Models/Characters/NPCs/NPCHairMeshes/BaseballMaxer.res"
+entity_type = "worker"
 
 [node name="GoldenCat" parent="." instance=ExtResource("41_1hiob")]
 transform = Transform3D(-0.518311, 0, -0.855192, 0, 1, 0, 0.855192, 0, -0.518311, 6.53733, -6.60448e-08, -5.03127)
 
 [node name="TommyTwoTraps" parent="." instance=ExtResource("42_hxp1i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.52868, 1.14237, -10.2298)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56308, 1.14237, -10.1836)
 
 [node name="PotatoShredz" parent="." instance=ExtResource("43_e3uvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97814, 1.26887, -10.1341)
 
 [node name="ExitSign" parent="." instance=ExtResource("45_4yvwj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.68268, 3.58783, -17.9901)
+
+[node name="poster16" parent="." instance=ExtResource("47_wn2bd")]
+transform = Transform3D(-5.61438e-08, 0, 1, -0.177069, 1.46768, -6.02603e-09, -1.27216, -0.204284, -4.3294e-08, -7.25, 2.257, -4.82)
+material_override = SubResource("StandardMaterial3D_q637d")
+
+[node name="poster8" parent="." instance=ExtResource("49_p013c")]
+transform = Transform3D(-2.62268e-07, 0, 1, 0, 2, 0, -6, 0, -4.37114e-08, -7.25, 2.018, -13.924)
+material_override = SubResource("StandardMaterial3D_0y2jo")
+
+[node name="TrashCanB" parent="." instance=ExtResource("18_5tnii")]
+transform = Transform3D(0.847585, 0, -0.530659, 0, 1, 0, 0.530659, 0, 0.847585, -6.62621, 0.181323, -22.6796)
+
+[node name="KillPlane" type="Area3D" parent="."]
+script = ExtResource("53_xj6gr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, 0)
+shape = SubResource("BoxShape3D_2v0ph")
+
+[node name="Breakable" parent="." instance=ExtResource("54_6jdym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.12664, 0.556671, -4.96523)
+
+[node name="Breakable2" parent="." instance=ExtResource("54_6jdym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45561, 0.556671, -22.6298)
+
+[node name="Breakable3" parent="." instance=ExtResource("54_6jdym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98186, 0.556671, -22.6298)
+
+[node name="Breakable4" parent="." instance=ExtResource("54_6jdym")]
+transform = Transform3D(0.742631, 0, 0.669701, 0, 1, 0, -0.669701, 0, 0.742631, 3.62398, 0.556671, -22.6298)
+
+[node name="Breakable5" parent="." instance=ExtResource("54_6jdym")]
+transform = Transform3D(-0.994502, 0, 0.104719, 0, 1, 0, -0.104719, 0, -0.994502, 3.62398, 1.91693, -22.6298)
+
+[connection signal="body_entered" from="KillPlane" to="KillPlane" method="_on_body_entered"]

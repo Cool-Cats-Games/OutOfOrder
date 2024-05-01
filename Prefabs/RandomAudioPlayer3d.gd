@@ -33,6 +33,7 @@ func configure( _sfx, pos = Vector3.ZERO, vol = 0.0, pitch = 1.0, free_after_fin
 	volume_db = vol
 	pitch_scale = pitch
 	attenuation_model = attentuationModel
+	bus = "SFX"
 	freeOnFinish = free_after_finish
 
 

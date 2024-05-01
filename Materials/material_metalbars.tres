@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dk510j3fdxvgj"]
+
+[ext_resource type="Texture2D" uid="uid://h8jops561jvi" path="res://Models/RetroUrbanKit/scaffolding_structure_bars.png" id="1_ot4k5"]
+
+[resource]
+resource_name = "bars"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_ot4k5")
+metallic = 0.35
+roughness = 0.5
+emission_enabled = true
+texture_filter = 0
+distance_fade_mode = 2
+distance_fade_max_distance = 2.0

@@ -155,6 +155,9 @@ func play_sound(stream):
 	$sfx_player_generic.stream = stream
 	$sfx_player_generic.play()
 
+func reset_gravity_scale():
+	gravity_scale = 1.0
+
 func take_damage(dir):
 	#apply_force(Vector3.UP * 450 + dir * 250)
 	apply_central_impulse(Vector3.UP * 4 + dir * 2.5)
@@ -177,7 +180,9 @@ func take_damage(dir):
 			get_character_model().queue_free()
 			get_tree().call_group("HUD", "hide")
 			print("Game Over")
-	
+
+func toggle_force_integration(s = true):
+	enableIntegrateForces = s
 
 func toggle_hover(s = true):
 	$"../CharacterSpringbox/IcecreamHover".emitting = s
