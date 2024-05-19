@@ -273,7 +273,6 @@ bbcode_enabled = true
 text = " 
  
  
-
 "
 fit_content = true
 
@@ -283,8 +282,7 @@ size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_ltr50")
 theme_override_font_sizes/font_size = 60
-text = "NEW GAME
-"
+text = "NEW GAME"
 
 [node name="btn_Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -292,8 +290,7 @@ size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_ltr50")
 theme_override_font_sizes/font_size = 48
-text = "SETTINGS
-"
+text = "SETTINGS"
 
 [node name="btn_Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -301,8 +298,7 @@ size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_ltr50")
 theme_override_font_sizes/font_size = 48
-text = "CREDITS
-"
+text = "CREDITS"
 
 [node name="btn_Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2

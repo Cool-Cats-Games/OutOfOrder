@@ -212,6 +212,7 @@ region_enabled = true
 region_rect = Rect2(513, 161, 30, 29)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 offset_right = 965.0
 offset_bottom = 548.0
 color = Color(0, 0, 0, 1)
@@ -225,6 +226,5 @@ autoplay = "fadein"
 [node name="InputActionTrigger" parent="." instance=ExtResource("7_kbcs2")]
 action = "ui_misc_confirm"
 isListening = false
-deleteAfterTrigger = true
 
 [connection signal="on_event_triggered" from="InputActionTrigger" to="." method="_on_input_action_trigger_on_event_triggered"]

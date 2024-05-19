@@ -35,7 +35,7 @@ offset_right = 158.0
 offset_bottom = 26.0
 theme = ExtResource("3_dd0dt")
 bbcode_enabled = true
-text = "KNUCKLE SANDWICH"
+text = "KNUCKLE SANDWICh"
 
 [node name="Count" type="RichTextLabel" parent="TextTweenList/Template"]
 offset_left = 196.0

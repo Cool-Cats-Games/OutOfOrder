@@ -103,8 +103,7 @@ size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_lvi6q")
 theme_override_font_sizes/font_size = 64
-text = "Play Again?
-"
+text = "Play Again?"
 
 [node name="btn_Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2

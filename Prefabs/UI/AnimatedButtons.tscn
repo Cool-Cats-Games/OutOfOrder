@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c7qir2gplg7jc"]
+[gd_scene load_steps=63 format=3 uid="uid://c7qir2gplg7jc"]
 
 [ext_resource type="Texture2D" uid="uid://c85qqcha1ir0w" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0120.png" id="1_457yh"]
 [ext_resource type="Texture2D" uid="uid://1ojk7g1ldxt" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0392.png" id="2_5oemu"]
@@ -57,6 +57,10 @@
 [ext_resource type="Texture2D" uid="uid://fxn3wq3ovisi" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0428.png" id="40_alhb7"]
 [ext_resource type="Texture2D" uid="uid://u2vsfivnr3ya" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0156.png" id="41_vmj3y"]
 [ext_resource type="Script" path="res://Prefabs/UI/AnimatedButtons.gd" id="42_xirk6"]
+[ext_resource type="Texture2D" uid="uid://cp3r7l84n2l1m" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0255.png" id="55_gycra"]
+[ext_resource type="Texture2D" uid="uid://cnmoped48rmiy" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0527.png" id="56_5jcop"]
+[ext_resource type="Texture2D" uid="uid://b571eie0i206q" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0256.png" id="57_fk0o3"]
+[ext_resource type="Texture2D" uid="uid://dwo0eux7sxbaq" path="res://Sprites/UI/Kenny_input_prompts_pixel/Tiles (White)/tile_0528.png" id="58_hs28p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a6dcb"]
 animations = [{
@@ -407,6 +411,28 @@ animations = [{
 "loop": true,
 "name": &"mouse_r",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_gycra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_5jcop")
+}],
+"loop": true,
+"name": &"shift_l",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("57_fk0o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_hs28p")
+}],
+"loop": true,
+"name": &"shift_r",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,

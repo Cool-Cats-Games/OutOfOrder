@@ -384,7 +384,8 @@ visible = false
 text = "Using Ice Cream and Special Attacks
 will deplete your cream reserve!
 If you're empty, you won't be able to use
-those moves, and you will be vulnerable to attacks"
+those moves, and you will be vulnerable to attacks
+"
 font = ExtResource("11_nfs6n")
 font_size = 196
 outline_size = 22
@@ -398,12 +399,13 @@ lock_rooms_on_start = false
 
 [node name="Label3D" type="Label3D" parent="Challenges/InputChallenge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49851, 7.87965, -2.41518)
-text = "Move with WSAD or     Left Thumbstick"
+text = "Move with WSAD or     	Left Thumbstick"
 font = ExtResource("11_nfs6n")
 font_size = 196
 
 [node name="Sprite3D" type="Sprite3D" parent="Challenges/InputChallenge/Label3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.328636, 0, 0)
+texture_filter = 0
 texture = ExtResource("16_av8vf")
 
 [node name="JumpChallenge" parent="Challenges" instance=ExtResource("13_1xehb")]
@@ -411,10 +413,11 @@ lock_rooms_on_start = false
 
 [node name="Label3D" parent="Challenges/JumpChallenge" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35548, 7.87965, -1.46186)
-text = "Press SPACE or    to jump"
+text = "Press SPACE or	    to jump"
 
 [node name="Sprite3D" type="Sprite3D" parent="Challenges/JumpChallenge/Label3D" index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.31593, 0, 0)
+texture_filter = 0
 texture = ExtResource("18_g8wkv")
 
 [node name="DestroyAllBreakablesChallenge" parent="Challenges" instance=ExtResource("18_iuvnl")]
@@ -424,24 +427,26 @@ lock_rooms_on_start = false
 
 [node name="Label3D" type="Label3D" parent="Challenges/DestroyAllBreakablesChallenge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49851, 7.87965, -4.9023)
-text = "Press C or    to attack"
+text = "Press C or    	to attack"
 font = ExtResource("11_nfs6n")
 font_size = 196
 
 [node name="Sprite3D" type="Sprite3D" parent="Challenges/DestroyAllBreakablesChallenge/Label3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.133314, 0, 0)
+texture_filter = 0
 texture = ExtResource("21_kenht")
 
 [node name="Label3D2" type="Label3D" parent="Challenges/DestroyAllBreakablesChallenge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28171, 4.58722, -4.9023)
 text = "You can also boost with
-SHIFT or 
+SHIFT or
 to do a ram attack"
 font = ExtResource("11_nfs6n")
 font_size = 196
 
 [node name="Sprite3D" type="Sprite3D" parent="Challenges/DestroyAllBreakablesChallenge/Label3D2"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.68791, 0, 0)
+texture_filter = 0
 texture = ExtResource("22_sbcqb")
 
 [node name="Label3D3" type="Label3D" parent="Challenges/DestroyAllBreakablesChallenge"]
@@ -453,13 +458,14 @@ font_size = 196
 
 [node name="Sprite3D" type="Sprite3D" parent="Challenges/DestroyAllBreakablesChallenge/Label3D3"]
 transform = Transform3D(5.34, 0, 0, 0, 5.34, 0, 0, 0, 5.34, 0.587172, -0.345344, 0)
-texture_filter = 1
+texture_filter = 0
 texture = ExtResource("23_bccay")
 region_enabled = true
 region_rect = Rect2(170, 50, 16, 17)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Challenges/DestroyAllBreakablesChallenge/Label3D3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.68791, -0.540999, 0)
+texture_filter = 0
 texture = ExtResource("24_hyx0n")
 
 [node name="HoverChallenge" parent="Challenges" instance=ExtResource("25_klaqg")]
@@ -470,7 +476,7 @@ lock_rooms_on_start = false
 
 [node name="Label3D" type="Label3D" parent="Challenges/HoverChallenge"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0012, 7.4091, 0.0439589)
-text = "Press SPACE or    while 
+text = "Press SPACE or    	while
 in the air to hover using
 Ice Cream Jet!"
 font = ExtResource("11_nfs6n")
@@ -478,6 +484,7 @@ font_size = 196
 
 [node name="Sprite3D" type="Sprite3D" parent="Challenges/HoverChallenge/Label3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.5769, 0.835466, 0)
+texture_filter = 0
 texture = ExtResource("18_g8wkv")
 
 [node name="GenericEvent" type="Node3D" parent="Challenges/HoverChallenge" groups=["PlayerHoverObserver"]]
@@ -514,17 +521,17 @@ texture = ExtResource("31_03y2c")
 
 [connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/InputChallenge" method="hide"]
 [connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/InputChallenge/Label3D" method="queue_free"]
-[connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/JumpChallenge" method="start_challenge"]
 [connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/JumpChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/InputChallenge" to="Challenges/JumpChallenge" method="start_challenge"]
 [connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/JumpChallenge/Label3D" method="queue_free"]
-[connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="start_challenge"]
 [connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/JumpChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="start_challenge"]
 [connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge" method="hide"]
 [connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge/Label3D" method="queue_free"]
 [connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge/Label3D2" method="queue_free"]
 [connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/DestroyAllBreakablesChallenge/Label3D3" method="queue_free"]
-[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/HoverChallenge" method="start_challenge"]
 [connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/HoverChallenge" method="show"]
+[connection signal="on_challenge_complete" from="Challenges/DestroyAllBreakablesChallenge" to="Challenges/HoverChallenge" method="start_challenge"]
 [connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Label3D2" method="show"]
 [connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Challenges/HoverChallenge" method="hide"]
 [connection signal="on_challenge_complete" from="Challenges/HoverChallenge" to="Challenges/HoverChallenge/Label3D" method="queue_free"]

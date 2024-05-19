@@ -107,8 +107,7 @@ text = "Additional assets used:
 Kenny Assets: (Patterns), (Pixel Input Prompts),
         (Board Game Icons), (Food Kit), (Car Kit),
         (Retro Urban Kit)
-Juhani Junkala - (Essential Retro VideoGame Sounds)
-"
+Juhani Junkala - (Essential Retro VideoGame Sounds)"
 
 [node name="Label4" type="Label" parent="."]
 offset_left = 370.0
@@ -118,8 +117,7 @@ offset_bottom = 532.0
 scale = Vector2(0.771822, 0.771822)
 theme_override_fonts/font = ExtResource("11_b7t3g")
 theme_override_font_sizes/font_size = 32
-text = "THANKS SO MUCH FOR PLAYING!
-"
+text = "THANKS SO MUCH FOR PLAYING!"
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 568.0

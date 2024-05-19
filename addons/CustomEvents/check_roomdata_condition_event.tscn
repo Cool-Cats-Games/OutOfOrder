@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lgr6i7rfld0a"]
+
+[ext_resource type="Script" path="res://addons/CustomEvents/CheckRoomdataConditionEvent.gd" id="1_5tl5t"]
+
+[node name="CheckRoomdataConditionEvent" type="Node3D"]
+script = ExtResource("1_5tl5t")

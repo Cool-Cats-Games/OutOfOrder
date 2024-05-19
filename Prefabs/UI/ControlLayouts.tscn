@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://cqf04a5askign"]
 
 [ext_resource type="Script" path="res://Prefabs/UI/ControlLayouts.gd" id="1_3npt2"]
-[ext_resource type="Texture2D" uid="uid://dh8fhiycm4kdd" path="res://Sprites/UI/controller_1_v2.png" id="2_cyfav"]
+[ext_resource type="Texture2D" uid="uid://krydov5ff1hs" path="res://Sprites/UI/controller_1_v2.png" id="2_cyfav"]
 [ext_resource type="PackedScene" uid="uid://c7qir2gplg7jc" path="res://Prefabs/UI/AnimatedButtons.tscn" id="15_y3dc5"]
 [ext_resource type="FontFile" uid="uid://7btu78ff8nvs" path="res://Fonts/monkey.ttf" id="26_qkvn0"]
-[ext_resource type="Texture2D" uid="uid://c7w5mnafbwi2a" path="res://Sprites/UI/SideArrow_normal.png" id="29_g2jl2"]
-[ext_resource type="Texture2D" uid="uid://dkqh8uhyrhr7s" path="res://Sprites/UI/SideArrow_pressed.png" id="30_nskjb"]
-[ext_resource type="Texture2D" uid="uid://ch3gxt473n10q" path="res://Sprites/UI/SideArrow_hover.png" id="31_2ajqt"]
+[ext_resource type="Texture2D" uid="uid://bwj0i55f83a43" path="res://Sprites/UI/smupAssets/SideArrow_normal.png" id="29_g2jl2"]
+[ext_resource type="Texture2D" uid="uid://chbw4xbjtgd6g" path="res://Sprites/UI/smupAssets/SideArrow_pressed.png" id="30_nskjb"]
+[ext_resource type="Texture2D" uid="uid://s8r6pi5nubyy" path="res://Sprites/UI/smupAssets/SideArrow_hover.png" id="31_2ajqt"]
 [ext_resource type="AudioStream" uid="uid://dll5gecslffys" path="res://Sounds/UI/sfx_UI_Select_A.wav" id="32_7t4r5"]
 
 [node name="ControlLayouts" type="CanvasLayer"]
@@ -31,12 +31,13 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 171.0
-offset_top = 121.0
-offset_right = 171.0
-offset_bottom = 121.0
+offset_left = 256.0
+offset_top = 181.0
+offset_right = 256.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 
 [node name="Controller3" type="Sprite2D" parent="GamepadControls"]
 modulate = Color(1, 1, 1, 0.156863)
@@ -46,6 +47,11 @@ texture = ExtResource("2_cyfav")
 
 [node name="Move" parent="GamepadControls" instance=ExtResource("15_y3dc5")]
 position = Vector2(326, 211)
+scale = Vector2(5, 5)
+animation = &"gp_Stick"
+
+[node name="Move2" parent="GamepadControls" instance=ExtResource("15_y3dc5")]
+position = Vector2(548, 304)
 scale = Vector2(5, 5)
 animation = &"gp_Stick"
 
@@ -82,11 +88,6 @@ position = Vector2(584, 212)
 scale = Vector2(3, 3)
 animation = &"gp_X"
 
-[node name="Y" parent="GamepadControls" instance=ExtResource("15_y3dc5")]
-position = Vector2(623, 172)
-scale = Vector2(3, 3)
-animation = &"gp_Y"
-
 [node name="WSAD" type="Label" parent="GamepadControls"]
 layout_mode = 0
 offset_left = 129.0
@@ -96,6 +97,16 @@ offset_bottom = 230.0
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
 text = "Movement"
+
+[node name="WSAD2" type="Label" parent="GamepadControls"]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 356.0
+offset_right = 642.0
+offset_bottom = 398.0
+theme_override_fonts/font = ExtResource("26_qkvn0")
+theme_override_font_sizes/font_size = 48
+text = "Camera"
 
 [node name="Start2" type="Label" parent="GamepadControls"]
 layout_mode = 0
@@ -109,23 +120,23 @@ text = "Pause"
 
 [node name="Kick" type="Label" parent="GamepadControls"]
 layout_mode = 0
-offset_left = 527.0
-offset_top = 344.0
-offset_right = 671.0
-offset_bottom = 386.0
+offset_left = 532.0
+offset_top = 136.0
+offset_right = 676.0
+offset_bottom = 178.0
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
-text = "Kick"
+text = "Punch"
 
 [node name="Kick2" type="Label" parent="GamepadControls"]
 layout_mode = 0
-offset_left = 651.0
+offset_left = 664.0
 offset_top = 68.0
-offset_right = 795.0
+offset_right = 862.0
 offset_bottom = 110.0
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
-text = "Kick"
+text = "Shoot Ice Cream"
 
 [node name="Jump" type="Label" parent="GamepadControls"]
 layout_mode = 0
@@ -135,27 +146,18 @@ offset_right = 759.0
 offset_bottom = 319.0
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
-text = "Jump"
-
-[node name="Grab" type="Label" parent="GamepadControls"]
-layout_mode = 0
-offset_left = 657.0
-offset_top = 144.0
-offset_right = 801.0
-offset_bottom = 186.0
-theme_override_fonts/font = ExtResource("26_qkvn0")
-theme_override_font_sizes/font_size = 48
-text = "Grab"
+text = "Jump / Hover"
 
 [node name="Grab2" type="Label" parent="GamepadControls"]
 layout_mode = 0
-offset_left = 216.0
+offset_left = 188.0
 offset_top = 60.0
-offset_right = 360.0
+offset_right = 332.0
 offset_bottom = 102.0
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
-text = "Grab"
+text = "Boost
+"
 
 [node name="Cancel" type="Label" parent="GamepadControls"]
 layout_mode = 0
@@ -167,20 +169,15 @@ theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
 text = "Cancel"
 
-[node name="Line2D6" type="Line2D" parent="GamepadControls"]
-position = Vector2(3, -111)
-points = PackedVector2Array(580, 352, 580, 451)
-width = 2.0
-default_color = Color(1, 1, 1, 0.596078)
-
 [node name="MouseKeyboardControls" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 108.0
-offset_top = 179.0
-offset_right = 725.0
-offset_bottom = 692.0
+offset_left = 134.0
+offset_top = 185.0
+offset_right = 751.0
+offset_bottom = 698.0
+scale = Vector2(0.75, 0.75)
 
 [node name="WSAD" type="Label" parent="MouseKeyboardControls"]
 layout_mode = 0
@@ -191,6 +188,16 @@ offset_bottom = 170.0
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
 text = "Movement"
+
+[node name="WSAD2" type="Label" parent="MouseKeyboardControls"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 282.667
+offset_right = 328.0
+offset_bottom = 324.667
+theme_override_fonts/font = ExtResource("26_qkvn0")
+theme_override_font_sizes/font_size = 48
+text = "Boost"
 
 [node name="Esc" type="Label" parent="MouseKeyboardControls"]
 layout_mode = 0
@@ -203,17 +210,6 @@ theme_override_font_sizes/font_size = 48
 text = "Pause Menu
 "
 
-[node name="Grab" type="Label" parent="MouseKeyboardControls"]
-layout_mode = 0
-offset_left = 294.0
-offset_top = 240.0
-offset_right = 474.0
-offset_bottom = 282.0
-theme_override_fonts/font = ExtResource("26_qkvn0")
-theme_override_font_sizes/font_size = 48
-text = "Grab
-"
-
 [node name="Grab2" type="Label" parent="MouseKeyboardControls"]
 layout_mode = 0
 offset_left = 927.0
@@ -222,41 +218,40 @@ offset_right = 1107.0
 offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
-text = "Grab
+text = "Camera
 "
 
 [node name="Kick" type="Label" parent="MouseKeyboardControls"]
 layout_mode = 0
-offset_left = 466.0
-offset_top = 184.0
-offset_right = 646.0
-offset_bottom = 226.0
+offset_left = 377.333
+offset_top = 233.333
+offset_right = 557.333
+offset_bottom = 275.333
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
-text = "Kick
-"
+text = "Punch"
 
 [node name="Kick2" type="Label" parent="MouseKeyboardControls"]
 layout_mode = 0
-offset_left = 820.0
-offset_top = 135.0
-offset_right = 1000.0
-offset_bottom = 177.0
+offset_left = 789.333
+offset_top = 133.333
+offset_right = 969.333
+offset_bottom = 175.333
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
-text = "Kick
+text = "Ice Cream
 "
 
 [node name="Kick3" type="Label" parent="MouseKeyboardControls"]
 layout_mode = 0
-offset_left = 605.0
-offset_top = 90.0
-offset_right = 785.0
-offset_bottom = 132.0
+offset_left = 549.333
+offset_top = 96.0
+offset_right = 765.333
+offset_bottom = 138.0
 theme_override_fonts/font = ExtResource("26_qkvn0")
 theme_override_font_sizes/font_size = 48
-text = "Jump
-"
+text = "Jump / Hover"
+horizontal_alignment = 1
 
 [node name="Line2D4" type="Line2D" parent="MouseKeyboardControls"]
 position = Vector2(3, -111)
@@ -267,12 +262,6 @@ default_color = Color(1, 1, 1, 0.596078)
 [node name="Line2D5" type="Line2D" parent="MouseKeyboardControls"]
 position = Vector2(3, -111)
 points = PackedVector2Array(638, 335, 638, 246)
-width = 2.0
-default_color = Color(1, 1, 1, 0.596078)
-
-[node name="Line2D6" type="Line2D" parent="MouseKeyboardControls"]
-position = Vector2(3, -111)
-points = PackedVector2Array(593, 217, 339, 217)
 width = 2.0
 default_color = Color(1, 1, 1, 0.596078)
 
@@ -308,16 +297,19 @@ scale = Vector2(3, 3)
 animation = &"c"
 speed_scale = 0.0
 
-[node name="KB_X" parent="MouseKeyboardControls" instance=ExtResource("15_y3dc5")]
-position = Vector2(350, 207)
-scale = Vector2(3, 3)
-animation = &"x"
-speed_scale = 0.0
-
 [node name="MouseL" parent="MouseKeyboardControls" instance=ExtResource("15_y3dc5")]
 position = Vector2(856, 205)
 scale = Vector2(3, 3)
 animation = &"mouse_L"
+
+[node name="ShiftL" parent="MouseKeyboardControls" instance=ExtResource("15_y3dc5")]
+position = Vector2(208, 245.333)
+scale = Vector2(3, 3)
+animation = &"shift_l"
+
+[node name="R" parent="MouseKeyboardControls/ShiftL" instance=ExtResource("15_y3dc5")]
+position = Vector2(16, 0)
+animation = &"shift_r"
 
 [node name="MouseR" parent="MouseKeyboardControls" instance=ExtResource("15_y3dc5")]
 position = Vector2(934, 206)
